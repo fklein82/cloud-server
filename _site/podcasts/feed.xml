@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+     version="2.0">
+  <channel>
+    <title>Le Podcast AWS en Français</title>
+    <description>Nous parlons d'Amazon Web Services en français.  Découvrez les nouveaux services ou fonctions, des interviews avec des partenaires ou des clients d'AWS.  Découvrez des cas d'utilisation, des retours d'expérience racontés par les clients d'AWS eux-mêmes.</description>
+    <copyright>All rights reserved</copyright>
+    <language>fr</language>
+    <link>https://home.fklein.me/podcasts/index.html</link>
+    <atom:link href="https://home.fklein.me/podcasts/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Jun 2022 21:54:54 +0200</lastBuildDate>
+    <pubDate>Mon, 06 Jun 2022 21:54:54 +0200</pubDate>
+    <itunes:subtitle>L'actualité est des retours d'expérience sur AWS</itunes:subtitle>
+    <itunes:summary>Nous parlons d'Amazon Web Services en français.  Découvrez les nouveaux services ou fonctions, des interviews avec des partenaires ou des clients d'AWS.  Découvrez des cas d'utilisation, des retours d'expérience racontés par les clients d'AWS eux-mêmes.</itunes:summary>
+    <itunes:author>Amazon Web Services France</itunes:author>
+    <itunes:type>episodic</itunes:type>
+    <itunes:category text="Technology">
+      <itunes:category text="Tech News"/>
+    </itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:image href="https://download.stormacq.com/aws/podcast/podcast-artwork.png"/>
+    <itunes:owner>
+      <itunes:email>stormacq@amazon.com</itunes:email>
+      <itunes:name>Sébastien Stormacq</itunes:name>
+    </itunes:owner>
+
+    
+    
+    
+
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "Sarycom"
+subtitle: "Agence de production cinématographique et audiovisuelle Malgache"
+date: 2021-06-01 00:00:00 +0100
+# categories: aws appsync
+tags: [sarycom Films]
+author: Fred
+background: '/img/posts/sarycom.jpeg'
+---
+
+J'apporte ma contribution à l'agence de production audiovisuelle et cinématographique "Sarycom Films" en réalisant la promotion des productions sur internet.
+
+Vous trouverez ici les liens vers les productions de SaryCom Films.
+👉 [www.sarycom.fr](https://www.sarycom.fr){:target="_blank"}
+
+La dernière production: La série Osika (juin 2022)
+
+https://youtu.be/WIFK9AzKWZc
+
+--- 
+<p/>
+&nbsp;
+
+#### Les liens 
+
+- [Le site internet: www.sarycom.fr](https://www.sarycom.fr){:target="_blank"}
+- [Sarycom sur Facebook](https://www.facebook.com/SRCFims/){:target="_blank"} 
+- [La chaine Youtube: youtube.sarycom.fr](https://www.youtube.com/c/SaryComFilms){:target="_blank"} 
+- [La chaine Vimeo: tv.sarycom.fr](http://tv.sarycom.fr){:target="_blank"}
+
+Votre avez des questions ? [Dites-le moi](mailto:frederic.klein@gmail.com) !
