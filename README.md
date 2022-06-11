@@ -1,4 +1,5 @@
 
-![Build Status](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiOXpqRUcvQzZDM3gzQUlPWGptd01zZ0lxNHR0ZjhIOXVtaFVUNFkzY1VBelpjU2xCZ3V4dFpzMzVtV1VCVXBjbnpKNkZydU5PdWdRSFBNQjJXSXhycU5JPSIsIml2UGFyYW1ldGVyU3BlYyI6IjdqL2ZWRHVmK0t5Q0ZUTXgiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+![example workflow](https://github.com/fklein82/cloud-server/actions/workflows/<WORKFLOW_FILE>/badge.svg)
 
-This is the source code for https://home.fklein.me
+
+This is the source code for fklein's blog : https://blog.fklein.me or https://cloud.fklein.me
