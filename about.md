@@ -9,7 +9,7 @@ regenerate: true
 
 Comment me contacter? 👇
 
-📲 [M'ajouter](/img/vcard_fklein.vcf "Vcard") &emsp; ou &emsp;  ![image info](/img/fklein.png)
+📲 [M'ajouter](/img/vcard_fklein.vcf "Vcard") 
 
 #### Tel, Mail, Réseaux Sociaux:
 
