@@ -1,4 +1,9 @@
+# [blog.fklein.me](https://cloud.fklein.me)
 
-![Build Status](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiOXpqRUcvQzZDM3gzQUlPWGptd01zZ0lxNHR0ZjhIOXVtaFVUNFkzY1VBelpjU2xCZ3V4dFpzMzVtV1VCVXBjbnpKNkZydU5PdWdRSFBNQjJXSXhycU5JPSIsIml2UGFyYW1ldGVyU3BlYyI6IjdqL2ZWRHVmK0t5Q0ZUTXgiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+This is the source code for fklein's blog : https://blog.fklein.me or https://cloud.fklein.me
 
-This is the source code for https://home.fklein.me
+ [![test](https://github.com/fklein82/cloud-server/workflows/test/badge.svg)](https://github.com/fklein82/cloud-server/actions?query=workflow%3Atest)
+
+ [![Build-Push-DockerHUB](https://github.com/fklein82/cloud-server/actions/workflows/push-docker-image.yaml/badge.svg)](https://github.com/fklein82/cloud-server/actions/workflows/push-docker-image.yaml)
+
+ [![Deploy to Production](https://github.com/fklein82/cloud-server/actions/workflows/aws-S3-upload.yml/badge.svg)](https://github.com/fklein82/cloud-server/actions/workflows/aws-S3-upload.yml)
