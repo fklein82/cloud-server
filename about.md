@@ -2,7 +2,7 @@
 layout: about
 title: Solution Engineer
 permalink: /about/
-description: Orange
+description: VMware Tanzu
 background: '/img/bg-about.png'
 regenerate: true
 ---
