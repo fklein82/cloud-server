@@ -17,7 +17,7 @@ title:  🇫🇷 Multi-☁️ blog
 author: Frédéric KLEIN
 email: frederic.klein@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
- I am Solution Engineer for VMware Tanzu. <p/>
+ Solution Engineer for VMware Tanzu. This is my personal blog.<p/>
  The blog is about Tanzu Products, Multi-Cloud, Kubernetes, Container, Security, Supply Chain, APi, Spring & Data-IA.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://home.fklein.me" # the base hostname & protocol for your site, e.g. http://example.com

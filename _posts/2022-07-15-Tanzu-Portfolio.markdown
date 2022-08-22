@@ -1,20 +1,18 @@
 ---
 layout: post
 title:  "Portfolio VMware Tanzu"
-subtitle: "Comment accélérer l'adoption de Kubernetes par les développeurs?"
-date: 2022-08-21 00:00:00 +0100
-# categories: tanzu tap
+subtitle: "Voici un aperçu des produits VMware Tanzu"
+date: 2022-07-15 00:00:00 +0100
+# categories: tanzu
 tags: [Tanzu]
 author: Fred
 background: 'https://d1fto35gcfffzn.cloudfront.net/images/og/OG-Tanzu-General-Dark.png'
 ---
 
-Accélérer l'adoption de Kubernetes par les développeurs?
-
-Voici une démonstration des différentes étapes à réaliser pour mettre en production une application 👇
+Voici un aperçu des produits VMware Tanzu. 👇
 
 
-https://youtu.be/E6X1mjMYvuk
+https://youtu.be/yk2y7F4uKEA
 
 --- 
 <p/>
