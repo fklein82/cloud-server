@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "VMware Tanzu Application Platform"
-subtitle: "Présentation et démonstration de la Platform as a Service Multi-Cloud de VMware Tanzu"
+title:  "Tanzu Application Platform"
+subtitle: "Démonstration du PaaS Multi-Cloud de VMware Tanzu"
 date: 2022-08-22 00:00:00 +0100
 # categories: tanzu tap
 tags: [Tanzu]

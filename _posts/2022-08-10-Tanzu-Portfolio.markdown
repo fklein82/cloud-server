@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Accélérer l'adoption de Kubernetes..."
-subtitle: "...par les développeurs? Voici une démonstration des différentes étapes à réaliser pour mettre en production une application"
-date: 2022-08-21 00:00:00 +0100
+title:  "Comment accélérer l'adoption de K8s..."
+subtitle: "...(Kubernetes) par les développeurs?"
+date: 2022-08-10 00:00:00 +0100
 # categories: tanzu tap
 tags: [Tanzu]
 author: Fred
