@@ -2,7 +2,7 @@
 layout: post
 title:  "VMware Application Catalog"
 subtitle: "Démonstration de VAC en Anglais: A Curated image catalog"
-date: 2022-08-22 00:00:00 +0100
+date: 2023-04-07 00:00:00 +0100
 # categories: tanzu tap
 tags: [Tanzu]
 author: Fred
