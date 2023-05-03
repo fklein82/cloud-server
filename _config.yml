@@ -105,6 +105,13 @@ defaults:
     values:
       permalink: /:basename:output_ext
 
+# Posts
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      permalink: post/:year/:month/:day/:title.html
+
 
 include:
   - _pages

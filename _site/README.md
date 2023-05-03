@@ -1,13 +1,15 @@
-# Menca personal blogging theme for Jekyll
 
-Menca is a super fast and clean blogging theme for Jekyll. One of the main features of this theme is video post support. You can easily add your favorite video from services like Youtube or Vimeo. This theme is fully compatible with Github Pages and has a light and dark mode for easy reading. If you want to start a creative personal blog and you create video content this theme is perfect for you.
+# Frederic Klein personal blog
 
-* * *
+Hello, and welcome to my blog! My name is Frédéric KLEIN, and I’m a solution engineer at VMware Tanzu. I have a passion for helping organizations design and implement cloud-native architectures using Kubernetes and Tanzu.
 
-### Demo
+In addition to my work as a solution engineer, I also love to write and share my knowledge with others. On this blog, you’ll find a variety of articles about architectures, talks, and best practices related to Kubernetes, Tanzu, web development, data management, ethics, privacy, and development.
 
-Check the theme in action [Live Demo](https://menca.netlify.app/) |
-[Artem Sheludko](https://jekyllthemes.io/developers/artem-sheludko)
+Whether you’re a seasoned pro or just getting started in the world of cloud computing, my blog has something for everyone. From technical tutorials to free resources and inspiration, I’m committed to providing value to the tech community and helping others succeed.
+
+So, if you’re looking to stay up-to-date on the latest trends and technologies in cloud computing and software development, be sure to follow my blog and stay tuned for new articles and updates. Thanks for reading, and I look forward to connecting with you soon!
+
+[Fred's Blog](https://blog.fklein.me)
 
 * * *
 
@@ -56,12 +58,36 @@ I would recommend checking the [Deployment Methods](https://jekyllrb.com/docs/de
 
 * * *
 
-### Documentation
+### Docker Image Build & Push on Registries
 
-Before using the Menca theme, please read the attached documentation.
+- Public registry: <a href="https://hub.docker.com/r/yfke8313/blog/tags">DockerHUB</a>
+- Private registry: <a href="https://registry.fklein.me/harbor/projects/26/repositories/fklein-blog/artifacts-tab">Harbor</a>
+
+### How to deploy the website on Kubernetes? Some Examples...
+
+1. Create the deployment:
+~~~
+kubectl create deployment fredblog --image=registry.fklein.me/sarycom/src-website:2023-05-03-10-24-45 --port=80
+~~~
+
+2. Expose the website with a Loadbalancer L4:
+~~~
+kubectl expose deployment fredblog --port 80 --type LoadBalancer --target-port=80 -n demotbs
+~~~
+
+3. Check the ip:
+~~~
+k get svc -n fredblog
+~~~
+
+4. Delete the ressource
+~~~
+k delete deployment fredblog
+k delete service fredblog
+~~~
 
 * * *
 
 ### Support
 
-<p>If you have any questions, please feel free to contact me by mail <a href="mailto:hi.artemsheludko@gmail.com">Contact</a><p>
+<p>If you have any questions, please feel free to contact me by mail <a href="mailto:frederic.klein@gmail.com">Contact</a><p>
