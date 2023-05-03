@@ -1,19 +1,26 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
+{% include head.html %}
 
-  {% include head.html %}
+<body>
 
-  <body>
+  {% if site.google-analytics %}
+    {% include google-analytics.html %}
+  {% endif %}
 
-    {% include navbar.html %}
+  {% include header.html %}
 
+  <!-- begin content -->
+  <main class="content" aria-label="Content">
     {{ content }}
+  </main>
+  <!-- end content -->
 
-    {% include footer.html %}
+  {% include footer.html %}
 
-    {% include scripts.html %}
-
-  </body>
+  <script src="{{ site.baseurl }}/js/scripts.js"></script>
+  <script src="{{ site.baseurl }}/js/common.js"></script>
+</body>
 
 </html>

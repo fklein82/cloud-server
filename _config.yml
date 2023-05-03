@@ -1,77 +1,114 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title:  🇫🇷 Multi-☁️ blog
-author: Frédéric KLEIN
-email: frederic.klein@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
- Solution Engineer for VMware Tanzu. This is my personal blog.<p/>
- The blog is about Tanzu Products, Multi-Cloud, Kubernetes, Container, Security, Supply Chain, APi, Spring & Data-IA.
+#-------------------------------
+# Site Settings
+title: Tanzu SE Blog
+logo: '/images/logo-tanzu.png'
+description: Frédéric KLEIN personal Blog
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://home.fklein.me" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: fklein82
-github_username:  fklein82
-linkedin_username: fklein82
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+color_scheme: auto # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
 
-google_analytics: G-B40CGRZEN2
 
-# Build settings
+#-------------------------------
+# Author Settings
+author:
+  author__name: Frédéric KLEIN
+  author__bio: Architectures, talks, and writes about Kubernetes, Tanzu, web, data, ethics, privacy, and dev. I share technical tutorials, free resources and inspiration.
+  author__avatar: '/images/fklein.png'
+
+social:
+- {icon: "ion-logo-twitter", link: "https://twitter.com/fklein82"}
+- {icon: "ion-logo-youtube", link: "https://www.youtube.com/channel/UCDrweOhe4e7r4hK-nzm4I4Q"}
+- {icon: "ion-link-outline", link: "https://tanzu.vmware.com"}
+
+
+# Example of adding a new link to the footer - {icon: "ion-logo-dribbble", link: "https://dribbble.com"}
+# Other icons can be found at https://ionicons.com/v4/
+
+
+#-------------------------------
+# Hero Settings
+hero:
+  hero__title: Tanzu Solution Engineer Blog
+  hero__description: Architectures, talks, and writes about Kubernetes, Tanzu, web, data, ethics, privacy, and dev. I share technical tutorials, free resources and inspiration.
+  hero__image: '/images/01.png'
+
+
+#-------------------------------
+# Newsletter
+mailchimp: disable # To enable the mailchimp form, use the value 'enable'. To disable the form, leave the field blank.
+mailchimp__identifier: frnla.us6.list-manage.com/subscribe/post?u=6314d69a3f315af7ce3fb00a0&amp;id=3038727cc3 # Add your MailChimp form identifier. For example - frnla.us6.list-manage.com/subscribe/post?u=6314d69a3f315af7ce3fb00a0&amp;id=3038727cc3
+mailchimp__input__text: Subscribe here
+mailchimp__button__text: Get a new tip
+
+
+#-------------------------------
+# Gallery Footer Section
+gallery:
+  gallery__title: Gallery
+  gallery__columns: 3
+  gallery__images:
+    - alt: 'Architectures'
+      url: '/images/100.png'
+    - alt: 'talks'
+      url: '/images/101.png'
+    - alt: 'Hobby'
+      url: '/images/102.png'
+    - alt: 'Notes'
+      url: '/images/103.png'
+    - alt: 'Kubernetes'
+      url: '/images/104.png'
+    - alt: 'Tanzu'
+      url: '/images/105.png'
+    - alt: 'web'
+      url: '/images/106.png'
+    - alt: 'data'
+      url: '/images/107.png'
+    - alt: 'dev'
+      url: '/images/108.png'
+
+
+#-------------------------------
+# Contact Settings
+contact:
+  email: frederic.klein@gmail.com # Add your email for contant form
+  description: Contact me. # Add a description of your form
+
+# NOTE
+# Menca theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
+
+
+#-------------------------------
+# Comment Section (Disqus)
+disqus-identifier: demo-menca # Add your shortname for Disqus Comment. For example demo-menca
+
+
+#-------------------------------
+# Google Analytics
+google-analytics: # Add your GA Tracking Id
+
+
+#-------------------------------
+# Build Settings
 markdown: kramdown
-
-# theme: minima
-theme: jekyll-theme-clean-blog 
-
-# paginate for /posts/ page
+permalink: /:title
 plugins:
-  - jekyll-paginate-v2
+  - jekyll-paginate
+  - jekyll-sitemap
 
-autopages:
-  collections:
-    enabled: true
+paginate: 9
+paginate_path: "/page/:num"
 
-# Pagination Settings
-pagination:
-  enabled: true
-  per_page: 5
-  permalink: '/:num/'
-  title: ':title | :num of :max'
-  limit: 0
-  sort_field: 'date'
-  sort_reverse: true
- # extension: htm
- # indexpage: 'default'
-  trail: 
-    before: 2
-    after: 2
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
 
-# collections for podcasts
-collections:
-  podcasts:
-    output: true
-    permalink: /podcasts/:path/
-# collections_dir: collections
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - docker
-  - amplify
-  - buildspec.yaml
-  - publish.sh
-#   - node_modules
-  - vendor
+include:
+  - _pages
+
+sass:
+  sass_dir: _sass
+  style: compressed
