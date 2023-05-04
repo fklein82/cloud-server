@@ -17,8 +17,10 @@ author:
 
 social:
 - {icon: "ion-logo-twitter", link: "https://twitter.com/fklein82"}
+- {icon: "ion-logo-linkedin", link: "https://www.linkedin.com/in/fklein82/"}
 - {icon: "ion-logo-youtube", link: "https://www.youtube.com/channel/UCDrweOhe4e7r4hK-nzm4I4Q"}
-- {icon: "ion-link-outline", link: "https://tanzu.vmware.com"}
+- {icon: "ion-logo-github", link: "https://github.com/fklein82"}
+- {icon: "ion-md-link", link: "https://www.fklein.me"}
 
 
 # Example of adding a new link to the footer - {icon: "ion-logo-dribbble", link: "https://dribbble.com"}
@@ -47,25 +49,24 @@ gallery:
   gallery__title: Gallery
   gallery__columns: 3
   gallery__images:
-    - alt: 'Architectures'
-      url: '/images/100.png'
-    - alt: 'talks'
-      url: '/images/101.png'
-    - alt: 'Hobby'
-      url: '/images/102.png'
-    - alt: 'Notes'
-      url: '/images/103.png'
-    - alt: 'Kubernetes'
-      url: '/images/104.png'
-    - alt: 'Tanzu'
-      url: '/images/105.png'
-    - alt: 'web'
-      url: '/images/106.png'
-    - alt: 'data'
-      url: '/images/107.png'
-    - alt: 'dev'
-      url: '/images/108.png'
-
+    - alt: 'explore'
+      url: '/images/explore.jpg'
+    - alt: 'party'
+      url: '/images/party.jpg'
+    - alt: 'tap experience day'
+      url: '/images/tap.jpeg'
+    - alt: 'team global'
+      url: '/images/global.jpeg'
+    - alt: 'CKAD'
+      url: '/images/ckad.png'
+    - alt: 'mwc23'
+      url: '/images/mwc.png'
+    - alt: 'Cloud Practitioner'
+      url: '/images/CP.png'
+    - alt: 'Solution Architect'
+      url: '/images/SAA.png'
+    - alt: 'vsphere expert'
+      url: '/images/vsphere.png'
 
 #-------------------------------
 # Contact Settings
