@@ -2,7 +2,7 @@
 layout: post
 title:  Tanzu Build Service - Automating Container Image Building and Management
 description: Tanzu Build Service is a Kubernetes-native tool that automates the process of building, managing, and updating container images. How do I use TBS?
-date:   2023-05-04 15:01:35 +0300
+date:   2023-05-03 15:01:35 +0300
 image:  '/images/06.png'
 video_embed: https://www.youtube.com/embed/XqN_tqNxTOo
 tags:   [tanzu-build-service]
