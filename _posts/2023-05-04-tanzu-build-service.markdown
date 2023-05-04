@@ -30,13 +30,13 @@ Once the container image is built, Tanzu Build Service automatically stores it i
 kp image create fkleinblog --tag registry.fklein.me/tbs/fkleinblog:1.1 --git https://github.com/fklein82/tbs-blog-demo.git --git-revision main -n dev
 ~~~
 
-- You can check the log of build the image
+- You can check the buiding log of the image
 
 ~~~
 kp build logs fkleinblog -n dev
 ~~~
 
-- Check the list of image
+- And check the image list
 
 ~~~
 kp image list -n dev
