@@ -62,15 +62,6 @@ Tanzu Build Service is a powerful tool that automates the process of building, m
 
 ### More information
 
+- [Source code Application demo to test TBS](https://github.com/fklein82/tbs-blog-demo/tree/main)
 
-- Source code Application demo to test TBS : 
-
-~~~
-https://github.com/fklein82/tbs-blog-demo/tree/main
-~~~
-
-- Script to Make a demo on Kubernetes CNFC Compliant
-
-~~~
-https://github.com/fklein82/tbs-blog-demo/blob/main/demo/demo.sh
-~~~
+- [Script to Make a demo with TBS on a Kubernetes CNFC Compliant](https://github.com/fklein82/tbs-blog-demo/blob/main/demo/demo.sh)
