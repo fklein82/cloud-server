@@ -89,7 +89,7 @@ kubectl vsphere login --server <vCenter server address> --vsphere-username <vCen
 kubectl create clusterrolebinding default-tkg-admin-privileged-binding --clusterrole=psp:vmware-system-privileged --group=system:authenticated
 ~~~
 
-- Apply cluster rolebinding 
+- Deploy my blog App 
 
 ~~~
 kubectl create deployment fredblog --image=registry.fklein.me/tanzu-blog/fklein-blog:2023-05-04-11-44-18 --port=80
