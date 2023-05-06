@@ -111,6 +111,6 @@ kubectl get svc
 
 Using Tanzu CLI, you can manage your Kubernetes clusters, including scaling them up or down, updating the Kubernetes version, and more. This provides a powerful command-line interface for managing both your VMs and containers.
 
-Conclusion
+### Conclusion
 
 VMware vSphere with Tanzu is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. Tanzu CLI is a command-line tool that provides a simplified interface for managing Kubernetes clusters and applications. By following the steps outlined above, you can get started with VMware vSphere with Tanzu and Tanzu CLI and begin deploying and managing your container workloads more easily and efficiently.
