@@ -71,7 +71,7 @@ Backstage is the UI of TAP, and provides a centralized location to manage  appli
 
 The integration of the **Backstage** open-source project into **Tanzu Application Platform** plays a pivotal role in **enhancing the developer experience**. By streamlining application management, promoting discoverability, and providing customization options, 
 
-&rarr; **Backstage empowers developers to focus on what matters most: building software**. 
+&rarr; **Tanzu Application Platform empowers developers to focus on what matters most: building software**. 
 
 I am thrilled to see the continuous evolution of TAP and look forward to seeing how Backstage integration will continue to elevate the platform in the future, with customizable [plugins](https://backstage.io/plugins).
 
