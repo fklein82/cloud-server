@@ -1,0 +1,76 @@
+---
+layout: post
+title:  Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.
+description: Learn how to train a Convolutional Neural Network, utilize DataHub for data set management, set up a Jupyter Notebook environment, and build ML workflows with Kubeflow and Argo Workflows.
+date:   2023-05-07 18:01:35 +0300
+image:  '/images/mlops2.png'
+video_embed:
+tags:   [data-ia]
+---
+
+### Introduction to Machine Learning, Artificial Intelligence and Data Platforms.
+
+In the world of data, companies use **Machine Learning (ML**) and **Artificial Intelligence (AI)** to stay competitive. As the demand for quick innovation and deployment of ML models increases, having a strong all-in-one data platform becomes crucial.
+
+In this blog post, we will explore how combining the **Tanzu Application Platform (TAP)** with **Greenplum** can deliver a **full data platform with MLOps capabilities** by using Opensource projects. 
+
+Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow, and creating predictive apps with APIs.
+
+### What is a Convolutional Neural Network?
+
+A Convolutional Neural Network (CNN) is a type of computer program designed to process and analyze grid-like data, such as images. It's especially good at tasks like recognizing and classifying objects in pictures. CNNs work by learning to identify patterns and features from the input data through multiple layers, ultimately producing an output like a category or label.
+
+### 1. Training a Convolutional Neural Network on TAP
+The Tanzu Application Platform is a powerful platform that simplifies the development, deployment, and management of modern applications. By combining TAP with Greenplum, an open-source, massively parallel data warehouse, we can efficiently train a Convolutional Neural Network on large-scale data sets. TAP provides the necessary infrastructure and tooling to enable seamless scaling and management of resources, ensuring optimal performance and efficiency throughout the training process.
+
+- [Tanzu Application Platform](https://tanzu.vmware.com/application-platform)
+- [Greenplum](https://www.vmware.com/products/greenplum.html)
+
+### 2. Discover Data Sets with DataHub
+Data is the building block of any ML project, and having a comprehensive data catalog is essential for discovering and managing data sets. DataHub, a popular data catalog tool, allows users to easily discover, understand, and use data sets across the organization. By integrating DataHub with TAP and Greenplum, we can quickly locate the most relevant data sets for our ML projects and ensure that our data is accurate, consistent, and up-to-date.
+
+&rarr; [Datahub Accelerator for TAP](https://github.com/agapebondservant/datahub-accelerator)
+~~~
+tanzu acc create datahub --git-repository https://github.com/agapebondservant/datahub-accelerator.git --git-branch main
+~~~
+
+### 3. Set Up a Development Environment with Jupyter Notebook
+Jupyter Notebook is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
+
+&rarr; [Jupiter Nodebook Accelerator for TAP](https://github.com/agapebondservant/jupyter-accelerator)
+~~~
+tanzu acc create jupyter --git-repository https://github.com/agapebondservant/jupyter-accelerator.git --git-branch main
+~~~
+
+### 4. Build the ML Model Workflow with Kubeflow
+Kubeflow is an open-source project that simplifies the deployment, monitoring, and maintenance of ML workflows on Kubernetes. With TAP's native support for Kubernetes, we can easily integrate Kubeflow into our ML pipeline. This integration allows us to manage and monitor the entire lifecycle of our ML models, from data ingestion and pre-processing to model training and evaluation, ultimately improving the efficiency and scalability of our ML operations.
+
+&rarr; [Kubeflow Accelerator for TAP](https://github.com/agapebondservant/kubeflow-pipelines-accelerator)
+~~~
+tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator --git-branch main
+~~~
+
+### 5. Build and Train ML Model Workflow with TensorFlow
+TensorFlow is a popular open-source ML library developed by Google. It provides a flexible and efficient platform for building and deploying ML models across various platforms and devices. By integrating TensorFlow with TAP and Greenplum, we can develop and train our ML models on massive data sets, harnessing the full power of distributed computing for faster and more accurate results.
+
+&rarr; [Tensorflow Accelerator for TAP](https://github.com/tanzumlai/sample-ml-app/tree/main/)
+~~~
+tanzu acc create sample-cnn-app --git-repository https://github.com/tanzumlai/sample-ml-app.git --git-branch main
+~~~
+
+### 6. Build ML Pipeline with Argo Workflows
+Argo Workflows is an open-source, container-native workflow engine for orchestrating parallel jobs on Kubernetes. By integrating Argo Workflows with TAP, we can build and manage complex ML pipelines with ease, automating tasks such as data preprocessing, model training, and deployment. This enables faster experimentation and iteration, ultimately accelerating the delivery of high-quality ML models.
+
+&rarr; [ArgoCD Workflows Accelerator for TAP](https://github.com/agapebondservant/argo-workflows-accelerator/tree/main/)
+~~~
+tanzu acc create argo-pipelines-acc --git-repository https://github.com/agapebondservant/argo-workflows-accelerator.git --git-branch main
+~~~
+
+&rarr; [More info on ArgoCD Workflows](https://argoproj.github.io/argo-workflows/)
+
+### 7. Create Predictive Apps with APIs
+Once our ML models are trained and optimized, we can use TAP to build predictive applications that leverage these models to provide valuable insights and predictions. By exposing our models through APIs, we enable seamless integration with existing applications and systems, ensuring that our data-driven insights can be easily consumed by end-users and decision-makers. This not only increases the value and impact of our ML efforts but also promotes a data-driven culture within the organization.
+
+### Conclusion
+
+In this blog post, I have demonstrated how combining the Tanzu Application Platform with Greenplum can deliver a full data platform with MLOps capabilities. From training a Convolutional Neural Network on TAP to building predictive apps with APIs, this powerful combination enables organizations to harness the power of their data and accelerate the delivery of high-quality ML models. By integrating tools like DataHub, Jupyter Notebook, Kubeflow, TensorFlow, and Argo Workflows, we can streamline the entire ML lifecycle, improving efficiency and scalability across the board. With TAP and Greenplum at the core of your data platform, your organization will be well-equipped to tackle the most challenging ML problems and drive innovation in the ever-evolving world of data and AI.
