@@ -20,7 +20,7 @@ In this blog post, we will explore how combining the **Tanzu Application Platfor
 
 - Tanzu Application Platform can easily integrate with just about any modern database using [Service Bindings](https://servicebinding.io/). This includes databases with support for in-database analytics. In this blog post, we will use VMware Greenplum.
 
-Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow, and creating predictive apps with APIs.
+Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow and Argo Workflows, and creating predictive apps with APIs.
 
 ### But what is a Convolutional Neural Network?
 
@@ -56,7 +56,9 @@ tanzu acc create datahub --git-repository https://github.com/agapebondservant/da
 
 
 ### 3. Set Up a Development Environment with JupyterHub notebooks
-JupyterHub Notebooks is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
+- Jupiter Notebooks is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
+
+- JupyterHub is a popular tool for Data Scientist. It is used for hosting Jupyter notebooks. A Jupyter notebook provides a browser-based IDE that enables live coding, experimentation, data exploration and model engineering. JupyterHub is a containerized, open-source app, making it easy to deploy on TAP.
 
 <div class="gallery-box">
   <div class="gallery">
@@ -75,12 +77,21 @@ tanzu acc create jupyter --git-repository https://github.com/agapebondservant/ju
 ### 4. Build the ML Model Workflow with Kubeflow
 Kubeflow is an open-source project that simplifies the deployment, monitoring, and maintenance of ML workflows on Kubernetes. With TAP's native support for Kubernetes, we can easily integrate Kubeflow into our ML pipeline. This integration allows us to manage and monitor the entire lifecycle of our ML models, from data ingestion and pre-processing to model training and evaluation, ultimately improving the efficiency and scalability of our ML operations.
 
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/mlflow1.png">
+    <img src="/images/mlflow2.png">
+    <img src="/images/mlflow3.png">
+  </div>
+    <em><a href="https://mlflow.org/" target="_blank">mlflow - An open source platform for the machine learning lifecycle</a></em>
+</div>
+
 &rarr; [Install Kubeflow Accelerator for TAP](https://github.com/agapebondservant/kubeflow-pipelines-accelerator)
 ~~~
 tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator --git-branch main
 ~~~
 
-### 5. Build and Train ML Model Workflow with TensorFlow
+### 5. Build and Train ML Model Workflow with TensorFlow.
 TensorFlow is a popular open-source ML library developed by Google. It provides a flexible and efficient platform for building and deploying ML models across various platforms and devices. By integrating TensorFlow with TAP and Greenplum, we can develop and train our ML models on massive data sets, harnessing the full power of distributed computing for faster and more accurate results.
 
 &rarr; [Install Tensorflow Accelerator for TAP](https://github.com/tanzumlai/sample-ml-app/tree/main/)
