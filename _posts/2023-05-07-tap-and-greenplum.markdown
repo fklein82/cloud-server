@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.
-description: Learn how to train a Convolutional Neural Network, utilize DataHub for data set management, set up a Jupyter Notebook environment, and build ML workflows with Kubeflow and Argo Workflows.
+description: Learn how to train a Convolutional Neural Network, utilize DataHub for data set management, set up a JupyterHub notebooks environment, and build ML workflows with Kubeflow and Argo Workflows.
 date:   2023-05-07 18:01:35 +0300
 image:  '/images/mlops2.png'
 video_embed:
@@ -55,8 +55,8 @@ tanzu acc create datahub --git-repository https://github.com/agapebondservant/da
 ~~~
 
 
-### 3. Set Up a Development Environment with Jupyter Notebook
-Jupyter Notebook is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
+### 3. Set Up a Development Environment with JupyterHub notebooks
+JupyterHub Notebooks is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
 
 <div class="gallery-box">
   <div class="gallery">
@@ -67,7 +67,7 @@ Jupyter Notebook is an open-source web application that allows users to create a
     <em><a href="https://jupyter.org/" target="_blank">JupyterLab - A Next-Generation Notebook Interface</a></em>
 </div>
 
-&rarr; [Install Jupiter Nodebook Accelerator for TAP](https://github.com/agapebondservant/jupyter-accelerator)
+&rarr; [Install Jupiter Utilities Accelerator for TAP](https://github.com/agapebondservant/jupyter-accelerator)
 ~~~
 tanzu acc create jupyter --git-repository https://github.com/agapebondservant/jupyter-accelerator.git --git-branch main
 ~~~
