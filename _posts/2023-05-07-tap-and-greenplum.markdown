@@ -16,20 +16,25 @@ In this blog post, we will explore how combining the **Tanzu Application Platfor
 
 Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow, and creating predictive apps with APIs.
 
-### What is a Convolutional Neural Network?
+### But what is a Convolutional Neural Network?
 
 A Convolutional Neural Network (CNN) is a type of computer program designed to process and analyze grid-like data, such as images. It's especially good at tasks like recognizing and classifying objects in pictures. CNNs work by learning to identify patterns and features from the input data through multiple layers, ultimately producing an output like a category or label.
 
 ### 1. Training a Convolutional Neural Network on TAP
 The Tanzu Application Platform is a powerful platform that simplifies the development, deployment, and management of modern applications. By combining TAP with Greenplum, an open-source, massively parallel data warehouse, we can efficiently train a Convolutional Neural Network on large-scale data sets. TAP provides the necessary infrastructure and tooling to enable seamless scaling and management of resources, ensuring optimal performance and efficiency throughout the training process.
 
-- [Tanzu Application Platform](https://tanzu.vmware.com/application-platform)
-- [Greenplum](https://www.vmware.com/products/greenplum.html)
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/mlops-on-tap.jpg">
+    <img src="/images/accelerator.png">
+  </div>
+  <em><a href="https://tanzu.vmware.com/application-platform" target="_blank">Tanzu Application Platform</a> & <a href="https://www.vmware.com/products/greenplum.html" target="_blank">Greenplum</a></em>
+</div>
 
 ### 2. Discover Data Sets with DataHub
 Data is the building block of any ML project, and having a comprehensive data catalog is essential for discovering and managing data sets. DataHub, a popular data catalog tool, allows users to easily discover, understand, and use data sets across the organization. By integrating DataHub with TAP and Greenplum, we can quickly locate the most relevant data sets for our ML projects and ensure that our data is accurate, consistent, and up-to-date.
 
-&rarr; [Datahub Accelerator for TAP](https://github.com/agapebondservant/datahub-accelerator)
+&rarr; [Install Datahub Accelerator for TAP](https://github.com/agapebondservant/datahub-accelerator)
 ~~~
 tanzu acc create datahub --git-repository https://github.com/agapebondservant/datahub-accelerator.git --git-branch main
 ~~~
@@ -37,7 +42,7 @@ tanzu acc create datahub --git-repository https://github.com/agapebondservant/da
 ### 3. Set Up a Development Environment with Jupyter Notebook
 Jupyter Notebook is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
 
-&rarr; [Jupiter Nodebook Accelerator for TAP](https://github.com/agapebondservant/jupyter-accelerator)
+&rarr; [Install Jupiter Nodebook Accelerator for TAP](https://github.com/agapebondservant/jupyter-accelerator)
 ~~~
 tanzu acc create jupyter --git-repository https://github.com/agapebondservant/jupyter-accelerator.git --git-branch main
 ~~~
@@ -45,7 +50,7 @@ tanzu acc create jupyter --git-repository https://github.com/agapebondservant/ju
 ### 4. Build the ML Model Workflow with Kubeflow
 Kubeflow is an open-source project that simplifies the deployment, monitoring, and maintenance of ML workflows on Kubernetes. With TAP's native support for Kubernetes, we can easily integrate Kubeflow into our ML pipeline. This integration allows us to manage and monitor the entire lifecycle of our ML models, from data ingestion and pre-processing to model training and evaluation, ultimately improving the efficiency and scalability of our ML operations.
 
-&rarr; [Kubeflow Accelerator for TAP](https://github.com/agapebondservant/kubeflow-pipelines-accelerator)
+&rarr; [Install Kubeflow Accelerator for TAP](https://github.com/agapebondservant/kubeflow-pipelines-accelerator)
 ~~~
 tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator --git-branch main
 ~~~
@@ -53,7 +58,7 @@ tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebond
 ### 5. Build and Train ML Model Workflow with TensorFlow
 TensorFlow is a popular open-source ML library developed by Google. It provides a flexible and efficient platform for building and deploying ML models across various platforms and devices. By integrating TensorFlow with TAP and Greenplum, we can develop and train our ML models on massive data sets, harnessing the full power of distributed computing for faster and more accurate results.
 
-&rarr; [Tensorflow Accelerator for TAP](https://github.com/tanzumlai/sample-ml-app/tree/main/)
+&rarr; [Install Tensorflow Accelerator for TAP](https://github.com/tanzumlai/sample-ml-app/tree/main/)
 ~~~
 tanzu acc create sample-cnn-app --git-repository https://github.com/tanzumlai/sample-ml-app.git --git-branch main
 ~~~
@@ -61,7 +66,7 @@ tanzu acc create sample-cnn-app --git-repository https://github.com/tanzumlai/sa
 ### 6. Build ML Pipeline with Argo Workflows
 Argo Workflows is an open-source, container-native workflow engine for orchestrating parallel jobs on Kubernetes. By integrating Argo Workflows with TAP, we can build and manage complex ML pipelines with ease, automating tasks such as data preprocessing, model training, and deployment. This enables faster experimentation and iteration, ultimately accelerating the delivery of high-quality ML models.
 
-&rarr; [ArgoCD Workflows Accelerator for TAP](https://github.com/agapebondservant/argo-workflows-accelerator/tree/main/)
+&rarr; [Install ArgoCD Workflows Accelerator for TAP](https://github.com/agapebondservant/argo-workflows-accelerator/tree/main/)
 ~~~
 tanzu acc create argo-pipelines-acc --git-repository https://github.com/agapebondservant/argo-workflows-accelerator.git --git-branch main
 ~~~
