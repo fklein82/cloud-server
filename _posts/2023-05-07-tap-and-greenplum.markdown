@@ -14,6 +14,12 @@ In the world of data, companies use **Machine Learning (ML**) and **Artificial I
 
 In this blog post, we will explore how combining the **Tanzu Application Platform (TAP)** with **Greenplum** can deliver a **full data platform with MLOps capabilities** by using Opensource projects. 
 
+- [VMware Greenplum](https://www.vmware.com/fr/products/greenplum.html) is a massively parallel processing (MPP), open-source based, Big Data architecture for large scale analytics (up to petabyte-scale).
+
+- [Tanzu Application Platform (TAP)](https://tanzu.vmware.com/application-platform) is a "Platform as a Service" that simplifies the development, deployment, and management of modern applications on Kubernetes.
+
+- Tanzu Application Platform can easily integrate with just about any modern database using [Service Bindings](https://servicebinding.io/). This includes databases with support for in-database analytics. In this blog post, we will use VMware Greenplum.
+
 Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow, and creating predictive apps with APIs.
 
 ### But what is a Convolutional Neural Network?
@@ -34,13 +40,32 @@ The Tanzu Application Platform is a powerful platform that simplifies the develo
 ### 2. Discover Data Sets with DataHub
 Data is the building block of any ML project, and having a comprehensive data catalog is essential for discovering and managing data sets. DataHub, a popular data catalog tool, allows users to easily discover, understand, and use data sets across the organization. By integrating DataHub with TAP and Greenplum, we can quickly locate the most relevant data sets for our ML projects and ensure that our data is accurate, consistent, and up-to-date.
 
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/datahub1.png">
+    <img src="/images/datahub2.png">
+    <img src="/images/datahub4.png">
+  </div>
+    <em><a href="https://datahubproject.io/" target="_blank">Datahub - The #1 Open Source Data Catalog</a></em>
+</div>
+
 &rarr; [Install Datahub Accelerator for TAP](https://github.com/agapebondservant/datahub-accelerator)
 ~~~
 tanzu acc create datahub --git-repository https://github.com/agapebondservant/datahub-accelerator.git --git-branch main
 ~~~
 
+
 ### 3. Set Up a Development Environment with Jupyter Notebook
 Jupyter Notebook is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/jupyter1.png">
+    <img src="/images/jupyter2.png">
+    <img src="/images/jupyter3.png">
+  </div>
+    <em><a href="https://jupyter.org/" target="_blank">JupyterLab - A Next-Generation Notebook Interface</a></em>
+</div>
 
 &rarr; [Install Jupiter Nodebook Accelerator for TAP](https://github.com/agapebondservant/jupyter-accelerator)
 ~~~
@@ -65,6 +90,15 @@ tanzu acc create sample-cnn-app --git-repository https://github.com/tanzumlai/sa
 
 ### 6. Build ML Pipeline with Argo Workflows
 Argo Workflows is an open-source, container-native workflow engine for orchestrating parallel jobs on Kubernetes. By integrating Argo Workflows with TAP, we can build and manage complex ML pipelines with ease, automating tasks such as data preprocessing, model training, and deployment. This enables faster experimentation and iteration, ultimately accelerating the delivery of high-quality ML models.
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/argocd1.png">
+    <img src="/images/argocd2.png">
+    <img src="/images/argocd3.png">
+  </div>
+    <em><a href="https://argoproj.github.io/workflows/" target="_blank">ArgoCD Workflows - open source container-native workflow engine for orchestrating parallel jobs on Kubernetes.</a></em>
+</div>
 
 &rarr; [Install ArgoCD Workflows Accelerator for TAP](https://github.com/agapebondservant/argo-workflows-accelerator/tree/main/)
 ~~~
