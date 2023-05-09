@@ -194,6 +194,12 @@ By integrating tools like **DataHub**, **Jupyter Notebook**, **Kubeflow**, **Ten
 
 With **TAP** and **Greenplum** at the core of your **data platform**, your organization will be well-equipped to **tackle the most challenging ML problems** and drive **innovation in the ever-evolving world of data and AI**.
 
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/data-ia-stack-2.png">
+  </div>
+</div>
+
 ### Authors
 
 This blog post was **co-written** with my friend [**Ahmed Rachid Hazourli**](https://www.linkedin.com/in/ahmed-rachid/), a very bright **Tanzu Data Engineer**. 
@@ -208,9 +214,3 @@ We sincerely hope you **enjoyed reading it**!
 - [Caio Farias](https://www.linkedin.com/in/caiofarias/)
 - [Ahmed Rachid Hazourli](https://www.linkedin.com/in/ahmed-rachid/)
 - [Frédéric Klein](https://www.linkedin.com/in/fklein82/)
-
-<div class="gallery-box">
-  <div class="gallery">
-    <img src="/images/data-ia-stack-2.png">
-  </div>
-</div>
