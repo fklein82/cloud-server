@@ -174,15 +174,15 @@ Once our ML models are trained and optimized, we can use TAP to build predictive
 
 ### Reference Architecture 
 
-These insightfulls references are credited to [Omotola Awofolu](https://www.linkedin.com/in/tola-awofolu-b4a9576/) - Senior Platform Architect and [Caio Farias](https://www.linkedin.com/in/caiofarias/) - Account Data Engineer from VMware.
-
-&rarr; [Source code for build a DATA E2E Demo Platform](https://github.com/agapebondservant/tap-data)
-
 <div class="gallery-box">
   <div class="gallery">
     <img src="/images/data-architecture.png">
   </div>
 </div>
+
+&rarr; [Source code for build a DATA E2E Demo Platform](https://github.com/agapebondservant/tap-data)
+
+These insightfulls References Architecture are credited to [Omotola Awofolu](https://www.linkedin.com/in/tola-awofolu-b4a9576/) - Senior Platform Architect and [Caio Farias](https://www.linkedin.com/in/caiofarias/) - Account Data Engineer from VMware.
 
 ### Conclusion
 
