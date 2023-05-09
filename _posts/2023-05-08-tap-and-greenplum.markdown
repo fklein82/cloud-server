@@ -172,6 +172,18 @@ tanzu acc create argo-pipelines-acc --git-repository https://github.com/agapebon
 ### 8. Create Predictive Apps with APIs
 Once our ML models are trained and optimized, we can use TAP to build predictive applications that leverage these models to provide valuable insights and predictions. By exposing our models through APIs, we enable seamless integration with existing applications and systems, ensuring that our data-driven insights can be easily consumed by end-users and decision-makers. This not only increases the value and impact of our ML efforts but also promotes a data-driven culture within the organization.
 
+### Reference Architecture 
+
+These insightfulls references are credited to [Omotola Awofolu](https://www.linkedin.com/in/tola-awofolu-b4a9576/) - Senior Platform Architect and [Caio Farias](https://www.linkedin.com/in/caiofarias/) - Account Data Engineer from VMware.
+
+&rarr; [Source code for build a DATA E2E Demo Platform](https://github.com/agapebondservant/tap-data)
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/data-architecture.png">
+  </div>
+</div>
+
 ### Conclusion
 
 In this blog post, We have demonstrated how combining the **Tanzu Application Platform** with **Greenplum** can deliver a **full data platform with MLOps** capabilities.
@@ -182,14 +194,23 @@ By integrating tools like **DataHub**, **Jupyter Notebook**, **Kubeflow**, **Ten
 
 With **TAP** and **Greenplum** at the core of your **data platform**, your organization will be well-equipped to **tackle the most challenging ML problems** and drive **innovation in the ever-evolving world of data and AI**.
 
+### Authors
+
+This blog post was **co-written** with my friend [**Ahmed Rachid Hazourli**](https://www.linkedin.com/in/ahmed-rachid/), a very bright **Tanzu Data Engineer**. 
+
+**Special Thanks** to [**Omotola Awofolu**](https://www.linkedin.com/in/tola-awofolu-b4a9576/) - **Senior Platform Architect** and [**Caio Farias**](https://www.linkedin.com/in/caiofarias/) - **Account Data Engineer** for their **invaluable contribution** in developing the **TAP accelerator**, the **Reference Architecture** and for being a constant **source of inspiration** to us.
+
+We sincerely hope you **enjoyed reading it**!
+
+#### Linkedin
+
+- [Omotola Awofolu](https://www.linkedin.com/in/tola-awofolu-b4a9576/)
+- [Caio Farias](https://www.linkedin.com/in/caiofarias/)
+- [Ahmed Rachid Hazourli](https://www.linkedin.com/in/ahmed-rachid/)
+- [Frédéric Klein](https://www.linkedin.com/in/fklein82/)
+
 <div class="gallery-box">
   <div class="gallery">
     <img src="/images/data-ia-stack-2.png">
   </div>
 </div>
-
-### Authors
-
-This blog post was **co-written** with my friend [Ahmed Rachid Hazourli](https://www.linkedin.com/in/ahmed-rachid/), a very bright **Tanzu Data Engineer**. 
-
-We hope you liked it!
