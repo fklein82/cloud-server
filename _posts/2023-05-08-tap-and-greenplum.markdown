@@ -19,6 +19,12 @@ In this blog post, we will explore how combining the **Tanzu Application Platfor
 
 - [VMware Greenplum](https://www.vmware.com/fr/products/greenplum.html) is an advanced, fully featured, open-source MPP data warehouse based on PostgreSQL. It provides powerful and rapid analytics on petabyte-scale data volumes. Uniquely geared toward big data analytics.
 
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/data-ia-stack.png">
+  </div>
+</div>
+
 ### What is MLOps? Unlocking the Secrets to Efficient Machine Learning Development and Deployment
 MLOps, aka Machine Learning Operations, is a set of practices that aim to streamline the development, deployment, and management of machine learning models. It involves integrating machine learning with DevOps principles to ensure smooth collaboration between data scientists, ML engineers, and IT operations teams. MLOps focuses on automating and monitoring various stages of the ML lifecycle, from data preprocessing to model deployment and maintenance, resulting in faster experimentation, improved model quality, and more reliable production systems.
 
@@ -168,4 +174,22 @@ Once our ML models are trained and optimized, we can use TAP to build predictive
 
 ### Conclusion
 
-In this blog post, We have demonstrated how combining the Tanzu Application Platform with Greenplum can deliver a full data platform with MLOps capabilities. From training a Convolutional Neural Network on TAP to building predictive apps with APIs, this powerful combination enables organizations to harness the power of their data and accelerate the delivery of high-quality ML models. By integrating tools like DataHub, Jupyter Notebook, Kubeflow, TensorFlow, and Argo Workflows, we can streamline the entire ML lifecycle, improving efficiency and scalability across the board. With TAP and Greenplum at the core of your data platform, your organization will be well-equipped to tackle the most challenging ML problems and drive innovation in the ever-evolving world of data and AI.
+In this blog post, We have demonstrated how combining the **Tanzu Application Platform** with **Greenplum** can deliver a **full data platform with MLOps** capabilities.
+
+From training a Convolutional Neural Network on TAP to building predictive apps with APIs, this powerful combination enables organizations to harness the power of their data and accelerate the delivery of high-quality ML models. 
+
+By integrating tools like **DataHub**, **Jupyter Notebook**, **Kubeflow**, **TensorFlow**, **GreenplumPython** and **Argo Workflows**, we can streamline the entire ML lifecycle, improving efficiency and scalability across the board.
+
+With **TAP** and **Greenplum** at the core of your **data platform**, your organization will be well-equipped to **tackle the most challenging ML problems** and drive **innovation in the ever-evolving world of data and AI**.
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/data-ia-stack-2.png">
+  </div>
+</div>
+
+### Authors
+
+This blog post was **co-written** with my friend [Ahmed Rachid Hazourli](https://www.linkedin.com/in/ahmed-rachid/), a very bright **Tanzu Data Engineer**. 
+
+We hope you liked it!
