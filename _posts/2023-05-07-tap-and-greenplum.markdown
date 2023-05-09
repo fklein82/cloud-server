@@ -4,9 +4,7 @@ title:  Discover the power of MLOps with Tanzu Application Platform (TAP) and Gr
 description: Learn how to train a Convolutional Neural Network, utilize DataHub for data set management, set up a JupyterHub notebooks environment, and build ML workflows with Kubeflow and Argo Workflows.
 date:   2023-05-07 18:01:35 +0300
 image:  '/images/mlops2.png'
-video_embed:
 tags:   [data-ia]
-author: Frederic KLEIN & 
 ---
 
 ### Introduction to Machine Learning, Artificial Intelligence and Data Platforms.
@@ -21,13 +19,29 @@ In this blog post, we will explore how combining the **Tanzu Application Platfor
 
 - [VMware Greenplum](https://www.vmware.com/fr/products/greenplum.html) is an advanced, fully featured, open-source MPP data warehouse based on PostgreSQL. It provides powerful and rapid analytics on petabyte-scale data volumes. Uniquely geared toward big data analytics.
 
-### Why Greenplum?
-Exporting data from a database and importing it into a server or desktop environment with commonly used tools for data science (e.g. Python, R) is not an ideal workflow for big data analytics. Data Scientists may need help with these tools’ memory and scalability limitations and restrictive bottlenecks associated with transferring large amounts of data between different platforms.
-This is where leveraging the right tool becomes an important decision for the data scientist. In this post, we focus on Greenplum, a massively parallel processing PostgreSQL engine which provides built-in tools for data scientists for high-scale data exploration and model training. These tools and extensions include:
-- Procedural language extensions to massively parallelise Python & R
-- Apache MADlib for machine learning
-- PostGIS for geospatial analytics and GPText for text search and processing
-- Interoperability with dashboarding tools such as Tableau, PowerBI…
+### What is MLOps? Unlocking the Secrets to Efficient Machine Learning Development and Deployment
+MLOps, aka Machine Learning Operations, is a set of practices that aim to streamline the development, deployment, and management of machine learning models. It involves integrating machine learning with DevOps principles to ensure smooth collaboration between data scientists, ML engineers, and IT operations teams. MLOps focuses on automating and monitoring various stages of the ML lifecycle, from data preprocessing to model deployment and maintenance, resulting in faster experimentation, improved model quality, and more reliable production systems.
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/mlops1.png">
+  </div>
+</div>
+
+### Why Greenplum for the Back-end?
+Exporting data from a database and importing it into a server or desktop environment using popular data science tools (e.g., Python, R) can be inefficient for big data analytics. Data scientists often face challenges with these tools' memory and scalability limitations as well as bottlenecks associated with transferring large amounts of data between different platforms.
+Choosing the right tool is critical for data scientists to overcome these issues. In this post, we focus on Greenplum, a massively parallel processing PostgreSQL engine which provides built-in tools for data scientists for high-scale data exploration and model training. These tools and extensions include:
+1. [Procedural language extensions](https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-intro.html) to enable massive parallelism for Python & R
+2. [Apache MADlib](https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-madlib.html) for scalable machine learning
+3. [PostGIS](https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-postGIS.html?hWord=N4IghgNiBcIA4HsDOAXA5gSySAvkA) for geospatial analytics and [GPText](https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Text/3.10/tanzu-greenplum-text/GUID-topics-intro.html) for text search and processing
+4. Interoperability with dashboarding tools such as Tableau and PowerBI for seamless data visualization and reporting
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/greenplum3.png">
+  </div>
+    <em><a href="https://github.com/greenplum-db/GreenplumPython" target="_blank">GreenplumPython for End-To-End MLOps tasks with MLflow</a></em>
+</div>
 
 ### Our Journey
 Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow and Argo Workflows, and creating predictive apps with APIs.
@@ -104,9 +118,16 @@ tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebond
 ### 5. Train scalable Machine Learning models on Greenplum platform using GreenplumPython
 
 Utilize **GreenplumPython Package** for **Python Execution in Greenplum Functions**.
-**GreenplumPython** is a Python package that enables the execution of Python code within Greenplum functions. By leveraging GreenplumPython, you can perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration reduces data movement and improves performance, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics and pre-processing for your ML projects.
+[GreenplumPython](https://github.com/greenplum-db/GreenplumPython) is a Python package that enables the execution of Python code within Greenplum functions. By leveraging GreenplumPython, you can perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration reduces data movement and improves performance, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics and pre-processing for your ML projects.
 
 Greenplum has strong analytical capabilities that make them well suited for data science problems at a massive scale. We could then combine Greenplum Data Warehouse MPP capabilities with Python’s rich ecosystem to make the end-to-end Machine Learning / NLP model development experience significantly faster.
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/greenplum1.png">
+  </div>
+    <em><a href="https://github.com/greenplum-db/GreenplumPython" target="_blank">GreenplumPython for End-To-End MLOps tasks with MLflow</a></em>
+</div>
 
 
 ### 6. Build and Train ML Model Workflow with TensorFlow.
