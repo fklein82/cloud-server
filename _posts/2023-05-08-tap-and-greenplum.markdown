@@ -118,10 +118,15 @@ tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebond
 
 ### 5. Train scalable Machine Learning models on Greenplum platform using GreenplumPython
 
-Utilize **GreenplumPython Package** for **Python Execution in Greenplum Functions**.
-[GreenplumPython](https://github.com/greenplum-db/GreenplumPython) is a Python package that enables the execution of Python code within Greenplum functions. By leveraging GreenplumPython, you can perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration reduces data movement and improves performance, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics and pre-processing for your ML projects.
+**Greenplum** has strong analytical capabilities that make them well suited for data science problems at a massive scale. Combining its **MPP capabilities** with **Python’s rich ecosystem** makes the end-to-end Machine Learning model development experience significantly faster.
 
-Greenplum has strong analytical capabilities that make them well suited for data science problems at a massive scale. We could then combine Greenplum Data Warehouse MPP capabilities with Python’s rich ecosystem to make the end-to-end Machine Learning / NLP model development experience significantly faster.
+To simplify the path to production and operational usage of trained ML models, we can unleash the power of **GreenplumPython**, it’s a **Python package that enables in-database execution of Python code** within Greenplum functions.
+
+Data Scientists can then perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration **reduces data movement** and **improves performance**, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics, pre-processing, feature engineering, model training and deployment for your ML projects.
+
+&rarr; [Greenplum Documentation](https://docs.vmware.com/en/VMware-Tanzu-Greenplum/index.html)
+
+&rarr; [GreenplumPython Package](https://github.com/greenplum-db/GreenplumPython)
 
 <div class="gallery-box">
   <div class="gallery">
