@@ -29,6 +29,7 @@ MLOps, aka Machine Learning Operations, is a set of practices that aim to stream
 </div>
 
 ### Why Greenplum for the Back-end?
+
 Exporting data from a database and importing it into a server or desktop environment using popular data science tools (e.g., Python, R) can be inefficient for big data analytics. Data scientists often face challenges with these tools' memory and scalability limitations as well as bottlenecks associated with transferring large amounts of data between different platforms.
 Choosing the right tool is critical for data scientists to overcome these issues. In this post, we focus on Greenplum, a massively parallel processing PostgreSQL engine which provides built-in tools for data scientists for high-scale data exploration and model training. These tools and extensions include:
 1. [Procedural language extensions](https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-intro.html) to enable massive parallelism for Python & R
