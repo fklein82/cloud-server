@@ -6,6 +6,7 @@ date:   2023-05-07 18:01:35 +0300
 image:  '/images/mlops2.png'
 video_embed:
 tags:   [data-ia]
+author: Frederic KLEIN & 
 ---
 
 ### Introduction to Machine Learning, Artificial Intelligence and Data Platforms.
@@ -14,12 +15,21 @@ In the world of data, companies use **Machine Learning (ML**) and **Artificial I
 
 In this blog post, we will explore how combining the **Tanzu Application Platform (TAP)** with **Greenplum** can deliver a **full data platform with MLOps capabilities** by using Opensource projects. 
 
-- [VMware Greenplum](https://www.vmware.com/fr/products/greenplum.html) is a massively parallel processing (MPP), open-source based, Big Data architecture for large scale analytics (up to petabyte-scale).
-
 - [Tanzu Application Platform (TAP)](https://tanzu.vmware.com/application-platform) is a "Platform as a Service" that simplifies the development, deployment, and management of modern applications on Kubernetes.
 
 - Tanzu Application Platform can easily integrate with just about any modern database using [Service Bindings](https://servicebinding.io/). This includes databases with support for in-database analytics. In this blog post, we will use VMware Greenplum.
 
+- [VMware Greenplum](https://www.vmware.com/fr/products/greenplum.html) is an advanced, fully featured, open-source MPP data warehouse based on PostgreSQL. It provides powerful and rapid analytics on petabyte-scale data volumes. Uniquely geared toward big data analytics.
+
+### Why Greenplum?
+Exporting data from a database and importing it into a server or desktop environment with commonly used tools for data science (e.g. Python, R) is not an ideal workflow for big data analytics. Data Scientists may need help with these tools’ memory and scalability limitations and restrictive bottlenecks associated with transferring large amounts of data between different platforms.
+This is where leveraging the right tool becomes an important decision for the data scientist. In this post, we focus on Greenplum, a massively parallel processing PostgreSQL engine which provides built-in tools for data scientists for high-scale data exploration and model training. These tools and extensions include:
+- Procedural language extensions to massively parallelise Python & R
+- Apache MADlib for machine learning
+- PostGIS for geospatial analytics and GPText for text search and processing
+- Interoperability with dashboarding tools such as Tableau, PowerBI…
+
+### Our Journey
 Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow and Argo Workflows, and creating predictive apps with APIs.
 
 ### But what is a Convolutional Neural Network?
@@ -91,10 +101,12 @@ MLflow is an open-source platform that streamlines the end-to-end management of 
 tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator --git-branch main
 ~~~
 
-### 5. Utilize GreenplumPython Package for Python Execution in Greenplum Functions
+### 5. Train scalable Machine Learning models on Greenplum platform using GreenplumPython
 
-Utilize GreenplumPython Package for Python Execution in Greenplum Functions
-GreenplumPython is a Python package that enables the execution of Python code within Greenplum functions. By leveraging GreenplumPython, you can perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration reduces data movement and improves performance, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics and pre-processing for your ML projects.
+Utilize **GreenplumPython Package** for **Python Execution in Greenplum Functions**.
+**GreenplumPython** is a Python package that enables the execution of Python code within Greenplum functions. By leveraging GreenplumPython, you can perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration reduces data movement and improves performance, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics and pre-processing for your ML projects.
+
+Greenplum has strong analytical capabilities that make them well suited for data science problems at a massive scale. We could then combine Greenplum Data Warehouse MPP capabilities with Python’s rich ecosystem to make the end-to-end Machine Learning / NLP model development experience significantly faster.
 
 
 ### 6. Build and Train ML Model Workflow with TensorFlow.
@@ -129,4 +141,4 @@ Once our ML models are trained and optimized, we can use TAP to build predictive
 
 ### Conclusion
 
-In this blog post, I have demonstrated how combining the Tanzu Application Platform with Greenplum can deliver a full data platform with MLOps capabilities. From training a Convolutional Neural Network on TAP to building predictive apps with APIs, this powerful combination enables organizations to harness the power of their data and accelerate the delivery of high-quality ML models. By integrating tools like DataHub, Jupyter Notebook, Kubeflow, TensorFlow, and Argo Workflows, we can streamline the entire ML lifecycle, improving efficiency and scalability across the board. With TAP and Greenplum at the core of your data platform, your organization will be well-equipped to tackle the most challenging ML problems and drive innovation in the ever-evolving world of data and AI.
+In this blog post, We have demonstrated how combining the Tanzu Application Platform with Greenplum can deliver a full data platform with MLOps capabilities. From training a Convolutional Neural Network on TAP to building predictive apps with APIs, this powerful combination enables organizations to harness the power of their data and accelerate the delivery of high-quality ML models. By integrating tools like DataHub, Jupyter Notebook, Kubeflow, TensorFlow, and Argo Workflows, we can streamline the entire ML lifecycle, improving efficiency and scalability across the board. With TAP and Greenplum at the core of your data platform, your organization will be well-equipped to tackle the most challenging ML problems and drive innovation in the ever-evolving world of data and AI.
