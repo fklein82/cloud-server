@@ -56,7 +56,7 @@ tanzu acc create datahub --git-repository https://github.com/agapebondservant/da
 
 
 ### 3. Set Up a Development Environment with JupyterHub notebooks
-- Jupiter Notebooks is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
+- Jupyter Notebooks is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.
 
 - JupyterHub is a popular tool for Data Scientist. It is used for hosting Jupyter notebooks. A Jupyter notebook provides a browser-based IDE that enables live coding, experimentation, data exploration and model engineering. JupyterHub is a containerized, open-source app, making it easy to deploy on TAP.
 
@@ -69,13 +69,13 @@ tanzu acc create datahub --git-repository https://github.com/agapebondservant/da
     <em><a href="https://jupyter.org/" target="_blank">JupyterLab - A Next-Generation Notebook Interface</a></em>
 </div>
 
-&rarr; [Install Jupiter Utilities Accelerator for TAP](https://github.com/agapebondservant/jupyter-accelerator)
+&rarr; [Install Jupyter Utilities Accelerator for TAP](https://github.com/agapebondservant/jupyter-accelerator)
 ~~~
 tanzu acc create jupyter --git-repository https://github.com/agapebondservant/jupyter-accelerator.git --git-branch main
 ~~~
 
-### 4. Build the ML Model Workflow with Kubeflow
-Kubeflow is an open-source project that simplifies the deployment, monitoring, and maintenance of ML workflows on Kubernetes. With TAP's native support for Kubernetes, we can easily integrate Kubeflow into our ML pipeline. This integration allows us to manage and monitor the entire lifecycle of our ML models, from data ingestion and pre-processing to model training and evaluation, ultimately improving the efficiency and scalability of our ML operations.
+### 4. Build the ML Model Workflow with MLflow
+MLflow is an open-source platform that streamlines the end-to-end management of machine learning projects. It provides a unified interface to manage the entire lifecycle of ML models, including experimentation, reproducibility, deployment, and monitoring. By integrating MLflow with TAP and Greenplum, we can easily track and compare experiments, package and share models, and deploy them in a scalable and reproducible manner. This integration ensures a smooth and efficient ML workflow, improving the overall effectiveness of our ML operations.
 
 <div class="gallery-box">
   <div class="gallery">
@@ -91,7 +91,13 @@ Kubeflow is an open-source project that simplifies the deployment, monitoring, a
 tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator --git-branch main
 ~~~
 
-### 5. Build and Train ML Model Workflow with TensorFlow.
+### 5. Utilize GreenplumPython Package for Python Execution in Greenplum Functions
+
+Utilize GreenplumPython Package for Python Execution in Greenplum Functions
+GreenplumPython is a Python package that enables the execution of Python code within Greenplum functions. By leveraging GreenplumPython, you can perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration reduces data movement and improves performance, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics and pre-processing for your ML projects.
+
+
+### 6. Build and Train ML Model Workflow with TensorFlow.
 TensorFlow is a popular open-source ML library developed by Google. It provides a flexible and efficient platform for building and deploying ML models across various platforms and devices. By integrating TensorFlow with TAP and Greenplum, we can develop and train our ML models on massive data sets, harnessing the full power of distributed computing for faster and more accurate results.
 
 &rarr; [Install Tensorflow Accelerator for TAP](https://github.com/tanzumlai/sample-ml-app/tree/main/)
@@ -99,7 +105,7 @@ TensorFlow is a popular open-source ML library developed by Google. It provides 
 tanzu acc create sample-cnn-app --git-repository https://github.com/tanzumlai/sample-ml-app.git --git-branch main
 ~~~
 
-### 6. Build ML Pipeline with Argo Workflows
+### 7. Build ML Pipeline with Argo Workflows
 Argo Workflows is an open-source, container-native workflow engine for orchestrating parallel jobs on Kubernetes. By integrating Argo Workflows with TAP, we can build and manage complex ML pipelines with ease, automating tasks such as data preprocessing, model training, and deployment. This enables faster experimentation and iteration, ultimately accelerating the delivery of high-quality ML models.
 
 <div class="gallery-box">
@@ -118,7 +124,7 @@ tanzu acc create argo-pipelines-acc --git-repository https://github.com/agapebon
 
 &rarr; [More info on ArgoCD Workflows](https://argoproj.github.io/argo-workflows/)
 
-### 7. Create Predictive Apps with APIs
+### 8. Create Predictive Apps with APIs
 Once our ML models are trained and optimized, we can use TAP to build predictive applications that leverage these models to provide valuable insights and predictions. By exposing our models through APIs, we enable seamless integration with existing applications and systems, ensuring that our data-driven insights can be easily consumed by end-users and decision-makers. This not only increases the value and impact of our ML efforts but also promotes a data-driven culture within the organization.
 
 ### Conclusion
