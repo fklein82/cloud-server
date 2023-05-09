@@ -172,7 +172,7 @@ tanzu acc create argo-pipelines-acc --git-repository https://github.com/agapebon
 ### 8. Create Predictive Apps with APIs
 Once our ML models are trained and optimized, we can use TAP to build predictive applications that leverage these models to provide valuable insights and predictions. By exposing our models through APIs, we enable seamless integration with existing applications and systems, ensuring that our data-driven insights can be easily consumed by end-users and decision-makers. This not only increases the value and impact of our ML efforts but also promotes a data-driven culture within the organization.
 
-### Reference Architecture 
+### References Architecture 
 
 <div class="gallery-box">
   <div class="gallery">
