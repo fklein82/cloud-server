@@ -2,7 +2,7 @@
 layout: post
 title:  Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.
 description: Learn how to train a Convolutional Neural Network, utilize DataHub for data set management, set up a JupyterHub notebooks environment, and build ML workflows with Kubeflow and Argo Workflows.
-date:   2023-05-07 18:01:35 +0300
+date:   2023-05-08 19:01:35 +0300
 image:  '/images/mlops2.png'
 tags:   [data-ia]
 ---
