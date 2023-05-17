@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tanzu SE Blog</title>
+        <description>Frédéric KLEIN personal Blog</description>
+        <link>http://localhost:4000/</link>
+        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Thu, 18 May 2023 01:17:08 +0200</pubDate>
+        <lastBuildDate>Thu, 18 May 2023 01:17:08 +0200</lastBuildDate>
+        <generator>Jekyll v4.3.2</generator>
+        
+            <item>
+                <title>Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.</title>
+                <description>&lt;h3 id=&quot;introduction-to-machine-learning-artificial-intelligence-and-data-platforms&quot;&gt;Introduction to Machine Learning, Artificial Intelligence and Data Platforms.&lt;/h3&gt;
+
+&lt;p&gt;In the world of data, companies use &lt;strong&gt;Machine Learning (ML&lt;/strong&gt;) and &lt;strong&gt;Artificial Intelligence (AI)&lt;/strong&gt; to stay competitive. As the demand for quick innovation and deployment of ML models increases, having a strong all-in-one data platform becomes crucial.&lt;/p&gt;
+
+&lt;p&gt;In this blog post, we will explore how combining the &lt;strong&gt;Tanzu Application Platform (TAP)&lt;/strong&gt; with &lt;strong&gt;Greenplum&lt;/strong&gt; can deliver a &lt;strong&gt;full data platform with MLOps capabilities&lt;/strong&gt; by using Opensource projects.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot;&gt;Tanzu Application Platform (TAP)&lt;/a&gt; is a “Platform as a Service” that simplifies the development, deployment, and management of modern applications on Kubernetes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tanzu Application Platform can easily integrate with just about any modern database using &lt;a href=&quot;https://servicebinding.io/&quot;&gt;Service Bindings&lt;/a&gt;. This includes databases with support for in-database analytics. In this blog post, we will use VMware Greenplum.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.vmware.com/fr/products/greenplum.html&quot;&gt;VMware Greenplum&lt;/a&gt; is an advanced, fully featured, open-source MPP data warehouse based on PostgreSQL. It provides powerful and rapid analytics on petabyte-scale data volumes. Uniquely geared toward big data analytics.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/data-ia-stack.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;what-is-mlops-unlocking-the-secrets-to-efficient-machine-learning-development-and-deployment&quot;&gt;What is MLOps? Unlocking the Secrets to Efficient Machine Learning Development and Deployment&lt;/h3&gt;
+&lt;p&gt;MLOps, aka Machine Learning Operations, is a set of practices that aim to streamline the development, deployment, and management of machine learning models. It involves integrating machine learning with DevOps principles to ensure smooth collaboration between data scientists, ML engineers, and IT operations teams. MLOps focuses on automating and monitoring various stages of the ML lifecycle, from data preprocessing to model deployment and maintenance, resulting in faster experimentation, improved model quality, and more reliable production systems.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/mlops1.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;why-greenplum-for-the-back-end&quot;&gt;Why Greenplum for the Back-end?&lt;/h3&gt;
+
+&lt;p&gt;Exporting data from a database and importing it into a server or desktop environment using popular data science tools (e.g., Python, R) can be inefficient for big data analytics. Data scientists often face challenges with these tools’ memory and scalability limitations as well as bottlenecks associated with transferring large amounts of data between different platforms.
+Choosing the right tool is critical for data scientists to overcome these issues. In this post, we focus on Greenplum, a massively parallel processing PostgreSQL engine which provides built-in tools for data scientists for high-scale data exploration and model training. These tools and extensions include:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-intro.html&quot;&gt;Procedural language extensions&lt;/a&gt; to enable massive parallelism for Python &amp;amp; R&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-madlib.html&quot;&gt;Apache MADlib&lt;/a&gt; for scalable machine learning&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-postGIS.html?hWord=N4IghgNiBcIA4HsDOAXA5gSySAvkA&quot;&gt;PostGIS&lt;/a&gt; for geospatial analytics and &lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Text/3.10/tanzu-greenplum-text/GUID-topics-intro.html&quot;&gt;GPText&lt;/a&gt; for text search and processing&lt;/li&gt;
+  &lt;li&gt;Interoperability with dashboarding tools such as Tableau and PowerBI for seamless data visualization and reporting&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/greenplum3.png&quot; /&gt;
+  &lt;/div&gt;
+    &lt;em&gt;&lt;a href=&quot;https://github.com/greenplum-db/GreenplumPython&quot; target=&quot;_blank&quot;&gt;GreenplumPython for End-To-End MLOps tasks with MLflow&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;our-journey&quot;&gt;Our Journey&lt;/h3&gt;
+&lt;p&gt;Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow and Argo Workflows, and creating predictive apps with APIs.&lt;/p&gt;
+
+&lt;h3 id=&quot;but-what-is-a-convolutional-neural-network&quot;&gt;But what is a Convolutional Neural Network?&lt;/h3&gt;
+
+&lt;p&gt;A Convolutional Neural Network (CNN) is a type of computer program designed to process and analyze grid-like data, such as images. It’s especially good at tasks like recognizing and classifying objects in pictures. CNNs work by learning to identify patterns and features from the input data through multiple layers, ultimately producing an output like a category or label.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-training-a-convolutional-neural-network-on-tap&quot;&gt;1. Training a Convolutional Neural Network on TAP&lt;/h3&gt;
+&lt;p&gt;The Tanzu Application Platform is a powerful platform that simplifies the development, deployment, and management of modern applications. By combining TAP with Greenplum, an open-source, massively parallel data warehouse, we can efficiently train a Convolutional Neural Network on large-scale data sets. TAP provides the necessary infrastructure and tooling to enable seamless scaling and management of resources, ensuring optimal performance and efficiency throughout the training process.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/mlops-on-tap.jpg&quot; /&gt;
+    &lt;img src=&quot;/images/accelerator.png&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot; target=&quot;_blank&quot;&gt;Tanzu Application Platform&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://www.vmware.com/products/greenplum.html&quot; target=&quot;_blank&quot;&gt;Greenplum&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;2-discover-data-sets-with-datahub&quot;&gt;2. Discover Data Sets with DataHub&lt;/h3&gt;
+&lt;p&gt;Data is the building block of any ML project, and having a comprehensive data catalog is essential for discovering and managing data sets. DataHub, a popular data catalog tool, allows users to easily discover, understand, and use data sets across the organization. By integrating DataHub with TAP and Greenplum, we can quickly locate the most relevant data sets for our ML projects and ensure that our data is accurate, consistent, and up-to-date.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/datahub1.png&quot; /&gt;
+    &lt;img src=&quot;/images/datahub2.png&quot; /&gt;
+    &lt;img src=&quot;/images/datahub4.png&quot; /&gt;
+  &lt;/div&gt;
+    &lt;em&gt;&lt;a href=&quot;https://datahubproject.io/&quot; target=&quot;_blank&quot;&gt;Datahub - The #1 Open Source Data Catalog&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/datahub-accelerator&quot;&gt;Install Datahub Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create datahub --git-repository https://github.com/agapebondservant/datahub-accelerator.git --git-branch main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-set-up-a-development-environment-with-jupyterhub-notebooks&quot;&gt;3. Set Up a Development Environment with JupyterHub notebooks&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Jupyter Notebooks is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;JupyterHub is a popular tool for Data Scientist. It is used for hosting Jupyter notebooks. A Jupyter notebook provides a browser-based IDE that enables live coding, experimentation, data exploration and model engineering. JupyterHub is a containerized, open-source app, making it easy to deploy on TAP.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/jupyter1.png&quot; /&gt;
+    &lt;img src=&quot;/images/jupyter2.png&quot; /&gt;
+    &lt;img src=&quot;/images/jupyter3.png&quot; /&gt;
+  &lt;/div&gt;
+    &lt;em&gt;&lt;a href=&quot;https://jupyter.org/&quot; target=&quot;_blank&quot;&gt;JupyterLab - A Next-Generation Notebook Interface&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/jupyter-accelerator&quot;&gt;Install Jupyter Utilities Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create jupyter --git-repository https://github.com/agapebondservant/jupyter-accelerator.git --git-branch main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-build-the-ml-model-workflow-with-mlflow&quot;&gt;4. Build the ML Model Workflow with MLflow&lt;/h3&gt;
+&lt;p&gt;MLflow is an open-source platform that streamlines the end-to-end management of machine learning projects. It provides a unified interface to manage the entire lifecycle of ML models, including experimentation, reproducibility, deployment, and monitoring. By integrating MLflow with TAP and Greenplum, we can easily track and compare experiments, package and share models, and deploy them in a scalable and reproducible manner. This integration ensures a smooth and efficient ML workflow, improving the overall effectiveness of our ML operations.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/mlflow1.png&quot; /&gt;
+    &lt;img src=&quot;/images/mlflow2.png&quot; /&gt;
+    &lt;img src=&quot;/images/mlflow3.png&quot; /&gt;
+  &lt;/div&gt;
+    &lt;em&gt;&lt;a href=&quot;https://mlflow.org/&quot; target=&quot;_blank&quot;&gt;mlflow - An open source platform for the machine learning lifecycle&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/kubeflow-pipelines-accelerator&quot;&gt;Install Kubeflow Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator --git-branch main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;5-train-scalable-machine-learning-models-on-greenplum-platform-using-greenplumpython&quot;&gt;5. Train scalable Machine Learning models on Greenplum platform using GreenplumPython&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Greenplum&lt;/strong&gt; has strong analytical capabilities that make them well suited for data science problems at a massive scale. Combining its &lt;strong&gt;MPP capabilities&lt;/strong&gt; with &lt;strong&gt;Python’s rich ecosystem&lt;/strong&gt; makes the end-to-end Machine Learning model development experience significantly faster.&lt;/p&gt;
+
+&lt;p&gt;To simplify the path to production and operational usage of trained ML models, we can unleash the power of &lt;strong&gt;GreenplumPython&lt;/strong&gt;, it’s a &lt;strong&gt;Python package that enables in-database execution of Python code&lt;/strong&gt; within Greenplum functions.&lt;/p&gt;
+
+&lt;p&gt;Data Scientists can then perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration &lt;strong&gt;reduces data movement&lt;/strong&gt; and &lt;strong&gt;improves performance&lt;/strong&gt;, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics, pre-processing, feature engineering, model training and deployment for your ML projects.&lt;/p&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum/index.html&quot;&gt;Greenplum Documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://github.com/greenplum-db/GreenplumPython&quot;&gt;GreenplumPython Package&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/greenplum1.png&quot; /&gt;
+  &lt;/div&gt;
+    &lt;em&gt;&lt;a href=&quot;https://github.com/greenplum-db/GreenplumPython&quot; target=&quot;_blank&quot;&gt;GreenplumPython for End-To-End MLOps tasks with MLflow&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;6-build-and-train-ml-model-workflow-with-tensorflow&quot;&gt;6. Build and Train ML Model Workflow with TensorFlow.&lt;/h3&gt;
+&lt;p&gt;TensorFlow is a popular open-source ML library developed by Google. It provides a flexible and efficient platform for building and deploying ML models across various platforms and devices. By integrating TensorFlow with TAP and Greenplum, we can develop and train our ML models on massive data sets, harnessing the full power of distributed computing for faster and more accurate results.&lt;/p&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://github.com/tanzumlai/sample-ml-app/tree/main/&quot;&gt;Install Tensorflow Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create sample-cnn-app --git-repository https://github.com/tanzumlai/sample-ml-app.git --git-branch main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;7-build-ml-pipeline-with-argo-workflows&quot;&gt;7. Build ML Pipeline with Argo Workflows&lt;/h3&gt;
+&lt;p&gt;Argo Workflows is an open-source, container-native workflow engine for orchestrating parallel jobs on Kubernetes. By integrating Argo Workflows with TAP, we can build and manage complex ML pipelines with ease, automating tasks such as data preprocessing, model training, and deployment. This enables faster experimentation and iteration, ultimately accelerating the delivery of high-quality ML models.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/argocd1.png&quot; /&gt;
+    &lt;img src=&quot;/images/argocd2.png&quot; /&gt;
+    &lt;img src=&quot;/images/argocd3.png&quot; /&gt;
+  &lt;/div&gt;
+    &lt;em&gt;&lt;a href=&quot;https://argoproj.github.io/workflows/&quot; target=&quot;_blank&quot;&gt;ArgoCD Workflows - open source container-native workflow engine for orchestrating parallel jobs on Kubernetes.&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/argo-workflows-accelerator/tree/main/&quot;&gt;Install ArgoCD Workflows Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create argo-pipelines-acc --git-repository https://github.com/agapebondservant/argo-workflows-accelerator.git --git-branch main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://argoproj.github.io/argo-workflows/&quot;&gt;More info on ArgoCD Workflows&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;8-create-predictive-apps-with-apis&quot;&gt;8. Create Predictive Apps with APIs&lt;/h3&gt;
+&lt;p&gt;Once our ML models are trained and optimized, we can use TAP to build predictive applications that leverage these models to provide valuable insights and predictions. By exposing our models through APIs, we enable seamless integration with existing applications and systems, ensuring that our data-driven insights can be easily consumed by end-users and decision-makers. This not only increases the value and impact of our ML efforts but also promotes a data-driven culture within the organization.&lt;/p&gt;
+
+&lt;h3 id=&quot;references-architecture&quot;&gt;References Architecture&lt;/h3&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/data-architecture.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/tap-data&quot;&gt;Source code for build a DATA E2E Demo Platform&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;These insightfulls References Architecture are credited to &lt;a href=&quot;https://www.linkedin.com/in/tola-awofolu-b4a9576/&quot;&gt;Omotola Awofolu&lt;/a&gt; - Senior Platform Architect and &lt;a href=&quot;https://www.linkedin.com/in/caiofarias/&quot;&gt;Caio Farias&lt;/a&gt; - Account Data Engineer from VMware.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;In this blog post, We have demonstrated how combining the &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; with &lt;strong&gt;Greenplum&lt;/strong&gt; can deliver a &lt;strong&gt;full data platform with MLOps&lt;/strong&gt; capabilities.&lt;/p&gt;
+
+&lt;p&gt;From training a Convolutional Neural Network on TAP to building predictive apps with APIs, this powerful combination enables organizations to harness the power of their data and accelerate the delivery of high-quality ML models.&lt;/p&gt;
+
+&lt;p&gt;By integrating tools like &lt;strong&gt;DataHub&lt;/strong&gt;, &lt;strong&gt;Jupyter Notebook&lt;/strong&gt;, &lt;strong&gt;Kubeflow&lt;/strong&gt;, &lt;strong&gt;TensorFlow&lt;/strong&gt;, &lt;strong&gt;GreenplumPython&lt;/strong&gt; and &lt;strong&gt;Argo Workflows&lt;/strong&gt;, we can streamline the entire ML lifecycle, improving efficiency and scalability across the board.&lt;/p&gt;
+
+&lt;p&gt;With &lt;strong&gt;TAP&lt;/strong&gt; and &lt;strong&gt;Greenplum&lt;/strong&gt; at the core of your &lt;strong&gt;data platform&lt;/strong&gt;, your organization will be well-equipped to &lt;strong&gt;tackle the most challenging ML problems&lt;/strong&gt; and drive &lt;strong&gt;innovation in the ever-evolving world of data and AI&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/data-ia-stack-2.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
+
+&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friend &lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;&lt;strong&gt;Ahmed Rachid Hazourli&lt;/strong&gt;&lt;/a&gt;, a very bright &lt;strong&gt;Tanzu Data Engineer&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Special Thanks&lt;/strong&gt; to &lt;a href=&quot;https://www.linkedin.com/in/tola-awofolu-b4a9576/&quot;&gt;&lt;strong&gt;Omotola Awofolu&lt;/strong&gt;&lt;/a&gt; - &lt;strong&gt;Senior Platform Architect&lt;/strong&gt; and &lt;a href=&quot;https://www.linkedin.com/in/caiofarias/&quot;&gt;&lt;strong&gt;Caio Farias&lt;/strong&gt;&lt;/a&gt; - &lt;strong&gt;Account Data Engineer&lt;/strong&gt; for their &lt;strong&gt;invaluable contribution&lt;/strong&gt; in developing the &lt;strong&gt;TAP accelerator&lt;/strong&gt;, the &lt;strong&gt;Reference Architecture&lt;/strong&gt; and for being a constant &lt;strong&gt;source of inspiration&lt;/strong&gt; to us.&lt;/p&gt;
+
+&lt;p&gt;We sincerely hope you &lt;strong&gt;enjoyed reading it&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;h4 id=&quot;linkedin&quot;&gt;Linkedin&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/tola-awofolu-b4a9576/&quot;&gt;Omotola Awofolu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/caiofarias/&quot;&gt;Caio Farias&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;Ahmed Rachid Hazourli&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/fklein82/&quot;&gt;Frédéric Klein&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Mon, 08 May 2023 18:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2023/05/08/tap-and-greenplum.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/08/tap-and-greenplum.html</guid>
+                
+                <category>data-ia</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>Enhancing Developer Experience on Tanzu Application Platform with Backstage</title>
+                <description>&lt;h3 id=&quot;tanzu-application-platform-tap&quot;&gt;Tanzu Application Platform (TAP)&lt;/h3&gt;
+
+&lt;p&gt;I am consistently impressed by the way the Tanzu Application Platform (TAP) empowers developers to build and manage modern applications seamlessly. One of the key aspects that set TAP apart is its focus on providing an exceptional developer experience. This focus is further strengthened by the integration of the Backstage open-source project, which allows developers to efficiently manage and maintain their applications, ultimately speeding up software delivery. In this blog post, we’ll dive into the benefits of Backstage integration in TAP and explore how it elevates the developer experience.&lt;/p&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot;&gt;Tanzu Application Platform&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-backstage&quot;&gt;What is Backstage?&lt;/h3&gt;
+
+&lt;p&gt;Backstage is an open-source platform developed by Spotify, which aims to provide a unified developer portal that simplifies the process of managing software components, services, and tools. It offers a single, extensible interface for developers to discover, explore, and interact with their organization’s software ecosystem, making it easier to navigate the complexities of modern software development.&lt;/p&gt;
+
+&lt;p&gt;→ &lt;a href=&quot;https://backstage.io/&quot;&gt;Backstage.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;backstage-integration-in-tanzu-application-platform&quot;&gt;Backstage Integration in Tanzu Application Platform&lt;/h3&gt;
+
+&lt;p&gt;Backstage is the UI of TAP, and provides a centralized location to manage  applications and services, regardless of the underlying infrastructure. This brings the following benefits to developer:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Unified Developer Experience&lt;/strong&gt;: With Backstage, developers can access all their services and applications from a single, intuitive interface. This streamlined experience simplifies the management of application components, reducing the time spent navigating between different tools and platforms.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/tap1.png&quot; /&gt;
+    &lt;img src=&quot;/images/tap2.png&quot; /&gt;
+    &lt;img src=&quot;/images/tap3.png&quot; /&gt;
+    &lt;img src=&quot;/images/tap4.png&quot; /&gt;
+    &lt;img src=&quot;/images/tap5.png&quot; /&gt;
+    &lt;img src=&quot;/images/tap6.png&quot; /&gt;
+    &lt;img src=&quot;/images/tap7.png&quot; /&gt;
+    &lt;img src=&quot;/images/tap8.png&quot; /&gt;
+    &lt;img src=&quot;/images/tap9.png&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot; target=&quot;_blank&quot;&gt;TAP User Interface&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Enhanced Service Catalog&lt;/strong&gt;: TAP’s integration with Backstage enables developers to easily discover and access their organization’s software components, services, and APIs. The catalog provides rich metadata and documentation, allowing teams to quickly understand and start using these resources.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/api.png&quot; /&gt;
+    &lt;img src=&quot;/images/api2.png&quot; /&gt;
+    &lt;img src=&quot;/images/api3.png&quot; /&gt;
+    &lt;img src=&quot;/images/api5.png&quot; /&gt;
+    &lt;img src=&quot;/images/api6.png&quot; /&gt;
+    &lt;img src=&quot;/images/api7.png&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot; target=&quot;_blank&quot;&gt;TAP User Interface and TAP API Portal&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Accelerated Development (aka Accelerator)&lt;/strong&gt;: By providing a comprehensive and consistent interface for managing applications, Backstage helps developers to quickly understand and navigate their organization’s software ecosystem. This enables them to spend less time on administrative tasks and more time on developing new features and functionality.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/acc1.png&quot; /&gt;
+    &lt;img src=&quot;/images/acc2.png&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot; target=&quot;_blank&quot;&gt;TAP User Interface and TAP plugins for Visual Studio Code&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Open-Source Community&lt;/strong&gt;: Being an open-source project, Backstage boasts a vibrant and active community that continuously contributes to its development. This ensures that TAP users can leverage the latest features and improvements, keeping their developer experience up to date and cutting-edge.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;The integration of the &lt;strong&gt;Backstage&lt;/strong&gt; open-source project into &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; plays a pivotal role in &lt;strong&gt;enhancing the developer experience&lt;/strong&gt;. By streamlining application management, promoting discoverability, and providing customization options,&lt;/p&gt;
+
+&lt;p&gt;→ &lt;strong&gt;Tanzu Application Platform empowers developers to focus on what matters most: building software&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I am thrilled to see the continuous evolution of TAP and look forward to seeing how Backstage integration will continue to elevate the platform in the future, with customizable &lt;a href=&quot;https://backstage.io/plugins&quot;&gt;plugins&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+                <pubDate>Sat, 06 May 2023 17:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</guid>
+                
+                <category>Tap</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>Tanzu Experience Days</title>
+                <description>&lt;h3 id=&quot;join-me-for-vmwares-free-experience-days-sessions-dedicated-to-tanzu-solutions&quot;&gt;Join me for VMware’s free “Experience Days” sessions dedicated to Tanzu solutions!&lt;/h3&gt;
+
+&lt;p&gt;Are you a technical professional interested in learning how to manage and operate a container-based infrastructure based on Kubernetes? Do you want to discover best practices for improving the development and deployment experience of your applications while strengthening security? If so, join me for VMware’s free “Experience Days” sessions dedicated to Tanzu solutions!&lt;/p&gt;
+
+&lt;p&gt;During these sessions, you’ll participate in in-depth workshops and hands-on exercises specifically designed for technical profiles. My colleagues and I, who are experienced Solutions Engineers, will be there to answer all your technical questions live.&lt;/p&gt;
+
+&lt;p&gt;The May 16th sessions are already available, so sign up now by clicking on the links below. You can also register for the upcoming sessions on June 13th and July 4th.&lt;/p&gt;
+
+&lt;h3 id=&quot;here-are-the-links-to-register-for-the-sessions&quot;&gt;Here are the links to register for the sessions:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://connect.tanzu.vmware.com/EMEA_P1_DG_SW_Q224_Workshop_TKOExperienceDayParisMay_TanzuLP.html&quot;&gt;Kubernetes exploitation-oriented session&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://connect.tanzu.vmware.com/EMEA_P6_DG_SW_Q224_Workshop_TAPExperienceDayParisMay_TanzuLP.html&quot;&gt;Developer-oriented session&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;register-today&quot;&gt;Register today!&lt;/h3&gt;
+
+&lt;p&gt;Don’t miss out on this valuable opportunity to deepen your knowledge of Tanzu solutions and enhance your technical skills.&lt;/p&gt;
+</description>
+                <pubDate>Thu, 04 May 2023 14:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2023/05/04/experience-days.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/04/experience-days.html</guid>
+                
+                <category>tanzu-experience-day</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>vSphere Pod vs Tanzu Kubernetes Cluster? A Comprehensive Comparison</title>
+                <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;In today’s fast-paced world of technological advancements, the adoption of containerization and cloud-native application development has skyrocketed. VMware Tanzu offers two powerful tools for managing and deploying containerized applications: vSphere Pod and Tanzu Kubernetes Cluster. In this blog post, we will delve into the differences between these two technologies, discussing their features, advantages, and appropriate use cases, while incorporating insights from VMware’s official documentation.&lt;/p&gt;
+
+&lt;h3 id=&quot;vsphere-pod-an-overview&quot;&gt;vSphere Pod: An Overview&lt;/h3&gt;
+
+&lt;p&gt;vSphere Pod is part of vSphere-with-Tanzu. vSphere-with-Tanzu is a container runtime environment designed for VMware vSphere. It enables you to run and manage containerized applications directly on the vSphere platform. vSphere Pod is the equivalent of a Kubernetes pod that can run directly on the ESXi hypervisor, and provides a lightweight, scalable solution that leverages the power of VMware’s hypervisor to deliver security, performance, and resource management capabilities.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features-of-vsphere-pod&quot;&gt;Key Features of vSphere Pod:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Native integration with vSphere: vSphere Pod is integrated into the vSphere platform, making it easy to manage container workloads alongside traditional VM workloads.&lt;/li&gt;
+  &lt;li&gt;VM-level isolation: Each pod runs in its own virtual machine, providing strong isolation between workloads and ensuring that a single compromised pod cannot impact others.&lt;/li&gt;
+  &lt;li&gt;Resource management: vSphere Pod leverages vSphere’s resource management capabilities, allowing you to allocate resources such as CPU, memory, and storage to your containers.&lt;/li&gt;
+  &lt;li&gt;Namespace-based management: vSphere Pod introduces the concept of namespaces to vSphere, which simplifies the management of container workloads and allows for easy delegation of authority to developers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tanzu-kubernetes-cluster-an-overview&quot;&gt;Tanzu Kubernetes Cluster: An Overview&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Kubernetes Cluster (TKC) is a Kubernetes-based platform for running and managing containerized applications. It is a part of VMware’s Tanzu portfolio and vSphere-with-Tanzu, which offers a comprehensive set of tools for building, running, and managing modern applications. TKC enables you to deploy and manage Kubernetes clusters on top of vSphere, giving you a consistent, enterprise-grade Kubernetes experience.&lt;/p&gt;
+
+&lt;h3 id=&quot;key-features-of-tanzu-kubernetes-cluster&quot;&gt;Key Features of Tanzu Kubernetes Cluster:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enterprise-grade Kubernetes: TKC provides a fully conformant, upstream-aligned Kubernetes distribution, ensuring compatibility with the broader Kubernetes ecosystem.&lt;/li&gt;
+  &lt;li&gt;Consistent management experience: TKC integrates with VMware Tanzu Mission Control, enabling you to manage Kubernetes clusters across multiple environments and platforms.&lt;/li&gt;
+  &lt;li&gt;Extensibility and customization: With TKC, you can leverage a wide range of Kubernetes add-ons and extensions to tailor your clusters to your specific needs.&lt;/li&gt;
+  &lt;li&gt;Dynamic scaling: TKC supports dynamic scaling of Kubernetes clusters, allowing you to easily adjust the size of your clusters based on your requirements.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;comparing-vsphere-pod-and-tanzu-kubernetes-cluster&quot;&gt;Comparing vSphere Pod and Tanzu Kubernetes Cluster&lt;/h3&gt;
+&lt;p&gt;Now that we have a basic understanding of both vSphere Pod and Tanzu Kubernetes Cluster, let’s compare them in various aspects:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Complexity: vSphere Pod is a simpler solution compared to TKC, as it is integrated directly into the vSphere platform. TKC, on the other hand, offers a more comprehensive Kubernetes experience but requires additional management and configuration.&lt;/li&gt;
+  &lt;li&gt;Use cases: vSphere Pod is ideal for organizations looking to run containerized applications on vSphere without adopting a full Kubernetes stack. Tanzu Kubernetes Cluster is better suited for organizations that require a complete, enterprise-grade Kubernetes solution and are willing to invest in the necessary infrastructure and management tools.&lt;/li&gt;
+  &lt;li&gt;Ecosystem: TKC offers broader compatibility with the Kubernetes ecosystem, including support for third-party add-ons and extensions. vSphere Pod, being a native vSphere solution, is more limited in this regard.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;The choice between vSphere Pod and Tanzu Kubernetes Cluster depends on your specific needs, existing infrastructure, and long-term goals. vSphere Pod provides a lightweight, integrated container runtime for vSphere users, while Tanzu Kubernetes Cluster offers a complete, enterprise-grade Kubernetes experience. By understanding the differences between these two technologies, you can make an informed decision that best aligns with your organization’s requirements and objectives.&lt;/p&gt;
+
+&lt;h3 id=&quot;more-info&quot;&gt;More info&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-04D08757-D761-4AFC-8F9A-7AAC9964DC69.html&quot;&gt;When to Use vSphere Pods and Tanzu Kubernetes Clusters - VMware Documentations&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-276F809D-2015-4FC6-92D8-8539D491815E.html&quot;&gt;What Is a vSphere Pod? - VMware Documentations&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-DC22EA6A-E086-4CFE-A7DA-2654891F5A12.html&quot;&gt;What Is a Tanzu Kubernetes Cluster? - VMware Documentations&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <pubDate>Wed, 03 May 2023 17:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2023/05/03/vsphere-pod-vs-tkc.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/vsphere-pod-vs-tkc.html</guid>
+                
+                <category>vsphere-with-tanzu</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>vSphere-with-Tanzu or k8s in vSphere?</title>
+                <description>&lt;p&gt;VMware vSphere-with-Tanzu is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. Tanzu is a VMware solution designed to simplify the deployment and management of Kubernetes for enterprise organizations. In this blog post, we’ll take a closer look at VMware vSphere with Tanzu and how to use it with Tanzu CLI.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-tanzu-cli&quot;&gt;What is Tanzu CLI?&lt;/h3&gt;
+
+&lt;p&gt;Tanzu CLI is a command-line tool that provides a simplified interface for managing Kubernetes clusters and applications. It is designed to make it easy to manage Kubernetes clusters across multiple cloud providers, including vSphere with Tanzu.&lt;/p&gt;
+
+&lt;p&gt;Using Tanzu CLI, you can deploy and manage Kubernetes clusters, deploy and manage applications, and automate common tasks. It is a powerful tool that can help simplify the management of Kubernetes for enterprise organizations.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-use-vsphere-with-tanzu-and-the-tanzu-cli-&quot;&gt;How to use vSphere-with-Tanzu and the Tanzu CLI ?&lt;/h3&gt;
+
+&lt;p&gt;Here’s a step-by-step guide on how to use VMware vSphere with Tanzu with Tanzu CLI:&lt;/p&gt;
+
+&lt;h3 id=&quot;step-1-install-the-tanzu-cli-and-the-kubectl--vsphere-plugin&quot;&gt;Step 1: Install the Tanzu CLI and the Kubectl + vSphere plugin&lt;/h3&gt;
+
+&lt;p&gt;The first step is to install the Tanzu CLI on your local machine. You can do this by asking your vsphere administrator to Get the link to the Kubernetes Command Line Interface Tools download page.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/cli-tanzu.jpeg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;step-2-configure-the-vsphere-environment&quot;&gt;Step 2: Configure the vSphere environment&lt;/h3&gt;
+
+&lt;p&gt;Next, you’ll need to configure your vSphere environment to work with Tanzu CLI. This involves setting up the appropriate credentials and configuring the vSphere endpoint. You can do this by running the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl vsphere login --server &amp;lt;vCenter server address&amp;gt; --vsphere-username &amp;lt;vCenter username&amp;gt; --insecure-skip-tls-verify
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will authenticate you with vSphere and allow you to manage your Kubernetes clusters using Tanzu CLI.&lt;/p&gt;
+
+&lt;h3 id=&quot;step-3-create-a-tanzu-kubernetes-cluster&quot;&gt;Step 3: Create a Tanzu Kubernetes cluster&lt;/h3&gt;
+
+&lt;p&gt;Once you’ve configured your vSphere environment, you can create a Tanzu Kubernetes cluster using the classical kubectl apply:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First craft the yaml that will describe the cluster topology:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: run.tanzu.vmware.com/v1alpha2           #TKGS API endpoint
+kind: TanzuKubernetesCluster                        #required parameter
+metadata:
+  name: tkgs-dev01                                  #cluster name, user defined
+  namespace: vns-dev-01
+spec:
+  topology:
+    controlPlane:
+      replicas: 1                                   #number of control plane nodes
+      vmClass: best-effort-small                    #vmclass for control plane nodes
+      storageClass: kubernetes-sp
+      tkr:  
+        reference:
+          name: v1.21.6---vmware.1-tkg.1.b3d708a
+    nodePools:
+    - name: worker-nodepool-a1
+      replicas: 1                                   #number of worker nodes
+      vmClass: best-effort-small                    #vmclass for worker nodes
+      storageClass: kubernetes-sp
+      tkr:  
+        reference:
+          name: v1.21.6---vmware.1-tkg.1.b3d708a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;And then apply the file with the kubectl command&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply -f workload_prod_cluster01.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;step-4-deploy-your-workloads&quot;&gt;Step 4: Deploy your workloads&lt;/h3&gt;
+
+&lt;p&gt;With your Tanzu Kubernetes cluster up and running, you can now deploy your container workloads using Kubernetes manifests or Helm charts. Tanzu CLI provides a number of built-in tools and integrations to make this process as simple and streamlined as possible.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Connect to the Tanzu Kubernetes cluster&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl vsphere login --server &amp;lt;vCenter server address&amp;gt; --vsphere-username &amp;lt;vCenter username&amp;gt; --insecure-skip-tls-verify -tanzu-kubernetes-cluster-name &amp;lt;tkgs-dev01&amp;gt; --tanzu-kubernetes-cluster-namespace &amp;lt;vns-dev-01&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Apply cluster rolebinding&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create clusterrolebinding default-tkg-admin-privileged-binding --clusterrole=psp:vmware-system-privileged --group=system:authenticated
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Deploy my blog App&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create deployment fredblog --image=registry.fklein.me/tanzu-blog/fklein-blog:2023-05-04-11-44-18 --port=80
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Expose the app (through a Loadbalancer L4 for example)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl expose deployment fredblog --port 80 --type LoadBalancer --target-port=80
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Check the ip and connect with your browser&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get svc 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;step-5-manage-your-kubernetes-clusters&quot;&gt;Step 5: Manage your Kubernetes clusters&lt;/h3&gt;
+
+&lt;p&gt;Using Tanzu CLI, you can manage your Kubernetes clusters, including scaling them up or down, updating the Kubernetes version, and more. This provides a powerful command-line interface for managing both your VMs and containers.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;VMware vSphere with Tanzu is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. Tanzu CLI is a command-line tool that provides a simplified interface for managing Kubernetes clusters and applications. By following the steps outlined above, you can get started with VMware vSphere with Tanzu and Tanzu CLI and begin deploying and managing your container workloads more easily and efficiently.&lt;/p&gt;
+</description>
+                <pubDate>Wed, 03 May 2023 16:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2023/05/03/vsphere-with-tanzu.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/vsphere-with-tanzu.html</guid>
+                
+                <category>vsphere-with-tanzu</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>Tanzu Build Service - Automating Container Image Building and Management</title>
+                <description>&lt;h3 id=&quot;tanzu-build-service-automating-container-image-building-and-management&quot;&gt;Tanzu Build Service: Automating Container Image Building and Management&lt;/h3&gt;
+
+&lt;p&gt;As organizations continue to adopt modern software development practices, containers have become a popular way to package and deploy applications. However, building and managing container images can be a time-consuming and error-prone task, especially at scale. Tanzu Build Service is a tool that helps automate this process, making it easier for developers to focus on writing code and delivering business value.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-tanzu-build-service&quot;&gt;What is Tanzu Build Service?&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Build Service is a Kubernetes-native tool that automates the process of building, managing, and updating container images. It leverages Cloud Native Buildpacks, an open-source technology that provides a modular and composable approach to building containers. Cloud Native Buildpacks automatically detect the language and framework of an application and create optimized container images that are free from security vulnerabilities.&lt;/p&gt;
+
+&lt;p&gt;Tanzu Build Service provides a declarative way to define how container images should be built, including which base images to use, which buildpacks to include, and how to configure the resulting images. This declarative approach ensures that all images are built consistently, regardless of the developer or environment.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-does-tanzu-build-service-work&quot;&gt;How does Tanzu Build Service work?&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Build Service uses a set of controllers and operators to manage the entire container image build process. Developers define a build configuration, which specifies the source code location, buildpacks, and other build parameters. Tanzu Build Service then creates a build plan that determines the exact build steps required to create the container image. Finally, the build process is executed using Cloud Native Buildpacks, which create a secure and optimized container image.&lt;/p&gt;
+
+&lt;p&gt;Once the container image is built, Tanzu Build Service automatically stores it in a container registry, such as Harbor or Docker Hub. This ensures that the image is available to all developers, regardless of their location or access permissions.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;With one line, you can create an OCI that is listening to a git repository, and then push the image to a registry&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kp image create fkleinblog --tag registry.fklein.me/tbs/fkleinblog:1.1 --git https://github.com/fklein82/tbs-blog-demo.git --git-revision main -n dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You can check the buiding log of the image&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kp build logs fkleinblog -n dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;And check the image list&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kp image list -n dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;what-are-the-benefits-of-tanzu-build-service&quot;&gt;What are the benefits of Tanzu Build Service?&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Build Service provides several benefits for developers and IT organizations, including:&lt;/p&gt;
+
+&lt;p&gt;Consistency: Tanzu Build Service ensures that all container images are built using the same base images, buildpacks, and configurations, regardless of the developer or environment.&lt;/p&gt;
+
+&lt;p&gt;Security: Cloud Native Buildpacks automatically detect and remediate security vulnerabilities, ensuring that all container images are free from known security issues.&lt;/p&gt;
+
+&lt;p&gt;Speed: Tanzu Build Service automates the build process, reducing the time required to build and update container images.&lt;/p&gt;
+
+&lt;p&gt;Scalability: Tanzu Build Service can be easily scaled to support large and complex applications, making it an ideal solution for enterprise environments.&lt;/p&gt;
+
+&lt;p&gt;Ease of use: Tanzu Build Service provides a simple and intuitive interface for developers to define and manage container images, reducing the need for manual intervention.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Build Service is a powerful tool that automates the process of building, managing, and updating container images. By leveraging Cloud Native Buildpacks, Tanzu Build Service provides a secure, consistent, and scalable approach to container image management, freeing developers to focus on writing code and delivering business value. If you’re looking to streamline your container image management process, Tanzu Build Service is definitely worth considering.&lt;/p&gt;
+
+&lt;h3 id=&quot;more-information&quot;&gt;More information&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/fklein82/tbs-blog-demo/tree/main&quot;&gt;Source code Application demo to test TBS&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/fklein82/tbs-blog-demo/blob/main/demo/demo.sh&quot;&gt;Script to Make a demo with TBS on a Kubernetes CNFC Compliant&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <pubDate>Wed, 03 May 2023 14:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2023/05/03/tanzu-build-service.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/tanzu-build-service.html</guid>
+                
+                <category>tanzu-build-service</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>VMware Application Catalog - A Curated image catalog</title>
+                <description>&lt;p&gt;The VMware Application Catalog is a central repository of Open-Source software that is available for use with Virtualized and Kubernetes Infrastructure. It contains a vast array of pre-packaged software applications and services, including operating systems, middleware, and databases, that are securized to work with virtualization and cloud computing platform.&lt;/p&gt;
+
+&lt;p&gt;The VMware Application Catalog provides a single, consolidated source for organizations to discover, deploy, and manage software applications, simplifying the process of identifying and selecting software solutions for use within their ecosystem. It allows IT teams to quickly search for and identify the applications they need, and then deploy them to their  infrastructure with confidence, knowing that they have been pre-tested and verified to work with VMware’s products.&lt;/p&gt;
+
+&lt;p&gt;The catalog is continually updated and expanded, with new applications and services being added on an ongoing basis. It also includes a range of community-contributed packages, providing access to a wide range of open-source software solutions that have been customized and optimized for use with VMware’s products or Cloud Public Platform.&lt;/p&gt;
+
+&lt;p&gt;Overall, the VMware Application Catalog provides significant value to organizations by simplifying the process of identifying, selecting, and deploying software applications within their virtualized infrastructure. By providing a central repository of pre-tested and verified software solutions, it enables IT teams to streamline their software deployment processes, reduce risk, and increase the efficiency and effectiveness of their virtualized infrastructure.&lt;/p&gt;
+</description>
+                <pubDate>Thu, 06 Apr 2023 14:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2023/04/06/vmware-application-catalog-demo.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/04/06/vmware-application-catalog-demo.html</guid>
+                
+                <category>vac</category>
+                
+                <category>vmware-application-catalog</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>Tanzu Mission Control - Streamlining Kubernetes Management Across Multiple Clusters</title>
+                <description>&lt;h3 id=&quot;tanzu-mission-control-streamlining-kubernetes-management-across-multiple-clusters&quot;&gt;Tanzu Mission Control: Streamlining Kubernetes Management Across Multiple Clusters&lt;/h3&gt;
+
+&lt;p&gt;As organizations continue to adopt Kubernetes as their container orchestration platform of choice, managing multiple clusters can become a complex and time-consuming task. Tanzu Mission Control is a tool that helps streamline Kubernetes management across multiple clusters, providing a centralized interface for administrators to monitor and manage their Kubernetes environments.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-tanzu-mission-control&quot;&gt;What is Tanzu Mission Control?&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Mission Control is a Kubernetes management platform that provides a centralized interface for administrators to manage and monitor multiple Kubernetes clusters across different environments, such as on-premises, public cloud, or hybrid. Tanzu Mission Control allows administrators to create and enforce policies, manage access control, and monitor Kubernetes usage and performance across all clusters.&lt;/p&gt;
+
+&lt;p&gt;Tanzu Mission Control is built on top of VMware Tanzu, a portfolio of products and services that help organizations build, run, and manage modern applications on Kubernetes.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-does-tanzu-mission-control-work&quot;&gt;How does Tanzu Mission Control work?&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Mission Control provides a centralized management plane for administrators to manage multiple Kubernetes clusters. Administrators can connect multiple clusters to Tanzu Mission Control using either a self-hosted cluster agent or a cloud-based cluster agent.&lt;/p&gt;
+
+&lt;p&gt;Once the clusters are connected, administrators can manage them through a unified interface. Tanzu Mission Control provides a set of tools to manage Kubernetes clusters, including:&lt;/p&gt;
+
+&lt;p&gt;Cluster Lifecycle Management: Administrators can create, update, and delete Kubernetes clusters from a single interface.&lt;/p&gt;
+
+&lt;p&gt;Policy Management: Administrators can create and enforce policies across all clusters, such as network policies, pod security policies, and resource quotas.&lt;/p&gt;
+
+&lt;p&gt;Access Control: Administrators can manage user access to Kubernetes resources across all clusters, including role-based access control (RBAC) and Kubernetes namespaces.&lt;/p&gt;
+
+&lt;p&gt;Compliance Management: Tanzu Mission Control provides built-in compliance reports and alerts, allowing administrators to monitor Kubernetes usage and ensure compliance with internal and external policies.&lt;/p&gt;
+
+&lt;p&gt;Application Management: Tanzu Mission Control provides tools to manage applications across multiple clusters, including deployment, scaling, and monitoring.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-are-the-benefits-of-tanzu-mission-control&quot;&gt;What are the benefits of Tanzu Mission Control?&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Mission Control provides several benefits for organizations that manage multiple Kubernetes clusters, including:&lt;/p&gt;
+
+&lt;p&gt;Centralized Management: Tanzu Mission Control provides a single interface to manage multiple Kubernetes clusters across different environments, reducing the need for manual intervention and improving efficiency.&lt;/p&gt;
+
+&lt;p&gt;Consistency: Tanzu Mission Control allows administrators to enforce consistent policies and access control across all clusters, ensuring a consistent experience for developers and end-users.&lt;/p&gt;
+
+&lt;p&gt;Visibility: Tanzu Mission Control provides detailed insights into Kubernetes usage and performance across all clusters, allowing administrators to identify issues and optimize resource usage.&lt;/p&gt;
+
+&lt;p&gt;Compliance: Tanzu Mission Control provides built-in compliance reports and alerts, helping organizations maintain compliance with internal and external policies.&lt;/p&gt;
+
+&lt;p&gt;Scalability: Tanzu Mission Control is designed to scale to support large and complex Kubernetes environments, making it an ideal solution for enterprise organizations.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Tanzu Mission Control is a powerful tool that streamlines Kubernetes management across multiple clusters. By providing a centralized interface for administrators to manage and monitor Kubernetes environments, Tanzu Mission Control reduces the complexity of managing Kubernetes at scale. If you’re looking to simplify your Kubernetes management processes and improve efficiency, Tanzu Mission Control is definitely worth considering.&lt;/p&gt;
+
+&lt;h3 id=&quot;click-here-to-test-the-product-&quot;&gt;Click &lt;a href=&quot;https://labs.hol.vmware.com/HOL/catalogs/lab/10506&quot;&gt;Here to test the product&lt;/a&gt; !&lt;/h3&gt;
+
+</description>
+                <pubDate>Thu, 02 Mar 2023 07:01:35 +0100</pubDate>
+                <link>http://localhost:4000/post/2023/03/02/tanzu-mission-constrol.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/03/02/tanzu-mission-constrol.html</guid>
+                
+                <category>tanzu-mission-control</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>VMware Tanzu Application Platform (TAP) - French demo</title>
+                <description>&lt;p&gt;The Tanzu Application Platform (TAP) is a cloud-native platform for building, deploying, and managing modern applications. It provides developers with a comprehensive set of tools and services to streamline the application development process and accelerate time to market. Here are some of the key ways that TAP delivers value to organizations:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Faster application delivery: TAP provides a cloud-native platform for building and deploying applications, with support for multiple programming languages and frameworks. This enables developers to build applications quickly and easily, and deploy them to production faster than with traditional methods.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Increased developer productivity: TAP provides a set of developer-centric tools and services, such as integrated development environments (IDEs) and code repositories, that streamline the application development process. This increases developer productivity and enables them to focus on building applications, rather than managing infrastructure.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Consistent, secure environment: TAP provides a consistent, secure environment for running applications across multiple clouds and environments. This reduces the risk of application downtime or security breaches caused by differences in underlying infrastructure.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Simplified application management: TAP provides a centralized management platform for applications, enabling administrators to monitor and manage applications across multiple clouds and environments. This simplifies the management of complex application environments and reduces the risk of application downtime.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Scalable infrastructure: TAP provides a scalable infrastructure that can easily accommodate the needs of growing applications. It enables organizations to scale infrastructure up or down as needed, without having to worry about the underlying infrastructure.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Overall, the Tanzu Application Platform delivers significant value to organizations by providing a cloud-native platform for building, deploying, and managing modern applications. By accelerating application delivery, increasing developer productivity, providing a consistent and secure environment, simplifying application management, and providing a scalable infrastructure, TAP enables organizations to build and deploy applications faster, with higher quality and at lower cost.&lt;/p&gt;
+</description>
+                <pubDate>Tue, 09 Aug 2022 14:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html</guid>
+                
+                <category>tap</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>How to accelerate the Kubernetes adoption for developers?</title>
+                <description>&lt;p&gt;The VMware Tanzu portfolio is designed to help developers accelerate their adoption of Kubernetes by providing a range of tools and services that simplify the deployment and management of Kubernetes-based applications. Here are some of the key ways that Tanzu products can help developers accelerate their Kubernetes adoption:&lt;/p&gt;
+
+&lt;p&gt;Simplified Kubernetes deployment: Tanzu Kubernetes Grid (TKG) is a Kubernetes runtime that provides a consistent and secure Kubernetes environment across multiple clouds and environments. TKG simplifies the deployment of Kubernetes, allowing developers to quickly spin up Kubernetes clusters and start deploying applications.&lt;/p&gt;
+
+&lt;p&gt;Streamlined application deployment: Tanzu Application Platform is a platform for deploying and managing modern applications. TAP provides a cloud-native runtime for applications, with support for multiple programming languages and frameworks. TAP streamlines the deployment of applications to Kubernetes clusters, reducing the time and effort required to get applications up and running.&lt;/p&gt;
+
+&lt;p&gt;Centralized management: Tanzu Mission Control (TMC) is a central management platform for Kubernetes clusters and applications running on them. TMC provides a single pane of glass for managing Kubernetes clusters across multiple clouds, and enables policy-based management of applications and infrastructure. TMC simplifies the management of Kubernetes environments, allowing developers to focus on building and deploying applications.&lt;/p&gt;
+
+&lt;p&gt;Improved visibility and monitoring: Tanzu Observability (TO) is a comprehensive monitoring and analytics platform for modern applications. TO provides real-time visibility into application performance, with built-in dashboards and alerts for identifying and resolving issues quickly. This enables developers to proactively monitor their applications and address issues before they become problems.&lt;/p&gt;
+
+&lt;p&gt;Automated container image builds: Tanzu Build Service (TBS) is a platform for automating the build and deployment of container images. TBS enables developers to easily create secure and compliant container images from source code, and automates the deployment of these images to Kubernetes clusters. This streamlines the container image build and deployment process, freeing up developers to focus on building applications.&lt;/p&gt;
+
+&lt;p&gt;Overall, the VMware Tanzu portfolio provides a range of tools and services that can help developers accelerate their adoption of Kubernetes. By simplifying Kubernetes deployment and management, streamlining application deployment, providing centralized management, improving visibility and monitoring, and automating container image builds, Tanzu products can help developers focus on building applications, rather than managing infrastructure.&lt;/p&gt;
+</description>
+                <pubDate>Tue, 09 Aug 2022 14:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2022/08/09/accelerate-the-kubernetes-adoption-for-developers.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2022/08/09/accelerate-the-kubernetes-adoption-for-developers.html</guid>
+                
+                <category>path-to-prod</category>
+                
+                
+            </item>
+        
+    </channel>
+</rss>
