@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Setup your DATA & IA Platform with Tanzu - A Real-World Guide to Predicting Abalone Age.
+title:  Setup your DATA & IA Platform with Tanzu - A Real-World Guide Machine Learning use-case.
 description: In this blog post, we walk you through the process of setting up the DATA-IA platform with Tanzu Application Platform and Greenplum Database. We leverage these technologies to build and deploy a Machine Learning model that predicts the age of abalone, providing a practical use-case to help you understand the capabilities of these robust data platforms.
 date:   2023-07-12 19:01:35 +0300
 image:  '/images/data-ia.png'

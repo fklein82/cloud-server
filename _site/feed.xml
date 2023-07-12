@@ -5,12 +5,12 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 12 Jul 2023 20:38:28 +0200</pubDate>
-        <lastBuildDate>Wed, 12 Jul 2023 20:38:28 +0200</lastBuildDate>
+        <pubDate>Wed, 12 Jul 2023 20:42:01 +0200</pubDate>
+        <lastBuildDate>Wed, 12 Jul 2023 20:42:01 +0200</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
-                <title>Setup your DATA &amp; IA Platform with Tanzu - A Real-World Guide to Predicting Abalone Age.</title>
+                <title>Setup your DATA &amp; IA Platform with Tanzu - A Real-World Guide Machine Learning use-case.</title>
                 <description>&lt;h3 id=&quot;building-an-mlops-platform-with-tanzu-application-platform-and-greenplum&quot;&gt;Building an MLOps Platform with Tanzu Application Platform and Greenplum&lt;/h3&gt;
 
 &lt;p&gt;As a team of data scientists and engineers at VMware Tanzu, we’ve been exploring how we can leverage Tanzu Application Platform (TAP) and Greenplum to build a comprehensive MLOps platform. In this blog post, we’ll explain how to set up such a platform and provide a practical example of machine learning in action, predicting the age of abalones using linear regression.&lt;/p&gt;
