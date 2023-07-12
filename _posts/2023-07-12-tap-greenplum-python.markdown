@@ -436,8 +436,10 @@ Thank you for joining us in this exploration of Greenplum and MLflow. I hope thi
 
 This blog post was **co-written** with my friends [**Ruxue Zeng**](https://www.linkedin.com/in/ruxue-zeng/) and [**Ahmed Rachid Hazourli**](https://www.linkedin.com/in/ahmed-rachid/). 
 
-#### Linkedin
-
+##### Linkedin :
+- [Ruxue Zeng](https://www.linkedin.com/in/ruxue-zeng/)
+- [Ahmed Rachid Hazourli](https://www.linkedin.com/in/ahmed-rachid/)
+- [Frédéric Klein](https://www.linkedin.com/in/fklein82/)
 <div class="gallery-box">
   <div class="gallery">
     <img src="/images/ruxue.jpeg">
@@ -445,9 +447,5 @@ This blog post was **co-written** with my friends [**Ruxue Zeng**](https://www.l
      <img src="/images/fred.jpeg">
   </div>
 </div>
-
-- [Ruxue Zeng](https://www.linkedin.com/in/ruxue-zeng/)
-- [Ahmed Rachid Hazourli](https://www.linkedin.com/in/ahmed-rachid/)
-- [Frédéric Klein](https://www.linkedin.com/in/fklein82/)
 
 We sincerely hope you **enjoyed reading it**!
