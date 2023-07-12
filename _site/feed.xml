@@ -5,8 +5,8 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 12 Jul 2023 20:58:05 +0200</pubDate>
-        <lastBuildDate>Wed, 12 Jul 2023 20:58:05 +0200</lastBuildDate>
+        <pubDate>Wed, 12 Jul 2023 21:03:40 +0200</pubDate>
+        <lastBuildDate>Wed, 12 Jul 2023 21:03:40 +0200</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
@@ -17,7 +17,7 @@
 
 &lt;h3 id=&quot;tanzu-application-platform-and-greenplum&quot;&gt;Tanzu Application Platform and Greenplum&lt;/h3&gt;
 
-&lt;p&gt;For this case study, we are working with a system that uses both the Tanzu Application Platform (TAP) and Greenplum, both of which are deployed on the Azure Cloud platform.&lt;/p&gt;
+&lt;p&gt;For this case study, we are working with a system that uses both the &lt;strong&gt;Tanzu Application Platform (TAP)&lt;/strong&gt; and &lt;strong&gt;VMware Greenplum&lt;/strong&gt;, both of which are deployed on the Azure Cloud platform.&lt;/p&gt;
 
 &lt;div class=&quot;gallery-box&quot;&gt;
   &lt;div class=&quot;gallery&quot;&gt;
@@ -30,10 +30,10 @@
     &lt;p&gt;Azure Cloud is Microsoft’s public cloud computing platform. It provides a range of cloud services, including those for computing, analytics, storage, and networking. Users can pick and choose from these services to develop and scale new applications, or run existing applications, in the public cloud.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Tanzu Application Platform (TAP) is a part of VMware Tanzu. It is designed to make it easier for developers to build, deploy, and manage applications on Kubernetes. In our case, TAP is deployed on the Azure Kubernetes Service (AKS), which is a managed container orchestration service provided by Azure. AKS simplifies the deployment, scaling, and operations of Kubernetes, thereby allowing TAP to fully utilize its modular capabilities for modern applications.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Tanzu Application Platform (TAP)&lt;/strong&gt; is a part of VMware Tanzu. It is designed to make it easier for developers to build, deploy, and manage applications on Kubernetes. In our case, TAP is deployed on the Azure Kubernetes Service (AKS), which is a managed container orchestration service provided by Azure. AKS simplifies the deployment, scaling, and operations of Kubernetes, thereby allowing TAP to fully utilize its modular capabilities for modern applications.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;Greenplum is a high-performance, massively parallel data warehouse that provides powerful and rapid analytics on petabyte-scale data volumes. In our setup, Greenplum is deployed on top of virtual machines (VMs) on Azure Cloud. These VMs can be easily scaled and managed within the Azure ecosystem, allowing for the efficient handling of large data workloads by Greenplum.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;VMware Greenplum&lt;/strong&gt; is a high-performance, massively parallel data warehouse that provides powerful and rapid analytics on petabyte-scale data volumes. In our setup, Greenplum is deployed on top of virtual machines (VMs) on Azure Cloud. These VMs can be easily scaled and managed within the Azure ecosystem, allowing for the efficient handling of large data workloads by Greenplum.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 

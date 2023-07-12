@@ -13,7 +13,7 @@ As a team of data scientists and engineers at VMware Tanzu, we've been exploring
 
 ### Tanzu Application Platform and Greenplum
 
-For this case study, we are working with a system that uses both the Tanzu Application Platform (TAP) and Greenplum, both of which are deployed on the Azure Cloud platform.
+For this case study, we are working with a system that uses both the **Tanzu Application Platform (TAP)** and **VMware Greenplum**, both of which are deployed on the Azure Cloud platform.
 
 <div class="gallery-box">
   <div class="gallery">
@@ -23,9 +23,9 @@ For this case study, we are working with a system that uses both the Tanzu Appli
 
 - Azure Cloud is Microsoft's public cloud computing platform. It provides a range of cloud services, including those for computing, analytics, storage, and networking. Users can pick and choose from these services to develop and scale new applications, or run existing applications, in the public cloud.
 
-- Tanzu Application Platform (TAP) is a part of VMware Tanzu. It is designed to make it easier for developers to build, deploy, and manage applications on Kubernetes. In our case, TAP is deployed on the Azure Kubernetes Service (AKS), which is a managed container orchestration service provided by Azure. AKS simplifies the deployment, scaling, and operations of Kubernetes, thereby allowing TAP to fully utilize its modular capabilities for modern applications.
+- **Tanzu Application Platform (TAP)** is a part of VMware Tanzu. It is designed to make it easier for developers to build, deploy, and manage applications on Kubernetes. In our case, TAP is deployed on the Azure Kubernetes Service (AKS), which is a managed container orchestration service provided by Azure. AKS simplifies the deployment, scaling, and operations of Kubernetes, thereby allowing TAP to fully utilize its modular capabilities for modern applications.
 
-- Greenplum is a high-performance, massively parallel data warehouse that provides powerful and rapid analytics on petabyte-scale data volumes. In our setup, Greenplum is deployed on top of virtual machines (VMs) on Azure Cloud. These VMs can be easily scaled and managed within the Azure ecosystem, allowing for the efficient handling of large data workloads by Greenplum.
+- **VMware Greenplum** is a high-performance, massively parallel data warehouse that provides powerful and rapid analytics on petabyte-scale data volumes. In our setup, Greenplum is deployed on top of virtual machines (VMs) on Azure Cloud. These VMs can be easily scaled and managed within the Azure ecosystem, allowing for the efficient handling of large data workloads by Greenplum.
 
 So, our platform foundation is a Kubernetes cluster hosted on Azure's AKS. This cluster is used to run TAP, which supports the development and management of our modern applications. Concurrently, we use Greenplum on Azure VMs to provide robust analytics on large-scale data. This setup provides us with a scalable, efficient, and powerful platform for both application development and data analytics.
 
