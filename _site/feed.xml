@@ -5,8 +5,8 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 12 Jul 2023 21:03:40 +0200</pubDate>
-        <lastBuildDate>Wed, 12 Jul 2023 21:03:40 +0200</lastBuildDate>
+        <pubDate>Wed, 12 Jul 2023 21:14:56 +0200</pubDate>
+        <lastBuildDate>Wed, 12 Jul 2023 21:14:56 +0200</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
@@ -429,6 +429,22 @@ def main():
 &lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
 
 &lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends &lt;a href=&quot;https://www.linkedin.com/in/ruxue-zeng/&quot;&gt;&lt;strong&gt;Ruxue Zeng&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;&lt;strong&gt;Ahmed Rachid Hazourli&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;linkedin&quot;&gt;Linkedin&lt;/h4&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/ruxue.jpeg&quot; /&gt;
+    &lt;img src=&quot;/images/Ahmed.jpeg&quot; /&gt;
+     &lt;img src=&quot;/images/fred.jpeg&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/ruxue-zeng/&quot;&gt;Ruxue Zeng&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;Ahmed Rachid Hazourli&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/fklein82/&quot;&gt;Frédéric Klein&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;We sincerely hope you &lt;strong&gt;enjoyed reading it&lt;/strong&gt;!&lt;/p&gt;
 </description>
