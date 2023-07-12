@@ -6,23 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Enhancing Developer Experience on Tanzu Application Platform with Backstage</title>
-  <meta name='description' content='Discover how the Tanzu Application Platform enhances developer experience through the integration of the Backstage open-source project, streamlining applicat...'>
+  <title>Setup your DATA & IA Platform with Tanzu - A Real-World Guide to Predicting Abalone Age.</title>
+  <meta name='description' content='In this blog post, we walk you through the process of setting up the DATA-IA platform with Tanzu Application Platform and Greenplum Database. We leverage the...'>
 
-  <link rel="canonical" href="http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html">
+  <link rel="canonical" href="http://localhost:4000/post/2023/07/12/tap-greenplum-python.html">
   <link rel="alternate" type="application/rss+xml" title="Tanzu SE Blog" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Enhancing Developer Experience on Tanzu Application Platform with Backstage – Tanzu SE Blog">
-  <meta name="twitter:description" content="Discover how the Tanzu Application Platform enhances developer experience through the integration of the Backstage open-source project, streamlining application management and boosting productivity..">
+  <meta name="twitter:title" content="Setup your DATA & IA Platform with Tanzu - A Real-World Guide to Predicting Abalone Age. – Tanzu SE Blog">
+  <meta name="twitter:description" content="In this blog post, we walk you through the process of setting up the DATA-IA platform with Tanzu Application Platform and Greenplum Database. We leverage these technologies to build and deploy a Machine Learning model that predicts the age of abalone, providing a practical use-case to help you understand the capabilities of these robust data platforms.">
   <meta name="twitter:image" content="https://blog.fklein.me/images/twitter.jpg">
 
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Enhancing Developer Experience on Tanzu Application Platform with Backstage – Tanzu SE Blog">
-  <meta property="og:description" content="Discover how the Tanzu Application Platform enhances developer experience through the integration of the Backstage open-source project, streamlining application management and boosting productivity..">
-  <meta property="og:image" content="http://localhost:4000/images/backstage-tap.png">
+  <meta property="og:title" content="Setup your DATA & IA Platform with Tanzu - A Real-World Guide to Predicting Abalone Age. – Tanzu SE Blog">
+  <meta property="og:description" content="In this blog post, we walk you through the process of setting up the DATA-IA platform with Tanzu Application Platform and Greenplum Database. We leverage these technologies to build and deploy a Machine Learning model that predicts the age of abalone, providing a practical use-case to help you understand the capabilities of these robust data platforms.">
+  <meta property="og:image" content="http://localhost:4000/images/data-ia.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -194,7 +194,7 @@
       
       <div class="col col-6 col-d-12">
         <div class="post-image">
-          <img class="lazy" data-src="/images/backstage-tap.png" alt="Enhancing Developer Experience on Tanzu Application Platform with Backstage">
+          <img class="lazy" data-src="/images/data-ia.png" alt="Setup your DATA & IA Platform with Tanzu - A Real-World Guide to Predicting Abalone Age.">
         </div>
       </div>
       
@@ -208,12 +208,12 @@
           
             <div class="post__tags">
               
-                <a href="/tags#Tap" class="post__tag">Tap</a>
+                <a href="/tags#data-ia" class="post__tag">data-ia</a>
               
             </div>
           
   
-          <h1 class="post__title">Enhancing Developer Experience on Tanzu Application Platform with Backstage</h1>
+          <h1 class="post__title">Setup your DATA &amp; IA Platform with Tanzu - A Real-World Guide to Predicting Abalone Age.</h1>
   
           <div class="post__meta">
             <a href="/about/" class="post__author-image">
@@ -222,7 +222,7 @@
 
             <div class="post__meta-bottom">
               <a class="post__author" href="/about/">Frédéric KLEIN</a>
-              <time class="post__date" datetime="2023-05-06T17:01:35+02:00">06 May 2023</time>
+              <time class="post__date" datetime="2023-07-12T18:01:35+02:00">12 Jul 2023</time>
             </div>
           </div>
   
@@ -238,73 +238,409 @@
   <article class="post">
 
     <div class="post__content">
-      <h3 id="tanzu-application-platform-tap">Tanzu Application Platform (TAP)</h3>
+      <h3 id="building-an-mlops-platform-with-tanzu-application-platform-and-greenplum">Building an MLOps Platform with Tanzu Application Platform and Greenplum</h3>
 
-<p>I am consistently impressed by the way the Tanzu Application Platform (TAP) empowers developers to build and manage modern applications seamlessly. One of the key aspects that set TAP apart is its focus on providing an exceptional developer experience. This focus is further strengthened by the integration of the Backstage open-source project, which allows developers to efficiently manage and maintain their applications, ultimately speeding up software delivery. In this blog post, we’ll dive into the benefits of Backstage integration in TAP and explore how it elevates the developer experience.</p>
+<p>As a team of data scientists and engineers at VMware Tanzu, we’ve been exploring how we can leverage Tanzu Application Platform (TAP) and Greenplum to build a comprehensive MLOps platform. In this blog post, we’ll explain how to set up such a platform and provide a practical example of machine learning in action, predicting the age of abalones using linear regression.</p>
 
-<p>→ <a href="https://tanzu.vmware.com/application-platform">Tanzu Application Platform</a></p>
+<h3 id="tanzu-application-platform-and-greenplum">Tanzu Application Platform and Greenplum</h3>
 
-<h3 id="what-is-backstage">What is Backstage?</h3>
-
-<p>Backstage is an open-source platform developed by Spotify, which aims to provide a unified developer portal that simplifies the process of managing software components, services, and tools. It offers a single, extensible interface for developers to discover, explore, and interact with their organization’s software ecosystem, making it easier to navigate the complexities of modern software development.</p>
-
-<p>→ <a href="https://backstage.io/">Backstage.io</a></p>
-
-<h3 id="backstage-integration-in-tanzu-application-platform">Backstage Integration in Tanzu Application Platform</h3>
-
-<p>Backstage is the UI of TAP, and provides a centralized location to manage  applications and services, regardless of the underlying infrastructure. This brings the following benefits to developer:</p>
-
-<p><strong>1. Unified Developer Experience</strong>: With Backstage, developers can access all their services and applications from a single, intuitive interface. This streamlined experience simplifies the management of application components, reducing the time spent navigating between different tools and platforms.</p>
+<p>For this case study, we are working with a system that uses both the Tanzu Application Platform (TAP) and Greenplum, both of which are deployed on the Azure Cloud platform.</p>
 
 <div class="gallery-box">
   <div class="gallery">
-    <img src="/images/tap1.png" />
-    <img src="/images/tap2.png" />
-    <img src="/images/tap3.png" />
-    <img src="/images/tap4.png" />
-    <img src="/images/tap5.png" />
-    <img src="/images/tap6.png" />
-    <img src="/images/tap7.png" />
-    <img src="/images/tap8.png" />
-    <img src="/images/tap9.png" />
+    <img src="/images/data-architecture-simple.png" />
   </div>
-  <em><a href="https://tanzu.vmware.com/application-platform" target="_blank">TAP User Interface</a></em>
 </div>
 
-<p><strong>2. Enhanced Service Catalog</strong>: TAP’s integration with Backstage enables developers to easily discover and access their organization’s software components, services, and APIs. The catalog provides rich metadata and documentation, allowing teams to quickly understand and start using these resources.</p>
+<ul>
+  <li>
+    <p>Azure Cloud is Microsoft’s public cloud computing platform. It provides a range of cloud services, including those for computing, analytics, storage, and networking. Users can pick and choose from these services to develop and scale new applications, or run existing applications, in the public cloud.</p>
+  </li>
+  <li>
+    <p>Tanzu Application Platform (TAP) is a part of VMware Tanzu. It is designed to make it easier for developers to build, deploy, and manage applications on Kubernetes. In our case, TAP is deployed on the Azure Kubernetes Service (AKS), which is a managed container orchestration service provided by Azure. AKS simplifies the deployment, scaling, and operations of Kubernetes, thereby allowing TAP to fully utilize its modular capabilities for modern applications.</p>
+  </li>
+  <li>
+    <p>Greenplum is a high-performance, massively parallel data warehouse that provides powerful and rapid analytics on petabyte-scale data volumes. In our setup, Greenplum is deployed on top of virtual machines (VMs) on Azure Cloud. These VMs can be easily scaled and managed within the Azure ecosystem, allowing for the efficient handling of large data workloads by Greenplum.</p>
+  </li>
+</ul>
+
+<p>So, our platform foundation is a Kubernetes cluster hosted on Azure’s AKS. This cluster is used to run TAP, which supports the development and management of our modern applications. Concurrently, we use Greenplum on Azure VMs to provide robust analytics on large-scale data. This setup provides us with a scalable, efficient, and powerful platform for both application development and data analytics.</p>
+
+<p>Before we get started, it’s important to note that we assume you already have a Kubernetes cluster with TAP installed. In this guide, we have deployed a TAP platform on AKS by following the instructions <a href="https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/install-azure-intro.html">here</a>.</p>
+
+<p>Next, we installed Greenplum 7 along with its data science Python packages which you can learn more about <a href="https://docs.vmware.com/en/VMware-Greenplum/7/greenplum-database/install_guide-platform-requirements-overview.html">here</a> and <a href="https://docs.vmware.com/en/VMware-Greenplum/7/greenplum-database/install_guide-install_python_dsmod.html">here</a>.</p>
+
+<h3 id="jupyter-lab-and-accelerators">Jupyter Lab and Accelerators</h3>
+
+<p>JupyterLab is an interactive development environment for working with notebooks, code and data. It provides the ability to execute code in a number of programming languages and to organize that code along with narrative text, equations, images, and visualizations in a single document.</p>
+
+<p>On the other hand, an accelerator for Tanzu Application Platform (TAP) is a bit of software that aids in speeding up the development and deployment process of applications on TAP. Accelerators provide pre-configured templates or a set of scripts that automate the generation of code, configuration, and other operational aspects, enabling developers to focus on coding rather than configuration.</p>
+
+<p>In this case, we’ll use a JupyterLab accelerator available <a href="https://github.com/fklein82/jupyter-lab-for-tap">here</a>.</p>
+
+<p>You can add the accelerator to Tanzu Application Platform List by executing the following code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tanzu acc create jupyter-lab --git-repo https://github.com/fklein82/jupyter-lab-for-tap --git-branch main --interval 5s
+</code></pre></div></div>
+
+<p>Then you can deploy Jupyter-LAB by generate the acceleraror on your local machine and execting the following commands:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tanzu apps workload create -f $DIR/config/workload.yaml
+</code></pre></div></div>
+
+<p>And this will deploy Jupyter-LAB on TAP:</p>
 
 <div class="gallery-box">
   <div class="gallery">
-    <img src="/images/api.png" />
-    <img src="/images/api2.png" />
-    <img src="/images/api3.png" />
-    <img src="/images/api5.png" />
-    <img src="/images/api6.png" />
-    <img src="/images/api7.png" />
+    <img src="/images/supplychain-jupyter.png" />
   </div>
-  <em><a href="https://tanzu.vmware.com/application-platform" target="_blank">TAP User Interface and TAP API Portal</a></em>
 </div>
 
-<p><strong>3. Accelerated Development (aka Accelerator)</strong>: By providing a comprehensive and consistent interface for managing applications, Backstage helps developers to quickly understand and navigate their organization’s software ecosystem. This enables them to spend less time on administrative tasks and more time on developing new features and functionality.</p>
+<p>You can see the Pod running on AKS and the url with the TAP UI:</p>
 
 <div class="gallery-box">
   <div class="gallery">
-    <img src="/images/acc1.png" />
-    <img src="/images/acc2.png" />
+    <img src="/images/backstage-jupyter.png" />
   </div>
-  <em><a href="https://tanzu.vmware.com/application-platform" target="_blank">TAP User Interface and TAP plugins for Visual Studio Code</a></em>
 </div>
 
-<p><strong>4. Open-Source Community</strong>: Being an open-source project, Backstage boasts a vibrant and active community that continuously contributes to its development. This ensures that TAP users can leverage the latest features and improvements, keeping their developer experience up to date and cutting-edge.</p>
+<p>This is the UI of Jupyter-LAB deployed on our Tanzu Application Platform:</p>
 
-<h3 id="conclusion">Conclusion</h3>
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/jupyter.png" />
+  </div>
+</div>
 
-<p>The integration of the <strong>Backstage</strong> open-source project into <strong>Tanzu Application Platform</strong> plays a pivotal role in <strong>enhancing the developer experience</strong>. By streamlining application management, promoting discoverability, and providing customization options,</p>
+<h3 id="mlflow">MLflow</h3>
 
-<p>→ <strong>Tanzu Application Platform empowers developers to focus on what matters most: building software</strong>.</p>
+<p>MLflow is an open-source platform to manage the ML lifecycle, including experimentation, reproducibility, and deployment. It integrates with any Python, R, or Java-based Machine Learning algorithm and simplifies the process of tracking experiments, packaging code into reproducible runs, and sharing and deploying models.</p>
 
-<p>I am thrilled to see the continuous evolution of TAP and look forward to seeing how Backstage integration will continue to elevate the platform in the future, with customizable <a href="https://backstage.io/plugins">plugins</a>.</p>
+<p>For MLflow, we used the Accelerator from our colleagues Omotola Oawofolu, and it can be found <a href="https://github.com/agapebondservant/mlflow-accelerator">here</a>.</p>
 
+<p>You can add the accelerator to Tanzu Application Platform List by executing the following code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tanzu acc create jupyter-lab --git-repo --git-repository https://github.com/agapebondservant/mlflow-accelerator --git-branch main --interval 5s
+</code></pre></div></div>
+
+<p>This is the UI of MLflow deployed on our Tanzu Application Platform:</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/mlflow.png" />
+  </div>
+</div>
+
+<h3 id="python-script-for-abalone-age-prediction">Python Script for Abalone Age Prediction</h3>
+
+<p>With our MLOps platform ready, we’re set to tackle a real-world machine learning use case: predicting the age of abalones using linear regression. Let’s dive into the Python script.</p>
+
+<p>The script uses Greenplum’s ability to directly access external data to read the abalone dataset from an online source. The script is also utilizing sql_magic, an IPython extension, to write SQL queries to run against Greenplum database, as well as the GreenplumPython library for manipulating Greenplum data with Python.</p>
+
+<h4 id="1-environment-setup">1. Environment setup:</h4>
+<p>The script starts by installing the required packages and importing them. These include Python libraries such as pandas, numpy, plotly, and sqlalchemy for data manipulation, analysis, and visualization; greenplumpython for connecting to and interacting with the Greenplum database; and SQL magic commands that allow running SQL queries in Jupyter notebooks. It also sets up the database connection to Greenplum.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Setup environment: install &amp; import packages
+
+!pip install greenplum-python pandas numpy plotly ipython-sql sqlalchemy plotly-express sql_magic pgspecial
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+import plotly_express as px
+# For DB Connection
+from sqlalchemy import create_engine
+import psycopg2
+import pandas.io.sql as psql
+import sql_magic
+import greenplumpython as gp
+import plotly.io as pio
+pio.renderers.default = 'iframe'
+</code></pre></div></div>
+
+<h4 id="2-data-collection">2. Data Collection:</h4>
+<p>The script creates an external web table that pulls in the abalone data directly from an online resource using Greenplum’s CREATE EXTERNAL WEB TABLE statement. The external web table data is then transferred to a regular Greenplum table.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### Database Connection
+
+%load_ext sql
+%sql postgresql://gpadmin:password@xxx.xxx.xxx.xxx/warehouse
+
+%%sql 
+SELECT version ();
+
+# Data Collection: Access external web data directly from Greenplum
+
+%%sql
+-- External Table
+DROP EXTERNAL TABLE IF EXISTS abalone_external;
+CREATE EXTERNAL WEB TABLE abalone_external(
+    sex text
+    , length float8
+    , diameter float8
+    , height float8
+    , whole_weight float8
+    , shucked_weight float8
+    , viscera_weight float8
+    , shell_weight float8
+    , rings integer -- target variable to predict
+) EXECUTE 'curl http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data'
+format 'CSV'
+(null as '?');
+
+%%sql
+-- Create abalone table from an external table
+DROP TABLE IF EXISTS abalone;
+CREATE TABLE abalone AS (
+    SELECT ROW_NUMBER() OVER() AS id, *
+    FROM abalone_external
+) DISTRIBUTED BY (sex);
+</code></pre></div></div>
+
+<h4 id="3-exploratory-data-analysis-eda">3. Exploratory Data Analysis (EDA):</h4>
+<p>Basic SQL queries and the GreenplumPython library are used to inspect the data and get a sense of what it contains. This part also uses Plotly to visualize the distribution of the “sex” category.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Exploratory Data Analysis
+### Inspect the table using basic SQL
+
+%%sql 
+SELECT * FROM abalone LIMIT 10;
+</code></pre></div></div>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/result-abalone.png" />
+  </div>
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### Inspect the table using GreenplumPython library
+# GreenplumPython connection to DB
+db = gp.database("postgresql://gpadmin:password@xxx.xxx.xxx.xxx/warehouse")
+
+abalone = db.create_dataframe(table_name="abalone")
+
+# SELECT * FROM abalone ORDER BY id LIMIT 10;
+
+abalone.order_by("id")[:10]
+</code></pre></div></div>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/result2-abalone.png" />
+  </div>
+</div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#### Row-count of the "abalone" table
+
+# SELECT gp_segment_id, COUNT(*)
+# FROM abalone
+
+import greenplumpython.builtins.functions as F
+
+abalone.apply(lambda _: F.count())
+</code></pre></div></div>
+<p>count
+66832</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### Distribution of "sex" in abalone dataset
+group_by_sex = abalone.group_by("sex").apply(lambda _: F.count())
+df_group_by_sex = pd.DataFrame.from_records(iter(group_by_sex))
+df_group_by_sex
+</code></pre></div></div>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/result3-abalone.png" />
+  </div>
+</div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>px.pie(df_group_by_sex, names = 'sex', values = 'count', title='Distribution of sex categories')
+</code></pre></div></div>
+
+<h4 id="4-feature-engineering">4. Feature Engineering:</h4>
+<p>The dataset is split into a training set and a test set using SQL queries.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%%sql
+CREATE TEMP TABLE temp_abalone_label AS
+    (SELECT *, random() AS __samp_out_label FROM abalone);
+
+CREATE TEMP TABLE train_percentile_disc AS
+    (SELECT sex, percentile_disc(0.8) within GROUP (ORDER BY __samp_out_label) AS __samp_out_label
+    FROM temp_abalone_label GROUP BY sex);
+CREATE TEMP TABLE test_percentile_disc AS
+    (SELECT sex, percentile_disc(0.2) within GROUP (ORDER BY __samp_out_label) AS __samp_out_label
+    FROM temp_abalone_label GROUP BY sex);
+
+DROP TABLE IF EXISTS abalone_train;
+CREATE TABLE abalone_train AS
+    (SELECT temp_abalone_label.*
+        FROM temp_abalone_label
+        INNER JOIN train_percentile_disc
+        ON temp_abalone_label.__samp_out_label &lt;= train_percentile_disc.__samp_out_label
+        AND temp_abalone_label.sex = train_percentile_disc.sex
+    );
+DROP TABLE IF EXISTS abalone_test;
+CREATE TABLE abalone_test AS
+    (SELECT temp_abalone_label.*
+        FROM temp_abalone_label
+        INNER JOIN test_percentile_disc
+        ON temp_abalone_label.__samp_out_label &lt;= test_percentile_disc.__samp_out_label
+        AND temp_abalone_label.sex = test_percentile_disc.sex
+    )
+</code></pre></div></div>
+<p>Command result:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>66832 rows affected.
+3 rows affected.
+3 rows affected.
+Done.
+53467 rows affected.
+Done.
+13368 rows affected.
+</code></pre></div></div>
+<h4 id="5-in-database-machine-learning">5. In-database Machine Learning:</h4>
+<p>The main function is defined. It uses the GreenplumPython library to load the train and test datasets from the database. The function linreg_func is created, which takes in three lists (length, shucked weight, and rings) and returns a data class LinregType. Inside this function, the linear regression model is trained on the length and shucked weight, and the model is serialized. The model is logged to MLFlow, and the model’s coefficients, intercept, and metadata are returned.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import greenplumpython as gp
+from typing import List
+import dataclasses
+
+def main():
+    db = gp.database("postgresql://gpadmin:changeme@35.225.47.84/warehouse")
+
+    abalone = db.create_dataframe(table_name="abalone")
+    import greenplumpython.builtins.functions as F
+
+    abalone_train = db.create_dataframe(table_name="abalone_train")
+    abalone_test = db.create_dataframe(table_name="abalone_test")
+
+    print(abalone_test[:1])
+    print(abalone_train[:1])
+
+
+    # -- Create function
+    # -- Need to specify the return type -&gt; API will create the corresponding type in Greenplum to return a row
+    # -- Will add argument to change language extensions, currently plpython3u by default
+
+    @dataclasses.dataclass
+    class LinregType:
+        model_name: str
+        col_nm: List[str]
+        coef: List[float]
+        intercept: float
+        serialized_linreg_model: bytes
+        created_dt: str
+        run_id: str
+        registered_model_name: str
+        registered_model_version: str
+
+    @gp.create_column_function
+    def linreg_func(length: List[float], shucked_weight: List[float], rings: List[int]) -&gt; LinregType:
+        from typing import List
+        import dataclasses
+        from sklearn.linear_model import LinearRegression
+        import numpy as np
+        import pickle
+        import mlflow
+        import datetime
+        import os
+        os.environ["AZURE_STORAGE_ACCESS_KEY"] = "t11uhpL2YqfeORTdQMKsKvoBBZBkiTLrccscNS5sKxmtBRKnE54b/lzDPAn9v8hAD8jHW5Gg9/wD+AStK6mU9A=="
+        os.environ["AZURE_STORAGE_CONNECTION_STRING"] = "DefaultEndpointsProtocol=https;AccountName=mlflowdev01;AccountKey=t11uhpL2YqfeORTdQMKsKvoBBZBkiTLrccscNS5sKxmtBRKnE54b/lzDPAn9v8hAD8jHW5Gg9/wD+AStK6mU9A==;EndpointSuffix=core.windows.net"
+
+        @dataclasses.dataclass
+        class LinregType:
+            model_name: str
+            col_nm: List[str]
+            coef: List[float]
+            intercept: float
+            serialized_linreg_model: bytes
+            created_dt: str
+            run_id: str
+            registered_model_name: str
+            registered_model_version: str
+
+        mlflow.set_tracking_uri("http://20.93.3.160:5000")
+        mlflow.set_experiment('test')
+        experiment = mlflow.get_experiment_by_name('test')
+        experiment_id = experiment.experiment_id
+        mlflow.autolog()
+        with mlflow.start_run(experiment_id=experiment_id,nested=True) as run:
+            model_name="model_greenplum"
+            mlflow.log_param("start_run_test", "This is a test")
+            X = np.array([length, shucked_weight]).T
+            y = np.array([rings]).T
+
+            # OLS linear regression with length, shucked_weight
+            linreg_fit = LinearRegression().fit(X, y)
+            linreg_coef = linreg_fit.coef_
+            linreg_intercept = linreg_fit.intercept_
+            mlflow.log_param("start_run_test2", "This is a test 2")
+            # Serialization of the fitted model
+            serialized_linreg_model = pickle.dumps(linreg_fit, protocol=3)
+            mlflow.sklearn.log_model(linreg_fit, model_name)
+
+            # Register the model to MLFlow
+            model_uri = "runs:/{}/model".format(run.info.run_id)
+            mv = mlflow.register_model(model_uri, model_name)
+            mlflow.sklearn.log_model(
+                    sk_model=linreg_fit,
+                    artifact_path="model",
+                    registered_model_name=model_name,
+                )
+
+            return LinregType(
+                model_name=model_name,
+                col_nm=["length", "shucked_weight"],
+                coef=linreg_coef[0],
+                intercept=linreg_intercept[0],
+                serialized_linreg_model=serialized_linreg_model,
+                created_dt=str(datetime.datetime.now()),
+                run_id=str(run.info.run_id),
+                registered_model_name=str(mv.name),
+                registered_model_version=str(mv.version)
+            )
+
+    linreg_fitted = (
+        abalone_train.group_by()
+        .apply(lambda t: linreg_func(t["length"], t["shucked_weight"], t["rings"]), expand=True)
+    )
+
+    print(linreg_fitted[["model_name", "col_nm", "coef", "intercept", "created_dt", "run_id", "registered_model_name",
+                   "registered_model_version"]])
+
+    linreg_test_fit = linreg_fitted.cross_join(
+        abalone_test,
+        self_columns=["col_nm", "coef", "intercept", "serialized_linreg_model", "created_dt", "registered_model_name",
+                      "registered_model_version"]
+    )
+    print(linreg_test_fit[:1])
+</code></pre></div></div>
+
+<h4 id="6-model-training">6. Model Training:</h4>
+<p>The linear regression function is applied to the training data using the group_by().apply() method from the GreenplumPython library.</p>
+
+<h4 id="7-model-testing">7. Model Testing:</h4>
+<p>The test data is combined with the trained model using the cross_join() method, and predictions can be made based on the trained model.</p>
+
+<p>In this script, Greenplum’s power is used to perform in-database machine learning. This allows processing large amounts of data without moving it out of the database, leading to improved performance.</p>
+
+<h4 id="8-integration-with-mlflow">8. Integration with MLflow:</h4>
+<p>The script also showcases the integration with MLflow for model tracking and versioning. Once you’ve run some experiments with MLflow, you can go to its web interface to see an overview of all your experiments, each one with a unique name, start time, user, and other useful metadata.</p>
+
+<p>By clicking on a specific run, you can see more detailed information including the input parameters, output metrics, tags, and any notes you may have added. You can also visualize the model’s performance over time and across different parameters. Additionally, MLflow allows you to store the model for each run. You can compare different runs, revert to older models, or deploy the model directly from MLflow.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/mlflow-result-abalone.png" />
+  </div>
+</div>
+
+<p>This script is used to predict the age of abalones (represented by the “rings” column in the dataset) using a linear regression model trained on two features: the length and shucked weight of the abalones. It’s an example of supervised learning as it uses labelled data (i.e., we know the actual age of the abalones in the training set).</p>
+
+<p>The data for this example comes from the UCI Machine Learning Repository. It’s a well-known dataset in the machine learning community, often used to illustrate various data analysis and machine learning techniques. In this case, the dataset provides a practical use case for the Tanzu Application Platform and Greenplum capabilities in setting up an MLOps environment.</p>
+
+<h3 id="authors">Authors</h3>
+
+<p>This blog post was <strong>co-written</strong> with my friends <a href="https://www.linkedin.com/in/ruxue-zeng/"><strong>Ruxue Zeng</strong></a> and <a href="https://www.linkedin.com/in/ahmed-rachid/"><strong>Ahmed Rachid Hazourli</strong></a>.</p>
+
+<p>We sincerely hope you <strong>enjoyed reading it</strong>!</p>
 
     </div>
 
@@ -312,22 +648,22 @@
       <ul class="share__list list-reset">
         <li class="share__item">
           <a class="share__link share__twitter"
-            href="https://twitter.com/intent/tweet?text=Enhancing%20Developer%20Experience%20on%20Tanzu%20Application%20Platform%20with%20Backstage&url=http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html"
+            href="https://twitter.com/intent/tweet?text=Setup%20your%20DATA%20&%20IA%20Platform%20with%20Tanzu%20-%20A%20Real-World%20Guide%20to%20Predicting%20Abalone%20Age.&url=http://localhost:4000/post/2023/07/12/tap-greenplum-python.html"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html"
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/post/2023/07/12/tap-greenplum-python.html"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html&amp;media=http://localhost:4000/images/backstage-tap.png&amp;description=Enhancing%20Developer%20Experience%20on%20Tanzu%20Application%20Platform%20with%20Backstage"
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/post/2023/07/12/tap-greenplum-python.html&amp;media=http://localhost:4000/images/data-ia.png&amp;description=Setup%20your%20DATA%20&%20IA%20Platform%20with%20Tanzu%20-%20A%20Real-World%20Guide%20to%20Predicting%20Abalone%20Age."
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
           rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html&title=Enhancing%20Developer%20Experience%20on%20Tanzu%20Application%20Platform%20with%20Backstage&summary=Discover%20how%20the%20Tanzu%20Application%20Platform%20enhances%20developer%20experience%20through%20the%20integration%20of%20the%20Backstage%20open-source%20project,%20streamlining%20application%20management%20and%20boosting%20productivity..&source=Tanzu%20SE%20Blog"
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2023/07/12/tap-greenplum-python.html&title=Setup%20your%20DATA%20&%20IA%20Platform%20with%20Tanzu%20-%20A%20Real-World%20Guide%20to%20Predicting%20Abalone%20Age.&summary=In%20this%20blog%20post,%20we%20walk%20you%20through%20the%20process%20of%20setting%20up%20the%20DATA-IA%20platform%20with%20Tanzu%20Application%20Platform%20and%20Greenplum%20Database.%20We%20leverage%20these%20technologies%20to%20build%20and%20deploy%20a%20Machine%20Learning%20model%20that%20predicts%20the%20age%20of%20abalone,%20providing%20a%20practical%20use-case%20to%20help%20you%20understand%20the%20capabilities%20of%20these%20robust%20data%20platforms.&source=Tanzu%20SE%20Blog"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
         </li>
       </ul>
@@ -346,7 +682,7 @@
 
 <!-- begin related posts -->
 <div class="container">
-  <section class="related-posts  animate">
+  <section class="related-posts is-related animate">
     <div class="row">
       <div class="col col-12">
         <div class="container__inner">
@@ -357,7 +693,7 @@
                 
                 
                   
-                    <a href="/tags#Tap" class="section__link related-tag">See all<span> Tap</span></a>
+                    <a href="/tags#data-ia" class="section__link related-tag">See all<span> data-ia</span></a>
                   
                 
               
@@ -380,6 +716,40 @@
             
       
             
+
+              <div class="article col col-4 col-d-6 col-t-12">
+  <div class="article__inner">
+
+    <div class="article__head">
+      <time class="article__date" datetime="2023-05-08T18:01:35+02:00">08 May 2023</time>
+
+      
+
+      
+      <a class="article__image" href="/post/2023/05/08/tap-and-greenplum.html">
+        <img class="lazy" data-src="/images/mlops2.png" alt="Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.">
+      </a>
+      
+
+    </div>
+
+    <div class="article__content">
+
+      <h2 class="article__title">
+        <a href="/post/2023/05/08/tap-and-greenplum.html">Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.</a>
+      </h2>
+
+      
+      <p class="article__excerpt">Learn how to train a Convolutional Neural Network, utilize DataHub for data set management, set up a JupyterHub notebooks environment, and build ML workflows with Kubeflow and Argo Workflows.</p>
+      
+
+    </div>
+  </div>
+</div>
+
+            
+                
+              
             
             
             

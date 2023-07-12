@@ -5,9 +5,424 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 18 May 2023 01:17:08 +0200</pubDate>
-        <lastBuildDate>Thu, 18 May 2023 01:17:08 +0200</lastBuildDate>
+        <pubDate>Wed, 12 Jul 2023 20:33:18 +0200</pubDate>
+        <lastBuildDate>Wed, 12 Jul 2023 20:33:18 +0200</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
+        
+            <item>
+                <title>Setup your DATA &amp; IA Platform with Tanzu - A Real-World Guide to Predicting Abalone Age.</title>
+                <description>&lt;h3 id=&quot;building-an-mlops-platform-with-tanzu-application-platform-and-greenplum&quot;&gt;Building an MLOps Platform with Tanzu Application Platform and Greenplum&lt;/h3&gt;
+
+&lt;p&gt;As a team of data scientists and engineers at VMware Tanzu, we’ve been exploring how we can leverage Tanzu Application Platform (TAP) and Greenplum to build a comprehensive MLOps platform. In this blog post, we’ll explain how to set up such a platform and provide a practical example of machine learning in action, predicting the age of abalones using linear regression.&lt;/p&gt;
+
+&lt;h3 id=&quot;tanzu-application-platform-and-greenplum&quot;&gt;Tanzu Application Platform and Greenplum&lt;/h3&gt;
+
+&lt;p&gt;For this case study, we are working with a system that uses both the Tanzu Application Platform (TAP) and Greenplum, both of which are deployed on the Azure Cloud platform.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/data-architecture-simple.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Azure Cloud is Microsoft’s public cloud computing platform. It provides a range of cloud services, including those for computing, analytics, storage, and networking. Users can pick and choose from these services to develop and scale new applications, or run existing applications, in the public cloud.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tanzu Application Platform (TAP) is a part of VMware Tanzu. It is designed to make it easier for developers to build, deploy, and manage applications on Kubernetes. In our case, TAP is deployed on the Azure Kubernetes Service (AKS), which is a managed container orchestration service provided by Azure. AKS simplifies the deployment, scaling, and operations of Kubernetes, thereby allowing TAP to fully utilize its modular capabilities for modern applications.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Greenplum is a high-performance, massively parallel data warehouse that provides powerful and rapid analytics on petabyte-scale data volumes. In our setup, Greenplum is deployed on top of virtual machines (VMs) on Azure Cloud. These VMs can be easily scaled and managed within the Azure ecosystem, allowing for the efficient handling of large data workloads by Greenplum.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, our platform foundation is a Kubernetes cluster hosted on Azure’s AKS. This cluster is used to run TAP, which supports the development and management of our modern applications. Concurrently, we use Greenplum on Azure VMs to provide robust analytics on large-scale data. This setup provides us with a scalable, efficient, and powerful platform for both application development and data analytics.&lt;/p&gt;
+
+&lt;p&gt;Before we get started, it’s important to note that we assume you already have a Kubernetes cluster with TAP installed. In this guide, we have deployed a TAP platform on AKS by following the instructions &lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/install-azure-intro.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, we installed Greenplum 7 along with its data science Python packages which you can learn more about &lt;a href=&quot;https://docs.vmware.com/en/VMware-Greenplum/7/greenplum-database/install_guide-platform-requirements-overview.html&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://docs.vmware.com/en/VMware-Greenplum/7/greenplum-database/install_guide-install_python_dsmod.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;jupyter-lab-and-accelerators&quot;&gt;Jupyter Lab and Accelerators&lt;/h3&gt;
+
+&lt;p&gt;JupyterLab is an interactive development environment for working with notebooks, code and data. It provides the ability to execute code in a number of programming languages and to organize that code along with narrative text, equations, images, and visualizations in a single document.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, an accelerator for Tanzu Application Platform (TAP) is a bit of software that aids in speeding up the development and deployment process of applications on TAP. Accelerators provide pre-configured templates or a set of scripts that automate the generation of code, configuration, and other operational aspects, enabling developers to focus on coding rather than configuration.&lt;/p&gt;
+
+&lt;p&gt;In this case, we’ll use a JupyterLab accelerator available &lt;a href=&quot;https://github.com/fklein82/jupyter-lab-for-tap&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can add the accelerator to Tanzu Application Platform List by executing the following code:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create jupyter-lab --git-repo https://github.com/fklein82/jupyter-lab-for-tap --git-branch main --interval 5s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then you can deploy Jupyter-LAB by generate the acceleraror on your local machine and execting the following commands:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload create -f $DIR/config/workload.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And this will deploy Jupyter-LAB on TAP:&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/supplychain-jupyter.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You can see the Pod running on AKS and the url with the TAP UI:&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/backstage-jupyter.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is the UI of Jupyter-LAB deployed on our Tanzu Application Platform:&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/jupyter.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;mlflow&quot;&gt;MLflow&lt;/h3&gt;
+
+&lt;p&gt;MLflow is an open-source platform to manage the ML lifecycle, including experimentation, reproducibility, and deployment. It integrates with any Python, R, or Java-based Machine Learning algorithm and simplifies the process of tracking experiments, packaging code into reproducible runs, and sharing and deploying models.&lt;/p&gt;
+
+&lt;p&gt;For MLflow, we used the Accelerator from our colleagues Omotola Oawofolu, and it can be found &lt;a href=&quot;https://github.com/agapebondservant/mlflow-accelerator&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can add the accelerator to Tanzu Application Platform List by executing the following code:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create jupyter-lab --git-repo --git-repository https://github.com/agapebondservant/mlflow-accelerator --git-branch main --interval 5s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is the UI of MLflow deployed on our Tanzu Application Platform:&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/mlflow.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;python-script-for-abalone-age-prediction&quot;&gt;Python Script for Abalone Age Prediction&lt;/h3&gt;
+
+&lt;p&gt;With our MLOps platform ready, we’re set to tackle a real-world machine learning use case: predicting the age of abalones using linear regression. Let’s dive into the Python script.&lt;/p&gt;
+
+&lt;p&gt;The script uses Greenplum’s ability to directly access external data to read the abalone dataset from an online source. The script is also utilizing sql_magic, an IPython extension, to write SQL queries to run against Greenplum database, as well as the GreenplumPython library for manipulating Greenplum data with Python.&lt;/p&gt;
+
+&lt;h4 id=&quot;1-environment-setup&quot;&gt;1. Environment setup:&lt;/h4&gt;
+&lt;p&gt;The script starts by installing the required packages and importing them. These include Python libraries such as pandas, numpy, plotly, and sqlalchemy for data manipulation, analysis, and visualization; greenplumpython for connecting to and interacting with the Greenplum database; and SQL magic commands that allow running SQL queries in Jupyter notebooks. It also sets up the database connection to Greenplum.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Setup environment: install &amp;amp; import packages
+
+!pip install greenplum-python pandas numpy plotly ipython-sql sqlalchemy plotly-express sql_magic pgspecial
+
+import pandas as pd
+import numpy as np
+import os
+import sys
+import plotly_express as px
+# For DB Connection
+from sqlalchemy import create_engine
+import psycopg2
+import pandas.io.sql as psql
+import sql_magic
+import greenplumpython as gp
+import plotly.io as pio
+pio.renderers.default = &apos;iframe&apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2-data-collection&quot;&gt;2. Data Collection:&lt;/h4&gt;
+&lt;p&gt;The script creates an external web table that pulls in the abalone data directly from an online resource using Greenplum’s CREATE EXTERNAL WEB TABLE statement. The external web table data is then transferred to a regular Greenplum table.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;### Database Connection
+
+%load_ext sql
+%sql postgresql://gpadmin:password@xxx.xxx.xxx.xxx/warehouse
+
+%%sql 
+SELECT version ();
+
+# Data Collection: Access external web data directly from Greenplum
+
+%%sql
+-- External Table
+DROP EXTERNAL TABLE IF EXISTS abalone_external;
+CREATE EXTERNAL WEB TABLE abalone_external(
+    sex text
+    , length float8
+    , diameter float8
+    , height float8
+    , whole_weight float8
+    , shucked_weight float8
+    , viscera_weight float8
+    , shell_weight float8
+    , rings integer -- target variable to predict
+) EXECUTE &apos;curl http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&apos;
+format &apos;CSV&apos;
+(null as &apos;?&apos;);
+
+%%sql
+-- Create abalone table from an external table
+DROP TABLE IF EXISTS abalone;
+CREATE TABLE abalone AS (
+    SELECT ROW_NUMBER() OVER() AS id, *
+    FROM abalone_external
+) DISTRIBUTED BY (sex);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;3-exploratory-data-analysis-eda&quot;&gt;3. Exploratory Data Analysis (EDA):&lt;/h4&gt;
+&lt;p&gt;Basic SQL queries and the GreenplumPython library are used to inspect the data and get a sense of what it contains. This part also uses Plotly to visualize the distribution of the “sex” category.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Exploratory Data Analysis
+### Inspect the table using basic SQL
+
+%%sql 
+SELECT * FROM abalone LIMIT 10;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/result-abalone.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;### Inspect the table using GreenplumPython library
+# GreenplumPython connection to DB
+db = gp.database(&quot;postgresql://gpadmin:password@xxx.xxx.xxx.xxx/warehouse&quot;)
+
+abalone = db.create_dataframe(table_name=&quot;abalone&quot;)
+
+# SELECT * FROM abalone ORDER BY id LIMIT 10;
+
+abalone.order_by(&quot;id&quot;)[:10]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/result2-abalone.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#### Row-count of the &quot;abalone&quot; table
+
+# SELECT gp_segment_id, COUNT(*)
+# FROM abalone
+
+import greenplumpython.builtins.functions as F
+
+abalone.apply(lambda _: F.count())
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;count
+66832&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;### Distribution of &quot;sex&quot; in abalone dataset
+group_by_sex = abalone.group_by(&quot;sex&quot;).apply(lambda _: F.count())
+df_group_by_sex = pd.DataFrame.from_records(iter(group_by_sex))
+df_group_by_sex
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/result3-abalone.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;px.pie(df_group_by_sex, names = &apos;sex&apos;, values = &apos;count&apos;, title=&apos;Distribution of sex categories&apos;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;4-feature-engineering&quot;&gt;4. Feature Engineering:&lt;/h4&gt;
+&lt;p&gt;The dataset is split into a training set and a test set using SQL queries.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%%sql
+CREATE TEMP TABLE temp_abalone_label AS
+    (SELECT *, random() AS __samp_out_label FROM abalone);
+
+CREATE TEMP TABLE train_percentile_disc AS
+    (SELECT sex, percentile_disc(0.8) within GROUP (ORDER BY __samp_out_label) AS __samp_out_label
+    FROM temp_abalone_label GROUP BY sex);
+CREATE TEMP TABLE test_percentile_disc AS
+    (SELECT sex, percentile_disc(0.2) within GROUP (ORDER BY __samp_out_label) AS __samp_out_label
+    FROM temp_abalone_label GROUP BY sex);
+
+DROP TABLE IF EXISTS abalone_train;
+CREATE TABLE abalone_train AS
+    (SELECT temp_abalone_label.*
+        FROM temp_abalone_label
+        INNER JOIN train_percentile_disc
+        ON temp_abalone_label.__samp_out_label &amp;lt;= train_percentile_disc.__samp_out_label
+        AND temp_abalone_label.sex = train_percentile_disc.sex
+    );
+DROP TABLE IF EXISTS abalone_test;
+CREATE TABLE abalone_test AS
+    (SELECT temp_abalone_label.*
+        FROM temp_abalone_label
+        INNER JOIN test_percentile_disc
+        ON temp_abalone_label.__samp_out_label &amp;lt;= test_percentile_disc.__samp_out_label
+        AND temp_abalone_label.sex = test_percentile_disc.sex
+    )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Command result:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;66832 rows affected.
+3 rows affected.
+3 rows affected.
+Done.
+53467 rows affected.
+Done.
+13368 rows affected.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;5-in-database-machine-learning&quot;&gt;5. In-database Machine Learning:&lt;/h4&gt;
+&lt;p&gt;The main function is defined. It uses the GreenplumPython library to load the train and test datasets from the database. The function linreg_func is created, which takes in three lists (length, shucked weight, and rings) and returns a data class LinregType. Inside this function, the linear regression model is trained on the length and shucked weight, and the model is serialized. The model is logged to MLFlow, and the model’s coefficients, intercept, and metadata are returned.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import greenplumpython as gp
+from typing import List
+import dataclasses
+
+def main():
+    db = gp.database(&quot;postgresql://gpadmin:changeme@35.225.47.84/warehouse&quot;)
+
+    abalone = db.create_dataframe(table_name=&quot;abalone&quot;)
+    import greenplumpython.builtins.functions as F
+
+    abalone_train = db.create_dataframe(table_name=&quot;abalone_train&quot;)
+    abalone_test = db.create_dataframe(table_name=&quot;abalone_test&quot;)
+
+    print(abalone_test[:1])
+    print(abalone_train[:1])
+
+
+    # -- Create function
+    # -- Need to specify the return type -&amp;gt; API will create the corresponding type in Greenplum to return a row
+    # -- Will add argument to change language extensions, currently plpython3u by default
+
+    @dataclasses.dataclass
+    class LinregType:
+        model_name: str
+        col_nm: List[str]
+        coef: List[float]
+        intercept: float
+        serialized_linreg_model: bytes
+        created_dt: str
+        run_id: str
+        registered_model_name: str
+        registered_model_version: str
+
+    @gp.create_column_function
+    def linreg_func(length: List[float], shucked_weight: List[float], rings: List[int]) -&amp;gt; LinregType:
+        from typing import List
+        import dataclasses
+        from sklearn.linear_model import LinearRegression
+        import numpy as np
+        import pickle
+        import mlflow
+        import datetime
+        import os
+        os.environ[&quot;AZURE_STORAGE_ACCESS_KEY&quot;] = &quot;t11uhpL2YqfeORTdQMKsKvoBBZBkiTLrccscNS5sKxmtBRKnE54b/lzDPAn9v8hAD8jHW5Gg9/wD+AStK6mU9A==&quot;
+        os.environ[&quot;AZURE_STORAGE_CONNECTION_STRING&quot;] = &quot;DefaultEndpointsProtocol=https;AccountName=mlflowdev01;AccountKey=t11uhpL2YqfeORTdQMKsKvoBBZBkiTLrccscNS5sKxmtBRKnE54b/lzDPAn9v8hAD8jHW5Gg9/wD+AStK6mU9A==;EndpointSuffix=core.windows.net&quot;
+
+        @dataclasses.dataclass
+        class LinregType:
+            model_name: str
+            col_nm: List[str]
+            coef: List[float]
+            intercept: float
+            serialized_linreg_model: bytes
+            created_dt: str
+            run_id: str
+            registered_model_name: str
+            registered_model_version: str
+
+        mlflow.set_tracking_uri(&quot;http://20.93.3.160:5000&quot;)
+        mlflow.set_experiment(&apos;test&apos;)
+        experiment = mlflow.get_experiment_by_name(&apos;test&apos;)
+        experiment_id = experiment.experiment_id
+        mlflow.autolog()
+        with mlflow.start_run(experiment_id=experiment_id,nested=True) as run:
+            model_name=&quot;model_greenplum&quot;
+            mlflow.log_param(&quot;start_run_test&quot;, &quot;This is a test&quot;)
+            X = np.array([length, shucked_weight]).T
+            y = np.array([rings]).T
+
+            # OLS linear regression with length, shucked_weight
+            linreg_fit = LinearRegression().fit(X, y)
+            linreg_coef = linreg_fit.coef_
+            linreg_intercept = linreg_fit.intercept_
+            mlflow.log_param(&quot;start_run_test2&quot;, &quot;This is a test 2&quot;)
+            # Serialization of the fitted model
+            serialized_linreg_model = pickle.dumps(linreg_fit, protocol=3)
+            mlflow.sklearn.log_model(linreg_fit, model_name)
+
+            # Register the model to MLFlow
+            model_uri = &quot;runs:/{}/model&quot;.format(run.info.run_id)
+            mv = mlflow.register_model(model_uri, model_name)
+            mlflow.sklearn.log_model(
+                    sk_model=linreg_fit,
+                    artifact_path=&quot;model&quot;,
+                    registered_model_name=model_name,
+                )
+
+            return LinregType(
+                model_name=model_name,
+                col_nm=[&quot;length&quot;, &quot;shucked_weight&quot;],
+                coef=linreg_coef[0],
+                intercept=linreg_intercept[0],
+                serialized_linreg_model=serialized_linreg_model,
+                created_dt=str(datetime.datetime.now()),
+                run_id=str(run.info.run_id),
+                registered_model_name=str(mv.name),
+                registered_model_version=str(mv.version)
+            )
+
+    linreg_fitted = (
+        abalone_train.group_by()
+        .apply(lambda t: linreg_func(t[&quot;length&quot;], t[&quot;shucked_weight&quot;], t[&quot;rings&quot;]), expand=True)
+    )
+
+    print(linreg_fitted[[&quot;model_name&quot;, &quot;col_nm&quot;, &quot;coef&quot;, &quot;intercept&quot;, &quot;created_dt&quot;, &quot;run_id&quot;, &quot;registered_model_name&quot;,
+                   &quot;registered_model_version&quot;]])
+
+    linreg_test_fit = linreg_fitted.cross_join(
+        abalone_test,
+        self_columns=[&quot;col_nm&quot;, &quot;coef&quot;, &quot;intercept&quot;, &quot;serialized_linreg_model&quot;, &quot;created_dt&quot;, &quot;registered_model_name&quot;,
+                      &quot;registered_model_version&quot;]
+    )
+    print(linreg_test_fit[:1])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;6-model-training&quot;&gt;6. Model Training:&lt;/h4&gt;
+&lt;p&gt;The linear regression function is applied to the training data using the group_by().apply() method from the GreenplumPython library.&lt;/p&gt;
+
+&lt;h4 id=&quot;7-model-testing&quot;&gt;7. Model Testing:&lt;/h4&gt;
+&lt;p&gt;The test data is combined with the trained model using the cross_join() method, and predictions can be made based on the trained model.&lt;/p&gt;
+
+&lt;p&gt;In this script, Greenplum’s power is used to perform in-database machine learning. This allows processing large amounts of data without moving it out of the database, leading to improved performance.&lt;/p&gt;
+
+&lt;h4 id=&quot;8-integration-with-mlflow&quot;&gt;8. Integration with MLflow:&lt;/h4&gt;
+&lt;p&gt;The script also showcases the integration with MLflow for model tracking and versioning. Once you’ve run some experiments with MLflow, you can go to its web interface to see an overview of all your experiments, each one with a unique name, start time, user, and other useful metadata.&lt;/p&gt;
+
+&lt;p&gt;By clicking on a specific run, you can see more detailed information including the input parameters, output metrics, tags, and any notes you may have added. You can also visualize the model’s performance over time and across different parameters. Additionally, MLflow allows you to store the model for each run. You can compare different runs, revert to older models, or deploy the model directly from MLflow.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/mlflow-result-abalone.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This script is used to predict the age of abalones (represented by the “rings” column in the dataset) using a linear regression model trained on two features: the length and shucked weight of the abalones. It’s an example of supervised learning as it uses labelled data (i.e., we know the actual age of the abalones in the training set).&lt;/p&gt;
+
+&lt;p&gt;The data for this example comes from the UCI Machine Learning Repository. It’s a well-known dataset in the machine learning community, often used to illustrate various data analysis and machine learning techniques. In this case, the dataset provides a practical use case for the Tanzu Application Platform and Greenplum capabilities in setting up an MLOps environment.&lt;/p&gt;
+
+&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
+
+&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends &lt;a href=&quot;https://www.linkedin.com/in/ruxue-zeng/&quot;&gt;&lt;strong&gt;Ruxue Zeng&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;&lt;strong&gt;Ahmed Rachid Hazourli&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We sincerely hope you &lt;strong&gt;enjoyed reading it&lt;/strong&gt;!&lt;/p&gt;
+</description>
+                <pubDate>Wed, 12 Jul 2023 18:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2023/07/12/tap-greenplum-python.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/07/12/tap-greenplum-python.html</guid>
+                
+                <category>data-ia</category>
+                
+                
+            </item>
         
             <item>
                 <title>Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.</title>
@@ -727,31 +1142,6 @@ spec:
                 <guid isPermaLink="true">http://localhost:4000/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html</guid>
                 
                 <category>tap</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>How to accelerate the Kubernetes adoption for developers?</title>
-                <description>&lt;p&gt;The VMware Tanzu portfolio is designed to help developers accelerate their adoption of Kubernetes by providing a range of tools and services that simplify the deployment and management of Kubernetes-based applications. Here are some of the key ways that Tanzu products can help developers accelerate their Kubernetes adoption:&lt;/p&gt;
-
-&lt;p&gt;Simplified Kubernetes deployment: Tanzu Kubernetes Grid (TKG) is a Kubernetes runtime that provides a consistent and secure Kubernetes environment across multiple clouds and environments. TKG simplifies the deployment of Kubernetes, allowing developers to quickly spin up Kubernetes clusters and start deploying applications.&lt;/p&gt;
-
-&lt;p&gt;Streamlined application deployment: Tanzu Application Platform is a platform for deploying and managing modern applications. TAP provides a cloud-native runtime for applications, with support for multiple programming languages and frameworks. TAP streamlines the deployment of applications to Kubernetes clusters, reducing the time and effort required to get applications up and running.&lt;/p&gt;
-
-&lt;p&gt;Centralized management: Tanzu Mission Control (TMC) is a central management platform for Kubernetes clusters and applications running on them. TMC provides a single pane of glass for managing Kubernetes clusters across multiple clouds, and enables policy-based management of applications and infrastructure. TMC simplifies the management of Kubernetes environments, allowing developers to focus on building and deploying applications.&lt;/p&gt;
-
-&lt;p&gt;Improved visibility and monitoring: Tanzu Observability (TO) is a comprehensive monitoring and analytics platform for modern applications. TO provides real-time visibility into application performance, with built-in dashboards and alerts for identifying and resolving issues quickly. This enables developers to proactively monitor their applications and address issues before they become problems.&lt;/p&gt;
-
-&lt;p&gt;Automated container image builds: Tanzu Build Service (TBS) is a platform for automating the build and deployment of container images. TBS enables developers to easily create secure and compliant container images from source code, and automates the deployment of these images to Kubernetes clusters. This streamlines the container image build and deployment process, freeing up developers to focus on building applications.&lt;/p&gt;
-
-&lt;p&gt;Overall, the VMware Tanzu portfolio provides a range of tools and services that can help developers accelerate their adoption of Kubernetes. By simplifying Kubernetes deployment and management, streamlining application deployment, providing centralized management, improving visibility and monitoring, and automating container image builds, Tanzu products can help developers focus on building applications, rather than managing infrastructure.&lt;/p&gt;
-</description>
-                <pubDate>Tue, 09 Aug 2022 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2022/08/09/accelerate-the-kubernetes-adoption-for-developers.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2022/08/09/accelerate-the-kubernetes-adoption-for-developers.html</guid>
-                
-                <category>path-to-prod</category>
                 
                 
             </item>
