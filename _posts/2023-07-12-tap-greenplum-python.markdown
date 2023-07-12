@@ -228,9 +228,15 @@ df_group_by_sex
     <img src="/images/result3-abalone.png">
   </div>
 </div>
+
 ~~~
 px.pie(df_group_by_sex, names = 'sex', values = 'count', title='Distribution of sex categories')
 ~~~
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/pie-chart-python.png">
+  </div>
+</div>
 
 #### 4. Feature Engineering: 
 The dataset is split into a training set and a test set using SQL queries.
@@ -282,7 +288,7 @@ from typing import List
 import dataclasses
 
 def main():
-    db = gp.database("postgresql://gpadmin:changeme@35.225.47.84/warehouse")
+    db = gp.database("postgresql://gpadmin:password@xxx.xxx.xxx.xxx/warehouse")
 
     abalone = db.create_dataframe(table_name="abalone")
     import greenplumpython.builtins.functions as F
@@ -320,8 +326,8 @@ def main():
         import mlflow
         import datetime
         import os
-        os.environ["AZURE_STORAGE_ACCESS_KEY"] = "t11uhpL2YqfeORTdQMKsKvoBBZBkiTLrccscNS5sKxmtBRKnE54b/lzDPAn9v8hAD8jHW5Gg9/wD+AStK6mU9A=="
-        os.environ["AZURE_STORAGE_CONNECTION_STRING"] = "DefaultEndpointsProtocol=https;AccountName=mlflowdev01;AccountKey=t11uhpL2YqfeORTdQMKsKvoBBZBkiTLrccscNS5sKxmtBRKnE54b/lzDPAn9v8hAD8jHW5Gg9/wD+AStK6mU9A==;EndpointSuffix=core.windows.net"
+        os.environ["AZURE_STORAGE_ACCESS_KEY"] = "XXX"
+        os.environ["AZURE_STORAGE_CONNECTION_STRING"] = "DefaultEndpointsProtocol=https;AccountName=XXX;AccountKey=XXX;EndpointSuffix=core.windows.net"
 
         @dataclasses.dataclass
         class LinregType:
