@@ -6,23 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Tags</title>
-  <meta name='description' content='Frédéric KLEIN personal Blog'>
+  <title>Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.</title>
+  <meta name='description' content='This comprehensive guide provides a step-by-step walkthrough of how to integrate Tanzu Application Platform with GitHub Actions. It will explore key concepts...'>
 
-  <link rel="canonical" href="https://blog.fklein.me/tags/">
+  <link rel="canonical" href="https://blog.fklein.me/post/2023/07/18/tap-github-action.html">
   <link rel="alternate" type="application/rss+xml" title="Tanzu SE Blog" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tags – Tanzu SE Blog">
-  <meta name="twitter:description" content="">
+  <meta name="twitter:title" content="Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide. – Tanzu SE Blog">
+  <meta name="twitter:description" content="This comprehensive guide provides a step-by-step walkthrough of how to integrate Tanzu Application Platform with GitHub Actions. It will explore key concepts such as customizing supply chains and utilizing Cartographer.sh to streamline your development process. Whether you&apos;re an experienced DevOps professional or just getting started with Tanzu and GitHub Actions, this post will provide valuable insights to enhance your software development workflow..">
   <meta name="twitter:image" content="https://blog.fklein.me/images/twitter.jpg">
 
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Tags – Tanzu SE Blog">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
+  <meta property="og:title" content="Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide. – Tanzu SE Blog">
+  <meta property="og:description" content="This comprehensive guide provides a step-by-step walkthrough of how to integrate Tanzu Application Platform with GitHub Actions. It will explore key concepts such as customizing supply chains and utilizing Cartographer.sh to streamline your development process. Whether you&apos;re an experienced DevOps professional or just getting started with Tanzu and GitHub Actions, this post will provide valuable insights to enhance your software development workflow..">
+  <meta property="og:image" content="https://blog.fklein.me/images/tap-github-action.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -185,1029 +185,445 @@
 
   <!-- begin content -->
   <main class="content" aria-label="Content">
-    
+    <div class="post-head">
+  <div class="container">
+    <div class="row">
+      
+      
 
+      
+      <div class="col col-6 col-d-12">
+        <div class="post-image">
+          <img class="lazy" data-src="/images/tap-github-action.png" alt="Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.">
+        </div>
+      </div>
+      
 
-<!-- begin tags -->
-<section class="tags">
-
-  <div class="tag__head">
-
-    <div class="container">
-      <div class="row">
-        <div class="col col-12">
-
-          <h1 class="tag__title">Tags</h1>
-        
-          <ul class="tag__list list-reset">
-            
+      
+      
+      
+      <div class="col col-6 col-d-12">
+        <div class="post__info ">
+  
+          
+            <div class="post__tags">
               
+                <a href="/tags#CI/CD" class="post__tag">CI/CD</a>
+              
+            </div>
+          
+  
+          <h1 class="post__title">Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.</h1>
+  
+          <div class="post__meta">
+            <a href="/about/" class="post__author-image">
+              <img class="lazy" data-src="/images/fklein.png" alt="Frédéric KLEIN">
+            </a>
+
+            <div class="post__meta-bottom">
+              <a class="post__author" href="/about/">Frédéric KLEIN</a>
+              <time class="post__date" datetime="2023-07-18T13:00:35+02:00">18 Jul 2023</time>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- begin post -->
+<div class="container animate">
+
+  <article class="post">
+
+    <div class="post__content">
+      <p>In <strong>modern software development practices</strong>, the Continuous Integration/Continuous Delivery <strong>(CI/CD) pipeline</strong> plays a vital role. It automates the process of integrating code changes and delivering the product to the production environment. In this post, we’ll look at how we can integrate an existing <strong>Github Actions CI pipeline</strong> with the <strong>Tanzu Application Platform</strong> for seamless application delivery on a Kubernetes environment.</p>
+
+<h3 id="our-objectives">Our Objectives</h3>
+<p>The use case we’ll be exploring involves a Jekyll blog, a static website crafted with Jekyll’s static site generator. Our objective is threefold:</p>
+
+<ol>
+  <li>
+    <p><strong>Automate the Docker Image Creation</strong>: We aim to automate the process of constructing a Docker image from the Jekyll blog.</p>
+  </li>
+  <li>
+    <p><strong>Push Docker Image to Registries</strong>: Following the creation, the Docker image should be automatically pushed to both Docker Hub and a personal Harbor registry upon any changes to the blog.</p>
+  </li>
+  <li>
+    <p><strong>Deploy and Expose the Blog with TAP</strong>: Finally, we aim to utilize Tanzu Application Platform to deploy and expose the Jekyll blog on a Kubernetes cluster.</p>
+  </li>
+</ol>
+
+<p>In order to achieve these objectives, we will set up a Dockerfile, configure a Github Actions workflow, and configure the Tanzu Application Platform.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/schema.png" />
+  </div>
+</div>
+
+<h4 id="what-is-github--tap-">What is Github &amp; TAP ?</h4>
+
+<ul>
+  <li>
+    <p><strong>Github</strong> is a web-based platform for software development using Git. It allows developers to collaborate, track changes, and manage code repositories. It offers features like version control, issue tracking, code review, and CI/CD automation through GitHub Actions. GitHub simplifies collaboration and helps developers work together effectively on projects.</p>
+  </li>
+  <li>
+    <p><strong>Tanzu Application Platform</strong> or <strong>TAP</strong>, is a cloud-native application platform developed by VMware Tanzu. It simplifies the deployment and management of applications on Kubernetes clusters, providing developers with an easier way to deploy and run their applications at scale. TAP automates the creation and management of Kubernetes resources, allowing developers to focus on writing code rather than dealing with infrastructure complexities.</p>
+  </li>
+</ul>
+
+<h3 id="leveraging-existing-cicd-pipelines-with-tanzu">Leveraging Existing CI/CD Pipelines with Tanzu</h3>
+<p>Many organizations today have already invested significant effort into creating CI/CD pipelines that work well for their needs. In our case, we’re looking at a scenario where we already have a Github Actions CI pipeline in place. The question is, how can we extend this to leverage Tanzu Application Platform’s capabilities for the CD part of our pipeline?</p>
+
+<p>The Tanzu Application Platform is designed to simplify the process of deploying and managing applications on Kubernetes. It’s built with the understanding that developers and operators need a simplified, more effective way to build and run modern, cloud-native applications. By integrating Tanzu into your existing pipeline, it can take over the complexities of networking, scaling, and operational management, providing you a more effective way to build and run modern, cloud-native applications</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/tap-blog-cd.png" />
+  </div>
+</div>
+
+<p>If you already have a Github Actions pipeline for building and pushing Docker images (the CI part), you can easily integrate this with Tanzu Application Platform for the deployment part (CD). The built Docker images will be pushed to Docker Hub or your personal Harbor registry and Tanzu will handle the deployment of these images into a Kubernetes environment.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/github-action-pipeline.png" />
+  </div>
+</div>
+
+<h3 id="integrating-tanzu-with-github-actions---what-we-will-do">Integrating Tanzu with Github Actions - What we will do?</h3>
+<p>As we dive into this integration process, it’s important to clarify what we’re trying to achieve. In this particular scenario, we will be dealing with my personal Jekyll blog (blog.fklein.me). Jekyll is a popular static site generator that takes Markdown files and converts them into a complete static website. Our main goal here is to build a Docker image from this Jekyll blog, and then push this image to two different container registries: Docker Hub and a personal Harbor registry.</p>
+
+<h4 id="step-1-configure-github-actions--set-up-github-actions-to-automate-tasks-like-building-an-docker-image-and-push-it-to-a-registry">Step 1: Configure Github Actions – Set up Github Actions to automate tasks like building an docker image and push it to a registry.</h4>
+
+<ul>
+  <li><strong>To be able to build a Docker image from our Jekyll blog</strong>, we will need a <strong>Dockerfile</strong> in our project. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.</li>
+</ul>
+
+<p>This is an example of a Dockerfile to run the Jekyll Blog:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Container image that runs your code
+FROM php:8.2-apache
+
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY /_site/ /var/www/html/
+</code></pre></div></div>
+
+<p>The source code is available on my github repo: https://github.com/fklein82/cloud-server</p>
+
+<ul>
+  <li><strong>Once our Dockerfile is set up and our Jekyll blog is ready to be containerized</strong>, we’ll use <strong>Github Actions to automate the Build process</strong>. Each time a change is pushed to our Github repository (which could be a new blog post, an update to an existing post, a layout change, etc.), Github Actions will trigger our workflow.</li>
+</ul>
+
+<p>Our workflow is defined in the YAML file in the .github/workflows directory. It starts by checking out the source code from our repository, and then it logs into Docker Hub using the credentials we’ve stored as secrets in our Github repository.</p>
+
+<p>Next, it retrieves the current date and time, which we’ll use to tag our Docker image. The Docker image is then built from our Dockerfile and tagged with the current date.</p>
+
+<p>The workflow then pushes the newly built Docker image to Docker Hub, allowing it to be pulled and run on any Docker-enabled system that can access Docker Hub.</p>
+
+<p>In the next steps, the workflow logs into a personal Harbor registry. Harbor is an open-source cloud-native registry that stores, signs, and scans container images for vulnerabilities. Just like with Docker Hub, the workflow then pushes our Docker image to the Harbor registry.</p>
+
+<p>With this workflow, not only are we able to keep our Docker image up-to-date on Docker Hub and our personal Harbor registry automatically, but we can also ensure that our Jekyll blog is quickly and consistently deployed each time we make a change.</p>
+
+<p>This is the : .github/workflows/push-docker-image.yaml file</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name: Build-Push-DockerHUB-Harbor
+on: [push] # When pushing to any branch then run this action
+# Env variable
+env:
+  DOCKER_USER: $
+  DOCKER_PASSWORD: $
+  REPO_NAME: $
+  HARBOR_USER: $
+  HARBOR_PASSWORD: $
+jobs:
+  push-image-to-docker-hub:  # job name
+    runs-on: ubuntu-latest  # runner name : (ubuntu latest version) 
+    steps:
+    - uses: actions/checkout@v2 # first action : checkout source code
+    - name: DockerHub login
+      run: | # log into docker hub account
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
+    - name: Get current date # get the date of the build
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M-%S')"
+    - name: Build the Docker image # push The image to the docker hub
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:$ --tag registry.fklein.me/tanzu-blog/fklein-blog:$
+    - name: DockerHub Push
+      run: docker push $DOCKER_USER/$REPO_NAME:$
+    - name: Fklein Harbor login
+      run: | # log into Personal Harbor account
+        docker login registry.fklein.me -u $HARBOR_USER -p $HARBOR_PASSWORD  
+    - name: fklein harbor Push
+      run: docker push registry.fklein.me/tanzu-blog/fklein-blog:$
+</code></pre></div></div>
+
+<h4 id="step-2-unleashing-tanzu-application-platform-for-deployment">Step 2: Unleashing Tanzu Application Platform for Deployment</h4>
+<p>After your Github Actions workflow successfully builds and pushes the Docker image of your Jekyll blog to Docker Hub or your personal Harbor registry, it’s time for Tanzu Application Platform (TAP) to take the lead. In our case, we have deployed TAP on top of AKS (Azure Kubernetes Service), which provides a robust and scalable Kubernetes cluster.</p>
+
+<p><strong>TAP simplifies the deployment process</strong> by automating the creation and management of Kubernetes resources, such as deployments, services, and pods. With TAP on AKS, you get the benefits of both Tanzu’s streamlined deployment experience and AKS’s reliable and scalable infrastructure.</p>
+
+<p>To deploy your Jekyll blog using TAP on AKS, you can utilize the Tanzu CLI with the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tanzu apps workload create blog \
+  --type web \
+  --label app.kubernetes.io/part-of=blog \
+  --image registry.fklein.me/tanzu-blog/fklein-blog:2023-07-18-14-23-00
+</code></pre></div></div>
+
+<p>This command is an instruction set to Tanzu to orchestrate the creation of a new workload for your blog. It includes essential configurations for the deployment - the type of the workload, any necessary labels or annotations, and crucially, the Docker image to use. Once this information is processed, Tanzu swings into action, deploying this image seamlessly into your Kubernetes environment.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/tanzu-cli.png" />
+  </div>
+</div>
+
+<p>The integration of Tanzu in this process not only offloads the complexity of deployment from your team but also ensures an efficient, scalable and robust solution, leaving you free to focus on your core application development tasks.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/delivery-cd-tap.png" />
+  </div>
+</div>
+
+<p>But that’s not all—TAP goes a step further by integrating continuous deployment and security testing into the supply chain.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/image-scan.png" />
+  </div>
+</div>
+
+<p>With the continuous deployment pipeline configured in Tanzu, you can seamlessly integrate security testing steps before deploying your applications. These steps can include vulnerability scanning and compliance checks to ensure your deployments meet the required security standards. This helps you deliver high-quality and secure applications to your users.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/cve-dashboard.png" />
+  </div>
+</div>
+
+<h4 id="conclusion">Conclusion</h4>
+<p>Incorporating Tanzu Application Platform with Github Actions allows you to extend your existing CI pipelines and benefit from Tanzu’s powerful application management capabilities. This setup enables automated and consistent deployments of your applications into a Kubernetes environment, eliminating the need for complex YAML files and streamlining the deployment process.</p>
+
+<p>By integrating Tanzu, you can leverage its higher-level abstractions and standardized components to simplify the deployment of your applications on Kubernetes. Tanzu handles the creation and management of Kubernetes resources, such as deployments, services, and pods, so you can focus on writing code rather than dealing with infrastructure complexities.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/kubedeploy.png" />
+  </div>
+</div>
+
+<p>This seamless integration between <strong>Tanzu Application Platform</strong> and <strong>Github Actions</strong> showcases Tanzu’s flexibility and its ability to seamlessly integrate with pre-existing workflows. You can continue to leverage the power of Github Actions for your CI pipeline, while Tanzu takes care of the deployment process on Kubernetes.</p>
+
+<p>By leveraging <strong>Tanzu Application Platform</strong>, you save time and ensure repeatability in your deployment processes. The automation provided by Tanzu eliminates manual steps and reduces the risk of errors, leading to more efficient and consistent deployments.</p>
+
+<p>In conclusion, <strong>Tanzu Application Platform is an excellent choice</strong> for organizations looking to optimize their Kubernetes application deployments. By integrating it with Github Actions, you can <strong>enhance your CI pipeline</strong>, <strong>simplify the deployment process</strong>, and enjoy the benefits of automated and consistent deployments into a Kubernetes environment, <strong>all without the need for complex YAML files</strong>.</p>
+
+
+    </div>
+
+    <div class="post__share">
+      <ul class="share__list list-reset">
+        <li class="share__item">
+          <a class="share__link share__twitter"
+            href="https://twitter.com/intent/tweet?text=Discover%20How%20to%20Integrate%20Tanzu%20Application%20Platform%20with%20Github%20Actions:%20A%20Step-by-Step%20Guide.&url=https://blog.fklein.me/post/2023/07/18/tap-github-action.html"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.fklein.me/post/2023/07/18/tap-github-action.html"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=https://blog.fklein.me/post/2023/07/18/tap-github-action.html&amp;media=https://blog.fklein.me/images/tap-github-action.png&amp;description=Discover%20How%20to%20Integrate%20Tanzu%20Application%20Platform%20with%20Github%20Actions:%20A%20Step-by-Step%20Guide."
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
+          rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.fklein.me/post/2023/07/18/tap-github-action.html&title=Discover%20How%20to%20Integrate%20Tanzu%20Application%20Platform%20with%20Github%20Actions:%20A%20Step-by-Step%20Guide.&summary=This%20comprehensive%20guide%20provides%20a%20step-by-step%20walkthrough%20of%20how%20to%20integrate%20Tanzu%20Application%20Platform%20with%20GitHub%20Actions.%20It%20will%20explore%20key%20concepts%20such%20as%20customizing%20supply%20chains%20and%20utilizing%20Cartographer.sh%20to%20streamline%20your%20development%20process.%20Whether%20you're%20an%20experienced%20DevOps%20professional%20or%20just%20getting%20started%20with%20Tanzu%20and%20GitHub%20Actions,%20this%20post%20will%20provide%20valuable%20insights%20to%20enhance%20your%20software%20development%20workflow..&source=Tanzu%20SE%20Blog"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
+        </li>
+      </ul>
+    </div>
+
+
+  </article>
+</div>
+<!-- end post -->
+
+
+
+
+
+
+
+<!-- begin related posts -->
+<div class="container">
+  <section class="related-posts  animate">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <div class="section__info">
+            <div class="section__head">
+              <h2 class="section__title">You may also like</h2>
+              <a class="section__link" href="/blog">
                 
-                <li class="tag__item"><a href="#CI%2FCD" class="tag__link">CI/CD</a></li>
-              
-            
-              
                 
-                <li class="tag__item"><a href="#Tap" class="tag__link">Tap</a></li>
-              
-            
-              
+                  
+                    <a href="/tags#CI/CD" class="section__link related-tag">See all<span> CI/CD</span></a>
+                  
                 
-                <li class="tag__item"><a href="#data-ia" class="tag__link">data-ia</a></li>
               
-            
-              
-                
-                <li class="tag__item"><a href="#path-to-prod" class="tag__link">path-to-prod</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tanzu-build-service" class="tag__link">tanzu-build-service</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tanzu-experience-day" class="tag__link">tanzu-experience-day</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tanzu-mission-control" class="tag__link">tanzu-mission-control</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tanzu-portfolio" class="tag__link">tanzu-portfolio</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tap" class="tag__link">tap</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#vac" class="tag__link">vac</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#vmware-application-catalog" class="tag__link">vmware-application-catalog</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#vsphere-with-tanzu" class="tag__link">vsphere-with-tanzu</a></li>
-              
-            
-              
-            
-          </ul>
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="CI%2FCD">CI/CD</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
+              </a>
             </div>
+          </div>
+          <div class="row">
+
+          
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
           </div>
         </div>
       </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-07-18T13:00:35+02:00">18 Jul 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/07/18/tap-github-action.html">
-        <img class="lazy" data-src="/images/tap-github-action.png" alt="Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.">
-      </a>
-      
-
     </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/07/18/tap-github-action.html">Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.</a>
-      </h2>
-
-      
-      <p class="article__excerpt">This comprehensive guide provides a step-by-step walkthrough of how to integrate Tanzu Application Platform with GitHub Actions. It will explore key concepts such as customizing supply chains and utilizing Cartographer.sh to streamline your development process. Whether you're an experienced DevOps professional or just getting started with Tanzu and GitHub Actions, this post will provide valuable insights to enhance your software development workflow..</p>
-      
-
-    </div>
-  </div>
+  </section>
 </div>
-              
-            
-            </div>
-          </div>
-        </div>
+<!-- end related posts -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <!-- begin comments -->
+<div class="show-comments">
+  <button class="button disqus-button" id="show-comments-button" onclick="disqus();return false;">Show Comments</button>
+</div>
+
+<div id="disqus_thread" class="post__comments">
+  <div id="disqus_empty"></div>
+</div>
+
+<script>
+  var disqus_loaded = false;
+  var disqus_shortname = 'demo-menca';
+  var disqus_container = document.getElementById("disqus_thread");
+  function disqus() {
+    if (!disqus_loaded) {
+      disqus_loaded = true;
+      var e = document.createElement("script");
+      e.type = "text/javascript";
+      e.async = true;
+      e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+      (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0])
+        .appendChild(e);
+      // Hide the button after opening
+      document.getElementById("show-comments-button").style.display = "none";
+      // Show disqus comments
+      disqus_container.classList.add("is-open");
+    }
+  }
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<!-- end comments --> 
       </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="Tap">Tap</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-06T17:01:35+02:00">06 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html">
-        <img class="lazy" data-src="/images/backstage-tap.png" alt="Enhancing Developer Experience on Tanzu Application Platform with Backstage">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html">Enhancing Developer Experience on Tanzu Application Platform with Backstage</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Discover how the Tanzu Application Platform enhances developer experience through the integration of the Backstage open-source project, streamlining application management and boosting productivity..</p>
-      
-
     </div>
   </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>2</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="data-ia">data-ia</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-07-12T18:01:35+02:00">12 Jul 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/07/12/tap-greenplum-python.html">
-        <img class="lazy" data-src="/images/data-ia.png" alt="Setup your DATA & IA Platform with Tanzu - A Real-World Guide Machine Learning use-case.">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/07/12/tap-greenplum-python.html">Setup your DATA & IA Platform with Tanzu - A Real-World Guide Machine Learning use-case.</a>
-      </h2>
-
-      
-      <p class="article__excerpt">In this blog post, we walk you through the process of setting up the DATA-IA platform with Tanzu Application Platform and Greenplum Database. We leverage these technologies to build and deploy a Machine Learning model that predicts the age of abalone, providing a practical use-case to help you understand the capabilities of these robust data platforms.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-08T18:01:35+02:00">08 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/08/tap-and-greenplum.html">
-        <img class="lazy" data-src="/images/mlops2.png" alt="Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/08/tap-and-greenplum.html">Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Learn how to train a Convolutional Neural Network, utilize DataHub for data set management, set up a JupyterHub notebooks environment, and build ML workflows with Kubeflow and Argo Workflows.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="path-to-prod">path-to-prod</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2022-08-09T14:01:35+02:00">09 Aug 2022</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2022/08/09/accelerate-the-kubernetes-adoption-for-developers.html">
-        <img class="lazy" data-src="/images/03.png" alt="How to accelerate the Kubernetes adoption for developers?">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2022/08/09/accelerate-the-kubernetes-adoption-for-developers.html">How to accelerate the Kubernetes adoption for developers?</a>
-      </h2>
-
-      
-      <p class="article__excerpt">The path to production from a developer point of view. E2E Demo in French.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tanzu-build-service">tanzu-build-service</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-03T14:01:35+02:00">03 May 2023</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2023/05/03/tanzu-build-service.html">
-        <img class="lazy" data-src="/images/06.png" alt="Tanzu Build Service - Automating Container Image Building and Management">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/03/tanzu-build-service.html">Tanzu Build Service - Automating Container Image Building and Management</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Tanzu Build Service is a Kubernetes-native tool that automates the process of building, managing, and updating container images. How do I use TBS?</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tanzu-experience-day">tanzu-experience-day</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-04T14:01:35+02:00">04 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/04/experience-days.html">
-        <img class="lazy" data-src="/images/exp.png" alt="Tanzu Experience Days">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/04/experience-days.html">Tanzu Experience Days</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Join me for VMware's free "Experience Days" sessions dedicated to Tanzu solutions!</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tanzu-mission-control">tanzu-mission-control</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-03-02T07:01:35+01:00">02 Mar 2023</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2023/03/02/tanzu-mission-constrol.html">
-        <img class="lazy" data-src="/images/07.png" alt="Tanzu Mission Control - Streamlining Kubernetes Management Across Multiple Clusters">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/03/02/tanzu-mission-constrol.html">Tanzu Mission Control - Streamlining Kubernetes Management Across Multiple Clusters</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Tanzu Mission Control is a Kubernetes management platform that provides a centralized interface for administrators to manage and monitor multiple Kubernetes clusters across different environments, such as on-premises, public cloud, or hybrid.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tanzu-portfolio">tanzu-portfolio</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2022-07-14T14:01:35+02:00">14 Jul 2022</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2022/07/14/portfolio-vmware-tanzu.html">
-        <img class="lazy" data-src="/images/02.png" alt="Tanzu Portfolio Overview in French">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2022/07/14/portfolio-vmware-tanzu.html">Tanzu Portfolio Overview in French</a>
-      </h2>
-
-      
-      <p class="article__excerpt">VMware Tanzu portfolio, products and business value overview - French version</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tap">tap</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2022-08-09T14:01:35+02:00">09 Aug 2022</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html">
-        <img class="lazy" data-src="/images/04.png" alt="VMware Tanzu Application Platform (TAP) - French demo">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html">VMware Tanzu Application Platform (TAP) - French demo</a>
-      </h2>
-
-      
-      <p class="article__excerpt">TAP is a superior multi-cloud developer experience on Kubernetes. VMware Tanzu Application Platform is a modular, application-aware platform that provides a rich set of developer tooling and a a prepaved path to production, to build and deploy software quickly and securely on any compliant public cloud or on-premises Kubernetes cluster.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="vac">vac</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-04-06T14:01:35+02:00">06 Apr 2023</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2023/04/06/vmware-application-catalog-demo.html">
-        <img class="lazy" data-src="/images/05.png" alt="VMware Application Catalog - A Curated image catalog">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/04/06/vmware-application-catalog-demo.html">VMware Application Catalog - A Curated image catalog</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Trusted, pre-packaged application components that are continuously maintained and verifiably tested for use in production environments. How do I use VMware Application Catalog?</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="vmware-application-catalog">vmware-application-catalog</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-04-06T14:01:35+02:00">06 Apr 2023</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2023/04/06/vmware-application-catalog-demo.html">
-        <img class="lazy" data-src="/images/05.png" alt="VMware Application Catalog - A Curated image catalog">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/04/06/vmware-application-catalog-demo.html">VMware Application Catalog - A Curated image catalog</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Trusted, pre-packaged application components that are continuously maintained and verifiably tested for use in production environments. How do I use VMware Application Catalog?</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>2</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="vsphere-with-tanzu">vsphere-with-tanzu</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-03T17:01:35+02:00">03 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/03/vsphere-pod-vs-tkc.html">
-        <img class="lazy" data-src="/images/vsphere-with-tanzu-vspherepod.png" alt="vSphere Pod vs Tanzu Kubernetes Cluster? A Comprehensive Comparison">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/03/vsphere-pod-vs-tkc.html">vSphere Pod vs Tanzu Kubernetes Cluster? A Comprehensive Comparison</a>
-      </h2>
-
-      
-      <p class="article__excerpt">in this blog post, we will delve into the differences between these two technologies, discussing their features, advantages, and appropriate use case.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-03T16:01:35+02:00">03 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/03/vsphere-with-tanzu.html">
-        <img class="lazy" data-src="/images/vsphere-with-tanzu.png" alt="vSphere-with-Tanzu or k8s in vSphere?">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/03/vsphere-with-tanzu.html">vSphere-with-Tanzu or k8s in vSphere?</a>
-      </h2>
-
-      
-      <p class="article__excerpt">vSphere-with-Tanzu (aka TKGs) is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. In this blog post, we'll take a closer look at VMware vSphere with Tanzu and how to use it with Tanzu CLI.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-</section>
-<!-- end tags -->
   </main>
   <!-- end content -->
 

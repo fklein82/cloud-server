@@ -3,11 +3,205 @@
     <channel>
         <title>Tanzu SE Blog</title>
         <description>Frédéric KLEIN personal Blog</description>
-        <link>http://localhost:4000/</link>
-        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 12 Jul 2023 21:16:47 +0200</pubDate>
-        <lastBuildDate>Wed, 12 Jul 2023 21:16:47 +0200</lastBuildDate>
+        <link>https://blog.fklein.me/</link>
+        <atom:link href="https://blog.fklein.me/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Tue, 18 Jul 2023 18:47:55 +0200</pubDate>
+        <lastBuildDate>Tue, 18 Jul 2023 18:47:55 +0200</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
+        
+            <item>
+                <title>Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.</title>
+                <description>&lt;p&gt;In &lt;strong&gt;modern software development practices&lt;/strong&gt;, the Continuous Integration/Continuous Delivery &lt;strong&gt;(CI/CD) pipeline&lt;/strong&gt; plays a vital role. It automates the process of integrating code changes and delivering the product to the production environment. In this post, we’ll look at how we can integrate an existing &lt;strong&gt;Github Actions CI pipeline&lt;/strong&gt; with the &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; for seamless application delivery on a Kubernetes environment.&lt;/p&gt;
+
+&lt;h3 id=&quot;our-objectives&quot;&gt;Our Objectives&lt;/h3&gt;
+&lt;p&gt;The use case we’ll be exploring involves a Jekyll blog, a static website crafted with Jekyll’s static site generator. Our objective is threefold:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Automate the Docker Image Creation&lt;/strong&gt;: We aim to automate the process of constructing a Docker image from the Jekyll blog.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Push Docker Image to Registries&lt;/strong&gt;: Following the creation, the Docker image should be automatically pushed to both Docker Hub and a personal Harbor registry upon any changes to the blog.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Deploy and Expose the Blog with TAP&lt;/strong&gt;: Finally, we aim to utilize Tanzu Application Platform to deploy and expose the Jekyll blog on a Kubernetes cluster.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In order to achieve these objectives, we will set up a Dockerfile, configure a Github Actions workflow, and configure the Tanzu Application Platform.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/schema.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;what-is-github--tap-&quot;&gt;What is Github &amp;amp; TAP ?&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Github&lt;/strong&gt; is a web-based platform for software development using Git. It allows developers to collaborate, track changes, and manage code repositories. It offers features like version control, issue tracking, code review, and CI/CD automation through GitHub Actions. GitHub simplifies collaboration and helps developers work together effectively on projects.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; or &lt;strong&gt;TAP&lt;/strong&gt;, is a cloud-native application platform developed by VMware Tanzu. It simplifies the deployment and management of applications on Kubernetes clusters, providing developers with an easier way to deploy and run their applications at scale. TAP automates the creation and management of Kubernetes resources, allowing developers to focus on writing code rather than dealing with infrastructure complexities.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;leveraging-existing-cicd-pipelines-with-tanzu&quot;&gt;Leveraging Existing CI/CD Pipelines with Tanzu&lt;/h3&gt;
+&lt;p&gt;Many organizations today have already invested significant effort into creating CI/CD pipelines that work well for their needs. In our case, we’re looking at a scenario where we already have a Github Actions CI pipeline in place. The question is, how can we extend this to leverage Tanzu Application Platform’s capabilities for the CD part of our pipeline?&lt;/p&gt;
+
+&lt;p&gt;The Tanzu Application Platform is designed to simplify the process of deploying and managing applications on Kubernetes. It’s built with the understanding that developers and operators need a simplified, more effective way to build and run modern, cloud-native applications. By integrating Tanzu into your existing pipeline, it can take over the complexities of networking, scaling, and operational management, providing you a more effective way to build and run modern, cloud-native applications&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/tap-blog-cd.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If you already have a Github Actions pipeline for building and pushing Docker images (the CI part), you can easily integrate this with Tanzu Application Platform for the deployment part (CD). The built Docker images will be pushed to Docker Hub or your personal Harbor registry and Tanzu will handle the deployment of these images into a Kubernetes environment.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/github-action-pipeline.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;integrating-tanzu-with-github-actions---what-we-will-do&quot;&gt;Integrating Tanzu with Github Actions - What we will do?&lt;/h3&gt;
+&lt;p&gt;As we dive into this integration process, it’s important to clarify what we’re trying to achieve. In this particular scenario, we will be dealing with my personal Jekyll blog (blog.fklein.me). Jekyll is a popular static site generator that takes Markdown files and converts them into a complete static website. Our main goal here is to build a Docker image from this Jekyll blog, and then push this image to two different container registries: Docker Hub and a personal Harbor registry.&lt;/p&gt;
+
+&lt;h4 id=&quot;step-1-configure-github-actions--set-up-github-actions-to-automate-tasks-like-building-an-docker-image-and-push-it-to-a-registry&quot;&gt;Step 1: Configure Github Actions – Set up Github Actions to automate tasks like building an docker image and push it to a registry.&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;To be able to build a Docker image from our Jekyll blog&lt;/strong&gt;, we will need a &lt;strong&gt;Dockerfile&lt;/strong&gt; in our project. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is an example of a Dockerfile to run the Jekyll Blog:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Container image that runs your code
+FROM php:8.2-apache
+
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY /_site/ /var/www/html/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The source code is available on my github repo: https://github.com/fklein82/cloud-server&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Once our Dockerfile is set up and our Jekyll blog is ready to be containerized&lt;/strong&gt;, we’ll use &lt;strong&gt;Github Actions to automate the Build process&lt;/strong&gt;. Each time a change is pushed to our Github repository (which could be a new blog post, an update to an existing post, a layout change, etc.), Github Actions will trigger our workflow.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Our workflow is defined in the YAML file in the .github/workflows directory. It starts by checking out the source code from our repository, and then it logs into Docker Hub using the credentials we’ve stored as secrets in our Github repository.&lt;/p&gt;
+
+&lt;p&gt;Next, it retrieves the current date and time, which we’ll use to tag our Docker image. The Docker image is then built from our Dockerfile and tagged with the current date.&lt;/p&gt;
+
+&lt;p&gt;The workflow then pushes the newly built Docker image to Docker Hub, allowing it to be pulled and run on any Docker-enabled system that can access Docker Hub.&lt;/p&gt;
+
+&lt;p&gt;In the next steps, the workflow logs into a personal Harbor registry. Harbor is an open-source cloud-native registry that stores, signs, and scans container images for vulnerabilities. Just like with Docker Hub, the workflow then pushes our Docker image to the Harbor registry.&lt;/p&gt;
+
+&lt;p&gt;With this workflow, not only are we able to keep our Docker image up-to-date on Docker Hub and our personal Harbor registry automatically, but we can also ensure that our Jekyll blog is quickly and consistently deployed each time we make a change.&lt;/p&gt;
+
+&lt;p&gt;This is the : .github/workflows/push-docker-image.yaml file&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;name: Build-Push-DockerHUB-Harbor
+on: [push] # When pushing to any branch then run this action
+# Env variable
+env:
+  DOCKER_USER: $
+  DOCKER_PASSWORD: $
+  REPO_NAME: $
+  HARBOR_USER: $
+  HARBOR_PASSWORD: $
+jobs:
+  push-image-to-docker-hub:  # job name
+    runs-on: ubuntu-latest  # runner name : (ubuntu latest version) 
+    steps:
+    - uses: actions/checkout@v2 # first action : checkout source code
+    - name: DockerHub login
+      run: | # log into docker hub account
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
+    - name: Get current date # get the date of the build
+      id: date
+      run: echo &quot;::set-output name=date::$(date +&apos;%Y-%m-%d-%H-%M-%S&apos;)&quot;
+    - name: Build the Docker image # push The image to the docker hub
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:$ --tag registry.fklein.me/tanzu-blog/fklein-blog:$
+    - name: DockerHub Push
+      run: docker push $DOCKER_USER/$REPO_NAME:$
+    - name: Fklein Harbor login
+      run: | # log into Personal Harbor account
+        docker login registry.fklein.me -u $HARBOR_USER -p $HARBOR_PASSWORD  
+    - name: fklein harbor Push
+      run: docker push registry.fklein.me/tanzu-blog/fklein-blog:$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;step-2-unleashing-tanzu-application-platform-for-deployment&quot;&gt;Step 2: Unleashing Tanzu Application Platform for Deployment&lt;/h4&gt;
+&lt;p&gt;After your Github Actions workflow successfully builds and pushes the Docker image of your Jekyll blog to Docker Hub or your personal Harbor registry, it’s time for Tanzu Application Platform (TAP) to take the lead. In our case, we have deployed TAP on top of AKS (Azure Kubernetes Service), which provides a robust and scalable Kubernetes cluster.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TAP simplifies the deployment process&lt;/strong&gt; by automating the creation and management of Kubernetes resources, such as deployments, services, and pods. With TAP on AKS, you get the benefits of both Tanzu’s streamlined deployment experience and AKS’s reliable and scalable infrastructure.&lt;/p&gt;
+
+&lt;p&gt;To deploy your Jekyll blog using TAP on AKS, you can utilize the Tanzu CLI with the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload create blog \
+  --type web \
+  --label app.kubernetes.io/part-of=blog \
+  --image registry.fklein.me/tanzu-blog/fklein-blog:2023-07-18-14-23-00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This command is an instruction set to Tanzu to orchestrate the creation of a new workload for your blog. It includes essential configurations for the deployment - the type of the workload, any necessary labels or annotations, and crucially, the Docker image to use. Once this information is processed, Tanzu swings into action, deploying this image seamlessly into your Kubernetes environment.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/tanzu-cli.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The integration of Tanzu in this process not only offloads the complexity of deployment from your team but also ensures an efficient, scalable and robust solution, leaving you free to focus on your core application development tasks.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/delivery-cd-tap.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;But that’s not all—TAP goes a step further by integrating continuous deployment and security testing into the supply chain.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/image-scan.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With the continuous deployment pipeline configured in Tanzu, you can seamlessly integrate security testing steps before deploying your applications. These steps can include vulnerability scanning and compliance checks to ensure your deployments meet the required security standards. This helps you deliver high-quality and secure applications to your users.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/cve-dashboard.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h4&gt;
+&lt;p&gt;Incorporating Tanzu Application Platform with Github Actions allows you to extend your existing CI pipelines and benefit from Tanzu’s powerful application management capabilities. This setup enables automated and consistent deployments of your applications into a Kubernetes environment, eliminating the need for complex YAML files and streamlining the deployment process.&lt;/p&gt;
+
+&lt;p&gt;By integrating Tanzu, you can leverage its higher-level abstractions and standardized components to simplify the deployment of your applications on Kubernetes. Tanzu handles the creation and management of Kubernetes resources, such as deployments, services, and pods, so you can focus on writing code rather than dealing with infrastructure complexities.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/kubedeploy.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This seamless integration between &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; and &lt;strong&gt;Github Actions&lt;/strong&gt; showcases Tanzu’s flexibility and its ability to seamlessly integrate with pre-existing workflows. You can continue to leverage the power of Github Actions for your CI pipeline, while Tanzu takes care of the deployment process on Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;By leveraging &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt;, you save time and ensure repeatability in your deployment processes. The automation provided by Tanzu eliminates manual steps and reduces the risk of errors, leading to more efficient and consistent deployments.&lt;/p&gt;
+
+&lt;p&gt;In conclusion, &lt;strong&gt;Tanzu Application Platform is an excellent choice&lt;/strong&gt; for organizations looking to optimize their Kubernetes application deployments. By integrating it with Github Actions, you can &lt;strong&gt;enhance your CI pipeline&lt;/strong&gt;, &lt;strong&gt;simplify the deployment process&lt;/strong&gt;, and enjoy the benefits of automated and consistent deployments into a Kubernetes environment, &lt;strong&gt;all without the need for complex YAML files&lt;/strong&gt;.&lt;/p&gt;
+
+</description>
+                <pubDate>Tue, 18 Jul 2023 13:00:35 +0200</pubDate>
+                <link>https://blog.fklein.me/post/2023/07/18/tap-github-action.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/07/18/tap-github-action.html</guid>
+                
+                <category>CI/CD</category>
+                
+                
+            </item>
         
             <item>
                 <title>Setup your DATA &amp; IA Platform with Tanzu - A Real-World Guide Machine Learning use-case.</title>
@@ -447,8 +641,8 @@ def main():
 &lt;p&gt;We sincerely hope you &lt;strong&gt;enjoyed reading it&lt;/strong&gt;!&lt;/p&gt;
 </description>
                 <pubDate>Wed, 12 Jul 2023 18:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/07/12/tap-greenplum-python.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/07/12/tap-greenplum-python.html</guid>
+                <link>https://blog.fklein.me/post/2023/07/12/tap-greenplum-python.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/07/12/tap-greenplum-python.html</guid>
                 
                 <category>data-ia</category>
                 
@@ -674,8 +868,8 @@ Choosing the right tool is critical for data scientists to overcome these issues
 &lt;/ul&gt;
 </description>
                 <pubDate>Mon, 08 May 2023 18:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/08/tap-and-greenplum.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/08/tap-and-greenplum.html</guid>
+                <link>https://blog.fklein.me/post/2023/05/08/tap-and-greenplum.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/08/tap-and-greenplum.html</guid>
                 
                 <category>data-ia</category>
                 
@@ -753,8 +947,8 @@ Choosing the right tool is critical for data scientists to overcome these issues
 
 </description>
                 <pubDate>Sat, 06 May 2023 17:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</guid>
+                <link>https://blog.fklein.me/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</guid>
                 
                 <category>Tap</category>
                 
@@ -787,8 +981,8 @@ Choosing the right tool is critical for data scientists to overcome these issues
 &lt;p&gt;Don’t miss out on this valuable opportunity to deepen your knowledge of Tanzu solutions and enhance your technical skills.&lt;/p&gt;
 </description>
                 <pubDate>Thu, 04 May 2023 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/04/experience-days.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/04/experience-days.html</guid>
+                <link>https://blog.fklein.me/post/2023/05/04/experience-days.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/04/experience-days.html</guid>
                 
                 <category>tanzu-experience-day</category>
                 
@@ -856,8 +1050,8 @@ Choosing the right tool is critical for data scientists to overcome these issues
 
 </description>
                 <pubDate>Wed, 03 May 2023 17:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/03/vsphere-pod-vs-tkc.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/vsphere-pod-vs-tkc.html</guid>
+                <link>https://blog.fklein.me/post/2023/05/03/vsphere-pod-vs-tkc.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/03/vsphere-pod-vs-tkc.html</guid>
                 
                 <category>vsphere-with-tanzu</category>
                 
@@ -980,8 +1174,8 @@ spec:
 &lt;p&gt;VMware vSphere with Tanzu is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. Tanzu CLI is a command-line tool that provides a simplified interface for managing Kubernetes clusters and applications. By following the steps outlined above, you can get started with VMware vSphere with Tanzu and Tanzu CLI and begin deploying and managing your container workloads more easily and efficiently.&lt;/p&gt;
 </description>
                 <pubDate>Wed, 03 May 2023 16:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/03/vsphere-with-tanzu.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/vsphere-with-tanzu.html</guid>
+                <link>https://blog.fklein.me/post/2023/05/03/vsphere-with-tanzu.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/03/vsphere-with-tanzu.html</guid>
                 
                 <category>vsphere-with-tanzu</category>
                 
@@ -1057,8 +1251,8 @@ spec:
 &lt;/ul&gt;
 </description>
                 <pubDate>Wed, 03 May 2023 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/03/tanzu-build-service.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/tanzu-build-service.html</guid>
+                <link>https://blog.fklein.me/post/2023/05/03/tanzu-build-service.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/03/tanzu-build-service.html</guid>
                 
                 <category>tanzu-build-service</category>
                 
@@ -1076,8 +1270,8 @@ spec:
 &lt;p&gt;Overall, the VMware Application Catalog provides significant value to organizations by simplifying the process of identifying, selecting, and deploying software applications within their virtualized infrastructure. By providing a central repository of pre-tested and verified software solutions, it enables IT teams to streamline their software deployment processes, reduce risk, and increase the efficiency and effectiveness of their virtualized infrastructure.&lt;/p&gt;
 </description>
                 <pubDate>Thu, 06 Apr 2023 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/04/06/vmware-application-catalog-demo.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/04/06/vmware-application-catalog-demo.html</guid>
+                <link>https://blog.fklein.me/post/2023/04/06/vmware-application-catalog-demo.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/04/06/vmware-application-catalog-demo.html</guid>
                 
                 <category>vac</category>
                 
@@ -1136,43 +1330,10 @@ spec:
 
 </description>
                 <pubDate>Thu, 02 Mar 2023 07:01:35 +0100</pubDate>
-                <link>http://localhost:4000/post/2023/03/02/tanzu-mission-constrol.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/03/02/tanzu-mission-constrol.html</guid>
+                <link>https://blog.fklein.me/post/2023/03/02/tanzu-mission-constrol.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2023/03/02/tanzu-mission-constrol.html</guid>
                 
                 <category>tanzu-mission-control</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>VMware Tanzu Application Platform (TAP) - French demo</title>
-                <description>&lt;p&gt;The Tanzu Application Platform (TAP) is a cloud-native platform for building, deploying, and managing modern applications. It provides developers with a comprehensive set of tools and services to streamline the application development process and accelerate time to market. Here are some of the key ways that TAP delivers value to organizations:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Faster application delivery: TAP provides a cloud-native platform for building and deploying applications, with support for multiple programming languages and frameworks. This enables developers to build applications quickly and easily, and deploy them to production faster than with traditional methods.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Increased developer productivity: TAP provides a set of developer-centric tools and services, such as integrated development environments (IDEs) and code repositories, that streamline the application development process. This increases developer productivity and enables them to focus on building applications, rather than managing infrastructure.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Consistent, secure environment: TAP provides a consistent, secure environment for running applications across multiple clouds and environments. This reduces the risk of application downtime or security breaches caused by differences in underlying infrastructure.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Simplified application management: TAP provides a centralized management platform for applications, enabling administrators to monitor and manage applications across multiple clouds and environments. This simplifies the management of complex application environments and reduces the risk of application downtime.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Scalable infrastructure: TAP provides a scalable infrastructure that can easily accommodate the needs of growing applications. It enables organizations to scale infrastructure up or down as needed, without having to worry about the underlying infrastructure.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Overall, the Tanzu Application Platform delivers significant value to organizations by providing a cloud-native platform for building, deploying, and managing modern applications. By accelerating application delivery, increasing developer productivity, providing a consistent and secure environment, simplifying application management, and providing a scalable infrastructure, TAP enables organizations to build and deploy applications faster, with higher quality and at lower cost.&lt;/p&gt;
-</description>
-                <pubDate>Tue, 09 Aug 2022 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html</guid>
-                
-                <category>tap</category>
                 
                 
             </item>
