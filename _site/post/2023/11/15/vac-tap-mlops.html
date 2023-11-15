@@ -6,23 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Tags</title>
-  <meta name='description' content='Frédéric KLEIN personal Blog'>
+  <title>Accelerate AI: VAC & TAP in Action</title>
+  <meta name='description' content='Discover the power of MLOps with Tanzu's VMware Application Catalog (VAC) and Tanzu Application Platform (TAP). Build a demo that can transform complex data ...'>
 
-  <link rel="canonical" href="http://localhost:4000/tags/">
+  <link rel="canonical" href="http://localhost:4000/post/2023/11/15/vac-tap-mlops.html">
   <link rel="alternate" type="application/rss+xml" title="Tanzu SE Blog" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tags – Tanzu SE Blog">
-  <meta name="twitter:description" content="">
+  <meta name="twitter:title" content="Accelerate AI: VAC & TAP in Action – Tanzu SE Blog">
+  <meta name="twitter:description" content="Discover the power of MLOps with Tanzu&apos;s VMware Application Catalog (VAC) and Tanzu Application Platform (TAP). Build a demo that can transform complex data into cutting-edge AI applications, illustrating the seamless journey from data engineering to model deployment and beyond.">
   <meta name="twitter:image" content="https://blog.fklein.me/images/twitter.jpg">
 
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Tags – Tanzu SE Blog">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
+  <meta property="og:title" content="Accelerate AI: VAC & TAP in Action – Tanzu SE Blog">
+  <meta property="og:description" content="Discover the power of MLOps with Tanzu&apos;s VMware Application Catalog (VAC) and Tanzu Application Platform (TAP). Build a demo that can transform complex data into cutting-edge AI applications, illustrating the seamless journey from data engineering to model deployment and beyond.">
+  <meta property="og:image" content="http://localhost:4000/images/mclaren.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -185,1101 +185,621 @@
 
   <!-- begin content -->
   <main class="content" aria-label="Content">
-    
+    <div class="post-head">
+  <div class="container">
+    <div class="row">
+      
+      
+
+      
+      <div class="col col-6 col-d-12">
+        <div class="post-image">
+          <img class="lazy" data-src="/images/mclaren.png" alt="Accelerate AI: VAC & TAP in Action">
+        </div>
+      </div>
+      
+
+      
+      
+      
+      <div class="col col-6 col-d-12">
+        <div class="post__info ">
+  
+          
+            <div class="post__tags">
+              
+                <a href="/tags#MLOPS" class="post__tag">MLOPS</a>
+              
+            </div>
+          
+  
+          <h1 class="post__title">Accelerate AI: VAC &amp; TAP in Action</h1>
+  
+          <div class="post__meta">
+            <a href="/about/" class="post__author-image">
+              <img class="lazy" data-src="/images/fklein.png" alt="Frédéric KLEIN">
+            </a>
+
+            <div class="post__meta-bottom">
+              <a class="post__author" href="/about/">Frédéric KLEIN</a>
+              <time class="post__date" datetime="2023-11-15T12:00:35+01:00">15 Nov 2023</time>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- begin post -->
+<div class="container animate">
+
+  <article class="post">
+
+    <div class="post__content">
+      <h3 id="the-data-landscape-and-ai-proliferation">The Data Landscape and AI Proliferation</h3>
+<p>In a world where over 64.2 zettabytes of data are generated annually, the metaphor of traveling to the moon and back thousands of times if each byte were a kilometer vividly captures the enormity of data we’re generating. This data, sprawling across billions of devices and the Internet of Things (IoT), isn’t confined to a single location; it’s distributed across multiple clouds and mixed environments.</p>
+
+<p>With half a billion business data users worldwide, catering to a vast spectrum of needs and skills becomes imperative. However, it’s not just the storage that’s crucial; it’s the intelligent utilization of this data through AI and machine learning that empowers a billion workers. Yet, the road to implementing AI is laden with challenges.</p>
+
+<h3 id="the-challenge-of-resource-constraints-and-complexity">The Challenge of Resource Constraints and Complexity</h3>
+<p>The stark reality is that only 1% of AI/ML projects fully achieve their objectives, underscoring a pressing challenge for the industry—not just in technology, but in strategy, support, and execution. No-code/low-code solutions emerge as a priority, with 96% of IT and engineering leaders acknowledging the acute shortage of software engineers. The complexity is another significant hurdle, with 72% of organizations still figuring out AI operationalization in their businesses.</p>
+
+<h3 id="mlops-a-beacon-of-success-in-ai">MLOps: A Beacon of Success in AI</h3>
+<p>MLOps stands out as the strategic approach that could pivot more AI projects into the 1% success bracket. It’s about the right partners, strategy, and platform. For Tanzu Solution Engineers like us, it’s about leveraging the ‘DOO’ framework, streamlining the app journey with TAP and the Golden Paths, optimizing app performance with our TKO bundle, and fostering continuous improvement with our Tanzu intelligence portfolio.</p>
+
+<p>MLOps is essentially about DevSecOps, but with a unique spin for managing AI and ML projects efficiently. It involves:</p>
+
+<ul>
+  <li>Preparing Data: Collecting, cleaning, and shaping data to train AI models effectively.</li>
+  <li>Building the Model: Experimenting with various models to find the best fit and ensure reliability.</li>
+  <li>Deploying, Consuming, and Monitoring: Integrating the model into applications, delivering business value, and ongoing performance monitoring.</li>
+</ul>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/ai-mlops1.png" />
+  </div>
+</div>
+
+<p>MLOps isn’t a solo journey; it’s a collaborative team sport where each role is crucial:</p>
+
+<ul>
+  <li>Data Engineers lay down the robust data infrastructure.</li>
+  <li>Data Scientists craft predictive models.</li>
+  <li>Business Analysts ensure models meet market needs.</li>
+  <li>Application Developers integrate models into applications.</li>
+  <li>DevOps oversee the smooth operation of these applications.</li>
+</ul>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/ai-mlops2.png" />
+  </div>
+</div>
+
+<p>Together, they turn data into actionable insights and drive business value, ensuring MLOps transcends model development—it becomes a comprehensive solution-delivery system.</p>
+
+<h3 id="our-mlops-demo-from-concept-to-application">Our MLOps Demo: From Concept to Application</h3>
+<p>In our demo, we’ll illustrate this collaborative spirit in action. Julien will wear the dual hats of a Platform Engineer and Data Scientist—first deploying JupyterLab and MLflow, then creating a smart image-detection model. Subsequently, I will take Julien’s model and swiftly incorporate it into a Python accelerator as an App Developer.</p>
+
+<p>This is the essence of our MLOps approach—seamless integration of roles and tools, transforming innovative ideas into real-world applications with Tanzu’s suite of products.</p>
+
+<p>We will demonstrate just how efficiently and effectively we can harness the combined strength of JupyterHub, MLFlow, and TAP to bring AI models from development to deployment. For our demonstration we will VMware Application Catalog (VAC) and Tanzu Application Platform (TAP).</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/ai-mlops3.png" />
+  </div>
+</div>
+
+<h3 id="vmware-application-catalog-vac">VMware Application Catalog (VAC)</h3>
+<p>VAC is an enterprise solution that simplifies the utilization of open-source software in production environments. It offers a comprehensive catalog of tested open-source applications, with features like automated maintenance and vulnerability insights. This facilitates secure and compliant development processes.</p>
+
+<h3 id="tanzu-application-platform-tap">Tanzu Application Platform (TAP)</h3>
+<p>TAP, a Platform as a Service (PaaS) solution, eases the deployment and management of cloud-native applications on Kubernetes. It enhances developer productivity and offers features like container orchestration, automation, and multi-cloud support.</p>
+
+<h2 id="jupyterhub">JupyterHub</h2>
+
+<p>JupyterHub is a web-based platform that enables multiple users to collaboratively create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, supports multiple users, and is commonly used in education, research, and data analysis for its collaborative and interactive capabilities.</p>
+
+<h3 id="to-install-jupyterhub-use-the-following-helm-command">To install JupyterHub, use the following Helm command:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>jupyterhub oci://harbor.jkolaric.eu/vac-library/charts/ubuntu-22/jupyterhub
+</code></pre></div></div>
+<h3 id="after-installation-you-can-access-jupyterhub-using-the-following-url">After installation, you can access JupyterHub using the following URL:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">SERVICE_IP</span><span class="o">=</span><span class="si">$(</span>kubectl get svc <span class="nt">--namespace</span> jupyter jupyterhub-proxy-public <span class="nt">--template</span> <span class="s2">""</span><span class="si">)</span>
+<span class="nb">echo</span> <span class="s2">"JupyterHub URL: http://</span><span class="nv">$SERVICE_IP</span><span class="s2">/"</span>
+</code></pre></div></div>
+
+<h3 id="admin-user-information">Admin user information:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>Admin user: user
+<span class="nb">echo </span>Password: <span class="si">$(</span>kubectl get secret <span class="nt">--namespace</span> jupyter jupyterhub-hub <span class="nt">-o</span> <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.data['values</span><span class="se">\.</span><span class="s2">yaml']}"</span> | <span class="nb">base64</span> <span class="nt">-d</span> | <span class="nb">awk</span> <span class="nt">-F</span>: <span class="s1">'/password/ {gsub(/[ \t]+/, "", $2);print $2}'</span><span class="si">)</span>
+</code></pre></div></div>
+<h3 id="you-can-access-jupyter-notebooks-using-a-url-like-this">You can access Jupyter notebooks using a URL like this:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://20.67.149.113/user/user/lab/tree/opt/bitnami/jupyterhub-singleuser/Untitled.ipynb
+</code></pre></div></div>
+
+<h3 id="test-jupyter-installation-with-a-deep-learning-model">Test Jupyter Installation with a Deep Learning Model</h3>
+
+<p>The following code essentially demonstrates how to use a pre-trained deep learning model (MobileNetV2) to classify the content of an image fetched from a given URL and visualize the prediction along with the image. You can copy/paste to your Jupyter and execute it.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">requests</span>
+<span class="kn">from</span> <span class="n">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="n">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="n">tensorflow.keras.applications.mobilenet_v2</span> <span class="kn">import</span> <span class="n">MobileNetV2</span><span class="p">,</span> <span class="n">preprocess_input</span><span class="p">,</span> <span class="n">decode_predictions</span>
+<span class="kn">from</span> <span class="n">tensorflow.keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">img_to_array</span>
+<span class="kn">import</span> <span class="n">os</span>
 
 
-<!-- begin tags -->
-<section class="tags">
+<span class="c1"># Télécharge une image depuis Internet
+</span><span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="nc">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">img</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
 
-  <div class="tag__head">
+<span class="c1"># Prédit le contenu de l'image
+</span><span class="k">def</span> <span class="nf">predict_image</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+    <span class="n">img_resized</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="nf">resize</span><span class="p">((</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">))</span>
+    <span class="n">img_array</span> <span class="o">=</span> <span class="nf">img_to_array</span><span class="p">(</span><span class="n">img_resized</span><span class="p">)</span>
+    <span class="n">img_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">expand_dims</span><span class="p">(</span><span class="n">img_array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">img_array</span> <span class="o">=</span> <span class="nf">preprocess_input</span><span class="p">(</span><span class="n">img_array</span><span class="p">)</span>
 
-    <div class="container">
-      <div class="row">
-        <div class="col col-12">
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">img_array</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">decode_predictions</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
-          <h1 class="tag__title">Tags</h1>
+<span class="c1"># URL de l'image
+</span><span class="n">image_url</span> <span class="o">=</span> <span class="s">'https://www.fklein.me/download/iphone2.jpg'</span>  <span class="c1"># Remplacez avec l'URL de l'image que vous souhaitez analyser
+</span>
+<span class="c1"># Enregistrement du processus avec MLflow
+# Télécharge et analyse l'image
+</span><span class="n">img</span> <span class="o">=</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="nc">MobileNetV2</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s">'imagenet'</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="nf">predict_image</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+
+    <span class="c1"># Affiche l'image et la prédiction
+</span>    <span class="n">plt</span><span class="p">.</span><span class="nf">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\n</span><span class="s">Object: </span><span class="si">{</span><span class="n">prediction</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s"> </span><span class="se">\n\n</span><span class="s"> Confiance in the prediction : </span><span class="si">{</span><span class="n">prediction</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">%</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"L'image n'a pas pu être téléchargée."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="prerequisite-for-mlflow">Prerequisite for MLflow</h3>
+<p>For using MLflow, install the Python package:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>mlflow
+</code></pre></div></div>
+<p>Restart the kernel after installation in Jupyter UI.</p>
+
+<h2 id="mlflow">MLFlow</h2>
+
+<p>MLflow is a tool that helps people who work with machine learning (ML) to do their work more easily. It helps with tracking and organizing ML experiments, packaging code, and deploying ML models. It’s useful for managing the entire ML process, from trying out ideas to putting models into real-world applications.</p>
+
+<h3 id="to-install-mlflow-use-the-following-helm-command">To install MLflow, use the following Helm command:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>mlflow oci://harbor.jkolaric.eu/vac-library/charts/redhatubi-8/mlflow <span class="nt">-n</span> mlflow <span class="nt">--create-namespace</span>
+</code></pre></div></div>
+
+<h3 id="expose-the-mlflow-service">Expose the MLflow service:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">SERVICE_IP</span><span class="o">=</span><span class="si">$(</span>kubectl get svc <span class="nt">--namespace</span> mlflow mlflow-tracking <span class="nt">--template</span> <span class="s2">""</span><span class="si">)</span>
+<span class="nb">echo</span> <span class="s2">"MLflow URL: http://</span><span class="nv">$SERVICE_IP</span><span class="s2">/"</span>
+</code></pre></div></div>
+
+<h3 id="login-credentials">Login credentials:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>Username: <span class="si">$(</span>kubectl get secret <span class="nt">--namespace</span> mlflow mlflow-tracking <span class="nt">-o</span> <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{ .data.admin-user }"</span> | <span class="nb">base64</span> <span class="nt">-d</span><span class="si">)</span>
+<span class="nb">echo </span>Password: <span class="si">$(</span>kubectl get secret <span class="nt">--namespace</span> mlflow mlflow-tracking <span class="nt">-o</span> <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.data.admin-password }"</span> | <span class="nb">base64</span> <span class="nt">-d</span><span class="si">)</span>
+</code></pre></div></div>
+
+<h3 id="use-jupyter-to-test-the-mlflow-installation">Use Jupyter to test the MLflow Installation</h3>
+
+<p>The following code uses MLflow to track and log experiment information, metrics, and artifacts while performing image classification with a pre-trained MobileNetV2 model. It also saves the model and the downloaded image for later reference and displays the image with the predicted object class and confidence score.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">requests</span>
+<span class="kn">from</span> <span class="n">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="n">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="n">tensorflow.keras.applications.mobilenet_v2</span> <span class="kn">import</span> <span class="n">MobileNetV2</span><span class="p">,</span> <span class="n">preprocess_input</span><span class="p">,</span> <span class="n">decode_predictions</span>
+<span class="kn">from</span> <span class="n">tensorflow.keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">img_to_array</span>
+<span class="kn">import</span> <span class="n">mlflow</span>
+<span class="kn">import</span> <span class="n">os</span>
+
+<span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'MLFLOW_TRACKING_USERNAME'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'user'</span>
+<span class="n">os</span><span class="p">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'MLFLOW_TRACKING_PASSWORD'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'K1aLXzz0QW'</span>
+
+<span class="c1"># Configuration de MLflow
+</span><span class="n">mlflow</span><span class="p">.</span><span class="nf">set_tracking_uri</span><span class="p">(</span><span class="s">'http://20.67.145.120:80'</span><span class="p">)</span>
+<span class="n">mlflow</span><span class="p">.</span><span class="nf">set_experiment</span><span class="p">(</span><span class="s">"image_classification_experiment"</span><span class="p">)</span>
+
+<span class="c1"># Télécharge une image depuis Internet
+</span><span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="nc">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">img</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+<span class="c1"># Prédit le contenu de l'image
+</span><span class="k">def</span> <span class="nf">predict_image</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+    <span class="n">img_resized</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="nf">resize</span><span class="p">((</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">))</span>
+    <span class="n">img_array</span> <span class="o">=</span> <span class="nf">img_to_array</span><span class="p">(</span><span class="n">img_resized</span><span class="p">)</span>
+    <span class="n">img_array</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">expand_dims</span><span class="p">(</span><span class="n">img_array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">img_array</span> <span class="o">=</span> <span class="nf">preprocess_input</span><span class="p">(</span><span class="n">img_array</span><span class="p">)</span>
+
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">img_array</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nf">decode_predictions</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># URL de l'image
+</span><span class="n">image_url</span> <span class="o">=</span> <span class="s">'https://www.fklein.me/download/iphone2.jpg'</span>  <span class="c1"># Remplacez avec l'URL de l'image que vous souhaitez analyser
+</span>
+<span class="c1"># Enregistrement du processus avec MLflow
+</span><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="nf">start_run</span><span class="p">():</span>
+    <span class="c1"># Télécharge et analyse l'image
+</span>    <span class="n">img</span> <span class="o">=</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="nc">MobileNetV2</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="s">'imagenet'</span><span class="p">)</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="nf">predict_image</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
         
-          <ul class="tag__list list-reset">
-            
-              
+        <span class="c1"># Log information
+</span>        <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_param</span><span class="p">(</span><span class="s">"image_url"</span><span class="p">,</span> <span class="n">image_url</span><span class="p">)</span>
+        <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_metric</span><span class="p">(</span><span class="s">"prediction_confidence"</span><span class="p">,</span> <span class="nf">float</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+        <span class="c1"># Log l'image
+</span>        <span class="n">img</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="s">"predicted_image.jpg"</span><span class="p">)</span>
+        <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_artifact</span><span class="p">(</span><span class="s">"predicted_image.jpg"</span><span class="p">)</span>
+        
+        <span class="c1"># Log an instance of the trained model for later use
+</span>        <span class="n">mlflow</span><span class="p">.</span><span class="n">tensorflow</span><span class="p">.</span><span class="nf">log_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">artifact_path</span><span class="o">=</span><span class="s">"object-detection"</span><span class="p">)</span>
+
+        <span class="c1"># Affiche l'image et la prédiction
+</span>        <span class="n">plt</span><span class="p">.</span><span class="nf">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="nf">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="nf">title</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\n</span><span class="s">Object: </span><span class="si">{</span><span class="n">prediction</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s"> </span><span class="se">\n\n</span><span class="s"> Confiance in the prediction : </span><span class="si">{</span><span class="n">prediction</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">%</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"L'image n'a pas pu être téléchargée."</span><span class="p">)</span>
+</code></pre></div></div>
+<h2 id="image-classification-python-accelerator-for-tap-">Image Classification Python Accelerator for TAP 🐍📸</h2>
+
+<p>The Python accelerator for TAP help you to deploy a serverless image classification function as a workload. The accelerator leverages the buildpacks provided by VMware’s open-source Function Buildpacks for Knative project.</p>
+
+<p>The accelerator includes the Python script that we execute before on Jupiter for image classification. It use the MobileNetV2 model and MLflow. It allows you to download an image from the internet, predict its contents, log the prediction and image in MLflow, and display the image with the prediction confidence. This serverless function can be easily integrated into your application or workflow.</p>
+
+<h3 id="prequesite-">Prequesite :</h3>
+<p>Have a Tanzu Application Platform installed.</p>
+
+<p>To add the accelerator to your Platform:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tanzu acc create awesome-python-ai-image-function <span class="nt">--git-repo</span> https://github.com/fklein82/awesome-ai-python-function.git <span class="nt">--git-branch</span> main <span class="nt">--interval</span>
+</code></pre></div></div>
+
+<p>Clone this repository to your local development environment:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;repository-url&gt;
+<span class="nb">cd </span>python-accelerator-for-tanzu
+</code></pre></div></div>
+
+<p>Inside the python-function directory, you will find the func.py file. This Python function is invoked by default and serves as the entry point for your serverless image classification logic.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python-function
+    └── func.py // EDIT THIS FILE
+</code></pre></div></div>
+<p>You can customize the code inside this file to implement your specific image classification logic.</p>
+
+<p>If you want to explore more code samples for serverless functions that can be deployed within Tanzu Application Platform, you can check out the samples folder.</p>
+
+<h3 id="image-classification-function">Image Classification Function</h3>
+<p>The core functionality of this accelerator is the image classification function, which performs the following steps:</p>
+
+<ul>
+  <li>Downloads an image from a specified URL.</li>
+  <li>Predicts the content of the image using the MobileNetV2 model.</li>
+  <li>Logs the prediction and image in MLflow for tracking.</li>
+  <li>Displays the image with the prediction confidence.
+This function can be integrated into various applications and workflows that require image analysis and classification.</li>
+</ul>
+
+<h3 id="deployment">Deployment</h3>
+<p>For detailed instructions on how to build, deploy, and test your customized serverless image classification function using Tanzu Application Platform, please refer to the Tanzu website.</p>
+
+<p>To deploy this application on VMware Tanzu Application Platform, follow these steps:</p>
+
+<p>Ensure you have the Tanzu CLI installed and configured with access to your Tanzu Application Platform instance.</p>
+
+<p>Navigate to your project directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> <span class="o">[</span>your-repo-directory]
+</code></pre></div></div>
+<p>Use the Tanzu CLI to deploy your application:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tanzu apps workload create <span class="nt">-f</span> config/workload.yaml
+</code></pre></div></div>
+<p>Monitor the deployment status:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tanzu apps workload <span class="nb">tail </span>awesome-python-ai-image-function <span class="nt">--timestamp</span> <span class="nt">--since</span> 1h
+</code></pre></div></div>
+<p>Once deployed, access your application via the URL provided by Tanzu Application Platform. You can find the URL with the following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tanzu apps workload get awesome-python-ai-image-function
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this  guide, we’ve covered a wide range of topics related to MLOps (Machine Learning Operations), DevOps, JupyterHub, MLflow, and the integration of various technologies, including VMware Application Catalog (VAC) and Tanzu Application Platform (TAP). Let’s summarize the key takeaways:</p>
+
+<h3 id="mlops-demo-with-vac-and-tap">MLOps Demo with VAC and TAP</h3>
+<p>This guide has provided detailed instructions for setting up JupyterHub and MLflow on your Kubernetes (K8s) system, leveraging the power of VMware Application Catalog (VAC). The objective is to enable you to create an impressive MLOps demonstration and showcase AI applications deployed on Tanzu Application Platform (TAP), a robust Platform as a Service (PaaS) solution running seamlessly on top of Kubernetes.</p>
+
+<p>With TAP, you can effortlessly deploy AI applications that utilize a Machine Learning API exposed by Kubeflow. Whether you’re an AI enthusiast, data scientist, or a tech enthusiast, this guide empowers you to harness the potential of K8s, VAC, and TAP for an awe-inspiring AI journey.</p>
+
+<p>VMware Tanzu Application Catalog simplifies and secures the use of open-source software components for production. It offers a diverse catalog of rigorously tested open-source applications, automated maintenance, vulnerability insights, and more. This streamlines development while ensuring security and compliance. Tanzu Application Catalog is the enterprise version of the open-source Bitnami Application Catalog, providing stronger control and visibility into open-source software supply chains.</p>
+
+<p>VMware Tanzu Application Platform is a platform-as-a-service (PaaS) solution that simplifies the deployment and management of cloud-native applications and microservices in a Kubernetes environment. It offers developer productivity, container orchestration, self-service deployment, automation, monitoring, multi-cloud support, and security features.</p>
+
+<h3 id="mlops-vs-devops">MLOps vs DevOps</h3>
+<p>MLOps and DevOps are related concepts focused on streamlining and automating software development and deployment processes, but they have different areas of application and emphasis:</p>
+
+<ul>
+  <li>
+    <p>DevOps (Development and Operations): DevOps aims to unify software development and IT operations teams, focusing on improving collaboration, automation, and the software development lifecycle. Its goal is to shorten development cycles and enhance the quality of deployments.</p>
+  </li>
+  <li>
+    <p>MLOps (Machine Learning Operations): MLOps is an extension of DevOps tailored specifically for machine learning and AI projects. It covers the end-to-end process of developing, deploying, and managing machine learning models in production. The primary goal is to streamline and automate the ML lifecycle.</p>
+  </li>
+</ul>
+
+<p>Key differences include scope, focus on data, the model lifecycle, and specialized tools and technologies used in MLOps.</p>
+
+<h3 id="jupyterhub-1">JupyterHub</h3>
+<p>JupyterHub is a collaborative, web-based platform that allows multiple users to create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, making it ideal for education, research, and data analysis.</p>
+
+<h3 id="mlflow-1">MLflow</h3>
+<p>MLflow is a versatile tool for tracking, organizing, packaging, and deploying machine learning experiments and models. It simplifies the entire ML process, from experimenting with ideas to deploying models in real-world applications. The guide includes instructions for installing and using MLflow in your environment.</p>
+
+<p>To illustrate the capabilities of JupyterHub and MLflow, a code example was provided for image classification using a pre-trained MobileNetV2 model. This code showcases how to download an image, make predictions, log experiment information, metrics, and artifacts using MLflow, and display the image with predictions.</p>
+
+<p>Before using MLflow, don’t forget to install the Python package using pip install mlflow and restart the Jupyter kernel if necessary.</p>
+
+<h3 id="in-a-nutshell">In a nutshell</h3>
+<p>This guide give you the knowledge and tools needed to set up a powerful MLOps environment using VAC, TAP, JupyterHub, and MLflow. It empowers you to explore the exciting world of AI and machine learning with confidence, whether you’re a data scientist, developer, or IT professional.</p>
+
+<h3 id="authors">Authors</h3>
+
+<p>This blog post was <strong>co-written</strong> with my friend <a href="https://www.linkedin.com/in/julien-kolaric-7557782a/"><strong>Julien Kolaric</strong></a>.</p>
+
+<h5 id="linkedin-">Linkedin :</h5>
+<ul>
+  <li><a href="https://www.linkedin.com/in/julien-kolaric-7557782a/">Julien Kolaric</a></li>
+  <li><a href="https://www.linkedin.com/in/fklein82/">Frédéric Klein</a></li>
+</ul>
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/julien.jpeg" />
+     <img src="/images/fred.jpeg" height="158" width="158" />
+  </div>
+</div>
+
+    </div>
+
+    <div class="post__share">
+      <ul class="share__list list-reset">
+        <li class="share__item">
+          <a class="share__link share__twitter"
+            href="https://twitter.com/intent/tweet?text=Accelerate%20AI:%20VAC%20&%20TAP%20in%20Action&url=http://localhost:4000/post/2023/11/15/vac-tap-mlops.html"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/post/2023/11/15/vac-tap-mlops.html"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/post/2023/11/15/vac-tap-mlops.html&amp;media=http://localhost:4000/images/mclaren.png&amp;description=Accelerate%20AI:%20VAC%20&%20TAP%20in%20Action"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
+          rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2023/11/15/vac-tap-mlops.html&title=Accelerate%20AI:%20VAC%20&%20TAP%20in%20Action&summary=Discover%20the%20power%20of%20MLOps%20with%20Tanzu's%20VMware%20Application%20Catalog%20(VAC)%20and%20Tanzu%20Application%20Platform%20(TAP).%20Build%20a%20demo%20that%20can%20transform%20complex%20data%20into%20cutting-edge%20AI%20applications,%20illustrating%20the%20seamless%20journey%20from%20data%20engineering%20to%20model%20deployment%20and%20beyond.&source=Tanzu%20SE%20Blog"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
+        </li>
+      </ul>
+    </div>
+
+
+  </article>
+</div>
+<!-- end post -->
+
+
+
+
+
+
+
+<!-- begin related posts -->
+<div class="container">
+  <section class="related-posts  animate">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <div class="section__info">
+            <div class="section__head">
+              <h2 class="section__title">You may also like</h2>
+              <a class="section__link" href="/blog">
                 
-                <li class="tag__item"><a href="#CI%2FCD" class="tag__link">CI/CD</a></li>
-              
-            
-              
                 
-                <li class="tag__item"><a href="#MLOPS" class="tag__link">MLOPS</a></li>
-              
-            
-              
+                  
+                    <a href="/tags#MLOPS" class="section__link related-tag">See all<span> MLOPS</span></a>
+                  
                 
-                <li class="tag__item"><a href="#Tap" class="tag__link">Tap</a></li>
               
-            
-              
-                
-                <li class="tag__item"><a href="#data-ia" class="tag__link">data-ia</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#path-to-prod" class="tag__link">path-to-prod</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tanzu-build-service" class="tag__link">tanzu-build-service</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tanzu-experience-day" class="tag__link">tanzu-experience-day</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tanzu-mission-control" class="tag__link">tanzu-mission-control</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tanzu-portfolio" class="tag__link">tanzu-portfolio</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#tap" class="tag__link">tap</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#vac" class="tag__link">vac</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#vmware-application-catalog" class="tag__link">vmware-application-catalog</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#vsphere-with-tanzu" class="tag__link">vsphere-with-tanzu</a></li>
-              
-            
-              
-            
-          </ul>
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="CI%2FCD">CI/CD</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
+              </a>
             </div>
+          </div>
+          <div class="row">
+
+          
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
           </div>
         </div>
       </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-07-18T13:00:35+02:00">18 Jul 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/07/18/tap-github-action.html">
-        <img class="lazy" data-src="/images/tap-github-action.png" alt="Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.">
-      </a>
-      
-
     </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/07/18/tap-github-action.html">Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Explore the powerful synergy of Github Actions and Tanzu Application Platform (TAP) in our latest blog post. Learn to automate Docker image creation from a Jekyll blog, push it to Docker Hub and a personal Harbor registry, and deploy it using TAP in a Kubernetes environment. The post simplifies the complexities of Kubernetes deployment, allowing you to focus on coding while improving your CI/CD pipeline efficiency.</p>
-      
-
-    </div>
-  </div>
+  </section>
 </div>
-              
-            
-            </div>
-          </div>
-        </div>
+<!-- end related posts -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <!-- begin comments -->
+<div class="show-comments">
+  <button class="button disqus-button" id="show-comments-button" onclick="disqus();return false;">Show Comments</button>
+</div>
+
+<div id="disqus_thread" class="post__comments">
+  <div id="disqus_empty"></div>
+</div>
+
+<script>
+  var disqus_loaded = false;
+  var disqus_shortname = 'demo-menca';
+  var disqus_container = document.getElementById("disqus_thread");
+  function disqus() {
+    if (!disqus_loaded) {
+      disqus_loaded = true;
+      var e = document.createElement("script");
+      e.type = "text/javascript";
+      e.async = true;
+      e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+      (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0])
+        .appendChild(e);
+      // Hide the button after opening
+      document.getElementById("show-comments-button").style.display = "none";
+      // Show disqus comments
+      disqus_container.classList.add("is-open");
+    }
+  }
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<!-- end comments --> 
       </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="MLOPS">MLOPS</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-11-15T12:00:35+01:00">15 Nov 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/11/15/vac-tap-mlops.html">
-        <img class="lazy" data-src="/images/mclaren.png" alt="Accelerate AI: VAC & TAP in Action">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/11/15/vac-tap-mlops.html">Accelerate AI: VAC & TAP in Action</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Discover the power of MLOps with Tanzu's VMware Application Catalog (VAC) and Tanzu Application Platform (TAP). Build a demo that can transform complex data into cutting-edge AI applications, illustrating the seamless journey from data engineering to model deployment and beyond.</p>
-      
-
     </div>
   </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="Tap">Tap</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-06T17:01:35+02:00">06 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html">
-        <img class="lazy" data-src="/images/backstage-tap.png" alt="Enhancing Developer Experience on Tanzu Application Platform with Backstage">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html">Enhancing Developer Experience on Tanzu Application Platform with Backstage</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Discover how the Tanzu Application Platform enhances developer experience through the integration of the Backstage open-source project, streamlining application management and boosting productivity..</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>2</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="data-ia">data-ia</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-07-12T18:01:35+02:00">12 Jul 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/07/12/tap-greenplum-python.html">
-        <img class="lazy" data-src="/images/data-ia.png" alt="Setup your DATA & IA Platform with Tanzu - A Real-World Guide Machine Learning use-case.">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/07/12/tap-greenplum-python.html">Setup your DATA & IA Platform with Tanzu - A Real-World Guide Machine Learning use-case.</a>
-      </h2>
-
-      
-      <p class="article__excerpt">In this blog post, we walk you through the process of setting up the DATA-IA platform with Tanzu Application Platform and Greenplum Database. We leverage these technologies to build and deploy a Machine Learning model that predicts the age of abalone, providing a practical use-case to help you understand the capabilities of these robust data platforms.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-08T18:01:35+02:00">08 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/08/tap-and-greenplum.html">
-        <img class="lazy" data-src="/images/mlops2.png" alt="Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/08/tap-and-greenplum.html">Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Learn how to train a Convolutional Neural Network, utilize DataHub for data set management, set up a JupyterHub notebooks environment, and build ML workflows with Kubeflow and Argo Workflows.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="path-to-prod">path-to-prod</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2022-08-09T14:01:35+02:00">09 Aug 2022</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2022/08/09/accelerate-the-kubernetes-adoption-for-developers.html">
-        <img class="lazy" data-src="/images/03.png" alt="How to accelerate the Kubernetes adoption for developers?">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2022/08/09/accelerate-the-kubernetes-adoption-for-developers.html">How to accelerate the Kubernetes adoption for developers?</a>
-      </h2>
-
-      
-      <p class="article__excerpt">The path to production from a developer point of view. E2E Demo in French.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tanzu-build-service">tanzu-build-service</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-03T14:01:35+02:00">03 May 2023</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2023/05/03/tanzu-build-service.html">
-        <img class="lazy" data-src="/images/06.png" alt="Tanzu Build Service - Automating Container Image Building and Management">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/03/tanzu-build-service.html">Tanzu Build Service - Automating Container Image Building and Management</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Tanzu Build Service is a Kubernetes-native tool that automates the process of building, managing, and updating container images. How do I use TBS?</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tanzu-experience-day">tanzu-experience-day</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-04T14:01:35+02:00">04 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/04/experience-days.html">
-        <img class="lazy" data-src="/images/exp.png" alt="Tanzu Experience Days">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/04/experience-days.html">Tanzu Experience Days</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Join me for VMware's free "Experience Days" sessions dedicated to Tanzu solutions!</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tanzu-mission-control">tanzu-mission-control</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-03-02T07:01:35+01:00">02 Mar 2023</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2023/03/02/tanzu-mission-constrol.html">
-        <img class="lazy" data-src="/images/07.png" alt="Tanzu Mission Control - Streamlining Kubernetes Management Across Multiple Clusters">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/03/02/tanzu-mission-constrol.html">Tanzu Mission Control - Streamlining Kubernetes Management Across Multiple Clusters</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Tanzu Mission Control is a Kubernetes management platform that provides a centralized interface for administrators to manage and monitor multiple Kubernetes clusters across different environments, such as on-premises, public cloud, or hybrid.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tanzu-portfolio">tanzu-portfolio</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2022-07-14T14:01:35+02:00">14 Jul 2022</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2022/07/14/portfolio-vmware-tanzu.html">
-        <img class="lazy" data-src="/images/02.png" alt="Tanzu Portfolio Overview in French">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2022/07/14/portfolio-vmware-tanzu.html">Tanzu Portfolio Overview in French</a>
-      </h2>
-
-      
-      <p class="article__excerpt">VMware Tanzu portfolio, products and business value overview - French version</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="tap">tap</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2022-08-09T14:01:35+02:00">09 Aug 2022</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html">
-        <img class="lazy" data-src="/images/04.png" alt="VMware Tanzu Application Platform (TAP) - French demo">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2022/08/09/vmware-tanzu-multi-cloud-paas-demo.html">VMware Tanzu Application Platform (TAP) - French demo</a>
-      </h2>
-
-      
-      <p class="article__excerpt">TAP is a superior multi-cloud developer experience on Kubernetes. VMware Tanzu Application Platform is a modular, application-aware platform that provides a rich set of developer tooling and a a prepaved path to production, to build and deploy software quickly and securely on any compliant public cloud or on-premises Kubernetes cluster.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="vac">vac</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-04-06T14:01:35+02:00">06 Apr 2023</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2023/04/06/vmware-application-catalog-demo.html">
-        <img class="lazy" data-src="/images/05.png" alt="VMware Application Catalog - A Curated image catalog">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/04/06/vmware-application-catalog-demo.html">VMware Application Catalog - A Curated image catalog</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Trusted, pre-packaged application components that are continuously maintained and verifiably tested for use in production environments. How do I use VMware Application Catalog?</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="vmware-application-catalog">vmware-application-catalog</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-04-06T14:01:35+02:00">06 Apr 2023</time>
-
-      
-      <div class="video-icon">
-        <div class="circle pulse"></div>
-        <div class="circle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <polygon points="40,30 65,50 40,70"></polygon>
-          </svg>
-        </div>
-      </div>
-      
-
-      
-      <a class="article__image" href="/post/2023/04/06/vmware-application-catalog-demo.html">
-        <img class="lazy" data-src="/images/05.png" alt="VMware Application Catalog - A Curated image catalog">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/04/06/vmware-application-catalog-demo.html">VMware Application Catalog - A Curated image catalog</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Trusted, pre-packaged application components that are continuously maintained and verifiably tested for use in production environments. How do I use VMware Application Catalog?</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>2</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="vsphere-with-tanzu">vsphere-with-tanzu</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-03T17:01:35+02:00">03 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/03/vsphere-pod-vs-tkc.html">
-        <img class="lazy" data-src="/images/vsphere-with-tanzu-vspherepod.png" alt="vSphere Pod vs Tanzu Kubernetes Cluster? A Comprehensive Comparison">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/03/vsphere-pod-vs-tkc.html">vSphere Pod vs Tanzu Kubernetes Cluster? A Comprehensive Comparison</a>
-      </h2>
-
-      
-      <p class="article__excerpt">in this blog post, we will delve into the differences between these two technologies, discussing their features, advantages, and appropriate use case.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2023-05-03T16:01:35+02:00">03 May 2023</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2023/05/03/vsphere-with-tanzu.html">
-        <img class="lazy" data-src="/images/vsphere-with-tanzu.png" alt="vSphere-with-Tanzu or k8s in vSphere?">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2023/05/03/vsphere-with-tanzu.html">vSphere-with-Tanzu or k8s in vSphere?</a>
-      </h2>
-
-      
-      <p class="article__excerpt">vSphere-with-Tanzu (aka TKGs) is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. In this blog post, we'll take a closer look at VMware vSphere with Tanzu and how to use it with Tanzu CLI.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-</section>
-<!-- end tags -->
   </main>
   <!-- end content -->
 

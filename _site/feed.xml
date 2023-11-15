@@ -3,11 +3,374 @@
     <channel>
         <title>Tanzu SE Blog</title>
         <description>Frédéric KLEIN personal Blog</description>
-        <link>https://blog.fklein.me/</link>
-        <atom:link href="https://blog.fklein.me/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 25 Jul 2023 18:53:24 +0200</pubDate>
-        <lastBuildDate>Tue, 25 Jul 2023 18:53:24 +0200</lastBuildDate>
+        <link>http://localhost:4000/</link>
+        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Wed, 15 Nov 2023 16:53:55 +0100</pubDate>
+        <lastBuildDate>Wed, 15 Nov 2023 16:53:55 +0100</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
+        
+            <item>
+                <title>Accelerate AI: VAC &amp; TAP in Action</title>
+                <description>&lt;h3 id=&quot;the-data-landscape-and-ai-proliferation&quot;&gt;The Data Landscape and AI Proliferation&lt;/h3&gt;
+&lt;p&gt;In a world where over 64.2 zettabytes of data are generated annually, the metaphor of traveling to the moon and back thousands of times if each byte were a kilometer vividly captures the enormity of data we’re generating. This data, sprawling across billions of devices and the Internet of Things (IoT), isn’t confined to a single location; it’s distributed across multiple clouds and mixed environments.&lt;/p&gt;
+
+&lt;p&gt;With half a billion business data users worldwide, catering to a vast spectrum of needs and skills becomes imperative. However, it’s not just the storage that’s crucial; it’s the intelligent utilization of this data through AI and machine learning that empowers a billion workers. Yet, the road to implementing AI is laden with challenges.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-challenge-of-resource-constraints-and-complexity&quot;&gt;The Challenge of Resource Constraints and Complexity&lt;/h3&gt;
+&lt;p&gt;The stark reality is that only 1% of AI/ML projects fully achieve their objectives, underscoring a pressing challenge for the industry—not just in technology, but in strategy, support, and execution. No-code/low-code solutions emerge as a priority, with 96% of IT and engineering leaders acknowledging the acute shortage of software engineers. The complexity is another significant hurdle, with 72% of organizations still figuring out AI operationalization in their businesses.&lt;/p&gt;
+
+&lt;h3 id=&quot;mlops-a-beacon-of-success-in-ai&quot;&gt;MLOps: A Beacon of Success in AI&lt;/h3&gt;
+&lt;p&gt;MLOps stands out as the strategic approach that could pivot more AI projects into the 1% success bracket. It’s about the right partners, strategy, and platform. For Tanzu Solution Engineers like us, it’s about leveraging the ‘DOO’ framework, streamlining the app journey with TAP and the Golden Paths, optimizing app performance with our TKO bundle, and fostering continuous improvement with our Tanzu intelligence portfolio.&lt;/p&gt;
+
+&lt;p&gt;MLOps is essentially about DevSecOps, but with a unique spin for managing AI and ML projects efficiently. It involves:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Preparing Data: Collecting, cleaning, and shaping data to train AI models effectively.&lt;/li&gt;
+  &lt;li&gt;Building the Model: Experimenting with various models to find the best fit and ensure reliability.&lt;/li&gt;
+  &lt;li&gt;Deploying, Consuming, and Monitoring: Integrating the model into applications, delivering business value, and ongoing performance monitoring.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/ai-mlops1.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;MLOps isn’t a solo journey; it’s a collaborative team sport where each role is crucial:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Data Engineers lay down the robust data infrastructure.&lt;/li&gt;
+  &lt;li&gt;Data Scientists craft predictive models.&lt;/li&gt;
+  &lt;li&gt;Business Analysts ensure models meet market needs.&lt;/li&gt;
+  &lt;li&gt;Application Developers integrate models into applications.&lt;/li&gt;
+  &lt;li&gt;DevOps oversee the smooth operation of these applications.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/ai-mlops2.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Together, they turn data into actionable insights and drive business value, ensuring MLOps transcends model development—it becomes a comprehensive solution-delivery system.&lt;/p&gt;
+
+&lt;h3 id=&quot;our-mlops-demo-from-concept-to-application&quot;&gt;Our MLOps Demo: From Concept to Application&lt;/h3&gt;
+&lt;p&gt;In our demo, we’ll illustrate this collaborative spirit in action. Julien will wear the dual hats of a Platform Engineer and Data Scientist—first deploying JupyterLab and MLflow, then creating a smart image-detection model. Subsequently, I will take Julien’s model and swiftly incorporate it into a Python accelerator as an App Developer.&lt;/p&gt;
+
+&lt;p&gt;This is the essence of our MLOps approach—seamless integration of roles and tools, transforming innovative ideas into real-world applications with Tanzu’s suite of products.&lt;/p&gt;
+
+&lt;p&gt;We will demonstrate just how efficiently and effectively we can harness the combined strength of JupyterHub, MLFlow, and TAP to bring AI models from development to deployment. For our demonstration we will VMware Application Catalog (VAC) and Tanzu Application Platform (TAP).&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/ai-mlops3.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;vmware-application-catalog-vac&quot;&gt;VMware Application Catalog (VAC)&lt;/h3&gt;
+&lt;p&gt;VAC is an enterprise solution that simplifies the utilization of open-source software in production environments. It offers a comprehensive catalog of tested open-source applications, with features like automated maintenance and vulnerability insights. This facilitates secure and compliant development processes.&lt;/p&gt;
+
+&lt;h3 id=&quot;tanzu-application-platform-tap&quot;&gt;Tanzu Application Platform (TAP)&lt;/h3&gt;
+&lt;p&gt;TAP, a Platform as a Service (PaaS) solution, eases the deployment and management of cloud-native applications on Kubernetes. It enhances developer productivity and offers features like container orchestration, automation, and multi-cloud support.&lt;/p&gt;
+
+&lt;h2 id=&quot;jupyterhub&quot;&gt;JupyterHub&lt;/h2&gt;
+
+&lt;p&gt;JupyterHub is a web-based platform that enables multiple users to collaboratively create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, supports multiple users, and is commonly used in education, research, and data analysis for its collaborative and interactive capabilities.&lt;/p&gt;
+
+&lt;h3 id=&quot;to-install-jupyterhub-use-the-following-helm-command&quot;&gt;To install JupyterHub, use the following Helm command:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;helm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jupyterhub oci://harbor.jkolaric.eu/vac-library/charts/ubuntu-22/jupyterhub
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;after-installation-you-can-access-jupyterhub-using-the-following-url&quot;&gt;After installation, you can access JupyterHub using the following URL:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SERVICE_IP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get svc &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; jupyter jupyterhub-proxy-public &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;JupyterHub URL: http://&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SERVICE_IP&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;admin-user-information&quot;&gt;Admin user information:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Admin user: user
+&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Password: &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get secret &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; jupyter jupyterhub-hub &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{.data[&apos;values&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;yaml&apos;]}&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;/password/ {gsub(/[ \t]+/, &quot;&quot;, $2);print $2}&apos;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;you-can-access-jupyter-notebooks-using-a-url-like-this&quot;&gt;You can access Jupyter notebooks using a URL like this:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://20.67.149.113/user/user/lab/tree/opt/bitnami/jupyterhub-singleuser/Untitled.ipynb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;test-jupyter-installation-with-a-deep-learning-model&quot;&gt;Test Jupyter Installation with a Deep Learning Model&lt;/h3&gt;
+
+&lt;p&gt;The following code essentially demonstrates how to use a pre-trained deep learning model (MobileNetV2) to classify the content of an image fetched from a given URL and visualize the prediction along with the image. You can copy/paste to your Jupyter and execute it.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BytesIO&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow.keras.applications.mobilenet_v2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;preprocess_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decode_predictions&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow.keras.preprocessing.image&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img_to_array&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# Télécharge une image depuis Internet
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;BytesIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Prédit le contenu de l&apos;image
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;img_to_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;expand_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;preprocess_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decode_predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# URL de l&apos;image
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;https://www.fklein.me/download/iphone2.jpg&apos;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Remplacez avec l&apos;URL de l&apos;image que vous souhaitez analyser
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Enregistrement du processus avec MLflow
+# Télécharge et analyse l&apos;image
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;imagenet&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Affiche l&apos;image et la prédiction
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;off&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Object: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; Confiance in the prediction : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;L&apos;image n&apos;a pas pu être téléchargée.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;prerequisite-for-mlflow&quot;&gt;Prerequisite for MLflow&lt;/h3&gt;
+&lt;p&gt;For using MLflow, install the Python package:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mlflow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Restart the kernel after installation in Jupyter UI.&lt;/p&gt;
+
+&lt;h2 id=&quot;mlflow&quot;&gt;MLFlow&lt;/h2&gt;
+
+&lt;p&gt;MLflow is a tool that helps people who work with machine learning (ML) to do their work more easily. It helps with tracking and organizing ML experiments, packaging code, and deploying ML models. It’s useful for managing the entire ML process, from trying out ideas to putting models into real-world applications.&lt;/p&gt;
+
+&lt;h3 id=&quot;to-install-mlflow-use-the-following-helm-command&quot;&gt;To install MLflow, use the following Helm command:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;helm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mlflow oci://harbor.jkolaric.eu/vac-library/charts/redhatubi-8/mlflow &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; mlflow &lt;span class=&quot;nt&quot;&gt;--create-namespace&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;expose-the-mlflow-service&quot;&gt;Expose the MLflow service:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SERVICE_IP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get svc &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; mlflow mlflow-tracking &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;MLflow URL: http://&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SERVICE_IP&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;login-credentials&quot;&gt;Login credentials:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Username: &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get secret &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; mlflow mlflow-tracking &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{ .data.admin-user }&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Password: &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get secret &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; mlflow mlflow-tracking &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{.data.admin-password }&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;use-jupyter-to-test-the-mlflow-installation&quot;&gt;Use Jupyter to test the MLflow Installation&lt;/h3&gt;
+
+&lt;p&gt;The following code uses MLflow to track and log experiment information, metrics, and artifacts while performing image classification with a pre-trained MobileNetV2 model. It also saves the model and the downloaded image for later reference and displays the image with the predicted object class and confidence score.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BytesIO&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow.keras.applications.mobilenet_v2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;preprocess_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decode_predictions&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow.keras.preprocessing.image&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img_to_array&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;MLFLOW_TRACKING_USERNAME&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;user&apos;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;MLFLOW_TRACKING_PASSWORD&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;K1aLXzz0QW&apos;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Configuration de MLflow
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set_tracking_uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;http://20.67.145.120:80&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set_experiment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image_classification_experiment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Télécharge une image depuis Internet
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;BytesIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Prédit le contenu de l&apos;image
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;img_to_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;expand_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;preprocess_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decode_predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# URL de l&apos;image
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;https://www.fklein.me/download/iphone2.jpg&apos;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Remplacez avec l&apos;URL de l&apos;image que vous souhaitez analyser
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Enregistrement du processus avec MLflow
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start_run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Télécharge et analyse l&apos;image
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;imagenet&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Log information
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image_url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prediction_confidence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Log l&apos;image
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;predicted_image.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_artifact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;predicted_image.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# Log an instance of the trained model for later use
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tensorflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;artifact_path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;object-detection&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# Affiche l&apos;image et la prédiction
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;off&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Object: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; Confiance in the prediction : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;L&apos;image n&apos;a pas pu être téléchargée.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;image-classification-python-accelerator-for-tap-&quot;&gt;Image Classification Python Accelerator for TAP 🐍📸&lt;/h2&gt;
+
+&lt;p&gt;The Python accelerator for TAP help you to deploy a serverless image classification function as a workload. The accelerator leverages the buildpacks provided by VMware’s open-source Function Buildpacks for Knative project.&lt;/p&gt;
+
+&lt;p&gt;The accelerator includes the Python script that we execute before on Jupiter for image classification. It use the MobileNetV2 model and MLflow. It allows you to download an image from the internet, predict its contents, log the prediction and image in MLflow, and display the image with the prediction confidence. This serverless function can be easily integrated into your application or workflow.&lt;/p&gt;
+
+&lt;h3 id=&quot;prequesite-&quot;&gt;Prequesite :&lt;/h3&gt;
+&lt;p&gt;Have a Tanzu Application Platform installed.&lt;/p&gt;
+
+&lt;p&gt;To add the accelerator to your Platform:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create awesome-python-ai-image-function &lt;span class=&quot;nt&quot;&gt;--git-repo&lt;/span&gt; https://github.com/fklein82/awesome-ai-python-function.git &lt;span class=&quot;nt&quot;&gt;--git-branch&lt;/span&gt; main &lt;span class=&quot;nt&quot;&gt;--interval&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Clone this repository to your local development environment:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone &amp;lt;repository-url&amp;gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;python-accelerator-for-tanzu
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Inside the python-function directory, you will find the func.py file. This Python function is invoked by default and serves as the entry point for your serverless image classification logic.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python-function
+    └── func.py // EDIT THIS FILE
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;You can customize the code inside this file to implement your specific image classification logic.&lt;/p&gt;
+
+&lt;p&gt;If you want to explore more code samples for serverless functions that can be deployed within Tanzu Application Platform, you can check out the samples folder.&lt;/p&gt;
+
+&lt;h3 id=&quot;image-classification-function&quot;&gt;Image Classification Function&lt;/h3&gt;
+&lt;p&gt;The core functionality of this accelerator is the image classification function, which performs the following steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Downloads an image from a specified URL.&lt;/li&gt;
+  &lt;li&gt;Predicts the content of the image using the MobileNetV2 model.&lt;/li&gt;
+  &lt;li&gt;Logs the prediction and image in MLflow for tracking.&lt;/li&gt;
+  &lt;li&gt;Displays the image with the prediction confidence.
+This function can be integrated into various applications and workflows that require image analysis and classification.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;deployment&quot;&gt;Deployment&lt;/h3&gt;
+&lt;p&gt;For detailed instructions on how to build, deploy, and test your customized serverless image classification function using Tanzu Application Platform, please refer to the Tanzu website.&lt;/p&gt;
+
+&lt;p&gt;To deploy this application on VMware Tanzu Application Platform, follow these steps:&lt;/p&gt;
+
+&lt;p&gt;Ensure you have the Tanzu CLI installed and configured with access to your Tanzu Application Platform instance.&lt;/p&gt;
+
+&lt;p&gt;Navigate to your project directory:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;your-repo-directory]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Use the Tanzu CLI to deploy your application:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload create &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; config/workload.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Monitor the deployment status:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload &lt;span class=&quot;nb&quot;&gt;tail &lt;/span&gt;awesome-python-ai-image-function &lt;span class=&quot;nt&quot;&gt;--timestamp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--since&lt;/span&gt; 1h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Once deployed, access your application via the URL provided by Tanzu Application Platform. You can find the URL with the following command:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload get awesome-python-ai-image-function
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;In this  guide, we’ve covered a wide range of topics related to MLOps (Machine Learning Operations), DevOps, JupyterHub, MLflow, and the integration of various technologies, including VMware Application Catalog (VAC) and Tanzu Application Platform (TAP). Let’s summarize the key takeaways:&lt;/p&gt;
+
+&lt;h3 id=&quot;mlops-demo-with-vac-and-tap&quot;&gt;MLOps Demo with VAC and TAP&lt;/h3&gt;
+&lt;p&gt;This guide has provided detailed instructions for setting up JupyterHub and MLflow on your Kubernetes (K8s) system, leveraging the power of VMware Application Catalog (VAC). The objective is to enable you to create an impressive MLOps demonstration and showcase AI applications deployed on Tanzu Application Platform (TAP), a robust Platform as a Service (PaaS) solution running seamlessly on top of Kubernetes.&lt;/p&gt;
+
+&lt;p&gt;With TAP, you can effortlessly deploy AI applications that utilize a Machine Learning API exposed by Kubeflow. Whether you’re an AI enthusiast, data scientist, or a tech enthusiast, this guide empowers you to harness the potential of K8s, VAC, and TAP for an awe-inspiring AI journey.&lt;/p&gt;
+
+&lt;p&gt;VMware Tanzu Application Catalog simplifies and secures the use of open-source software components for production. It offers a diverse catalog of rigorously tested open-source applications, automated maintenance, vulnerability insights, and more. This streamlines development while ensuring security and compliance. Tanzu Application Catalog is the enterprise version of the open-source Bitnami Application Catalog, providing stronger control and visibility into open-source software supply chains.&lt;/p&gt;
+
+&lt;p&gt;VMware Tanzu Application Platform is a platform-as-a-service (PaaS) solution that simplifies the deployment and management of cloud-native applications and microservices in a Kubernetes environment. It offers developer productivity, container orchestration, self-service deployment, automation, monitoring, multi-cloud support, and security features.&lt;/p&gt;
+
+&lt;h3 id=&quot;mlops-vs-devops&quot;&gt;MLOps vs DevOps&lt;/h3&gt;
+&lt;p&gt;MLOps and DevOps are related concepts focused on streamlining and automating software development and deployment processes, but they have different areas of application and emphasis:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;DevOps (Development and Operations): DevOps aims to unify software development and IT operations teams, focusing on improving collaboration, automation, and the software development lifecycle. Its goal is to shorten development cycles and enhance the quality of deployments.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;MLOps (Machine Learning Operations): MLOps is an extension of DevOps tailored specifically for machine learning and AI projects. It covers the end-to-end process of developing, deploying, and managing machine learning models in production. The primary goal is to streamline and automate the ML lifecycle.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Key differences include scope, focus on data, the model lifecycle, and specialized tools and technologies used in MLOps.&lt;/p&gt;
+
+&lt;h3 id=&quot;jupyterhub-1&quot;&gt;JupyterHub&lt;/h3&gt;
+&lt;p&gt;JupyterHub is a collaborative, web-based platform that allows multiple users to create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, making it ideal for education, research, and data analysis.&lt;/p&gt;
+
+&lt;h3 id=&quot;mlflow-1&quot;&gt;MLflow&lt;/h3&gt;
+&lt;p&gt;MLflow is a versatile tool for tracking, organizing, packaging, and deploying machine learning experiments and models. It simplifies the entire ML process, from experimenting with ideas to deploying models in real-world applications. The guide includes instructions for installing and using MLflow in your environment.&lt;/p&gt;
+
+&lt;p&gt;To illustrate the capabilities of JupyterHub and MLflow, a code example was provided for image classification using a pre-trained MobileNetV2 model. This code showcases how to download an image, make predictions, log experiment information, metrics, and artifacts using MLflow, and display the image with predictions.&lt;/p&gt;
+
+&lt;p&gt;Before using MLflow, don’t forget to install the Python package using pip install mlflow and restart the Jupyter kernel if necessary.&lt;/p&gt;
+
+&lt;h3 id=&quot;in-a-nutshell&quot;&gt;In a nutshell&lt;/h3&gt;
+&lt;p&gt;This guide give you the knowledge and tools needed to set up a powerful MLOps environment using VAC, TAP, JupyterHub, and MLflow. It empowers you to explore the exciting world of AI and machine learning with confidence, whether you’re a data scientist, developer, or IT professional.&lt;/p&gt;
+
+&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
+
+&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friend &lt;a href=&quot;https://www.linkedin.com/in/julien-kolaric-7557782a/&quot;&gt;&lt;strong&gt;Julien Kolaric&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&quot;linkedin-&quot;&gt;Linkedin :&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/julien-kolaric-7557782a/&quot;&gt;Julien Kolaric&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/fklein82/&quot;&gt;Frédéric Klein&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/julien.jpeg&quot; /&gt;
+     &lt;img src=&quot;/images/fred.jpeg&quot; height=&quot;158&quot; width=&quot;158&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+                <pubDate>Wed, 15 Nov 2023 12:00:35 +0100</pubDate>
+                <link>http://localhost:4000/post/2023/11/15/vac-tap-mlops.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/11/15/vac-tap-mlops.html</guid>
+                
+                <category>MLOPS</category>
+                
+                
+            </item>
         
             <item>
                 <title>Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.</title>
@@ -195,8 +558,8 @@ jobs:
 
 </description>
                 <pubDate>Tue, 18 Jul 2023 13:00:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/07/18/tap-github-action.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/07/18/tap-github-action.html</guid>
+                <link>http://localhost:4000/post/2023/07/18/tap-github-action.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/07/18/tap-github-action.html</guid>
                 
                 <category>CI/CD</category>
                 
@@ -641,8 +1004,8 @@ def main():
 &lt;p&gt;We sincerely hope you &lt;strong&gt;enjoyed reading it&lt;/strong&gt;!&lt;/p&gt;
 </description>
                 <pubDate>Wed, 12 Jul 2023 18:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/07/12/tap-greenplum-python.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/07/12/tap-greenplum-python.html</guid>
+                <link>http://localhost:4000/post/2023/07/12/tap-greenplum-python.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/07/12/tap-greenplum-python.html</guid>
                 
                 <category>data-ia</category>
                 
@@ -868,8 +1231,8 @@ Choosing the right tool is critical for data scientists to overcome these issues
 &lt;/ul&gt;
 </description>
                 <pubDate>Mon, 08 May 2023 18:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/05/08/tap-and-greenplum.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/08/tap-and-greenplum.html</guid>
+                <link>http://localhost:4000/post/2023/05/08/tap-and-greenplum.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/08/tap-and-greenplum.html</guid>
                 
                 <category>data-ia</category>
                 
@@ -947,8 +1310,8 @@ Choosing the right tool is critical for data scientists to overcome these issues
 
 </description>
                 <pubDate>Sat, 06 May 2023 17:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</guid>
+                <link>http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</guid>
                 
                 <category>Tap</category>
                 
@@ -981,8 +1344,8 @@ Choosing the right tool is critical for data scientists to overcome these issues
 &lt;p&gt;Don’t miss out on this valuable opportunity to deepen your knowledge of Tanzu solutions and enhance your technical skills.&lt;/p&gt;
 </description>
                 <pubDate>Thu, 04 May 2023 14:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/05/04/experience-days.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/04/experience-days.html</guid>
+                <link>http://localhost:4000/post/2023/05/04/experience-days.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/04/experience-days.html</guid>
                 
                 <category>tanzu-experience-day</category>
                 
@@ -1050,8 +1413,8 @@ Choosing the right tool is critical for data scientists to overcome these issues
 
 </description>
                 <pubDate>Wed, 03 May 2023 17:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/05/03/vsphere-pod-vs-tkc.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/03/vsphere-pod-vs-tkc.html</guid>
+                <link>http://localhost:4000/post/2023/05/03/vsphere-pod-vs-tkc.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/vsphere-pod-vs-tkc.html</guid>
                 
                 <category>vsphere-with-tanzu</category>
                 
@@ -1174,8 +1537,8 @@ spec:
 &lt;p&gt;VMware vSphere with Tanzu is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. Tanzu CLI is a command-line tool that provides a simplified interface for managing Kubernetes clusters and applications. By following the steps outlined above, you can get started with VMware vSphere with Tanzu and Tanzu CLI and begin deploying and managing your container workloads more easily and efficiently.&lt;/p&gt;
 </description>
                 <pubDate>Wed, 03 May 2023 16:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/05/03/vsphere-with-tanzu.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/03/vsphere-with-tanzu.html</guid>
+                <link>http://localhost:4000/post/2023/05/03/vsphere-with-tanzu.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/vsphere-with-tanzu.html</guid>
                 
                 <category>vsphere-with-tanzu</category>
                 
@@ -1251,8 +1614,8 @@ spec:
 &lt;/ul&gt;
 </description>
                 <pubDate>Wed, 03 May 2023 14:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/05/03/tanzu-build-service.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/05/03/tanzu-build-service.html</guid>
+                <link>http://localhost:4000/post/2023/05/03/tanzu-build-service.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/tanzu-build-service.html</guid>
                 
                 <category>tanzu-build-service</category>
                 
@@ -1270,70 +1633,12 @@ spec:
 &lt;p&gt;Overall, the VMware Application Catalog provides significant value to organizations by simplifying the process of identifying, selecting, and deploying software applications within their virtualized infrastructure. By providing a central repository of pre-tested and verified software solutions, it enables IT teams to streamline their software deployment processes, reduce risk, and increase the efficiency and effectiveness of their virtualized infrastructure.&lt;/p&gt;
 </description>
                 <pubDate>Thu, 06 Apr 2023 14:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2023/04/06/vmware-application-catalog-demo.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/04/06/vmware-application-catalog-demo.html</guid>
+                <link>http://localhost:4000/post/2023/04/06/vmware-application-catalog-demo.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2023/04/06/vmware-application-catalog-demo.html</guid>
                 
                 <category>vac</category>
                 
                 <category>vmware-application-catalog</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>Tanzu Mission Control - Streamlining Kubernetes Management Across Multiple Clusters</title>
-                <description>&lt;h3 id=&quot;tanzu-mission-control-streamlining-kubernetes-management-across-multiple-clusters&quot;&gt;Tanzu Mission Control: Streamlining Kubernetes Management Across Multiple Clusters&lt;/h3&gt;
-
-&lt;p&gt;As organizations continue to adopt Kubernetes as their container orchestration platform of choice, managing multiple clusters can become a complex and time-consuming task. Tanzu Mission Control is a tool that helps streamline Kubernetes management across multiple clusters, providing a centralized interface for administrators to monitor and manage their Kubernetes environments.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-tanzu-mission-control&quot;&gt;What is Tanzu Mission Control?&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Mission Control is a Kubernetes management platform that provides a centralized interface for administrators to manage and monitor multiple Kubernetes clusters across different environments, such as on-premises, public cloud, or hybrid. Tanzu Mission Control allows administrators to create and enforce policies, manage access control, and monitor Kubernetes usage and performance across all clusters.&lt;/p&gt;
-
-&lt;p&gt;Tanzu Mission Control is built on top of VMware Tanzu, a portfolio of products and services that help organizations build, run, and manage modern applications on Kubernetes.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-does-tanzu-mission-control-work&quot;&gt;How does Tanzu Mission Control work?&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Mission Control provides a centralized management plane for administrators to manage multiple Kubernetes clusters. Administrators can connect multiple clusters to Tanzu Mission Control using either a self-hosted cluster agent or a cloud-based cluster agent.&lt;/p&gt;
-
-&lt;p&gt;Once the clusters are connected, administrators can manage them through a unified interface. Tanzu Mission Control provides a set of tools to manage Kubernetes clusters, including:&lt;/p&gt;
-
-&lt;p&gt;Cluster Lifecycle Management: Administrators can create, update, and delete Kubernetes clusters from a single interface.&lt;/p&gt;
-
-&lt;p&gt;Policy Management: Administrators can create and enforce policies across all clusters, such as network policies, pod security policies, and resource quotas.&lt;/p&gt;
-
-&lt;p&gt;Access Control: Administrators can manage user access to Kubernetes resources across all clusters, including role-based access control (RBAC) and Kubernetes namespaces.&lt;/p&gt;
-
-&lt;p&gt;Compliance Management: Tanzu Mission Control provides built-in compliance reports and alerts, allowing administrators to monitor Kubernetes usage and ensure compliance with internal and external policies.&lt;/p&gt;
-
-&lt;p&gt;Application Management: Tanzu Mission Control provides tools to manage applications across multiple clusters, including deployment, scaling, and monitoring.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-are-the-benefits-of-tanzu-mission-control&quot;&gt;What are the benefits of Tanzu Mission Control?&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Mission Control provides several benefits for organizations that manage multiple Kubernetes clusters, including:&lt;/p&gt;
-
-&lt;p&gt;Centralized Management: Tanzu Mission Control provides a single interface to manage multiple Kubernetes clusters across different environments, reducing the need for manual intervention and improving efficiency.&lt;/p&gt;
-
-&lt;p&gt;Consistency: Tanzu Mission Control allows administrators to enforce consistent policies and access control across all clusters, ensuring a consistent experience for developers and end-users.&lt;/p&gt;
-
-&lt;p&gt;Visibility: Tanzu Mission Control provides detailed insights into Kubernetes usage and performance across all clusters, allowing administrators to identify issues and optimize resource usage.&lt;/p&gt;
-
-&lt;p&gt;Compliance: Tanzu Mission Control provides built-in compliance reports and alerts, helping organizations maintain compliance with internal and external policies.&lt;/p&gt;
-
-&lt;p&gt;Scalability: Tanzu Mission Control is designed to scale to support large and complex Kubernetes environments, making it an ideal solution for enterprise organizations.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Mission Control is a powerful tool that streamlines Kubernetes management across multiple clusters. By providing a centralized interface for administrators to manage and monitor Kubernetes environments, Tanzu Mission Control reduces the complexity of managing Kubernetes at scale. If you’re looking to simplify your Kubernetes management processes and improve efficiency, Tanzu Mission Control is definitely worth considering.&lt;/p&gt;
-
-&lt;h3 id=&quot;click-here-to-test-the-product-&quot;&gt;Click &lt;a href=&quot;https://labs.hol.vmware.com/HOL/catalogs/lab/10506&quot;&gt;Here to test the product&lt;/a&gt; !&lt;/h3&gt;
-
-</description>
-                <pubDate>Thu, 02 Mar 2023 07:01:35 +0100</pubDate>
-                <link>https://blog.fklein.me/post/2023/03/02/tanzu-mission-constrol.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2023/03/02/tanzu-mission-constrol.html</guid>
-                
-                <category>tanzu-mission-control</category>
                 
                 
             </item>
