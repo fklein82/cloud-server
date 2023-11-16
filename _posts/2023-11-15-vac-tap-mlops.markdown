@@ -10,7 +10,7 @@ tags:   [MLOPS]
 ### Data & AI Landscape
 As you know, we're generating a massive amount of data every year - over 64.2 zettabytes. This data is everywhere, from billions of devices, mobile phones to the Internet of Things, spread over various cloud environments.
 
-With over 500 million data users globally, it’s essential to meet diverse needs and skills. More than just storing data, we can to use it through AI and machine learning. But, implementing AI successfully comes with its challenges.
+More than just storing data, we can use it through AI and machine learning. But, implementing AI successfully comes with its challenges.
 
 <div class="gallery-box">
   <div class="gallery">
