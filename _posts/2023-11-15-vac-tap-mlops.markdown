@@ -20,7 +20,7 @@ More than just storing data, we can use it through AI and machine learning. But,
 
 
 ### Challenges in AI and Machine Learning
-Even though AI is growing, only 1% of AI and machine learning projects are completely successful. This shows big problems in how they're planned, supported, and carried out. 72% of companies are still trying to figure out the best way to use AI in their work.
+Even though AI is growing, only 1% of AI and machine learning projects are completely successful. This shows big problems in how they're planned, supported, and carried out. 72% of companies are still trying to figure out the best way to use AI in their Business.
 
 <div class="gallery-box">
   <div class="gallery">
