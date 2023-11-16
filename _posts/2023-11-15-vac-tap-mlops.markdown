@@ -340,10 +340,30 @@ Once deployed, access your application via the URL provided by Tanzu Application
 ```bash
 tanzu apps workload get awesome-python-ai-image-function
 ```
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/statetap.png">
+  </div>
+</div>
+
 For detailed instructions on how to build, deploy, and test your customized serverless image classification function using Tanzu Application Platform, please refer to the Tanzu website.
+
+And then you can see your Python FaaS deployed on TAP, and accessible through the url.
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/scoreapp.png">
+  </div>
+</div>
 
 ## Conclusion
 The expansive growth of data and AI in today's digital landscape presents both opportunities and challenges. While we're capable of generating and handling vast amounts of data, effectively utilizing this data through AI and ML is a complex task. The fact is that a small fraction of projects fully achieve their goals. Embracing methodologies like MLOps and leveraging platforms such as VMware's Tanzu Application Catalog and Tanzu Application Platform are essential. These tools not only streamline the process of deploying and managing AI applications but also facilitate collaboration across various roles, turning data into actionable insights and driving business value. Our demonstration shows how using JupyterHub and MLflow with these platforms effectively and efficiently applies these methods in real-world situations.
+
+### Ressources
+Tanzu Application Platform Accelerator:
+- [AI Python Function](https://github.com/fklein82/awesome-ai-python-function)
+- [AI Video Recognition](https://github.com/fklein82/awesome-ai-video-recognition)
+- [AI Text Analysis](https://github.com/fklein82/awesome-ai-text-sentiment-analysis)
 
 ### Authors
 
