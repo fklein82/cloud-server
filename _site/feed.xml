@@ -5,29 +5,42 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 15 Nov 2023 16:53:55 +0100</pubDate>
-        <lastBuildDate>Wed, 15 Nov 2023 16:53:55 +0100</lastBuildDate>
+        <pubDate>Thu, 16 Nov 2023 18:45:51 +0100</pubDate>
+        <lastBuildDate>Thu, 16 Nov 2023 18:45:51 +0100</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
                 <title>Accelerate AI: VAC &amp; TAP in Action</title>
-                <description>&lt;h3 id=&quot;the-data-landscape-and-ai-proliferation&quot;&gt;The Data Landscape and AI Proliferation&lt;/h3&gt;
-&lt;p&gt;In a world where over 64.2 zettabytes of data are generated annually, the metaphor of traveling to the moon and back thousands of times if each byte were a kilometer vividly captures the enormity of data we’re generating. This data, sprawling across billions of devices and the Internet of Things (IoT), isn’t confined to a single location; it’s distributed across multiple clouds and mixed environments.&lt;/p&gt;
+                <description>&lt;h3 id=&quot;data--ai-landscape&quot;&gt;Data &amp;amp; AI Landscape&lt;/h3&gt;
+&lt;p&gt;As you know, we’re generating a massive amount of data every year - over 64.2 zettabytes. This data is everywhere, from billions of devices, mobile phones to the Internet of Things, spread over various cloud environments.&lt;/p&gt;
 
-&lt;p&gt;With half a billion business data users worldwide, catering to a vast spectrum of needs and skills becomes imperative. However, it’s not just the storage that’s crucial; it’s the intelligent utilization of this data through AI and machine learning that empowers a billion workers. Yet, the road to implementing AI is laden with challenges.&lt;/p&gt;
+&lt;p&gt;With over 500 million data users globally, it’s essential to meet diverse needs and skills. More than just storing data, we can to use it through AI and machine learning. But, implementing AI successfully comes with its challenges.&lt;/p&gt;
 
-&lt;h3 id=&quot;the-challenge-of-resource-constraints-and-complexity&quot;&gt;The Challenge of Resource Constraints and Complexity&lt;/h3&gt;
-&lt;p&gt;The stark reality is that only 1% of AI/ML projects fully achieve their objectives, underscoring a pressing challenge for the industry—not just in technology, but in strategy, support, and execution. No-code/low-code solutions emerge as a priority, with 96% of IT and engineering leaders acknowledging the acute shortage of software engineers. The complexity is another significant hurdle, with 72% of organizations still figuring out AI operationalization in their businesses.&lt;/p&gt;
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/data-ai-world.jpg&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
-&lt;h3 id=&quot;mlops-a-beacon-of-success-in-ai&quot;&gt;MLOps: A Beacon of Success in AI&lt;/h3&gt;
-&lt;p&gt;MLOps stands out as the strategic approach that could pivot more AI projects into the 1% success bracket. It’s about the right partners, strategy, and platform. For Tanzu Solution Engineers like us, it’s about leveraging the ‘DOO’ framework, streamlining the app journey with TAP and the Golden Paths, optimizing app performance with our TKO bundle, and fostering continuous improvement with our Tanzu intelligence portfolio.&lt;/p&gt;
+&lt;h3 id=&quot;challenges-in-ai-and-machine-learning&quot;&gt;Challenges in AI and Machine Learning&lt;/h3&gt;
+&lt;p&gt;Even though AI is growing, only 1% of AI and machine learning projects are completely successful. This shows big problems in how they’re planned, supported, and carried out. 72% of companies are still trying to figure out the best way to use AI in their work.&lt;/p&gt;
 
-&lt;p&gt;MLOps is essentially about DevSecOps, but with a unique spin for managing AI and ML projects efficiently. It involves:&lt;/p&gt;
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/aifail2.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;devsecops-vs-mlops&quot;&gt;DevSecOps vs MLOps&lt;/h3&gt;
+&lt;p&gt;MLOps is a crucial strategy for making more AI projects successful.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Preparing Data: Collecting, cleaning, and shaping data to train AI models effectively.&lt;/li&gt;
-  &lt;li&gt;Building the Model: Experimenting with various models to find the best fit and ensure reliability.&lt;/li&gt;
-  &lt;li&gt;Deploying, Consuming, and Monitoring: Integrating the model into applications, delivering business value, and ongoing performance monitoring.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;DevSecOps is an approach to software development that integrates security practices into the DevOps process. It emphasizes the importance of security in every stage of development, from initial design to deployment, ensuring that security considerations are an integral part of the workflow rather than an afterthought.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;MLOps is like DevSecOps but tailored for AI and ML projects. MLOps, or Machine Learning Operations, is a set of practices that combines Machine Learning, DevOps, and Data Engineering to streamline and automate the lifecycle of machine learning models. This approach focuses on improving collaboration between data scientists and operations professionals, ensuring consistent, efficient, and scalable deployment and management of ML models in production environments.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;gallery-box&quot;&gt;
@@ -36,7 +49,7 @@
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;MLOps isn’t a solo journey; it’s a collaborative team sport where each role is crucial:&lt;/p&gt;
+&lt;p&gt;In MLOps, the team plays a pivotal role by bringing together diverse expertise from data scientists, machine learning engineers, DevOps, and Application Developers:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Data Engineers lay down the robust data infrastructure.&lt;/li&gt;
@@ -52,14 +65,17 @@
   &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Together, they turn data into actionable insights and drive business value, ensuring MLOps transcends model development—it becomes a comprehensive solution-delivery system.&lt;/p&gt;
+&lt;p&gt;Together, they turn data into actionable insights and drive business value.&lt;/p&gt;
 
 &lt;h3 id=&quot;our-mlops-demo-from-concept-to-application&quot;&gt;Our MLOps Demo: From Concept to Application&lt;/h3&gt;
-&lt;p&gt;In our demo, we’ll illustrate this collaborative spirit in action. Julien will wear the dual hats of a Platform Engineer and Data Scientist—first deploying JupyterLab and MLflow, then creating a smart image-detection model. Subsequently, I will take Julien’s model and swiftly incorporate it into a Python accelerator as an App Developer.&lt;/p&gt;
+&lt;p&gt;In our demo, we’ll illustrate the MLOPS approach in action. There will be 3 roles: a Platform Engineer, a Data Scientist, and an App Developer.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Platform Engineer will first deploy JupyterLab and MLflow.&lt;/li&gt;
+  &lt;li&gt;The Datascientist will create a smart image-detection model.&lt;/li&gt;
+  &lt;li&gt;And then, The App Developper will use the Datascientist model and  incorporate it into an App.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;This is the essence of our MLOps approach—seamless integration of roles and tools, transforming innovative ideas into real-world applications with Tanzu’s suite of products.&lt;/p&gt;
-
-&lt;p&gt;We will demonstrate just how efficiently and effectively we can harness the combined strength of JupyterHub, MLFlow, and TAP to bring AI models from development to deployment. For our demonstration we will VMware Application Catalog (VAC) and Tanzu Application Platform (TAP).&lt;/p&gt;
+&lt;p&gt;We will demonstrate just how efficiently and effectively we can deploy JupyterHub and MLFlow with VMware Tanzu Application Catalog, and build an APP that use an AI models with Tanzu Application Platform.&lt;/p&gt;
 
 &lt;div class=&quot;gallery-box&quot;&gt;
   &lt;div class=&quot;gallery&quot;&gt;
@@ -68,16 +84,38 @@
 &lt;/div&gt;
 
 &lt;h3 id=&quot;vmware-application-catalog-vac&quot;&gt;VMware Application Catalog (VAC)&lt;/h3&gt;
-&lt;p&gt;VAC is an enterprise solution that simplifies the utilization of open-source software in production environments. It offers a comprehensive catalog of tested open-source applications, with features like automated maintenance and vulnerability insights. This facilitates secure and compliant development processes.&lt;/p&gt;
+&lt;p&gt;VAC is an enterprise solution that simplifies the utilization of open-source software in production environments. It offers a comprehensive catalog of tested open-source applications, with features like automated maintenance and vulnerability insights.&lt;/p&gt;
 
 &lt;h3 id=&quot;tanzu-application-platform-tap&quot;&gt;Tanzu Application Platform (TAP)&lt;/h3&gt;
 &lt;p&gt;TAP, a Platform as a Service (PaaS) solution, eases the deployment and management of cloud-native applications on Kubernetes. It enhances developer productivity and offers features like container orchestration, automation, and multi-cloud support.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/tap-detect.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 
 &lt;h2 id=&quot;jupyterhub&quot;&gt;JupyterHub&lt;/h2&gt;
 
 &lt;p&gt;JupyterHub is a web-based platform that enables multiple users to collaboratively create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, supports multiple users, and is commonly used in education, research, and data analysis for its collaborative and interactive capabilities.&lt;/p&gt;
 
-&lt;h3 id=&quot;to-install-jupyterhub-use-the-following-helm-command&quot;&gt;To install JupyterHub, use the following Helm command:&lt;/h3&gt;
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/jupyterlabju.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;mlflow&quot;&gt;MLFlow&lt;/h2&gt;
+
+&lt;p&gt;MLflow is a tool that helps people who work with machine learning (ML) to do their work more easily. It helps with tracking and organizing ML experiments, packaging code, and deploying ML models. It’s useful for managing the entire ML process, from trying out ideas to putting models into real-world applications.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/mflowju.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;first-to-install-jupyterhub-use-the-following-helm-command&quot;&gt;First to install JupyterHub, use the following Helm command:&lt;/h3&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;helm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jupyterhub oci://harbor.jkolaric.eu/vac-library/charts/ubuntu-22/jupyterhub
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -99,7 +137,7 @@
 
 &lt;h3 id=&quot;test-jupyter-installation-with-a-deep-learning-model&quot;&gt;Test Jupyter Installation with a Deep Learning Model&lt;/h3&gt;
 
-&lt;p&gt;The following code essentially demonstrates how to use a pre-trained deep learning model (MobileNetV2) to classify the content of an image fetched from a given URL and visualize the prediction along with the image. You can copy/paste to your Jupyter and execute it.&lt;/p&gt;
+&lt;p&gt;The following code essentially demonstrates how to use a pre-trained deep learning model (MobileNetV2) to classify the content of an image fetched from a given URL and visualize the prediction along with the image. You can copy/paste to your Jupyter Notebook and execute it.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
@@ -112,7 +150,7 @@
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;
 
 
-&lt;span class=&quot;c1&quot;&gt;# Télécharge une image depuis Internet
+&lt;span class=&quot;c1&quot;&gt;# Download an image from the Internet
 &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
@@ -121,7 +159,7 @@
     &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# Prédit le contenu de l&apos;image
+&lt;span class=&quot;c1&quot;&gt;# Predicts image content
 &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;img_to_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -131,17 +169,17 @@
     &lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decode_predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# URL de l&apos;image
+&lt;span class=&quot;c1&quot;&gt;# Image URL
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;https://www.fklein.me/download/iphone2.jpg&apos;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Remplacez avec l&apos;URL de l&apos;image que vous souhaitez analyser
 &lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# Enregistrement du processus avec MLflow
-# Télécharge et analyse l&apos;image
+&lt;span class=&quot;c1&quot;&gt;# Process recording with MLflow
+# Download and analyze image
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;imagenet&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-    &lt;span class=&quot;c1&quot;&gt;# Affiche l&apos;image et la prédiction
+    &lt;span class=&quot;c1&quot;&gt;# Displays image and prediction
 &lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;off&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Object: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; Confiance in the prediction : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -155,10 +193,6 @@
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mlflow
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Restart the kernel after installation in Jupyter UI.&lt;/p&gt;
-
-&lt;h2 id=&quot;mlflow&quot;&gt;MLFlow&lt;/h2&gt;
-
-&lt;p&gt;MLflow is a tool that helps people who work with machine learning (ML) to do their work more easily. It helps with tracking and organizing ML experiments, packaging code, and deploying ML models. It’s useful for managing the entire ML process, from trying out ideas to putting models into real-world applications.&lt;/p&gt;
 
 &lt;h3 id=&quot;to-install-mlflow-use-the-following-helm-command&quot;&gt;To install MLflow, use the following Helm command:&lt;/h3&gt;
 
@@ -179,7 +213,7 @@
 
 &lt;h3 id=&quot;use-jupyter-to-test-the-mlflow-installation&quot;&gt;Use Jupyter to test the MLflow Installation&lt;/h3&gt;
 
-&lt;p&gt;The following code uses MLflow to track and log experiment information, metrics, and artifacts while performing image classification with a pre-trained MobileNetV2 model. It also saves the model and the downloaded image for later reference and displays the image with the predicted object class and confidence score.&lt;/p&gt;
+&lt;p&gt;The following code uses MLflow to track and log experiment information, metrics, and artifacts while performing image classification with the MobileNetV2 model. It also saves the model and the downloaded image for later reference and displays the image with the predicted object class and confidence score.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
@@ -193,7 +227,7 @@
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;MLFLOW_TRACKING_USERNAME&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;user&apos;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;MLFLOW_TRACKING_PASSWORD&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;K1aLXzz0QW&apos;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;MLFLOW_TRACKING_PASSWORD&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;password&apos;&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Configuration de MLflow
 &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set_tracking_uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;http://20.67.145.120:80&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -252,17 +286,17 @@
 
 &lt;p&gt;The Python accelerator for TAP help you to deploy a serverless image classification function as a workload. The accelerator leverages the buildpacks provided by VMware’s open-source Function Buildpacks for Knative project.&lt;/p&gt;
 
-&lt;p&gt;The accelerator includes the Python script that we execute before on Jupiter for image classification. It use the MobileNetV2 model and MLflow. It allows you to download an image from the internet, predict its contents, log the prediction and image in MLflow, and display the image with the prediction confidence. This serverless function can be easily integrated into your application or workflow.&lt;/p&gt;
+&lt;p&gt;The accelerator includes the Python script that we execute before on Jupiter for image classification. It use the MobileNetV2 model and MLflow. It allows you to download an image from the internet, predict its contents, log the prediction and image in MLflow, and display the image with the prediction confidence&lt;/p&gt;
 
 &lt;h3 id=&quot;prequesite-&quot;&gt;Prequesite :&lt;/h3&gt;
-&lt;p&gt;Have a Tanzu Application Platform installed.&lt;/p&gt;
+&lt;p&gt;Have a Tanzu Application Platform installed with a Python accelerator:&lt;/p&gt;
 
-&lt;p&gt;To add the accelerator to your Platform:&lt;/p&gt;
+&lt;p&gt;To add the Python accelerator to your TAP Platform:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create awesome-python-ai-image-function &lt;span class=&quot;nt&quot;&gt;--git-repo&lt;/span&gt; https://github.com/fklein82/awesome-ai-python-function.git &lt;span class=&quot;nt&quot;&gt;--git-branch&lt;/span&gt; main &lt;span class=&quot;nt&quot;&gt;--interval&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Clone this repository to your local development environment:&lt;/p&gt;
+&lt;p&gt;Then clone this repository to your local development environment:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone &amp;lt;repository-url&amp;gt;
 &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;python-accelerator-for-tanzu
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -274,23 +308,9 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;You can customize the code inside this file to implement your specific image classification logic.&lt;/p&gt;
 
-&lt;p&gt;If you want to explore more code samples for serverless functions that can be deployed within Tanzu Application Platform, you can check out the samples folder.&lt;/p&gt;
-
-&lt;h3 id=&quot;image-classification-function&quot;&gt;Image Classification Function&lt;/h3&gt;
-&lt;p&gt;The core functionality of this accelerator is the image classification function, which performs the following steps:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Downloads an image from a specified URL.&lt;/li&gt;
-  &lt;li&gt;Predicts the content of the image using the MobileNetV2 model.&lt;/li&gt;
-  &lt;li&gt;Logs the prediction and image in MLflow for tracking.&lt;/li&gt;
-  &lt;li&gt;Displays the image with the prediction confidence.
-This function can be integrated into various applications and workflows that require image analysis and classification.&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;h3 id=&quot;deployment&quot;&gt;Deployment&lt;/h3&gt;
-&lt;p&gt;For detailed instructions on how to build, deploy, and test your customized serverless image classification function using Tanzu Application Platform, please refer to the Tanzu website.&lt;/p&gt;
 
-&lt;p&gt;To deploy this application on VMware Tanzu Application Platform, follow these steps:&lt;/p&gt;
+&lt;p&gt;To deploy the application on VMware Tanzu Application Platform, follow these steps:&lt;/p&gt;
 
 &lt;p&gt;Ensure you have the Tanzu CLI installed and configured with access to your Tanzu Application Platform instance.&lt;/p&gt;
 
@@ -304,48 +324,19 @@ This function can be integrated into various applications and workflows that req
 &lt;p&gt;Monitor the deployment status:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload &lt;span class=&quot;nb&quot;&gt;tail &lt;/span&gt;awesome-python-ai-image-function &lt;span class=&quot;nt&quot;&gt;--timestamp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--since&lt;/span&gt; 1h
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/logtap.png&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;p&gt;Once deployed, access your application via the URL provided by Tanzu Application Platform. You can find the URL with the following command:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload get awesome-python-ai-image-function
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;For detailed instructions on how to build, deploy, and test your customized serverless image classification function using Tanzu Application Platform, please refer to the Tanzu website.&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;In this  guide, we’ve covered a wide range of topics related to MLOps (Machine Learning Operations), DevOps, JupyterHub, MLflow, and the integration of various technologies, including VMware Application Catalog (VAC) and Tanzu Application Platform (TAP). Let’s summarize the key takeaways:&lt;/p&gt;
-
-&lt;h3 id=&quot;mlops-demo-with-vac-and-tap&quot;&gt;MLOps Demo with VAC and TAP&lt;/h3&gt;
-&lt;p&gt;This guide has provided detailed instructions for setting up JupyterHub and MLflow on your Kubernetes (K8s) system, leveraging the power of VMware Application Catalog (VAC). The objective is to enable you to create an impressive MLOps demonstration and showcase AI applications deployed on Tanzu Application Platform (TAP), a robust Platform as a Service (PaaS) solution running seamlessly on top of Kubernetes.&lt;/p&gt;
-
-&lt;p&gt;With TAP, you can effortlessly deploy AI applications that utilize a Machine Learning API exposed by Kubeflow. Whether you’re an AI enthusiast, data scientist, or a tech enthusiast, this guide empowers you to harness the potential of K8s, VAC, and TAP for an awe-inspiring AI journey.&lt;/p&gt;
-
-&lt;p&gt;VMware Tanzu Application Catalog simplifies and secures the use of open-source software components for production. It offers a diverse catalog of rigorously tested open-source applications, automated maintenance, vulnerability insights, and more. This streamlines development while ensuring security and compliance. Tanzu Application Catalog is the enterprise version of the open-source Bitnami Application Catalog, providing stronger control and visibility into open-source software supply chains.&lt;/p&gt;
-
-&lt;p&gt;VMware Tanzu Application Platform is a platform-as-a-service (PaaS) solution that simplifies the deployment and management of cloud-native applications and microservices in a Kubernetes environment. It offers developer productivity, container orchestration, self-service deployment, automation, monitoring, multi-cloud support, and security features.&lt;/p&gt;
-
-&lt;h3 id=&quot;mlops-vs-devops&quot;&gt;MLOps vs DevOps&lt;/h3&gt;
-&lt;p&gt;MLOps and DevOps are related concepts focused on streamlining and automating software development and deployment processes, but they have different areas of application and emphasis:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;DevOps (Development and Operations): DevOps aims to unify software development and IT operations teams, focusing on improving collaboration, automation, and the software development lifecycle. Its goal is to shorten development cycles and enhance the quality of deployments.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;MLOps (Machine Learning Operations): MLOps is an extension of DevOps tailored specifically for machine learning and AI projects. It covers the end-to-end process of developing, deploying, and managing machine learning models in production. The primary goal is to streamline and automate the ML lifecycle.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Key differences include scope, focus on data, the model lifecycle, and specialized tools and technologies used in MLOps.&lt;/p&gt;
-
-&lt;h3 id=&quot;jupyterhub-1&quot;&gt;JupyterHub&lt;/h3&gt;
-&lt;p&gt;JupyterHub is a collaborative, web-based platform that allows multiple users to create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, making it ideal for education, research, and data analysis.&lt;/p&gt;
-
-&lt;h3 id=&quot;mlflow-1&quot;&gt;MLflow&lt;/h3&gt;
-&lt;p&gt;MLflow is a versatile tool for tracking, organizing, packaging, and deploying machine learning experiments and models. It simplifies the entire ML process, from experimenting with ideas to deploying models in real-world applications. The guide includes instructions for installing and using MLflow in your environment.&lt;/p&gt;
-
-&lt;p&gt;To illustrate the capabilities of JupyterHub and MLflow, a code example was provided for image classification using a pre-trained MobileNetV2 model. This code showcases how to download an image, make predictions, log experiment information, metrics, and artifacts using MLflow, and display the image with predictions.&lt;/p&gt;
-
-&lt;p&gt;Before using MLflow, don’t forget to install the Python package using pip install mlflow and restart the Jupyter kernel if necessary.&lt;/p&gt;
-
-&lt;h3 id=&quot;in-a-nutshell&quot;&gt;In a nutshell&lt;/h3&gt;
-&lt;p&gt;This guide give you the knowledge and tools needed to set up a powerful MLOps environment using VAC, TAP, JupyterHub, and MLflow. It empowers you to explore the exciting world of AI and machine learning with confidence, whether you’re a data scientist, developer, or IT professional.&lt;/p&gt;
+&lt;p&gt;The expansive growth of data and AI in today’s digital landscape presents both opportunities and challenges. While we’re capable of generating and handling vast amounts of data, effectively utilizing this data through AI and ML is a complex task. The fact is that a small fraction of projects fully achieve their goals. Embracing methodologies like MLOps and leveraging platforms such as VMware’s Tanzu Application Catalog and Tanzu Application Platform are essential. These tools not only streamline the process of deploying and managing AI applications but also facilitate collaboration across various roles, turning data into actionable insights and driving business value. Our demonstration shows how using JupyterHub and MLflow with these platforms effectively and efficiently applies these methods in real-world situations.&lt;/p&gt;
 
 &lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
 

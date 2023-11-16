@@ -7,22 +7,33 @@ image:  '/images/mclaren.png'
 tags:   [MLOPS]
 ---
 
-### The Data Landscape and AI Proliferation
-In a world where over 64.2 zettabytes of data are generated annually, the metaphor of traveling to the moon and back thousands of times if each byte were a kilometer vividly captures the enormity of data we're generating. This data, sprawling across billions of devices and the Internet of Things (IoT), isn't confined to a single location; it's distributed across multiple clouds and mixed environments.
+### Data & AI Landscape
+As you know, we're generating a massive amount of data every year - over 64.2 zettabytes. This data is everywhere, from billions of devices, mobile phones to the Internet of Things, spread over various cloud environments.
 
-With half a billion business data users worldwide, catering to a vast spectrum of needs and skills becomes imperative. However, it's not just the storage that's crucial; it's the intelligent utilization of this data through AI and machine learning that empowers a billion workers. Yet, the road to implementing AI is laden with challenges.
+With over 500 million data users globally, it’s essential to meet diverse needs and skills. More than just storing data, we can to use it through AI and machine learning. But, implementing AI successfully comes with its challenges.
 
-### The Challenge of Resource Constraints and Complexity
-The stark reality is that only 1% of AI/ML projects fully achieve their objectives, underscoring a pressing challenge for the industry—not just in technology, but in strategy, support, and execution. No-code/low-code solutions emerge as a priority, with 96% of IT and engineering leaders acknowledging the acute shortage of software engineers. The complexity is another significant hurdle, with 72% of organizations still figuring out AI operationalization in their businesses.
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/data-ai-world.jpg">
+  </div>
+</div>
 
-### MLOps: A Beacon of Success in AI
-MLOps stands out as the strategic approach that could pivot more AI projects into the 1% success bracket. It's about the right partners, strategy, and platform. For Tanzu Solution Engineers like us, it's about leveraging the 'DOO' framework, streamlining the app journey with TAP and the Golden Paths, optimizing app performance with our TKO bundle, and fostering continuous improvement with our Tanzu intelligence portfolio.
 
-MLOps is essentially about DevSecOps, but with a unique spin for managing AI and ML projects efficiently. It involves:
+### Challenges in AI and Machine Learning
+Even though AI is growing, only 1% of AI and machine learning projects are completely successful. This shows big problems in how they're planned, supported, and carried out. 72% of companies are still trying to figure out the best way to use AI in their work.
 
-- Preparing Data: Collecting, cleaning, and shaping data to train AI models effectively.
-- Building the Model: Experimenting with various models to find the best fit and ensure reliability.
-- Deploying, Consuming, and Monitoring: Integrating the model into applications, delivering business value, and ongoing performance monitoring.
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/aifail2.png">
+  </div>
+</div>
+
+### DevSecOps vs MLOps
+MLOps is a crucial strategy for making more AI projects successful. 
+
+- DevSecOps is an approach to software development that integrates security practices into the DevOps process. It emphasizes the importance of security in every stage of development, from initial design to deployment, ensuring that security considerations are an integral part of the workflow rather than an afterthought.
+
+- MLOps is like DevSecOps but tailored for AI and ML projects. MLOps, or Machine Learning Operations, is a set of practices that combines Machine Learning, DevOps, and Data Engineering to streamline and automate the lifecycle of machine learning models. This approach focuses on improving collaboration between data scientists and operations professionals, ensuring consistent, efficient, and scalable deployment and management of ML models in production environments.
 
 <div class="gallery-box">
   <div class="gallery">
@@ -30,7 +41,7 @@ MLOps is essentially about DevSecOps, but with a unique spin for managing AI and
   </div>
 </div>
 
-MLOps isn't a solo journey; it's a collaborative team sport where each role is crucial:
+In MLOps, the team plays a pivotal role by bringing together diverse expertise from data scientists, machine learning engineers, DevOps, and Application Developers:
 
 - Data Engineers lay down the robust data infrastructure.
 - Data Scientists craft predictive models.
@@ -44,14 +55,15 @@ MLOps isn't a solo journey; it's a collaborative team sport where each role is c
   </div>
 </div>
 
-Together, they turn data into actionable insights and drive business value, ensuring MLOps transcends model development—it becomes a comprehensive solution-delivery system.
+Together, they turn data into actionable insights and drive business value.
 
 ### Our MLOps Demo: From Concept to Application
-In our demo, we'll illustrate this collaborative spirit in action. Julien will wear the dual hats of a Platform Engineer and Data Scientist—first deploying JupyterLab and MLflow, then creating a smart image-detection model. Subsequently, I will take Julien's model and swiftly incorporate it into a Python accelerator as an App Developer.
+In our demo, we'll illustrate the MLOPS approach in action. There will be 3 roles: a Platform Engineer, a Data Scientist, and an App Developer. 
+- The Platform Engineer will first deploy JupyterLab and MLflow.
+- The Datascientist will create a smart image-detection model. 
+- And then, The App Developper will use the Datascientist model and  incorporate it into an App.
 
-This is the essence of our MLOps approach—seamless integration of roles and tools, transforming innovative ideas into real-world applications with Tanzu's suite of products.
-
-We will demonstrate just how efficiently and effectively we can harness the combined strength of JupyterHub, MLFlow, and TAP to bring AI models from development to deployment. For our demonstration we will VMware Application Catalog (VAC) and Tanzu Application Platform (TAP).
+We will demonstrate just how efficiently and effectively we can deploy JupyterHub and MLFlow with VMware Tanzu Application Catalog, and build an APP that use an AI models with Tanzu Application Platform.
 
 <div class="gallery-box">
   <div class="gallery">
@@ -60,16 +72,38 @@ We will demonstrate just how efficiently and effectively we can harness the comb
 </div>
 
 ### VMware Application Catalog (VAC)
-VAC is an enterprise solution that simplifies the utilization of open-source software in production environments. It offers a comprehensive catalog of tested open-source applications, with features like automated maintenance and vulnerability insights. This facilitates secure and compliant development processes.
+VAC is an enterprise solution that simplifies the utilization of open-source software in production environments. It offers a comprehensive catalog of tested open-source applications, with features like automated maintenance and vulnerability insights.
 
 ### Tanzu Application Platform (TAP)
 TAP, a Platform as a Service (PaaS) solution, eases the deployment and management of cloud-native applications on Kubernetes. It enhances developer productivity and offers features like container orchestration, automation, and multi-cloud support.
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/tap-detect.png">
+  </div>
+</div>
 
 ## JupyterHub
 
 JupyterHub is a web-based platform that enables multiple users to collaboratively create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, supports multiple users, and is commonly used in education, research, and data analysis for its collaborative and interactive capabilities.
 
-### To install JupyterHub, use the following Helm command:
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/jupyterlabju.png">
+  </div>
+</div>
+
+## MLFlow
+
+MLflow is a tool that helps people who work with machine learning (ML) to do their work more easily. It helps with tracking and organizing ML experiments, packaging code, and deploying ML models. It's useful for managing the entire ML process, from trying out ideas to putting models into real-world applications.
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/mflowju.png">
+  </div>
+</div>
+
+### First to install JupyterHub, use the following Helm command:
 
 ```bash
 helm install jupyterhub oci://harbor.jkolaric.eu/vac-library/charts/ubuntu-22/jupyterhub
@@ -95,7 +129,7 @@ http://20.67.149.113/user/user/lab/tree/opt/bitnami/jupyterhub-singleuser/Untitl
 
 ### Test Jupyter Installation with a Deep Learning Model
 
-The following code essentially demonstrates how to use a pre-trained deep learning model (MobileNetV2) to classify the content of an image fetched from a given URL and visualize the prediction along with the image. You can copy/paste to your Jupyter and execute it.
+The following code essentially demonstrates how to use a pre-trained deep learning model (MobileNetV2) to classify the content of an image fetched from a given URL and visualize the prediction along with the image. You can copy/paste to your Jupyter Notebook and execute it.
 
 
 ```python
@@ -110,7 +144,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 import os
 
 
-# Télécharge une image depuis Internet
+# Download an image from the Internet
 def download_image(image_url):
     response = requests.get(image_url)
     if response.status_code == 200:
@@ -119,7 +153,7 @@ def download_image(image_url):
     else:
         return None
 
-# Prédit le contenu de l'image
+# Predicts image content
 def predict_image(model, img):
     img_resized = img.resize((224, 224))
     img_array = img_to_array(img_resized)
@@ -129,17 +163,17 @@ def predict_image(model, img):
     predictions = model.predict(img_array)
     return decode_predictions(predictions, top=1)[0][0]
 
-# URL de l'image
+# Image URL
 image_url = 'https://www.fklein.me/download/iphone2.jpg'  # Remplacez avec l'URL de l'image que vous souhaitez analyser
 
-# Enregistrement du processus avec MLflow
-# Télécharge et analyse l'image
+# Process recording with MLflow
+# Download and analyze image
 img = download_image(image_url)
 if img is not None:
     model = MobileNetV2(weights='imagenet')
     prediction = predict_image(model, img)
 
-    # Affiche l'image et la prédiction
+    # Displays image and prediction
     plt.imshow(img)
     plt.axis('off')
     plt.title(f"\nObject: {prediction[1]} \n\n Confiance in the prediction : {prediction[2]*100:.3f}%\n")
@@ -154,10 +188,6 @@ For using MLflow, install the Python package:
 pip install mlflow
 ```
 Restart the kernel after installation in Jupyter UI.
-
-## MLFlow
-
-MLflow is a tool that helps people who work with machine learning (ML) to do their work more easily. It helps with tracking and organizing ML experiments, packaging code, and deploying ML models. It's useful for managing the entire ML process, from trying out ideas to putting models into real-world applications.
 
 ### To install MLflow, use the following Helm command:
 
@@ -179,9 +209,10 @@ echo Username: $(kubectl get secret --namespace mlflow mlflow-tracking -o jsonpa
 echo Password: $(kubectl get secret --namespace mlflow mlflow-tracking -o jsonpath="{.data.admin-password }" | base64 -d)
 ```
 
+
 ### Use Jupyter to test the MLflow Installation
 
-The following code uses MLflow to track and log experiment information, metrics, and artifacts while performing image classification with a pre-trained MobileNetV2 model. It also saves the model and the downloaded image for later reference and displays the image with the predicted object class and confidence score.
+The following code uses MLflow to track and log experiment information, metrics, and artifacts while performing image classification with the MobileNetV2 model. It also saves the model and the downloaded image for later reference and displays the image with the predicted object class and confidence score.
 
 ```python
 import requests
@@ -196,7 +227,7 @@ import mlflow
 import os
 
 os.environ['MLFLOW_TRACKING_USERNAME'] = 'user'
-os.environ['MLFLOW_TRACKING_PASSWORD'] = 'K1aLXzz0QW'
+os.environ['MLFLOW_TRACKING_PASSWORD'] = 'password'
 
 # Configuration de MLflow
 mlflow.set_tracking_uri('http://20.67.145.120:80')
@@ -255,18 +286,18 @@ with mlflow.start_run():
 
 The Python accelerator for TAP help you to deploy a serverless image classification function as a workload. The accelerator leverages the buildpacks provided by VMware's open-source Function Buildpacks for Knative project.
 
-The accelerator includes the Python script that we execute before on Jupiter for image classification. It use the MobileNetV2 model and MLflow. It allows you to download an image from the internet, predict its contents, log the prediction and image in MLflow, and display the image with the prediction confidence. This serverless function can be easily integrated into your application or workflow.
+The accelerator includes the Python script that we execute before on Jupiter for image classification. It use the MobileNetV2 model and MLflow. It allows you to download an image from the internet, predict its contents, log the prediction and image in MLflow, and display the image with the prediction confidence
 
 ### Prequesite :
-Have a Tanzu Application Platform installed.
+Have a Tanzu Application Platform installed with a Python accelerator:
 
-To add the accelerator to your Platform:
+To add the Python accelerator to your TAP Platform:
 
 ```bash
 tanzu acc create awesome-python-ai-image-function --git-repo https://github.com/fklein82/awesome-ai-python-function.git --git-branch main --interval
 ```
 
-Clone this repository to your local development environment:
+Then clone this repository to your local development environment:
 ```bash
 git clone <repository-url>
 cd python-accelerator-for-tanzu
@@ -280,21 +311,9 @@ python-function
 ```
 You can customize the code inside this file to implement your specific image classification logic.
 
-If you want to explore more code samples for serverless functions that can be deployed within Tanzu Application Platform, you can check out the samples folder.
-
-### Image Classification Function
-The core functionality of this accelerator is the image classification function, which performs the following steps:
-
-- Downloads an image from a specified URL.
-- Predicts the content of the image using the MobileNetV2 model.
-- Logs the prediction and image in MLflow for tracking.
-- Displays the image with the prediction confidence.
-This function can be integrated into various applications and workflows that require image analysis and classification.
-
 ### Deployment
-For detailed instructions on how to build, deploy, and test your customized serverless image classification function using Tanzu Application Platform, please refer to the Tanzu website.
 
-To deploy this application on VMware Tanzu Application Platform, follow these steps:
+To deploy the application on VMware Tanzu Application Platform, follow these steps:
 
 Ensure you have the Tanzu CLI installed and configured with access to your Tanzu Application Platform instance.
 
@@ -311,45 +330,20 @@ Monitor the deployment status:
 ```bash
 tanzu apps workload tail awesome-python-ai-image-function --timestamp --since 1h
 ```
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/logtap.png">
+  </div>
+</div>
+
 Once deployed, access your application via the URL provided by Tanzu Application Platform. You can find the URL with the following command:
 ```bash
 tanzu apps workload get awesome-python-ai-image-function
 ```
-
+For detailed instructions on how to build, deploy, and test your customized serverless image classification function using Tanzu Application Platform, please refer to the Tanzu website.
 
 ## Conclusion
-In this  guide, we've covered a wide range of topics related to MLOps (Machine Learning Operations), DevOps, JupyterHub, MLflow, and the integration of various technologies, including VMware Application Catalog (VAC) and Tanzu Application Platform (TAP). Let's summarize the key takeaways:
-
-### MLOps Demo with VAC and TAP
-This guide has provided detailed instructions for setting up JupyterHub and MLflow on your Kubernetes (K8s) system, leveraging the power of VMware Application Catalog (VAC). The objective is to enable you to create an impressive MLOps demonstration and showcase AI applications deployed on Tanzu Application Platform (TAP), a robust Platform as a Service (PaaS) solution running seamlessly on top of Kubernetes.
-
-With TAP, you can effortlessly deploy AI applications that utilize a Machine Learning API exposed by Kubeflow. Whether you're an AI enthusiast, data scientist, or a tech enthusiast, this guide empowers you to harness the potential of K8s, VAC, and TAP for an awe-inspiring AI journey.
-
-VMware Tanzu Application Catalog simplifies and secures the use of open-source software components for production. It offers a diverse catalog of rigorously tested open-source applications, automated maintenance, vulnerability insights, and more. This streamlines development while ensuring security and compliance. Tanzu Application Catalog is the enterprise version of the open-source Bitnami Application Catalog, providing stronger control and visibility into open-source software supply chains.
-
-VMware Tanzu Application Platform is a platform-as-a-service (PaaS) solution that simplifies the deployment and management of cloud-native applications and microservices in a Kubernetes environment. It offers developer productivity, container orchestration, self-service deployment, automation, monitoring, multi-cloud support, and security features.
-
-### MLOps vs DevOps
-MLOps and DevOps are related concepts focused on streamlining and automating software development and deployment processes, but they have different areas of application and emphasis:
-
-- DevOps (Development and Operations): DevOps aims to unify software development and IT operations teams, focusing on improving collaboration, automation, and the software development lifecycle. Its goal is to shorten development cycles and enhance the quality of deployments.
-
-- MLOps (Machine Learning Operations): MLOps is an extension of DevOps tailored specifically for machine learning and AI projects. It covers the end-to-end process of developing, deploying, and managing machine learning models in production. The primary goal is to streamline and automate the ML lifecycle.
-
-Key differences include scope, focus on data, the model lifecycle, and specialized tools and technologies used in MLOps.
-
-### JupyterHub
-JupyterHub is a collaborative, web-based platform that allows multiple users to create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, making it ideal for education, research, and data analysis.
-
-### MLflow
-MLflow is a versatile tool for tracking, organizing, packaging, and deploying machine learning experiments and models. It simplifies the entire ML process, from experimenting with ideas to deploying models in real-world applications. The guide includes instructions for installing and using MLflow in your environment.
-
-To illustrate the capabilities of JupyterHub and MLflow, a code example was provided for image classification using a pre-trained MobileNetV2 model. This code showcases how to download an image, make predictions, log experiment information, metrics, and artifacts using MLflow, and display the image with predictions.
-
-Before using MLflow, don't forget to install the Python package using pip install mlflow and restart the Jupyter kernel if necessary.
-
-### In a nutshell
-This guide give you the knowledge and tools needed to set up a powerful MLOps environment using VAC, TAP, JupyterHub, and MLflow. It empowers you to explore the exciting world of AI and machine learning with confidence, whether you're a data scientist, developer, or IT professional.
+The expansive growth of data and AI in today's digital landscape presents both opportunities and challenges. While we're capable of generating and handling vast amounts of data, effectively utilizing this data through AI and ML is a complex task. The fact is that a small fraction of projects fully achieve their goals. Embracing methodologies like MLOps and leveraging platforms such as VMware's Tanzu Application Catalog and Tanzu Application Platform are essential. These tools not only streamline the process of deploying and managing AI applications but also facilitate collaboration across various roles, turning data into actionable insights and driving business value. Our demonstration shows how using JupyterHub and MLflow with these platforms effectively and efficiently applies these methods in real-world situations.
 
 ### Authors
 
