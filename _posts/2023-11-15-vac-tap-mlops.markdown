@@ -7,21 +7,16 @@ image:  '/images/mclaren.png'
 tags:   [MLOPS]
 ---
 
-### Data & AI Landscape
+### Data & AI Challenge
 As you know, we're generating a massive amount of data every year - over 64.2 zettabytes. This data is everywhere, from billions of devices, mobile phones to the Internet of Things, spread over various cloud environments.
-
-More than just storing data, we can use it through AI and machine learning. But, implementing AI successfully comes with its challenges.
-
 <div class="gallery-box">
   <div class="gallery">
     <img src="/images/data-ai-world.jpg">
   </div>
 </div>
+ More than just storing data, we can use it through AI and machine learning. But, implementing AI successfully comes with its challenges.
 
-
-### Challenges in AI and Machine Learning
 Even though AI is growing, only 1% of AI and machine learning projects are completely successful. This shows big problems in how they're planned, supported, and carried out. 72% of companies are still trying to figure out the best way to use AI in their Business.
-
 <div class="gallery-box">
   <div class="gallery">
     <img src="/images/aifail2.png">

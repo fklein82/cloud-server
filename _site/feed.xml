@@ -5,26 +5,22 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 16 Nov 2023 19:26:18 +0100</pubDate>
-        <lastBuildDate>Thu, 16 Nov 2023 19:26:18 +0100</lastBuildDate>
+        <pubDate>Thu, 16 Nov 2023 19:29:33 +0100</pubDate>
+        <lastBuildDate>Thu, 16 Nov 2023 19:29:33 +0100</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
                 <title>Accelerate AI: VAC &amp; TAP in Action</title>
-                <description>&lt;h3 id=&quot;data--ai-landscape&quot;&gt;Data &amp;amp; AI Landscape&lt;/h3&gt;
+                <description>&lt;h3 id=&quot;data--ai-challenge&quot;&gt;Data &amp;amp; AI Challenge&lt;/h3&gt;
 &lt;p&gt;As you know, we’re generating a massive amount of data every year - over 64.2 zettabytes. This data is everywhere, from billions of devices, mobile phones to the Internet of Things, spread over various cloud environments.&lt;/p&gt;
-
-&lt;p&gt;More than just storing data, we can use it through AI and machine learning. But, implementing AI successfully comes with its challenges.&lt;/p&gt;
-
 &lt;div class=&quot;gallery-box&quot;&gt;
   &lt;div class=&quot;gallery&quot;&gt;
     &lt;img src=&quot;/images/data-ai-world.jpg&quot; /&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+&lt;p&gt;More than just storing data, we can use it through AI and machine learning. But, implementing AI successfully comes with its challenges.&lt;/p&gt;
 
-&lt;h3 id=&quot;challenges-in-ai-and-machine-learning&quot;&gt;Challenges in AI and Machine Learning&lt;/h3&gt;
 &lt;p&gt;Even though AI is growing, only 1% of AI and machine learning projects are completely successful. This shows big problems in how they’re planned, supported, and carried out. 72% of companies are still trying to figure out the best way to use AI in their Business.&lt;/p&gt;
-
 &lt;div class=&quot;gallery-box&quot;&gt;
   &lt;div class=&quot;gallery&quot;&gt;
     &lt;img src=&quot;/images/aifail2.png&quot; /&gt;
