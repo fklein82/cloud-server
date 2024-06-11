@@ -1,1653 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Tanzu SE Blog</title>
+        <title>ASA Blog</title>
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 16 Nov 2023 19:29:33 +0100</pubDate>
-        <lastBuildDate>Thu, 16 Nov 2023 19:29:33 +0100</lastBuildDate>
+        <pubDate>Wed, 12 Jun 2024 00:34:47 +0200</pubDate>
+        <lastBuildDate>Wed, 12 Jun 2024 00:34:47 +0200</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
-                <title>Accelerate AI: VAC &amp; TAP in Action</title>
-                <description>&lt;h3 id=&quot;data--ai-challenge&quot;&gt;Data &amp;amp; AI Challenge&lt;/h3&gt;
-&lt;p&gt;As you know, we’re generating a massive amount of data every year - over 64.2 zettabytes. This data is everywhere, from billions of devices, mobile phones to the Internet of Things, spread over various cloud environments.&lt;/p&gt;
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/data-ai-world.jpg&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;More than just storing data, we can use it through AI and machine learning. But, implementing AI successfully comes with its challenges.&lt;/p&gt;
+                <title>Building a Container Image on OpenShift Using GitLab CI/CD</title>
+                <description>&lt;h2 id=&quot;building-and-deploying-a-container-image-on-openshift-using-gitlab-cicd&quot;&gt;Building and Deploying a Container Image on OpenShift using GitLab CI/CD&lt;/h2&gt;
 
-&lt;p&gt;Even though AI is growing, only 1% of AI and machine learning projects are completely successful. This shows big problems in how they’re planned, supported, and carried out. 72% of companies are still trying to figure out the best way to use AI in their Business.&lt;/p&gt;
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/aifail2.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;In this blog post, we’ll walk through the process of building a container image using OpenShift and GitLab CI/CD. We will utilize the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitlab-ci.yaml&lt;/code&gt; file, a Dockerfile, and some simple HTML and Python code to demonstrate the build process. This guide assumes you have some basic knowledge of GitLab CI/CD and OpenShift.&lt;/p&gt;
 
-&lt;h3 id=&quot;devsecops-vs-mlops&quot;&gt;DevSecOps vs MLOps&lt;/h3&gt;
-&lt;p&gt;MLOps is a crucial strategy for making more AI projects successful.&lt;/p&gt;
+&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;DevSecOps is an approach to software development that integrates security practices into the DevOps process. It emphasizes the importance of security in every stage of development, from initial design to deployment, ensuring that security considerations are an integral part of the workflow rather than an afterthought.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;MLOps is like DevSecOps but tailored for AI and ML projects. MLOps, or Machine Learning Operations, is a set of practices that combines Machine Learning, DevOps, and Data Engineering to streamline and automate the lifecycle of machine learning models. This approach focuses on improving collaboration between data scientists and operations professionals, ensuring consistent, efficient, and scalable deployment and management of ML models in production environments.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/ai-mlops1.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;In MLOps, the team plays a pivotal role by bringing together diverse expertise from data scientists, machine learning engineers, DevOps, and Application Developers:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Data Engineers lay down the robust data infrastructure.&lt;/li&gt;
-  &lt;li&gt;Data Scientists craft predictive models.&lt;/li&gt;
-  &lt;li&gt;Business Analysts ensure models meet market needs.&lt;/li&gt;
-  &lt;li&gt;Application Developers integrate models into applications.&lt;/li&gt;
-  &lt;li&gt;DevOps oversee the smooth operation of these applications.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/ai-mlops2.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Together, they turn data into actionable insights and drive business value.&lt;/p&gt;
-
-&lt;h3 id=&quot;our-mlops-demo-from-concept-to-application&quot;&gt;Our MLOps Demo: From Concept to Application&lt;/h3&gt;
-&lt;p&gt;In our demo, we’ll illustrate the MLOPS approach in action. There will be 3 roles: a Platform Engineer, a Data Scientist, and an App Developer.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The Platform Engineer will first deploy JupyterLab and MLflow.&lt;/li&gt;
-  &lt;li&gt;The Datascientist will create a smart image-detection model.&lt;/li&gt;
-  &lt;li&gt;And then, The App Developper will use the Datascientist model and  incorporate it into an App.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will demonstrate just how efficiently and effectively we can deploy JupyterHub and MLFlow with VMware Tanzu Application Catalog, and build an APP that use an AI models with Tanzu Application Platform.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/ai-mlops3.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;vmware-application-catalog-vac&quot;&gt;VMware Application Catalog (VAC)&lt;/h3&gt;
-&lt;p&gt;VAC is an enterprise solution that simplifies the utilization of open-source software in production environments. It offers a comprehensive catalog of tested open-source applications, with features like automated maintenance and vulnerability insights.&lt;/p&gt;
-
-&lt;h3 id=&quot;tanzu-application-platform-tap&quot;&gt;Tanzu Application Platform (TAP)&lt;/h3&gt;
-&lt;p&gt;TAP, a Platform as a Service (PaaS) solution, eases the deployment and management of cloud-native applications on Kubernetes. It enhances developer productivity and offers features like container orchestration, automation, and multi-cloud support.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/tap-detect.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;jupyterhub&quot;&gt;JupyterHub&lt;/h2&gt;
-
-&lt;p&gt;JupyterHub is a web-based platform that enables multiple users to collaboratively create and work with Jupyter notebooks on a shared server. It offers a secure and customizable environment, supports multiple users, and is commonly used in education, research, and data analysis for its collaborative and interactive capabilities.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/jupyterlabju.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;mlflow&quot;&gt;MLFlow&lt;/h2&gt;
-
-&lt;p&gt;MLflow is a tool that helps people who work with machine learning (ML) to do their work more easily. It helps with tracking and organizing ML experiments, packaging code, and deploying ML models. It’s useful for managing the entire ML process, from trying out ideas to putting models into real-world applications.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/mflowju.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;first-to-install-jupyterhub-use-the-following-helm-command&quot;&gt;First to install JupyterHub, use the following Helm command:&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;helm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jupyterhub oci://harbor.jkolaric.eu/vac-library/charts/ubuntu-22/jupyterhub
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;after-installation-you-can-access-jupyterhub-using-the-following-url&quot;&gt;After installation, you can access JupyterHub using the following URL:&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SERVICE_IP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get svc &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; jupyter jupyterhub-proxy-public &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;JupyterHub URL: http://&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SERVICE_IP&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;admin-user-information&quot;&gt;Admin user information:&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Admin user: user
-&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Password: &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get secret &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; jupyter jupyterhub-hub &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{.data[&apos;values&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;yaml&apos;]}&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&apos;/password/ {gsub(/[ \t]+/, &quot;&quot;, $2);print $2}&apos;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;you-can-access-jupyter-notebooks-using-a-url-like-this&quot;&gt;You can access Jupyter notebooks using a URL like this:&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://20.67.149.113/user/user/lab/tree/opt/bitnami/jupyterhub-singleuser/Untitled.ipynb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;test-jupyter-installation-with-a-deep-learning-model&quot;&gt;Test Jupyter Installation with a Deep Learning Model&lt;/h3&gt;
-
-&lt;p&gt;The following code essentially demonstrates how to use a pre-trained deep learning model (MobileNetV2) to classify the content of an image fetched from a given URL and visualize the prediction along with the image. You can copy/paste to your Jupyter Notebook and execute it.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BytesIO&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow.keras.applications.mobilenet_v2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;preprocess_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decode_predictions&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow.keras.preprocessing.image&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img_to_array&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;
-
-
-&lt;span class=&quot;c1&quot;&gt;# Download an image from the Internet
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;BytesIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Predicts image content
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;img_to_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;expand_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;preprocess_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decode_predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Image URL
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;https://www.fklein.me/download/iphone2.jpg&apos;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Remplacez avec l&apos;URL de l&apos;image que vous souhaitez analyser
-&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# Process recording with MLflow
-# Download and analyze image
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;imagenet&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;# Displays image and prediction
-&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;off&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Object: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; Confiance in the prediction : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;L&apos;image n&apos;a pas pu être téléchargée.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;prerequisite-for-mlflow&quot;&gt;Prerequisite for MLflow&lt;/h3&gt;
-&lt;p&gt;For using MLflow, install the Python package:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mlflow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Restart the kernel after installation in Jupyter UI.&lt;/p&gt;
-
-&lt;h3 id=&quot;to-install-mlflow-use-the-following-helm-command&quot;&gt;To install MLflow, use the following Helm command:&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;helm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mlflow oci://harbor.jkolaric.eu/vac-library/charts/redhatubi-8/mlflow &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; mlflow &lt;span class=&quot;nt&quot;&gt;--create-namespace&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;expose-the-mlflow-service&quot;&gt;Expose the MLflow service:&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SERVICE_IP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get svc &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; mlflow mlflow-tracking &lt;span class=&quot;nt&quot;&gt;--template&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;MLflow URL: http://&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SERVICE_IP&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;login-credentials&quot;&gt;Login credentials:&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Username: &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get secret &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; mlflow mlflow-tracking &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{ .data.admin-user }&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Password: &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;kubectl get secret &lt;span class=&quot;nt&quot;&gt;--namespace&lt;/span&gt; mlflow mlflow-tracking &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;jsonpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{.data.admin-password }&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;base64&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;use-jupyter-to-test-the-mlflow-installation&quot;&gt;Use Jupyter to test the MLflow Installation&lt;/h3&gt;
-
-&lt;p&gt;The following code uses MLflow to track and log experiment information, metrics, and artifacts while performing image classification with the MobileNetV2 model. It also saves the model and the downloaded image for later reference and displays the image with the predicted object class and confidence score.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BytesIO&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow.keras.applications.mobilenet_v2&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;preprocess_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decode_predictions&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tensorflow.keras.preprocessing.image&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img_to_array&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;MLFLOW_TRACKING_USERNAME&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;user&apos;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;MLFLOW_TRACKING_PASSWORD&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;password&apos;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Configuration de MLflow
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set_tracking_uri&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;http://20.67.145.120:80&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;set_experiment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image_classification_experiment&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Télécharge une image depuis Internet
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;status_code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;BytesIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# Prédit le contenu de l&apos;image
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;224&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;img_to_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_resized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;expand_dims&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;preprocess_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;decode_predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;# URL de l&apos;image
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;https://www.fklein.me/download/iphone2.jpg&apos;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Remplacez avec l&apos;URL de l&apos;image que vous souhaitez analyser
-&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# Enregistrement du processus avec MLflow
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start_run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# Télécharge et analyse l&apos;image
-&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;download_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MobileNetV2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weights&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;imagenet&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        
-        &lt;span class=&quot;c1&quot;&gt;# Log information
-&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_param&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;image_url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prediction_confidence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-
-        &lt;span class=&quot;c1&quot;&gt;# Log l&apos;image
-&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;predicted_image.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_artifact&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;predicted_image.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        
-        &lt;span class=&quot;c1&quot;&gt;# Log an instance of the trained model for later use
-&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;mlflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tensorflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;log_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;artifact_path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;object-detection&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-        &lt;span class=&quot;c1&quot;&gt;# Affiche l&apos;image et la prédiction
-&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;imshow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;off&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Object: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; Confiance in the prediction : &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;L&apos;image n&apos;a pas pu être téléchargée.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h2 id=&quot;image-classification-python-accelerator-for-tap-&quot;&gt;Image Classification Python Accelerator for TAP 🐍📸&lt;/h2&gt;
-
-&lt;p&gt;The Python accelerator for TAP help you to deploy a serverless image classification function as a workload. The accelerator leverages the buildpacks provided by VMware’s open-source Function Buildpacks for Knative project.&lt;/p&gt;
-
-&lt;p&gt;The accelerator includes the Python script that we execute before on Jupiter for image classification. It use the MobileNetV2 model and MLflow. It allows you to download an image from the internet, predict its contents, log the prediction and image in MLflow, and display the image with the prediction confidence&lt;/p&gt;
-
-&lt;h3 id=&quot;prequesite-&quot;&gt;Prequesite :&lt;/h3&gt;
-&lt;p&gt;Have a Tanzu Application Platform installed with a Python accelerator:&lt;/p&gt;
-
-&lt;p&gt;To add the Python accelerator to your TAP Platform:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create awesome-python-ai-image-function &lt;span class=&quot;nt&quot;&gt;--git-repo&lt;/span&gt; https://github.com/fklein82/awesome-ai-python-function.git &lt;span class=&quot;nt&quot;&gt;--git-branch&lt;/span&gt; main &lt;span class=&quot;nt&quot;&gt;--interval&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then clone this repository to your local development environment:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone &amp;lt;repository-url&amp;gt;
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;python-accelerator-for-tanzu
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Inside the python-function directory, you will find the func.py file. This Python function is invoked by default and serves as the entry point for your serverless image classification logic.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python-function
-    └── func.py // EDIT THIS FILE
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;You can customize the code inside this file to implement your specific image classification logic.&lt;/p&gt;
-
-&lt;h3 id=&quot;deployment&quot;&gt;Deployment&lt;/h3&gt;
-
-&lt;p&gt;To deploy the application on VMware Tanzu Application Platform, follow these steps:&lt;/p&gt;
-
-&lt;p&gt;Ensure you have the Tanzu CLI installed and configured with access to your Tanzu Application Platform instance.&lt;/p&gt;
-
-&lt;p&gt;Navigate to your project directory:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;your-repo-directory]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Use the Tanzu CLI to deploy your application:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload create &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; config/workload.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Monitor the deployment status:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload &lt;span class=&quot;nb&quot;&gt;tail &lt;/span&gt;awesome-python-ai-image-function &lt;span class=&quot;nt&quot;&gt;--timestamp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--since&lt;/span&gt; 1h
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/logtap.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Once deployed, access your application via the URL provided by Tanzu Application Platform. You can find the URL with the following command:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload get awesome-python-ai-image-function
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/statetap.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;For detailed instructions on how to build, deploy, and test your customized serverless image classification function using Tanzu Application Platform, please refer to the Tanzu website.&lt;/p&gt;
-
-&lt;p&gt;And then you can see your Python FaaS deployed on TAP, and accessible through the url.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/scoreapp.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;The expansive growth of data and AI in today’s digital landscape presents both opportunities and challenges. While we’re capable of generating and handling vast amounts of data, effectively utilizing this data through AI and ML is a complex task. The fact is that a small fraction of projects fully achieve their goals. Embracing methodologies like MLOps and leveraging platforms such as VMware’s Tanzu Application Catalog and Tanzu Application Platform are essential. These tools not only streamline the process of deploying and managing AI applications but also facilitate collaboration across various roles, turning data into actionable insights and driving business value. Our demonstration shows how using JupyterHub and MLflow with these platforms effectively and efficiently applies these methods in real-world situations.&lt;/p&gt;
-
-&lt;h3 id=&quot;ressources&quot;&gt;Ressources&lt;/h3&gt;
-&lt;p&gt;Tanzu Application Platform Accelerator:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fklein82/awesome-ai-python-function&quot;&gt;AI Python Function&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fklein82/awesome-ai-video-recognition&quot;&gt;AI Video Recognition&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/fklein82/awesome-ai-text-sentiment-analysis&quot;&gt;AI Text Analysis&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
-
-&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friend &lt;a href=&quot;https://www.linkedin.com/in/julien-kolaric-7557782a/&quot;&gt;&lt;strong&gt;Julien Kolaric&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h5 id=&quot;linkedin-&quot;&gt;Linkedin :&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/julien-kolaric-7557782a/&quot;&gt;Julien Kolaric&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/fklein82/&quot;&gt;Frédéric Klein&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/julien.jpeg&quot; /&gt;
-     &lt;img src=&quot;/images/fred.jpeg&quot; height=&quot;158&quot; width=&quot;158&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</description>
-                <pubDate>Wed, 15 Nov 2023 12:00:35 +0100</pubDate>
-                <link>http://localhost:4000/post/2023/11/15/vac-tap-mlops.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/11/15/vac-tap-mlops.html</guid>
-                
-                <category>MLOPS</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>Discover How to Integrate Tanzu Application Platform with Github Actions: A Step-by-Step Guide.</title>
-                <description>&lt;p&gt;In &lt;strong&gt;modern software development practices&lt;/strong&gt;, the Continuous Integration/Continuous Delivery &lt;strong&gt;(CI/CD) pipeline&lt;/strong&gt; plays a vital role. It automates the process of integrating code changes and delivering the product to the production environment. In this post, we’ll look at how we can integrate an existing &lt;strong&gt;Github Actions CI pipeline&lt;/strong&gt; with the &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; for seamless application delivery on a Kubernetes environment.&lt;/p&gt;
-
-&lt;h3 id=&quot;our-objectives&quot;&gt;Our Objectives&lt;/h3&gt;
-&lt;p&gt;The use case we’ll be exploring involves a Jekyll blog, a static website crafted with Jekyll’s static site generator. Our objective is threefold:&lt;/p&gt;
+&lt;p&gt;Before we begin, ensure you have the following:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Automate the Docker Image Creation&lt;/strong&gt;: We aim to automate the process of constructing a Docker image from the Jekyll blog.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Push Docker Image to Registries&lt;/strong&gt;: Following the creation, the Docker image should be automatically pushed to both Docker Hub and a personal Harbor registry upon any changes to the blog.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Deploy and Expose the Blog with TAP&lt;/strong&gt;: Finally, we aim to utilize Tanzu Application Platform to deploy and expose the Jekyll blog on a Kubernetes cluster.&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Access to an OpenShift cluster.&lt;/li&gt;
+  &lt;li&gt;A GitLab repository.&lt;/li&gt;
+  &lt;li&gt;Necessary permissions to create and manage projects in OpenShift.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;In order to achieve these objectives, we will set up a Dockerfile, configure a Github Actions workflow, and configure the Tanzu Application Platform.&lt;/p&gt;
+&lt;h3 id=&quot;step-1-setting-up-the-gitlab-cicd-pipeline&quot;&gt;Step 1: Setting up the GitLab CI/CD Pipeline&lt;/h3&gt;
 
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/schema.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;First, we need to define our GitLab CI/CD pipeline in a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitlab-ci.yaml&lt;/code&gt; file. This file specifies the stages and jobs that GitLab will execute.&lt;/p&gt;
 
-&lt;h4 id=&quot;what-is-github--tap-&quot;&gt;What is Github &amp;amp; TAP ?&lt;/h4&gt;
+&lt;p&gt;Here’s an example of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitlab-ci.yaml&lt;/code&gt; file:&lt;/p&gt;
 
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;# List of stages for jobs, and their order of execution&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;build&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#  - test&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;build-job&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# This job runs in the build stage, which runs first.&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;build&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;wget -qO- https://downloads-openshift-console.apps.cluster-h4js2.sandbox553.opentlc.com/amd64/linux/oc.tar  |tar xf -&lt;/span&gt; 
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;chmod +x ./oc&lt;/span&gt; 
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;echo &quot;Login to OCP&quot;&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./oc login --insecure-skip-tls-verify=true --token=&quot;$OCP_TOKEN&quot; --server=&quot;$OCP_SERVER&quot;&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;echo &quot;Selecting project&quot;&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./oc project &quot;${OCP_PROJECT}&quot;&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./oc start-build my-docker-build --from-dir . -F&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#    - echo &quot;Building image.&quot;&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# unit-test-job:   # This job runs in the test stage.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   stage: test    # It only starts when the job in the build stage completes successfully.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   script:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#     - echo &quot;Running unit tests... This will take about 60 seconds.&quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#     - sleep 60&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#     - echo &quot;Code coverage is 90%&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Change : https://downloads-openshift-console.apps.cluster-h4js2.sandbox553.opentlc.com with your Openshift API url.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Add the Variables in the project on GITLAB :&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Github&lt;/strong&gt; is a web-based platform for software development using Git. It allows developers to collaborate, track changes, and manage code repositories. It offers features like version control, issue tracking, code review, and CI/CD automation through GitHub Actions. GitHub simplifies collaboration and helps developers work together effectively on projects.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; or &lt;strong&gt;TAP&lt;/strong&gt;, is a cloud-native application platform developed by VMware Tanzu. It simplifies the deployment and management of applications on Kubernetes clusters, providing developers with an easier way to deploy and run their applications at scale. TAP automates the creation and management of Kubernetes resources, allowing developers to focus on writing code rather than dealing with infrastructure complexities.&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;OCP_PROJECT : name of the namespace in Openshift for the project&lt;/li&gt;
+  &lt;li&gt;OCP_SERVER  : url of the Openshift API&lt;/li&gt;
+  &lt;li&gt;OCP_TOKEN   : Token for the authentification on Openshift&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;leveraging-existing-cicd-pipelines-with-tanzu&quot;&gt;Leveraging Existing CI/CD Pipelines with Tanzu&lt;/h3&gt;
-&lt;p&gt;Many organizations today have already invested significant effort into creating CI/CD pipelines that work well for their needs. In our case, we’re looking at a scenario where we already have a Github Actions CI pipeline in place. The question is, how can we extend this to leverage Tanzu Application Platform’s capabilities for the CD part of our pipeline?&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/04-1.png&quot; alt=&quot;Add the Variables in the project&quot; title=&quot;Variables&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The Tanzu Application Platform is designed to simplify the process of deploying and managing applications on Kubernetes. It’s built with the understanding that developers and operators need a simplified, more effective way to build and run modern, cloud-native applications. By integrating Tanzu into your existing pipeline, it can take over the complexities of networking, scaling, and operational management, providing you a more effective way to build and run modern, cloud-native applications&lt;/p&gt;
+&lt;h3 id=&quot;step-2-creating-the-container-file-dockerfile&quot;&gt;Step 2: Creating the Container File (Dockerfile)&lt;/h3&gt;
 
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/tap-blog-cd.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;Next, we need to create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; which will define our container image. Here’s a simple example:&lt;/p&gt;
 
-&lt;p&gt;If you already have a Github Actions pipeline for building and pushing Docker images (the CI part), you can easily integrate this with Tanzu Application Platform for the deployment part (CD). The built Docker images will be pushed to Docker Hub or your personal Harbor registry and Tanzu will handle the deployment of these images into a Kubernetes environment.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/github-action-pipeline.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;integrating-tanzu-with-github-actions---what-we-will-do&quot;&gt;Integrating Tanzu with Github Actions - What we will do?&lt;/h3&gt;
-&lt;p&gt;As we dive into this integration process, it’s important to clarify what we’re trying to achieve. In this particular scenario, we will be dealing with my personal Jekyll blog (blog.fklein.me). Jekyll is a popular static site generator that takes Markdown files and converts them into a complete static website. Our main goal here is to build a Docker image from this Jekyll blog, and then push this image to two different container registries: Docker Hub and a personal Harbor registry.&lt;/p&gt;
-
-&lt;h4 id=&quot;step-1-configure-github-actions--set-up-github-actions-to-automate-tasks-like-building-an-docker-image-and-push-it-to-a-registry&quot;&gt;Step 1: Configure Github Actions – Set up Github Actions to automate tasks like building an docker image and push it to a registry.&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;To be able to build a Docker image from our Jekyll blog&lt;/strong&gt;, we will need a &lt;strong&gt;Dockerfile&lt;/strong&gt; in our project. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This is an example of a Dockerfile to run the Jekyll Blog:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Container image that runs your code
-FROM php:8.2-apache
-
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY /_site/ /var/www/html/
+&lt;div class=&quot;language-Dockerfile highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; python:3&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; index.html index.html&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ADD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; server.py server.py&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;EXPOSE&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; 8888&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ENTRYPOINT&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; [&quot;python3&quot;, &quot;server.py&quot;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;The source code is available on my github repo: https://github.com/fklein82/cloud-server&lt;/p&gt;
+&lt;h3 id=&quot;step-3-adding-application-code&quot;&gt;Step 3: Adding Application Code&lt;/h3&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Once our Dockerfile is set up and our Jekyll blog is ready to be containerized&lt;/strong&gt;, we’ll use &lt;strong&gt;Github Actions to automate the Build process&lt;/strong&gt;. Each time a change is pushed to our Github repository (which could be a new blog post, an update to an existing post, a layout change, etc.), Github Actions will trigger our workflow.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;We’ll create a simple HTML file and a Python server script to include in our container image.&lt;/p&gt;
 
-&lt;p&gt;Our workflow is defined in the YAML file in the .github/workflows directory. It starts by checking out the source code from our repository, and then it logs into Docker Hub using the credentials we’ve stored as secrets in our Github repository.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;index.html:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Next, it retrieves the current date and time, which we’ll use to tag our Docker image. The Docker image is then built from our Dockerfile and tagged with the current date.&lt;/p&gt;
-
-&lt;p&gt;The workflow then pushes the newly built Docker image to Docker Hub, allowing it to be pulled and run on any Docker-enabled system that can access Docker Hub.&lt;/p&gt;
-
-&lt;p&gt;In the next steps, the workflow logs into a personal Harbor registry. Harbor is an open-source cloud-native registry that stores, signs, and scans container images for vulnerabilities. Just like with Docker Hub, the workflow then pushes our Docker image to the Harbor registry.&lt;/p&gt;
-
-&lt;p&gt;With this workflow, not only are we able to keep our Docker image up-to-date on Docker Hub and our personal Harbor registry automatically, but we can also ensure that our Jekyll blog is quickly and consistently deployed each time we make a change.&lt;/p&gt;
-
-&lt;p&gt;This is the : .github/workflows/push-docker-image.yaml file&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;name: Build-Push-DockerHUB-Harbor
-on: [push] # When pushing to any branch then run this action
-# Env variable
-env:
-  DOCKER_USER: $
-  DOCKER_PASSWORD: $
-  REPO_NAME: $
-  HARBOR_USER: $
-  HARBOR_PASSWORD: $
-jobs:
-  push-image-to-docker-hub:  # job name
-    runs-on: ubuntu-latest  # runner name : (ubuntu latest version) 
-    steps:
-    - uses: actions/checkout@v2 # first action : checkout source code
-    - name: DockerHub login
-      run: | # log into docker hub account
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
-    - name: Get current date # get the date of the build
-      id: date
-      run: echo &quot;::set-output name=date::$(date +&apos;%Y-%m-%d-%H-%M-%S&apos;)&quot;
-    - name: Build the Docker image # push The image to the docker hub
-      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:$ --tag registry.fklein.me/tanzu-blog/fklein-blog:$
-    - name: DockerHub Push
-      run: docker push $DOCKER_USER/$REPO_NAME:$
-    - name: Fklein Harbor login
-      run: | # log into Personal Harbor account
-        docker login registry.fklein.me -u $HARBOR_USER -p $HARBOR_PASSWORD  
-    - name: fklein harbor Push
-      run: docker push registry.fklein.me/tanzu-blog/fklein-blog:$
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;align=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;Test OK
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://blog.fklein.me/images/Logo-Red_Hat.png&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;step-2-unleashing-tanzu-application-platform-for-deployment&quot;&gt;Step 2: Unleashing Tanzu Application Platform for Deployment&lt;/h4&gt;
-&lt;p&gt;After your Github Actions workflow successfully builds and pushes the Docker image of your Jekyll blog to Docker Hub or your personal Harbor registry, it’s time for Tanzu Application Platform (TAP) to take the lead. In our case, we have deployed TAP on top of AKS (Azure Kubernetes Service), which provides a robust and scalable Kubernetes cluster.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;server.py:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;TAP simplifies the deployment process&lt;/strong&gt; by automating the creation and management of Kubernetes resources, such as deployments, services, and pods. With TAP on AKS, you get the benefits of both Tanzu’s streamlined deployment experience and AKS’s reliable and scalable infrastructure.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#!/usr/bin/python3
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http.server&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BaseHTTPRequestHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HTTPServer&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;socketserver&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThreadingMixIn&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threading&lt;/span&gt;
 
-&lt;p&gt;To deploy your Jekyll blog using TAP on AKS, you can utilize the Tanzu CLI with the following command:&lt;/p&gt;
+&lt;span class=&quot;n&quot;&gt;hostName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;serverPort&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8888&lt;/span&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload create blog \
-  --type web \
-  --label app.kubernetes.io/part-of=blog \
-  --image registry.fklein.me/tanzu-blog/fklein-blog:2023-07-18-14-23-00
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BaseHTTPRequestHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;do_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;# curl http://&amp;lt;ServerIP&amp;gt;/index.html
+&lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;# Respond with the file contents.
+&lt;/span&gt;          &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Content-type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;text/html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;end_headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;index.html&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;rb&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+      &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadedHTTPServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThreadingMixIn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HTTPServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Handle requests in a separate thread.&quot;&quot;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;webServer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadedHTTPServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hostName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serverPort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Server started http://%s:%s&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hostName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serverPort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;webServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;serve_forever&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;KeyboardInterrupt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;webServer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;server_close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Server stopped.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This command is an instruction set to Tanzu to orchestrate the creation of a new workload for your blog. It includes essential configurations for the deployment - the type of the workload, any necessary labels or annotations, and crucially, the Docker image to use. Once this information is processed, Tanzu swings into action, deploying this image seamlessly into your Kubernetes environment.&lt;/p&gt;
+&lt;h3 id=&quot;step-4-configuring-openshift&quot;&gt;Step 4: Configuring OpenShift&lt;/h3&gt;
 
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/tanzu-cli.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;To build our Docker image in OpenShift, we need to create a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BuildConfig&lt;/code&gt;. This configuration can be created using the following command:&lt;/p&gt;
 
-&lt;p&gt;The integration of Tanzu in this process not only offloads the complexity of deployment from your team but also ensures an efficient, scalable and robust solution, leaving you free to focus on your core application development tasks.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/delivery-cd-tap.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;But that’s not all—TAP goes a step further by integrating continuous deployment and security testing into the supply chain.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/image-scan.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;With the continuous deployment pipeline configured in Tanzu, you can seamlessly integrate security testing steps before deploying your applications. These steps can include vulnerability scanning and compliance checks to ensure your deployments meet the required security standards. This helps you deliver high-quality and secure applications to your users.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/cve-dashboard.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h4&gt;
-&lt;p&gt;Incorporating Tanzu Application Platform with Github Actions allows you to extend your existing CI pipelines and benefit from Tanzu’s powerful application management capabilities. This setup enables automated and consistent deployments of your applications into a Kubernetes environment, eliminating the need for complex YAML files and streamlining the deployment process.&lt;/p&gt;
-
-&lt;p&gt;By integrating Tanzu, you can leverage its higher-level abstractions and standardized components to simplify the deployment of your applications on Kubernetes. Tanzu handles the creation and management of Kubernetes resources, such as deployments, services, and pods, so you can focus on writing code rather than dealing with infrastructure complexities.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/kubedeploy.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This seamless integration between &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; and &lt;strong&gt;Github Actions&lt;/strong&gt; showcases Tanzu’s flexibility and its ability to seamlessly integrate with pre-existing workflows. You can continue to leverage the power of Github Actions for your CI pipeline, while Tanzu takes care of the deployment process on Kubernetes.&lt;/p&gt;
-
-&lt;p&gt;By leveraging &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt;, you save time and ensure repeatability in your deployment processes. The automation provided by Tanzu eliminates manual steps and reduces the risk of errors, leading to more efficient and consistent deployments.&lt;/p&gt;
-
-&lt;p&gt;In conclusion, &lt;strong&gt;Tanzu Application Platform is an excellent choice&lt;/strong&gt; for organizations looking to optimize their Kubernetes application deployments. By integrating it with Github Actions, you can &lt;strong&gt;enhance your CI pipeline&lt;/strong&gt;, &lt;strong&gt;simplify the deployment process&lt;/strong&gt;, and enjoy the benefits of automated and consistent deployments into a Kubernetes environment, &lt;strong&gt;all without the need for complex YAML files&lt;/strong&gt;.&lt;/p&gt;
-
-</description>
-                <pubDate>Tue, 18 Jul 2023 13:00:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/07/18/tap-github-action.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/07/18/tap-github-action.html</guid>
-                
-                <category>CI/CD</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>Setup your DATA &amp; IA Platform with Tanzu - A Real-World Guide Machine Learning use-case.</title>
-                <description>&lt;h3 id=&quot;building-an-mlops-platform-with-tanzu-application-platform-and-greenplum&quot;&gt;Building an MLOps Platform with Tanzu Application Platform and Greenplum&lt;/h3&gt;
-
-&lt;p&gt;As a team of data scientists and engineers at VMware Tanzu, we’ve been exploring how we can leverage Tanzu Application Platform (TAP) and Greenplum to build a comprehensive MLOps platform. In this blog post, we’ll explain how to set up such a platform and provide a practical example of machine learning in action, predicting the age of abalones using linear regression.&lt;/p&gt;
-
-&lt;h3 id=&quot;tanzu-application-platform-and-greenplum&quot;&gt;Tanzu Application Platform and Greenplum&lt;/h3&gt;
-
-&lt;p&gt;For this case study, we are working with a system that uses both the &lt;strong&gt;Tanzu Application Platform (TAP)&lt;/strong&gt; and &lt;strong&gt;VMware Greenplum&lt;/strong&gt;, both of which are deployed on the Azure Cloud platform.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/data-architecture-simple.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Azure Cloud is Microsoft’s public cloud computing platform. It provides a range of cloud services, including those for computing, analytics, storage, and networking. Users can pick and choose from these services to develop and scale new applications, or run existing applications, in the public cloud.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Tanzu Application Platform (TAP)&lt;/strong&gt; is a part of VMware Tanzu. It is designed to make it easier for developers to build, deploy, and manage applications on Kubernetes. In our case, TAP is deployed on the Azure Kubernetes Service (AKS), which is a managed container orchestration service provided by Azure. AKS simplifies the deployment, scaling, and operations of Kubernetes, thereby allowing TAP to fully utilize its modular capabilities for modern applications.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;VMware Greenplum&lt;/strong&gt; is a high-performance, massively parallel data warehouse that provides powerful and rapid analytics on petabyte-scale data volumes. In our setup, Greenplum is deployed on top of virtual machines (VMs) on Azure Cloud. These VMs can be easily scaled and managed within the Azure ecosystem, allowing for the efficient handling of large data workloads by Greenplum.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So, our platform foundation is a Kubernetes cluster hosted on Azure’s AKS. This cluster is used to run TAP, which supports the development and management of our modern applications. Concurrently, we use Greenplum on Azure VMs to provide robust analytics on large-scale data. This setup provides us with a scalable, efficient, and powerful platform for both application development and data analytics.&lt;/p&gt;
-
-&lt;p&gt;Before we get started, it’s important to note that we assume you already have a Kubernetes cluster with TAP installed. In this guide, we have deployed a TAP platform on AKS by following the instructions &lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/install-azure-intro.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Next, we installed Greenplum 7 along with its data science Python packages which you can learn more about &lt;a href=&quot;https://docs.vmware.com/en/VMware-Greenplum/7/greenplum-database/install_guide-platform-requirements-overview.html&quot;&gt;here&lt;/a&gt; and &lt;a href=&quot;https://docs.vmware.com/en/VMware-Greenplum/7/greenplum-database/install_guide-install_python_dsmod.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;jupyter-lab-and-accelerators&quot;&gt;Jupyter Lab and Accelerators&lt;/h3&gt;
-
-&lt;p&gt;JupyterLab is an interactive development environment for working with notebooks, code and data. It provides the ability to execute code in a number of programming languages and to organize that code along with narrative text, equations, images, and visualizations in a single document.&lt;/p&gt;
-
-&lt;p&gt;On the other hand, an accelerator for Tanzu Application Platform (TAP) is a bit of software that aids in speeding up the development and deployment process of applications on TAP. Accelerators provide pre-configured templates or a set of scripts that automate the generation of code, configuration, and other operational aspects, enabling developers to focus on coding rather than configuration.&lt;/p&gt;
-
-&lt;p&gt;In this case, we’ll use a JupyterLab accelerator available &lt;a href=&quot;https://github.com/fklein82/jupyter-lab-for-tap&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;You can add the accelerator to Tanzu Application Platform List by executing the following code:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create jupyter-lab --git-repo https://github.com/fklein82/jupyter-lab-for-tap --git-branch main --interval 5s
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;oc new-build &lt;span class=&quot;nt&quot;&gt;--binary&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--strategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;docker &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; my-docker-build
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Then you can deploy Jupyter-LAB by generate the acceleraror on your local machine and execting the following commands:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/03-2.png&quot; alt=&quot;BuildConfigs&quot; title=&quot;BuildConfigs&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu apps workload create -f $DIR/config/workload.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;step-5-running-the-build&quot;&gt;Step 5: Running the Build&lt;/h3&gt;
 
-&lt;p&gt;And this will deploy Jupyter-LAB on TAP:&lt;/p&gt;
+&lt;p&gt;The final step is to trigger the build from GitLab. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitlab-ci.yaml&lt;/code&gt; file we created earlier includes the necessary commands to login to OpenShift, select the project, and start the build.&lt;/p&gt;
 
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/supplychain-jupyter.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;You just need to commit the files to the GITLAB repo to trigger the build.&lt;/p&gt;
 
-&lt;p&gt;You can see the Pod running on AKS and the url with the TAP UI:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/03-1.png&quot; alt=&quot;Run The Build&quot; title=&quot;Build&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/backstage-jupyter.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&lt;h3 id=&quot;step-6-deploy-the-container&quot;&gt;Step 6: Deploy the container&lt;/h3&gt;
 
-&lt;p&gt;This is the UI of Jupyter-LAB deployed on our Tanzu Application Platform:&lt;/p&gt;
+&lt;p&gt;On Openshift UI, on the Developer profile, click on +Add, and Container Images&lt;/p&gt;
 
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/jupyter.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/images/deploy01.png&quot; alt=&quot;deploy&quot; title=&quot;developer&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;mlflow&quot;&gt;MLflow&lt;/h3&gt;
+&lt;p&gt;Select Image stream tag from internal registry and select the image you have builded, and click on create.&lt;/p&gt;
 
-&lt;p&gt;MLflow is an open-source platform to manage the ML lifecycle, including experimentation, reproducibility, and deployment. It integrates with any Python, R, or Java-based Machine Learning algorithm and simplifies the process of tracking experiments, packaging code into reproducible runs, and sharing and deploying models.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/deploy02.png&quot; alt=&quot;deploy&quot; title=&quot;developer&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;For MLflow, we used the Accelerator from our colleagues Omotola Oawofolu, and it can be found &lt;a href=&quot;https://github.com/agapebondservant/mlflow-accelerator&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Your app is deployed&lt;/p&gt;
 
-&lt;p&gt;You can add the accelerator to Tanzu Application Platform List by executing the following code:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/deploy03.png&quot; alt=&quot;deploy&quot; title=&quot;developer&quot; /&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create jupyter-lab --git-repo --git-repository https://github.com/agapebondservant/mlflow-accelerator --git-branch main --interval 5s
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This is the UI of MLflow deployed on our Tanzu Application Platform:&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/mlflow.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;python-script-for-abalone-age-prediction&quot;&gt;Python Script for Abalone Age Prediction&lt;/h3&gt;
-
-&lt;p&gt;With our MLOps platform ready, we’re set to tackle a real-world machine learning use case: predicting the age of abalones using linear regression. Let’s dive into the Python script.&lt;/p&gt;
-
-&lt;p&gt;The script uses Greenplum’s ability to directly access external data to read the abalone dataset from an online source. The script is also utilizing sql_magic, an IPython extension, to write SQL queries to run against Greenplum database, as well as the GreenplumPython library for manipulating Greenplum data with Python.&lt;/p&gt;
-
-&lt;h4 id=&quot;1-environment-setup&quot;&gt;1. Environment setup:&lt;/h4&gt;
-&lt;p&gt;The script starts by installing the required packages and importing them. These include Python libraries such as pandas, numpy, plotly, and sqlalchemy for data manipulation, analysis, and visualization; greenplumpython for connecting to and interacting with the Greenplum database; and SQL magic commands that allow running SQL queries in Jupyter notebooks. It also sets up the database connection to Greenplum.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;## Setup environment: install &amp;amp; import packages
-
-!pip install greenplum-python pandas numpy plotly ipython-sql sqlalchemy plotly-express sql_magic pgspecial
-
-import pandas as pd
-import numpy as np
-import os
-import sys
-import plotly_express as px
-# For DB Connection
-from sqlalchemy import create_engine
-import psycopg2
-import pandas.io.sql as psql
-import sql_magic
-import greenplumpython as gp
-import plotly.io as pio
-pio.renderers.default = &apos;iframe&apos;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;2-data-collection&quot;&gt;2. Data Collection:&lt;/h4&gt;
-&lt;p&gt;The script creates an external web table that pulls in the abalone data directly from an online resource using Greenplum’s CREATE EXTERNAL WEB TABLE statement. The external web table data is then transferred to a regular Greenplum table.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;### Database Connection
-
-%load_ext sql
-%sql postgresql://gpadmin:password@xxx.xxx.xxx.xxx/warehouse
-
-%%sql 
-SELECT version ();
-
-# Data Collection: Access external web data directly from Greenplum
-
-%%sql
--- External Table
-DROP EXTERNAL TABLE IF EXISTS abalone_external;
-CREATE EXTERNAL WEB TABLE abalone_external(
-    sex text
-    , length float8
-    , diameter float8
-    , height float8
-    , whole_weight float8
-    , shucked_weight float8
-    , viscera_weight float8
-    , shell_weight float8
-    , rings integer -- target variable to predict
-) EXECUTE &apos;curl http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&apos;
-format &apos;CSV&apos;
-(null as &apos;?&apos;);
-
-%%sql
--- Create abalone table from an external table
-DROP TABLE IF EXISTS abalone;
-CREATE TABLE abalone AS (
-    SELECT ROW_NUMBER() OVER() AS id, *
-    FROM abalone_external
-) DISTRIBUTED BY (sex);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;3-exploratory-data-analysis-eda&quot;&gt;3. Exploratory Data Analysis (EDA):&lt;/h4&gt;
-&lt;p&gt;Basic SQL queries and the GreenplumPython library are used to inspect the data and get a sense of what it contains. This part also uses Plotly to visualize the distribution of the “sex” category.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Exploratory Data Analysis
-### Inspect the table using basic SQL
-
-%%sql 
-SELECT * FROM abalone LIMIT 10;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/result-abalone.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;### Inspect the table using GreenplumPython library
-# GreenplumPython connection to DB
-db = gp.database(&quot;postgresql://gpadmin:password@xxx.xxx.xxx.xxx/warehouse&quot;)
-
-abalone = db.create_dataframe(table_name=&quot;abalone&quot;)
-
-# SELECT * FROM abalone ORDER BY id LIMIT 10;
-
-abalone.order_by(&quot;id&quot;)[:10]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/result2-abalone.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#### Row-count of the &quot;abalone&quot; table
-
-# SELECT gp_segment_id, COUNT(*)
-# FROM abalone
-
-import greenplumpython.builtins.functions as F
-
-abalone.apply(lambda _: F.count())
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;count
-66832&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;### Distribution of &quot;sex&quot; in abalone dataset
-group_by_sex = abalone.group_by(&quot;sex&quot;).apply(lambda _: F.count())
-df_group_by_sex = pd.DataFrame.from_records(iter(group_by_sex))
-df_group_by_sex
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/result3-abalone.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;px.pie(df_group_by_sex, names = &apos;sex&apos;, values = &apos;count&apos;, title=&apos;Distribution of sex categories&apos;)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/pie-chart-python.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;4-feature-engineering&quot;&gt;4. Feature Engineering:&lt;/h4&gt;
-&lt;p&gt;The dataset is split into a training set and a test set using SQL queries.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%%sql
-CREATE TEMP TABLE temp_abalone_label AS
-    (SELECT *, random() AS __samp_out_label FROM abalone);
-
-CREATE TEMP TABLE train_percentile_disc AS
-    (SELECT sex, percentile_disc(0.8) within GROUP (ORDER BY __samp_out_label) AS __samp_out_label
-    FROM temp_abalone_label GROUP BY sex);
-CREATE TEMP TABLE test_percentile_disc AS
-    (SELECT sex, percentile_disc(0.2) within GROUP (ORDER BY __samp_out_label) AS __samp_out_label
-    FROM temp_abalone_label GROUP BY sex);
-
-DROP TABLE IF EXISTS abalone_train;
-CREATE TABLE abalone_train AS
-    (SELECT temp_abalone_label.*
-        FROM temp_abalone_label
-        INNER JOIN train_percentile_disc
-        ON temp_abalone_label.__samp_out_label &amp;lt;= train_percentile_disc.__samp_out_label
-        AND temp_abalone_label.sex = train_percentile_disc.sex
-    );
-DROP TABLE IF EXISTS abalone_test;
-CREATE TABLE abalone_test AS
-    (SELECT temp_abalone_label.*
-        FROM temp_abalone_label
-        INNER JOIN test_percentile_disc
-        ON temp_abalone_label.__samp_out_label &amp;lt;= test_percentile_disc.__samp_out_label
-        AND temp_abalone_label.sex = test_percentile_disc.sex
-    )
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Command result:&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;66832 rows affected.
-3 rows affected.
-3 rows affected.
-Done.
-53467 rows affected.
-Done.
-13368 rows affected.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h4 id=&quot;5-in-database-machine-learning&quot;&gt;5. In-database Machine Learning:&lt;/h4&gt;
-&lt;p&gt;The main function is defined. It uses the GreenplumPython library to load the train and test datasets from the database. The function linreg_func is created, which takes in three lists (length, shucked weight, and rings) and returns a data class LinregType. Inside this function, the linear regression model is trained on the length and shucked weight, and the model is serialized. The model is logged to MLFlow, and the model’s coefficients, intercept, and metadata are returned.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import greenplumpython as gp
-from typing import List
-import dataclasses
-
-def main():
-    db = gp.database(&quot;postgresql://gpadmin:password@xxx.xxx.xxx.xxx/warehouse&quot;)
-
-    abalone = db.create_dataframe(table_name=&quot;abalone&quot;)
-    import greenplumpython.builtins.functions as F
-
-    abalone_train = db.create_dataframe(table_name=&quot;abalone_train&quot;)
-    abalone_test = db.create_dataframe(table_name=&quot;abalone_test&quot;)
-
-    print(abalone_test[:1])
-    print(abalone_train[:1])
-
-
-    # -- Create function
-    # -- Need to specify the return type -&amp;gt; API will create the corresponding type in Greenplum to return a row
-    # -- Will add argument to change language extensions, currently plpython3u by default
-
-    @dataclasses.dataclass
-    class LinregType:
-        model_name: str
-        col_nm: List[str]
-        coef: List[float]
-        intercept: float
-        serialized_linreg_model: bytes
-        created_dt: str
-        run_id: str
-        registered_model_name: str
-        registered_model_version: str
-
-    @gp.create_column_function
-    def linreg_func(length: List[float], shucked_weight: List[float], rings: List[int]) -&amp;gt; LinregType:
-        from typing import List
-        import dataclasses
-        from sklearn.linear_model import LinearRegression
-        import numpy as np
-        import pickle
-        import mlflow
-        import datetime
-        import os
-        os.environ[&quot;AZURE_STORAGE_ACCESS_KEY&quot;] = &quot;XXX&quot;
-        os.environ[&quot;AZURE_STORAGE_CONNECTION_STRING&quot;] = &quot;DefaultEndpointsProtocol=https;AccountName=XXX;AccountKey=XXX;EndpointSuffix=core.windows.net&quot;
-
-        @dataclasses.dataclass
-        class LinregType:
-            model_name: str
-            col_nm: List[str]
-            coef: List[float]
-            intercept: float
-            serialized_linreg_model: bytes
-            created_dt: str
-            run_id: str
-            registered_model_name: str
-            registered_model_version: str
-
-        mlflow.set_tracking_uri(&quot;http://20.93.3.160:5000&quot;)
-        mlflow.set_experiment(&apos;test&apos;)
-        experiment = mlflow.get_experiment_by_name(&apos;test&apos;)
-        experiment_id = experiment.experiment_id
-        mlflow.autolog()
-        with mlflow.start_run(experiment_id=experiment_id,nested=True) as run:
-            model_name=&quot;model_greenplum&quot;
-            mlflow.log_param(&quot;start_run_test&quot;, &quot;This is a test&quot;)
-            X = np.array([length, shucked_weight]).T
-            y = np.array([rings]).T
-
-            # OLS linear regression with length, shucked_weight
-            linreg_fit = LinearRegression().fit(X, y)
-            linreg_coef = linreg_fit.coef_
-            linreg_intercept = linreg_fit.intercept_
-            mlflow.log_param(&quot;start_run_test2&quot;, &quot;This is a test 2&quot;)
-            # Serialization of the fitted model
-            serialized_linreg_model = pickle.dumps(linreg_fit, protocol=3)
-            mlflow.sklearn.log_model(linreg_fit, model_name)
-
-            # Register the model to MLFlow
-            model_uri = &quot;runs:/{}/model&quot;.format(run.info.run_id)
-            mv = mlflow.register_model(model_uri, model_name)
-            mlflow.sklearn.log_model(
-                    sk_model=linreg_fit,
-                    artifact_path=&quot;model&quot;,
-                    registered_model_name=model_name,
-                )
-
-            return LinregType(
-                model_name=model_name,
-                col_nm=[&quot;length&quot;, &quot;shucked_weight&quot;],
-                coef=linreg_coef[0],
-                intercept=linreg_intercept[0],
-                serialized_linreg_model=serialized_linreg_model,
-                created_dt=str(datetime.datetime.now()),
-                run_id=str(run.info.run_id),
-                registered_model_name=str(mv.name),
-                registered_model_version=str(mv.version)
-            )
-
-    linreg_fitted = (
-        abalone_train.group_by()
-        .apply(lambda t: linreg_func(t[&quot;length&quot;], t[&quot;shucked_weight&quot;], t[&quot;rings&quot;]), expand=True)
-    )
-
-    print(linreg_fitted[[&quot;model_name&quot;, &quot;col_nm&quot;, &quot;coef&quot;, &quot;intercept&quot;, &quot;created_dt&quot;, &quot;run_id&quot;, &quot;registered_model_name&quot;,
-                   &quot;registered_model_version&quot;]])
-
-    linreg_test_fit = linreg_fitted.cross_join(
-        abalone_test,
-        self_columns=[&quot;col_nm&quot;, &quot;coef&quot;, &quot;intercept&quot;, &quot;serialized_linreg_model&quot;, &quot;created_dt&quot;, &quot;registered_model_name&quot;,
-                      &quot;registered_model_version&quot;]
-    )
-    print(linreg_test_fit[:1])
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;6-model-training&quot;&gt;6. Model Training:&lt;/h4&gt;
-&lt;p&gt;The linear regression function is applied to the training data using the group_by().apply() method from the GreenplumPython library.&lt;/p&gt;
-
-&lt;h4 id=&quot;7-model-testing&quot;&gt;7. Model Testing:&lt;/h4&gt;
-&lt;p&gt;The test data is combined with the trained model using the cross_join() method, and predictions can be made based on the trained model.&lt;/p&gt;
-
-&lt;p&gt;In this script, Greenplum’s power is used to perform in-database machine learning. This allows processing large amounts of data without moving it out of the database, leading to improved performance.&lt;/p&gt;
-
-&lt;h4 id=&quot;8-integration-with-mlflow&quot;&gt;8. Integration with MLflow:&lt;/h4&gt;
-&lt;p&gt;The script also showcases the integration with MLflow for model tracking and versioning. Once you’ve run some experiments with MLflow, you can go to its web interface to see an overview of all your experiments, each one with a unique name, start time, user, and other useful metadata.&lt;/p&gt;
-
-&lt;p&gt;By clicking on a specific run, you can see more detailed information including the input parameters, output metrics, tags, and any notes you may have added. You can also visualize the model’s performance over time and across different parameters. Additionally, MLflow allows you to store the model for each run. You can compare different runs, revert to older models, or deploy the model directly from MLflow.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/mlflow-result-abalone.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This script is used to predict the age of abalones (represented by the “rings” column in the dataset) using a linear regression model trained on two features: the length and shucked weight of the abalones. It’s an example of supervised learning as it uses labelled data (i.e., we know the actual age of the abalones in the training set).&lt;/p&gt;
-
-&lt;p&gt;The data for this example comes from the UCI Machine Learning Repository. It’s a well-known dataset in the machine learning community, often used to illustrate various data analysis and machine learning techniques. In this case, the dataset provides a practical use case for the Tanzu Application Platform and Greenplum capabilities in setting up an MLOps environment.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion:&lt;/h3&gt;
-&lt;p&gt;Machine learning and data analysis are becoming increasingly vital in the modern data-driven world. Tools like the Tanzu Application Platform and Greenplum enable you to leverage the power of in-database machine learning to handle large volumes of data effectively and efficiently. By applying these tools to real-world datasets, like the Abalone dataset from the UCI Machine Learning Repository, we’re able to see just how powerful and practical these technologies can be.&lt;/p&gt;
-
-&lt;p&gt;The script showcased in this blog post takes advantage of the in-database processing capabilities of Greenplum, demonstrating that you can build and test machine learning models without moving your data out of the database. This not only enhances performance but also adds a layer of security, as the data remains within its original environment.&lt;/p&gt;
-
-&lt;p&gt;The integration with MLflow provides invaluable assistance in managing our machine learning lifecycle. It helps keep track of various model versions, logs all relevant metrics, parameters, and even notes, ensuring an organized and transparent machine learning process. With its visual interface, it becomes easier to compare different model runs, deploy the model, or revert to older models, thus enabling robust and reproducible machine learning.&lt;/p&gt;
-
-&lt;p&gt;In the grand scheme of MLOps, the combination of Greenplum for in-database machine learning and MLflow for model tracking and versioning provides a powerful and efficient solution. This empowers data scientists and engineers to perform more complex analyses, develop more sophisticated models, and ultimately extract more valuable insights from their data. As the field of machine learning continues to evolve, these tools will undoubtedly play an integral role in shaping its future.&lt;/p&gt;
-
-&lt;p&gt;Thank you for joining us in this exploration of Greenplum and MLflow. I hope this post has helped illustrate their potential and inspires you to consider how they could enhance your own data science projects. Stay tuned for more insights and tutorials in machine learning and data science. Happy coding!&lt;/p&gt;
-
-&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
-
-&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends &lt;a href=&quot;https://www.linkedin.com/in/ruxue-zeng/&quot;&gt;&lt;strong&gt;Ruxue Zeng&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;&lt;strong&gt;Ahmed Rachid Hazourli&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h5 id=&quot;linkedin-&quot;&gt;Linkedin :&lt;/h5&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/ruxue-zeng/&quot;&gt;Ruxue Zeng&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;Ahmed Rachid Hazourli&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/fklein82/&quot;&gt;Frédéric Klein&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/ruxue.jpeg&quot; /&gt;
-    &lt;img src=&quot;/images/Ahmed.jpeg&quot; /&gt;
-     &lt;img src=&quot;/images/fred.jpeg&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;We sincerely hope you &lt;strong&gt;enjoyed reading it&lt;/strong&gt;!&lt;/p&gt;
-</description>
-                <pubDate>Wed, 12 Jul 2023 18:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/07/12/tap-greenplum-python.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/07/12/tap-greenplum-python.html</guid>
-                
-                <category>data-ia</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>Discover the power of MLOps with Tanzu Application Platform (TAP) and Greenplum.</title>
-                <description>&lt;h3 id=&quot;introduction-to-machine-learning-artificial-intelligence-and-data-platforms&quot;&gt;Introduction to Machine Learning, Artificial Intelligence and Data Platforms.&lt;/h3&gt;
-
-&lt;p&gt;In the world of data, companies use &lt;strong&gt;Machine Learning (ML&lt;/strong&gt;) and &lt;strong&gt;Artificial Intelligence (AI)&lt;/strong&gt; to stay competitive. As the demand for quick innovation and deployment of ML models increases, having a strong all-in-one data platform becomes crucial.&lt;/p&gt;
-
-&lt;p&gt;In this blog post, we will explore how combining the &lt;strong&gt;Tanzu Application Platform (TAP)&lt;/strong&gt; with &lt;strong&gt;Greenplum&lt;/strong&gt; can deliver a &lt;strong&gt;full data platform with MLOps capabilities&lt;/strong&gt; by using Opensource projects.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot;&gt;Tanzu Application Platform (TAP)&lt;/a&gt; is a “Platform as a Service” that simplifies the development, deployment, and management of modern applications on Kubernetes.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Tanzu Application Platform can easily integrate with just about any modern database using &lt;a href=&quot;https://servicebinding.io/&quot;&gt;Service Bindings&lt;/a&gt;. This includes databases with support for in-database analytics. In this blog post, we will use VMware Greenplum.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://www.vmware.com/fr/products/greenplum.html&quot;&gt;VMware Greenplum&lt;/a&gt; is an advanced, fully featured, open-source MPP data warehouse based on PostgreSQL. It provides powerful and rapid analytics on petabyte-scale data volumes. Uniquely geared toward big data analytics.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/data-ia-stack.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;what-is-mlops-unlocking-the-secrets-to-efficient-machine-learning-development-and-deployment&quot;&gt;What is MLOps? Unlocking the Secrets to Efficient Machine Learning Development and Deployment&lt;/h3&gt;
-&lt;p&gt;MLOps, aka Machine Learning Operations, is a set of practices that aim to streamline the development, deployment, and management of machine learning models. It involves integrating machine learning with DevOps principles to ensure smooth collaboration between data scientists, ML engineers, and IT operations teams. MLOps focuses on automating and monitoring various stages of the ML lifecycle, from data preprocessing to model deployment and maintenance, resulting in faster experimentation, improved model quality, and more reliable production systems.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/mlops1.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;why-greenplum-for-the-back-end&quot;&gt;Why Greenplum for the Back-end?&lt;/h3&gt;
-
-&lt;p&gt;Exporting data from a database and importing it into a server or desktop environment using popular data science tools (e.g., Python, R) can be inefficient for big data analytics. Data scientists often face challenges with these tools’ memory and scalability limitations as well as bottlenecks associated with transferring large amounts of data between different platforms.
-Choosing the right tool is critical for data scientists to overcome these issues. In this post, we focus on Greenplum, a massively parallel processing PostgreSQL engine which provides built-in tools for data scientists for high-scale data exploration and model training. These tools and extensions include:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-intro.html&quot;&gt;Procedural language extensions&lt;/a&gt; to enable massive parallelism for Python &amp;amp; R&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-madlib.html&quot;&gt;Apache MADlib&lt;/a&gt; for scalable machine learning&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum/6/greenplum-database/GUID-analytics-postGIS.html?hWord=N4IghgNiBcIA4HsDOAXA5gSySAvkA&quot;&gt;PostGIS&lt;/a&gt; for geospatial analytics and &lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum-Text/3.10/tanzu-greenplum-text/GUID-topics-intro.html&quot;&gt;GPText&lt;/a&gt; for text search and processing&lt;/li&gt;
-  &lt;li&gt;Interoperability with dashboarding tools such as Tableau and PowerBI for seamless data visualization and reporting&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/greenplum3.png&quot; /&gt;
-  &lt;/div&gt;
-    &lt;em&gt;&lt;a href=&quot;https://github.com/greenplum-db/GreenplumPython&quot; target=&quot;_blank&quot;&gt;GreenplumPython for End-To-End MLOps tasks with MLflow&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;our-journey&quot;&gt;Our Journey&lt;/h3&gt;
-&lt;p&gt;Our journey will take us through the process of training a Convolutional Neural Network (CNN) on TAP, discovering data sets with DataHub, setting up a development environment, building ML workflows with Kubeflow and Argo Workflows, and creating predictive apps with APIs.&lt;/p&gt;
-
-&lt;h3 id=&quot;but-what-is-a-convolutional-neural-network&quot;&gt;But what is a Convolutional Neural Network?&lt;/h3&gt;
-
-&lt;p&gt;A Convolutional Neural Network (CNN) is a type of computer program designed to process and analyze grid-like data, such as images. It’s especially good at tasks like recognizing and classifying objects in pictures. CNNs work by learning to identify patterns and features from the input data through multiple layers, ultimately producing an output like a category or label.&lt;/p&gt;
-
-&lt;h3 id=&quot;1-training-a-convolutional-neural-network-on-tap&quot;&gt;1. Training a Convolutional Neural Network on TAP&lt;/h3&gt;
-&lt;p&gt;The Tanzu Application Platform is a powerful platform that simplifies the development, deployment, and management of modern applications. By combining TAP with Greenplum, an open-source, massively parallel data warehouse, we can efficiently train a Convolutional Neural Network on large-scale data sets. TAP provides the necessary infrastructure and tooling to enable seamless scaling and management of resources, ensuring optimal performance and efficiency throughout the training process.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/mlops-on-tap.jpg&quot; /&gt;
-    &lt;img src=&quot;/images/accelerator.png&quot; /&gt;
-  &lt;/div&gt;
-  &lt;em&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot; target=&quot;_blank&quot;&gt;Tanzu Application Platform&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://www.vmware.com/products/greenplum.html&quot; target=&quot;_blank&quot;&gt;Greenplum&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;2-discover-data-sets-with-datahub&quot;&gt;2. Discover Data Sets with DataHub&lt;/h3&gt;
-&lt;p&gt;Data is the building block of any ML project, and having a comprehensive data catalog is essential for discovering and managing data sets. DataHub, a popular data catalog tool, allows users to easily discover, understand, and use data sets across the organization. By integrating DataHub with TAP and Greenplum, we can quickly locate the most relevant data sets for our ML projects and ensure that our data is accurate, consistent, and up-to-date.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/datahub1.png&quot; /&gt;
-    &lt;img src=&quot;/images/datahub2.png&quot; /&gt;
-    &lt;img src=&quot;/images/datahub4.png&quot; /&gt;
-  &lt;/div&gt;
-    &lt;em&gt;&lt;a href=&quot;https://datahubproject.io/&quot; target=&quot;_blank&quot;&gt;Datahub - The #1 Open Source Data Catalog&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/datahub-accelerator&quot;&gt;Install Datahub Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create datahub --git-repository https://github.com/agapebondservant/datahub-accelerator.git --git-branch main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3-set-up-a-development-environment-with-jupyterhub-notebooks&quot;&gt;3. Set Up a Development Environment with JupyterHub notebooks&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Jupyter Notebooks is an open-source web application that allows users to create and share documents containing live code, equations, visualizations, and narrative text. It is widely used for data cleaning, transformation, and exploration, as well as for building and training ML models. By setting up a Jupyter Notebook environment on TAP, we can access our data stored in Greenplum and perform experiments with the latest ML frameworks and libraries, all within a single, unified platform.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;JupyterHub is a popular tool for Data Scientist. It is used for hosting Jupyter notebooks. A Jupyter notebook provides a browser-based IDE that enables live coding, experimentation, data exploration and model engineering. JupyterHub is a containerized, open-source app, making it easy to deploy on TAP.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/jupyter1.png&quot; /&gt;
-    &lt;img src=&quot;/images/jupyter2.png&quot; /&gt;
-    &lt;img src=&quot;/images/jupyter3.png&quot; /&gt;
-  &lt;/div&gt;
-    &lt;em&gt;&lt;a href=&quot;https://jupyter.org/&quot; target=&quot;_blank&quot;&gt;JupyterLab - A Next-Generation Notebook Interface&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/jupyter-accelerator&quot;&gt;Install Jupyter Utilities Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create jupyter --git-repository https://github.com/agapebondservant/jupyter-accelerator.git --git-branch main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;4-build-the-ml-model-workflow-with-mlflow&quot;&gt;4. Build the ML Model Workflow with MLflow&lt;/h3&gt;
-&lt;p&gt;MLflow is an open-source platform that streamlines the end-to-end management of machine learning projects. It provides a unified interface to manage the entire lifecycle of ML models, including experimentation, reproducibility, deployment, and monitoring. By integrating MLflow with TAP and Greenplum, we can easily track and compare experiments, package and share models, and deploy them in a scalable and reproducible manner. This integration ensures a smooth and efficient ML workflow, improving the overall effectiveness of our ML operations.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/mlflow1.png&quot; /&gt;
-    &lt;img src=&quot;/images/mlflow2.png&quot; /&gt;
-    &lt;img src=&quot;/images/mlflow3.png&quot; /&gt;
-  &lt;/div&gt;
-    &lt;em&gt;&lt;a href=&quot;https://mlflow.org/&quot; target=&quot;_blank&quot;&gt;mlflow - An open source platform for the machine learning lifecycle&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/kubeflow-pipelines-accelerator&quot;&gt;Install Kubeflow Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create kubeflowpipelines --git-repository https://github.com/agapebondservant/kubeflow-pipelines-accelerator --git-branch main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;5-train-scalable-machine-learning-models-on-greenplum-platform-using-greenplumpython&quot;&gt;5. Train scalable Machine Learning models on Greenplum platform using GreenplumPython&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Greenplum&lt;/strong&gt; has strong analytical capabilities that make them well suited for data science problems at a massive scale. Combining its &lt;strong&gt;MPP capabilities&lt;/strong&gt; with &lt;strong&gt;Python’s rich ecosystem&lt;/strong&gt; makes the end-to-end Machine Learning model development experience significantly faster.&lt;/p&gt;
-
-&lt;p&gt;To simplify the path to production and operational usage of trained ML models, we can unleash the power of &lt;strong&gt;GreenplumPython&lt;/strong&gt;, it’s a &lt;strong&gt;Python package that enables in-database execution of Python code&lt;/strong&gt; within Greenplum functions.&lt;/p&gt;
-
-&lt;p&gt;Data Scientists can then perform complex data processing and analysis tasks using familiar Python syntax and libraries, directly inside the Greenplum database. This integration &lt;strong&gt;reduces data movement&lt;/strong&gt; and &lt;strong&gt;improves performance&lt;/strong&gt;, as data processing occurs close to where the data is stored, making it an efficient way to perform advanced analytics, pre-processing, feature engineering, model training and deployment for your ML projects.&lt;/p&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://docs.vmware.com/en/VMware-Tanzu-Greenplum/index.html&quot;&gt;Greenplum Documentation&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://github.com/greenplum-db/GreenplumPython&quot;&gt;GreenplumPython Package&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/greenplum1.png&quot; /&gt;
-  &lt;/div&gt;
-    &lt;em&gt;&lt;a href=&quot;https://github.com/greenplum-db/GreenplumPython&quot; target=&quot;_blank&quot;&gt;GreenplumPython for End-To-End MLOps tasks with MLflow&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;6-build-and-train-ml-model-workflow-with-tensorflow&quot;&gt;6. Build and Train ML Model Workflow with TensorFlow.&lt;/h3&gt;
-&lt;p&gt;TensorFlow is a popular open-source ML library developed by Google. It provides a flexible and efficient platform for building and deploying ML models across various platforms and devices. By integrating TensorFlow with TAP and Greenplum, we can develop and train our ML models on massive data sets, harnessing the full power of distributed computing for faster and more accurate results.&lt;/p&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://github.com/tanzumlai/sample-ml-app/tree/main/&quot;&gt;Install Tensorflow Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create sample-cnn-app --git-repository https://github.com/tanzumlai/sample-ml-app.git --git-branch main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;7-build-ml-pipeline-with-argo-workflows&quot;&gt;7. Build ML Pipeline with Argo Workflows&lt;/h3&gt;
-&lt;p&gt;Argo Workflows is an open-source, container-native workflow engine for orchestrating parallel jobs on Kubernetes. By integrating Argo Workflows with TAP, we can build and manage complex ML pipelines with ease, automating tasks such as data preprocessing, model training, and deployment. This enables faster experimentation and iteration, ultimately accelerating the delivery of high-quality ML models.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/argocd1.png&quot; /&gt;
-    &lt;img src=&quot;/images/argocd2.png&quot; /&gt;
-    &lt;img src=&quot;/images/argocd3.png&quot; /&gt;
-  &lt;/div&gt;
-    &lt;em&gt;&lt;a href=&quot;https://argoproj.github.io/workflows/&quot; target=&quot;_blank&quot;&gt;ArgoCD Workflows - open source container-native workflow engine for orchestrating parallel jobs on Kubernetes.&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/argo-workflows-accelerator/tree/main/&quot;&gt;Install ArgoCD Workflows Accelerator for TAP&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tanzu acc create argo-pipelines-acc --git-repository https://github.com/agapebondservant/argo-workflows-accelerator.git --git-branch main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://argoproj.github.io/argo-workflows/&quot;&gt;More info on ArgoCD Workflows&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;8-create-predictive-apps-with-apis&quot;&gt;8. Create Predictive Apps with APIs&lt;/h3&gt;
-&lt;p&gt;Once our ML models are trained and optimized, we can use TAP to build predictive applications that leverage these models to provide valuable insights and predictions. By exposing our models through APIs, we enable seamless integration with existing applications and systems, ensuring that our data-driven insights can be easily consumed by end-users and decision-makers. This not only increases the value and impact of our ML efforts but also promotes a data-driven culture within the organization.&lt;/p&gt;
-
-&lt;h3 id=&quot;references-architecture&quot;&gt;References Architecture&lt;/h3&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/data-architecture.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://github.com/agapebondservant/tap-data&quot;&gt;Source code for build a DATA E2E Demo Platform&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;These insightfulls References Architecture are credited to &lt;a href=&quot;https://www.linkedin.com/in/tola-awofolu-b4a9576/&quot;&gt;Omotola Awofolu&lt;/a&gt; - Senior Platform Architect and &lt;a href=&quot;https://www.linkedin.com/in/caiofarias/&quot;&gt;Caio Farias&lt;/a&gt; - Account Data Engineer from VMware.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/deployed.png&quot; alt=&quot;deploy&quot; title=&quot;developer&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
 
-&lt;p&gt;In this blog post, We have demonstrated how combining the &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; with &lt;strong&gt;Greenplum&lt;/strong&gt; can deliver a &lt;strong&gt;full data platform with MLOps&lt;/strong&gt; capabilities.&lt;/p&gt;
+&lt;p&gt;With these steps, you’ve set up a CI/CD pipeline in GitLab to build a Docker image using OpenShift. This integration allows you to leverage the powerful features of both platforms to streamline your development and deployment processes.&lt;/p&gt;
 
-&lt;p&gt;From training a Convolutional Neural Network on TAP to building predictive apps with APIs, this powerful combination enables organizations to harness the power of their data and accelerate the delivery of high-quality ML models.&lt;/p&gt;
+&lt;p&gt;For more detailed information on builds in OpenShift, you can refer to the &lt;a href=&quot;file-SsFF1mdi2bfbTnDuI1mOjClJ&quot;&gt;Builds for OpenShift Overview&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;By integrating tools like &lt;strong&gt;DataHub&lt;/strong&gt;, &lt;strong&gt;Jupyter Notebook&lt;/strong&gt;, &lt;strong&gt;Kubeflow&lt;/strong&gt;, &lt;strong&gt;TensorFlow&lt;/strong&gt;, &lt;strong&gt;GreenplumPython&lt;/strong&gt; and &lt;strong&gt;Argo Workflows&lt;/strong&gt;, we can streamline the entire ML lifecycle, improving efficiency and scalability across the board.&lt;/p&gt;
+&lt;p&gt;Happy building!&lt;/p&gt;
 
-&lt;p&gt;With &lt;strong&gt;TAP&lt;/strong&gt; and &lt;strong&gt;Greenplum&lt;/strong&gt; at the core of your &lt;strong&gt;data platform&lt;/strong&gt;, your organization will be well-equipped to &lt;strong&gt;tackle the most challenging ML problems&lt;/strong&gt; and drive &lt;strong&gt;innovation in the ever-evolving world of data and AI&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/data-ia-stack-2.png&quot; /&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
-
-&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friend &lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;&lt;strong&gt;Ahmed Rachid Hazourli&lt;/strong&gt;&lt;/a&gt;, a very bright &lt;strong&gt;Tanzu Data Engineer&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Special Thanks&lt;/strong&gt; to &lt;a href=&quot;https://www.linkedin.com/in/tola-awofolu-b4a9576/&quot;&gt;&lt;strong&gt;Omotola Awofolu&lt;/strong&gt;&lt;/a&gt; - &lt;strong&gt;Senior Platform Architect&lt;/strong&gt; and &lt;a href=&quot;https://www.linkedin.com/in/caiofarias/&quot;&gt;&lt;strong&gt;Caio Farias&lt;/strong&gt;&lt;/a&gt; - &lt;strong&gt;Account Data Engineer&lt;/strong&gt; for their &lt;strong&gt;invaluable contribution&lt;/strong&gt; in developing the &lt;strong&gt;TAP accelerator&lt;/strong&gt;, the &lt;strong&gt;Reference Architecture&lt;/strong&gt; and for being a constant &lt;strong&gt;source of inspiration&lt;/strong&gt; to us.&lt;/p&gt;
-
-&lt;p&gt;We sincerely hope you &lt;strong&gt;enjoyed reading it&lt;/strong&gt;!&lt;/p&gt;
-
-&lt;h4 id=&quot;linkedin&quot;&gt;Linkedin&lt;/h4&gt;
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/tola-awofolu-b4a9576/&quot;&gt;Omotola Awofolu&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/caiofarias/&quot;&gt;Caio Farias&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/ahmed-rachid/&quot;&gt;Ahmed Rachid Hazourli&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/fklein82/&quot;&gt;Frédéric Klein&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.openshift.com&quot;&gt;Red Hat OpenShift Documentation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.gitlab.com/ee/ci/&quot;&gt;GitLab CI/CD Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;This guide should help you get started with building and deploying container images using GitLab CI/CD and OpenShift. If you have any questions or run into issues, feel free to reach out for support.&lt;/p&gt;
 </description>
-                <pubDate>Mon, 08 May 2023 18:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/08/tap-and-greenplum.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/08/tap-and-greenplum.html</guid>
+                <pubDate>Tue, 11 Jun 2024 14:01:35 +0200</pubDate>
+                <link>http://localhost:4000/post/2024/06/11/gitlab-openshift.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2024/06/11/gitlab-openshift.html</guid>
                 
-                <category>data-ia</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>Enhancing Developer Experience on Tanzu Application Platform with Backstage</title>
-                <description>&lt;h3 id=&quot;tanzu-application-platform-tap&quot;&gt;Tanzu Application Platform (TAP)&lt;/h3&gt;
-
-&lt;p&gt;I am consistently impressed by the way the Tanzu Application Platform (TAP) empowers developers to build and manage modern applications seamlessly. One of the key aspects that set TAP apart is its focus on providing an exceptional developer experience. This focus is further strengthened by the integration of the Backstage open-source project, which allows developers to efficiently manage and maintain their applications, ultimately speeding up software delivery. In this blog post, we’ll dive into the benefits of Backstage integration in TAP and explore how it elevates the developer experience.&lt;/p&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot;&gt;Tanzu Application Platform&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-backstage&quot;&gt;What is Backstage?&lt;/h3&gt;
-
-&lt;p&gt;Backstage is an open-source platform developed by Spotify, which aims to provide a unified developer portal that simplifies the process of managing software components, services, and tools. It offers a single, extensible interface for developers to discover, explore, and interact with their organization’s software ecosystem, making it easier to navigate the complexities of modern software development.&lt;/p&gt;
-
-&lt;p&gt;→ &lt;a href=&quot;https://backstage.io/&quot;&gt;Backstage.io&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;backstage-integration-in-tanzu-application-platform&quot;&gt;Backstage Integration in Tanzu Application Platform&lt;/h3&gt;
-
-&lt;p&gt;Backstage is the UI of TAP, and provides a centralized location to manage  applications and services, regardless of the underlying infrastructure. This brings the following benefits to developer:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;1. Unified Developer Experience&lt;/strong&gt;: With Backstage, developers can access all their services and applications from a single, intuitive interface. This streamlined experience simplifies the management of application components, reducing the time spent navigating between different tools and platforms.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/tap1.png&quot; /&gt;
-    &lt;img src=&quot;/images/tap2.png&quot; /&gt;
-    &lt;img src=&quot;/images/tap3.png&quot; /&gt;
-    &lt;img src=&quot;/images/tap4.png&quot; /&gt;
-    &lt;img src=&quot;/images/tap5.png&quot; /&gt;
-    &lt;img src=&quot;/images/tap6.png&quot; /&gt;
-    &lt;img src=&quot;/images/tap7.png&quot; /&gt;
-    &lt;img src=&quot;/images/tap8.png&quot; /&gt;
-    &lt;img src=&quot;/images/tap9.png&quot; /&gt;
-  &lt;/div&gt;
-  &lt;em&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot; target=&quot;_blank&quot;&gt;TAP User Interface&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;2. Enhanced Service Catalog&lt;/strong&gt;: TAP’s integration with Backstage enables developers to easily discover and access their organization’s software components, services, and APIs. The catalog provides rich metadata and documentation, allowing teams to quickly understand and start using these resources.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/api.png&quot; /&gt;
-    &lt;img src=&quot;/images/api2.png&quot; /&gt;
-    &lt;img src=&quot;/images/api3.png&quot; /&gt;
-    &lt;img src=&quot;/images/api5.png&quot; /&gt;
-    &lt;img src=&quot;/images/api6.png&quot; /&gt;
-    &lt;img src=&quot;/images/api7.png&quot; /&gt;
-  &lt;/div&gt;
-  &lt;em&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot; target=&quot;_blank&quot;&gt;TAP User Interface and TAP API Portal&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;3. Accelerated Development (aka Accelerator)&lt;/strong&gt;: By providing a comprehensive and consistent interface for managing applications, Backstage helps developers to quickly understand and navigate their organization’s software ecosystem. This enables them to spend less time on administrative tasks and more time on developing new features and functionality.&lt;/p&gt;
-
-&lt;div class=&quot;gallery-box&quot;&gt;
-  &lt;div class=&quot;gallery&quot;&gt;
-    &lt;img src=&quot;/images/acc1.png&quot; /&gt;
-    &lt;img src=&quot;/images/acc2.png&quot; /&gt;
-  &lt;/div&gt;
-  &lt;em&gt;&lt;a href=&quot;https://tanzu.vmware.com/application-platform&quot; target=&quot;_blank&quot;&gt;TAP User Interface and TAP plugins for Visual Studio Code&lt;/a&gt;&lt;/em&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;4. Open-Source Community&lt;/strong&gt;: Being an open-source project, Backstage boasts a vibrant and active community that continuously contributes to its development. This ensures that TAP users can leverage the latest features and improvements, keeping their developer experience up to date and cutting-edge.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;The integration of the &lt;strong&gt;Backstage&lt;/strong&gt; open-source project into &lt;strong&gt;Tanzu Application Platform&lt;/strong&gt; plays a pivotal role in &lt;strong&gt;enhancing the developer experience&lt;/strong&gt;. By streamlining application management, promoting discoverability, and providing customization options,&lt;/p&gt;
-
-&lt;p&gt;→ &lt;strong&gt;Tanzu Application Platform empowers developers to focus on what matters most: building software&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;I am thrilled to see the continuous evolution of TAP and look forward to seeing how Backstage integration will continue to elevate the platform in the future, with customizable &lt;a href=&quot;https://backstage.io/plugins&quot;&gt;plugins&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-                <pubDate>Sat, 06 May 2023 17:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/06/enhancing-devx-on-tap-with-backstage.html</guid>
-                
-                <category>Tap</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>Tanzu Experience Days</title>
-                <description>&lt;h3 id=&quot;join-me-for-vmwares-free-experience-days-sessions-dedicated-to-tanzu-solutions&quot;&gt;Join me for VMware’s free “Experience Days” sessions dedicated to Tanzu solutions!&lt;/h3&gt;
-
-&lt;p&gt;Are you a technical professional interested in learning how to manage and operate a container-based infrastructure based on Kubernetes? Do you want to discover best practices for improving the development and deployment experience of your applications while strengthening security? If so, join me for VMware’s free “Experience Days” sessions dedicated to Tanzu solutions!&lt;/p&gt;
-
-&lt;p&gt;During these sessions, you’ll participate in in-depth workshops and hands-on exercises specifically designed for technical profiles. My colleagues and I, who are experienced Solutions Engineers, will be there to answer all your technical questions live.&lt;/p&gt;
-
-&lt;p&gt;The May 16th sessions are already available, so sign up now by clicking on the links below. You can also register for the upcoming sessions on June 13th and July 4th.&lt;/p&gt;
-
-&lt;h3 id=&quot;here-are-the-links-to-register-for-the-sessions&quot;&gt;Here are the links to register for the sessions:&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://connect.tanzu.vmware.com/EMEA_P1_DG_SW_Q224_Workshop_TKOExperienceDayParisMay_TanzuLP.html&quot;&gt;Kubernetes exploitation-oriented session&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://connect.tanzu.vmware.com/EMEA_P6_DG_SW_Q224_Workshop_TAPExperienceDayParisMay_TanzuLP.html&quot;&gt;Developer-oriented session&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;register-today&quot;&gt;Register today!&lt;/h3&gt;
-
-&lt;p&gt;Don’t miss out on this valuable opportunity to deepen your knowledge of Tanzu solutions and enhance your technical skills.&lt;/p&gt;
-</description>
-                <pubDate>Thu, 04 May 2023 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/04/experience-days.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/04/experience-days.html</guid>
-                
-                <category>tanzu-experience-day</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>vSphere Pod vs Tanzu Kubernetes Cluster? A Comprehensive Comparison</title>
-                <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-
-&lt;p&gt;In today’s fast-paced world of technological advancements, the adoption of containerization and cloud-native application development has skyrocketed. VMware Tanzu offers two powerful tools for managing and deploying containerized applications: vSphere Pod and Tanzu Kubernetes Cluster. In this blog post, we will delve into the differences between these two technologies, discussing their features, advantages, and appropriate use cases, while incorporating insights from VMware’s official documentation.&lt;/p&gt;
-
-&lt;h3 id=&quot;vsphere-pod-an-overview&quot;&gt;vSphere Pod: An Overview&lt;/h3&gt;
-
-&lt;p&gt;vSphere Pod is part of vSphere-with-Tanzu. vSphere-with-Tanzu is a container runtime environment designed for VMware vSphere. It enables you to run and manage containerized applications directly on the vSphere platform. vSphere Pod is the equivalent of a Kubernetes pod that can run directly on the ESXi hypervisor, and provides a lightweight, scalable solution that leverages the power of VMware’s hypervisor to deliver security, performance, and resource management capabilities.&lt;/p&gt;
-
-&lt;h3 id=&quot;key-features-of-vsphere-pod&quot;&gt;Key Features of vSphere Pod:&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Native integration with vSphere: vSphere Pod is integrated into the vSphere platform, making it easy to manage container workloads alongside traditional VM workloads.&lt;/li&gt;
-  &lt;li&gt;VM-level isolation: Each pod runs in its own virtual machine, providing strong isolation between workloads and ensuring that a single compromised pod cannot impact others.&lt;/li&gt;
-  &lt;li&gt;Resource management: vSphere Pod leverages vSphere’s resource management capabilities, allowing you to allocate resources such as CPU, memory, and storage to your containers.&lt;/li&gt;
-  &lt;li&gt;Namespace-based management: vSphere Pod introduces the concept of namespaces to vSphere, which simplifies the management of container workloads and allows for easy delegation of authority to developers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;tanzu-kubernetes-cluster-an-overview&quot;&gt;Tanzu Kubernetes Cluster: An Overview&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Kubernetes Cluster (TKC) is a Kubernetes-based platform for running and managing containerized applications. It is a part of VMware’s Tanzu portfolio and vSphere-with-Tanzu, which offers a comprehensive set of tools for building, running, and managing modern applications. TKC enables you to deploy and manage Kubernetes clusters on top of vSphere, giving you a consistent, enterprise-grade Kubernetes experience.&lt;/p&gt;
-
-&lt;h3 id=&quot;key-features-of-tanzu-kubernetes-cluster&quot;&gt;Key Features of Tanzu Kubernetes Cluster:&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Enterprise-grade Kubernetes: TKC provides a fully conformant, upstream-aligned Kubernetes distribution, ensuring compatibility with the broader Kubernetes ecosystem.&lt;/li&gt;
-  &lt;li&gt;Consistent management experience: TKC integrates with VMware Tanzu Mission Control, enabling you to manage Kubernetes clusters across multiple environments and platforms.&lt;/li&gt;
-  &lt;li&gt;Extensibility and customization: With TKC, you can leverage a wide range of Kubernetes add-ons and extensions to tailor your clusters to your specific needs.&lt;/li&gt;
-  &lt;li&gt;Dynamic scaling: TKC supports dynamic scaling of Kubernetes clusters, allowing you to easily adjust the size of your clusters based on your requirements.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;comparing-vsphere-pod-and-tanzu-kubernetes-cluster&quot;&gt;Comparing vSphere Pod and Tanzu Kubernetes Cluster&lt;/h3&gt;
-&lt;p&gt;Now that we have a basic understanding of both vSphere Pod and Tanzu Kubernetes Cluster, let’s compare them in various aspects:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Complexity: vSphere Pod is a simpler solution compared to TKC, as it is integrated directly into the vSphere platform. TKC, on the other hand, offers a more comprehensive Kubernetes experience but requires additional management and configuration.&lt;/li&gt;
-  &lt;li&gt;Use cases: vSphere Pod is ideal for organizations looking to run containerized applications on vSphere without adopting a full Kubernetes stack. Tanzu Kubernetes Cluster is better suited for organizations that require a complete, enterprise-grade Kubernetes solution and are willing to invest in the necessary infrastructure and management tools.&lt;/li&gt;
-  &lt;li&gt;Ecosystem: TKC offers broader compatibility with the Kubernetes ecosystem, including support for third-party add-ons and extensions. vSphere Pod, being a native vSphere solution, is more limited in this regard.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;The choice between vSphere Pod and Tanzu Kubernetes Cluster depends on your specific needs, existing infrastructure, and long-term goals. vSphere Pod provides a lightweight, integrated container runtime for vSphere users, while Tanzu Kubernetes Cluster offers a complete, enterprise-grade Kubernetes experience. By understanding the differences between these two technologies, you can make an informed decision that best aligns with your organization’s requirements and objectives.&lt;/p&gt;
-
-&lt;h3 id=&quot;more-info&quot;&gt;More info&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-04D08757-D761-4AFC-8F9A-7AAC9964DC69.html&quot;&gt;When to Use vSphere Pods and Tanzu Kubernetes Clusters - VMware Documentations&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-276F809D-2015-4FC6-92D8-8539D491815E.html&quot;&gt;What Is a vSphere Pod? - VMware Documentations&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-DC22EA6A-E086-4CFE-A7DA-2654891F5A12.html&quot;&gt;What Is a Tanzu Kubernetes Cluster? - VMware Documentations&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-                <pubDate>Wed, 03 May 2023 17:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/03/vsphere-pod-vs-tkc.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/vsphere-pod-vs-tkc.html</guid>
-                
-                <category>vsphere-with-tanzu</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>vSphere-with-Tanzu or k8s in vSphere?</title>
-                <description>&lt;p&gt;VMware vSphere-with-Tanzu is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. Tanzu is a VMware solution designed to simplify the deployment and management of Kubernetes for enterprise organizations. In this blog post, we’ll take a closer look at VMware vSphere with Tanzu and how to use it with Tanzu CLI.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-tanzu-cli&quot;&gt;What is Tanzu CLI?&lt;/h3&gt;
-
-&lt;p&gt;Tanzu CLI is a command-line tool that provides a simplified interface for managing Kubernetes clusters and applications. It is designed to make it easy to manage Kubernetes clusters across multiple cloud providers, including vSphere with Tanzu.&lt;/p&gt;
-
-&lt;p&gt;Using Tanzu CLI, you can deploy and manage Kubernetes clusters, deploy and manage applications, and automate common tasks. It is a powerful tool that can help simplify the management of Kubernetes for enterprise organizations.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-to-use-vsphere-with-tanzu-and-the-tanzu-cli-&quot;&gt;How to use vSphere-with-Tanzu and the Tanzu CLI ?&lt;/h3&gt;
-
-&lt;p&gt;Here’s a step-by-step guide on how to use VMware vSphere with Tanzu with Tanzu CLI:&lt;/p&gt;
-
-&lt;h3 id=&quot;step-1-install-the-tanzu-cli-and-the-kubectl--vsphere-plugin&quot;&gt;Step 1: Install the Tanzu CLI and the Kubectl + vSphere plugin&lt;/h3&gt;
-
-&lt;p&gt;The first step is to install the Tanzu CLI on your local machine. You can do this by asking your vsphere administrator to Get the link to the Kubernetes Command Line Interface Tools download page.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/cli-tanzu.jpeg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;step-2-configure-the-vsphere-environment&quot;&gt;Step 2: Configure the vSphere environment&lt;/h3&gt;
-
-&lt;p&gt;Next, you’ll need to configure your vSphere environment to work with Tanzu CLI. This involves setting up the appropriate credentials and configuring the vSphere endpoint. You can do this by running the following command:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl vsphere login --server &amp;lt;vCenter server address&amp;gt; --vsphere-username &amp;lt;vCenter username&amp;gt; --insecure-skip-tls-verify
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This will authenticate you with vSphere and allow you to manage your Kubernetes clusters using Tanzu CLI.&lt;/p&gt;
-
-&lt;h3 id=&quot;step-3-create-a-tanzu-kubernetes-cluster&quot;&gt;Step 3: Create a Tanzu Kubernetes cluster&lt;/h3&gt;
-
-&lt;p&gt;Once you’ve configured your vSphere environment, you can create a Tanzu Kubernetes cluster using the classical kubectl apply:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;First craft the yaml that will describe the cluster topology:&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apiVersion: run.tanzu.vmware.com/v1alpha2           #TKGS API endpoint
-kind: TanzuKubernetesCluster                        #required parameter
-metadata:
-  name: tkgs-dev01                                  #cluster name, user defined
-  namespace: vns-dev-01
-spec:
-  topology:
-    controlPlane:
-      replicas: 1                                   #number of control plane nodes
-      vmClass: best-effort-small                    #vmclass for control plane nodes
-      storageClass: kubernetes-sp
-      tkr:  
-        reference:
-          name: v1.21.6---vmware.1-tkg.1.b3d708a
-    nodePools:
-    - name: worker-nodepool-a1
-      replicas: 1                                   #number of worker nodes
-      vmClass: best-effort-small                    #vmclass for worker nodes
-      storageClass: kubernetes-sp
-      tkr:  
-        reference:
-          name: v1.21.6---vmware.1-tkg.1.b3d708a
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;And then apply the file with the kubectl command&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl apply -f workload_prod_cluster01.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;step-4-deploy-your-workloads&quot;&gt;Step 4: Deploy your workloads&lt;/h3&gt;
-
-&lt;p&gt;With your Tanzu Kubernetes cluster up and running, you can now deploy your container workloads using Kubernetes manifests or Helm charts. Tanzu CLI provides a number of built-in tools and integrations to make this process as simple and streamlined as possible.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Connect to the Tanzu Kubernetes cluster&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl vsphere login --server &amp;lt;vCenter server address&amp;gt; --vsphere-username &amp;lt;vCenter username&amp;gt; --insecure-skip-tls-verify -tanzu-kubernetes-cluster-name &amp;lt;tkgs-dev01&amp;gt; --tanzu-kubernetes-cluster-namespace &amp;lt;vns-dev-01&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Apply cluster rolebinding&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create clusterrolebinding default-tkg-admin-privileged-binding --clusterrole=psp:vmware-system-privileged --group=system:authenticated
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Deploy my blog App&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create deployment fredblog --image=registry.fklein.me/tanzu-blog/fklein-blog:2023-05-04-11-44-18 --port=80
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Expose the app (through a Loadbalancer L4 for example)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl expose deployment fredblog --port 80 --type LoadBalancer --target-port=80
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Check the ip and connect with your browser&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get svc 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;step-5-manage-your-kubernetes-clusters&quot;&gt;Step 5: Manage your Kubernetes clusters&lt;/h3&gt;
-
-&lt;p&gt;Using Tanzu CLI, you can manage your Kubernetes clusters, including scaling them up or down, updating the Kubernetes version, and more. This provides a powerful command-line interface for managing both your VMs and containers.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;VMware vSphere with Tanzu is a powerful platform that enables businesses to deploy and manage Kubernetes clusters directly on their vSphere infrastructure. Tanzu CLI is a command-line tool that provides a simplified interface for managing Kubernetes clusters and applications. By following the steps outlined above, you can get started with VMware vSphere with Tanzu and Tanzu CLI and begin deploying and managing your container workloads more easily and efficiently.&lt;/p&gt;
-</description>
-                <pubDate>Wed, 03 May 2023 16:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/03/vsphere-with-tanzu.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/vsphere-with-tanzu.html</guid>
-                
-                <category>vsphere-with-tanzu</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>Tanzu Build Service - Automating Container Image Building and Management</title>
-                <description>&lt;h3 id=&quot;tanzu-build-service-automating-container-image-building-and-management&quot;&gt;Tanzu Build Service: Automating Container Image Building and Management&lt;/h3&gt;
-
-&lt;p&gt;As organizations continue to adopt modern software development practices, containers have become a popular way to package and deploy applications. However, building and managing container images can be a time-consuming and error-prone task, especially at scale. Tanzu Build Service is a tool that helps automate this process, making it easier for developers to focus on writing code and delivering business value.&lt;/p&gt;
-
-&lt;h3 id=&quot;what-is-tanzu-build-service&quot;&gt;What is Tanzu Build Service?&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Build Service is a Kubernetes-native tool that automates the process of building, managing, and updating container images. It leverages Cloud Native Buildpacks, an open-source technology that provides a modular and composable approach to building containers. Cloud Native Buildpacks automatically detect the language and framework of an application and create optimized container images that are free from security vulnerabilities.&lt;/p&gt;
-
-&lt;p&gt;Tanzu Build Service provides a declarative way to define how container images should be built, including which base images to use, which buildpacks to include, and how to configure the resulting images. This declarative approach ensures that all images are built consistently, regardless of the developer or environment.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-does-tanzu-build-service-work&quot;&gt;How does Tanzu Build Service work?&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Build Service uses a set of controllers and operators to manage the entire container image build process. Developers define a build configuration, which specifies the source code location, buildpacks, and other build parameters. Tanzu Build Service then creates a build plan that determines the exact build steps required to create the container image. Finally, the build process is executed using Cloud Native Buildpacks, which create a secure and optimized container image.&lt;/p&gt;
-
-&lt;p&gt;Once the container image is built, Tanzu Build Service automatically stores it in a container registry, such as Harbor or Docker Hub. This ensures that the image is available to all developers, regardless of their location or access permissions.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;With one line, you can create an OCI that is listening to a git repository, and then push the image to a registry&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kp image create fkleinblog --tag registry.fklein.me/tbs/fkleinblog:1.1 --git https://github.com/fklein82/tbs-blog-demo.git --git-revision main -n dev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;You can check the buiding log of the image&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kp build logs fkleinblog -n dev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;And check the image list&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kp image list -n dev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;what-are-the-benefits-of-tanzu-build-service&quot;&gt;What are the benefits of Tanzu Build Service?&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Build Service provides several benefits for developers and IT organizations, including:&lt;/p&gt;
-
-&lt;p&gt;Consistency: Tanzu Build Service ensures that all container images are built using the same base images, buildpacks, and configurations, regardless of the developer or environment.&lt;/p&gt;
-
-&lt;p&gt;Security: Cloud Native Buildpacks automatically detect and remediate security vulnerabilities, ensuring that all container images are free from known security issues.&lt;/p&gt;
-
-&lt;p&gt;Speed: Tanzu Build Service automates the build process, reducing the time required to build and update container images.&lt;/p&gt;
-
-&lt;p&gt;Scalability: Tanzu Build Service can be easily scaled to support large and complex applications, making it an ideal solution for enterprise environments.&lt;/p&gt;
-
-&lt;p&gt;Ease of use: Tanzu Build Service provides a simple and intuitive interface for developers to define and manage container images, reducing the need for manual intervention.&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-
-&lt;p&gt;Tanzu Build Service is a powerful tool that automates the process of building, managing, and updating container images. By leveraging Cloud Native Buildpacks, Tanzu Build Service provides a secure, consistent, and scalable approach to container image management, freeing developers to focus on writing code and delivering business value. If you’re looking to streamline your container image management process, Tanzu Build Service is definitely worth considering.&lt;/p&gt;
-
-&lt;h3 id=&quot;more-information&quot;&gt;More information&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/fklein82/tbs-blog-demo/tree/main&quot;&gt;Source code Application demo to test TBS&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/fklein82/tbs-blog-demo/blob/main/demo/demo.sh&quot;&gt;Script to Make a demo with TBS on a Kubernetes CNFC Compliant&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-                <pubDate>Wed, 03 May 2023 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/05/03/tanzu-build-service.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/05/03/tanzu-build-service.html</guid>
-                
-                <category>tanzu-build-service</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>VMware Application Catalog - A Curated image catalog</title>
-                <description>&lt;p&gt;The VMware Application Catalog is a central repository of Open-Source software that is available for use with Virtualized and Kubernetes Infrastructure. It contains a vast array of pre-packaged software applications and services, including operating systems, middleware, and databases, that are securized to work with virtualization and cloud computing platform.&lt;/p&gt;
-
-&lt;p&gt;The VMware Application Catalog provides a single, consolidated source for organizations to discover, deploy, and manage software applications, simplifying the process of identifying and selecting software solutions for use within their ecosystem. It allows IT teams to quickly search for and identify the applications they need, and then deploy them to their  infrastructure with confidence, knowing that they have been pre-tested and verified to work with VMware’s products.&lt;/p&gt;
-
-&lt;p&gt;The catalog is continually updated and expanded, with new applications and services being added on an ongoing basis. It also includes a range of community-contributed packages, providing access to a wide range of open-source software solutions that have been customized and optimized for use with VMware’s products or Cloud Public Platform.&lt;/p&gt;
-
-&lt;p&gt;Overall, the VMware Application Catalog provides significant value to organizations by simplifying the process of identifying, selecting, and deploying software applications within their virtualized infrastructure. By providing a central repository of pre-tested and verified software solutions, it enables IT teams to streamline their software deployment processes, reduce risk, and increase the efficiency and effectiveness of their virtualized infrastructure.&lt;/p&gt;
-</description>
-                <pubDate>Thu, 06 Apr 2023 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2023/04/06/vmware-application-catalog-demo.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2023/04/06/vmware-application-catalog-demo.html</guid>
-                
-                <category>vac</category>
-                
-                <category>vmware-application-catalog</category>
+                <category>Openshift</category>
                 
                 
             </item>

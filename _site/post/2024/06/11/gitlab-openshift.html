@@ -6,23 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ASA Blog</title>
-  <meta name='description' content='Frédéric KLEIN personal Blog'>
+  <title>Building a Container Image on OpenShift Using GitLab CI/CD</title>
+  <meta name='description' content='Learn how to streamline your CI/CD pipeline by integrating GitLab with OpenShift to build and deploy container images. This step-by-step guide covers the set...'>
 
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/post/2024/06/11/gitlab-openshift.html">
   <link rel="alternate" type="application/rss+xml" title="ASA Blog" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ASA Blog">
-  <meta name="twitter:description" content="Frédéric KLEIN personal Blog">
+  <meta name="twitter:title" content="Building a Container Image on OpenShift Using GitLab CI/CD – ASA Blog">
+  <meta name="twitter:description" content="Learn how to streamline your CI/CD pipeline by integrating GitLab with OpenShift to build and deploy container images. This step-by-step guide covers the setup of the .gitlab-ci.yaml file, creating a Dockerfile, adding application code, configuring OpenShift, and running the build. Perfect for developers looking to leverage the power of GitLab and OpenShift for efficient container management and deployment.">
   <meta name="twitter:image" content="https://blog.fklein.me/images/twitter.jpg">
 
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="ASA Blog">
-  <meta property="og:description" content="Frédéric KLEIN personal Blog">
-  <meta property="og:image" content="http://localhost:4000/images/01.jpg">
+  <meta property="og:title" content="Building a Container Image on OpenShift Using GitLab CI/CD – ASA Blog">
+  <meta property="og:description" content="Learn how to streamline your CI/CD pipeline by integrating GitLab with OpenShift to build and deploy container images. This step-by-step guide covers the setup of the .gitlab-ci.yaml file, creating a Dockerfile, adding application code, configuring OpenShift, and running the build. Perfect for developers looking to leverage the power of GitLab and OpenShift for efficient container management and deployment.">
+  <meta property="og:image" content="http://localhost:4000/images/02.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -181,112 +181,360 @@
 
   <!-- begin content -->
   <main class="content" aria-label="Content">
-    <!-- begin hero -->
-<section class="hero">
+    <div class="post-head">
   <div class="container">
     <div class="row">
-      <div class="col col-12">
-        <div class="hero__inner">
+      
+      
 
-          <div class="hero__left">
-            <h1 class="hero__title">Solutions Architect (SA) Blog</h1>
-            <p class="hero__description">Architectures, talks, and writes about Kubernetes, web, data, ethics, privacy, and dev. I share technical tutorials, free resources and inspiration.</p>
-            
-            <div class="hero__subscribe">
-              <form class="subscribe-form validate"
-                action="//sarycom.us13.list-manage.com/subscribe/post?u=d1c5b405f62d316c5e1d4b256&amp;id=f959b0912e&amp;f_id=003afae2f0" method="POST" id="membedded-subscribe-form" name="membedded-subscribe-form" target="_blank" novalidate>
-                <label class="screen-reader-text" for="mce-EMAIL">Email address</label>
-                <input class="subscribe-email required email" id="mce-EMAIL" type="text" name="EMAIL"
-                  placeholder="type your Email">
-                <button class="button button--primary subscribe-button" id="membedded-subscribe" type="submit" name="subscribe">Subscribe</button>
-              </form>
-            </div>
-            
-          </div>
-
-          <div class="hero__right">
-            <div class="hero__image">
-              <img class="lazy" data-src="/images/01.png" alt="'s Picture">
-            </div>
-          </div>
-
+      
+      <div class="col col-6 col-d-12">
+        <div class="post-image">
+          <img class="lazy" data-src="/images/02.png" alt="Building a Container Image on OpenShift Using GitLab CI/CD">
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- end hero -->
-
-<div class="container">
-  <div class="row animate">
-    
-      
-        <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2024-06-11T14:01:35+02:00">11 Jun 2024</time>
-
       
 
       
-      <a class="article__image" href="/post/2024/06/11/gitlab-openshift.html">
-        <img class="lazy" data-src="/images/02.png" alt="Building a Container Image on OpenShift Using GitLab CI/CD">
-      </a>
       
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2024/06/11/gitlab-openshift.html">Building a Container Image on OpenShift Using GitLab CI/CD</a>
-      </h2>
-
       
-      <p class="article__excerpt">Learn how to streamline your CI/CD pipeline by integrating GitLab with OpenShift to build and deploy container images. This step-by-step guide covers the setup of the .gitlab-ci.yaml file, creating a Dockerfile, adding application code, configuring OpenShift, and running the build. Perfect for developers looking to leverage the power of GitLab and OpenShift for efficient container management and deployment.</p>
-      
-
-    </div>
-  </div>
-</div>
-      
-    
-  </div>
-</div>
-
-
-
-<!-- begin section-tags -->
-<section class="section section-tags">
-  <div class="container">
-    <div class="row">
-      <div class="col col-12">
-        <div class="section__head">
-          <h3 class="section__title">Topics</h3>
-          <a href="/tags/" class="section__link">See all</a>
-        </div>
-        
-        
-
-        <div class="row">
+      <div class="col col-6 col-d-12">
+        <div class="post__info ">
+  
           
+            <div class="post__tags">
+              
+                <a href="/tags#Openshift" class="post__tag">Openshift</a>
+              
+            </div>
           
-          <div class="col col-3 col-d-6 col-m-12">
-            <a href="/tags#Openshift" class="tag-image">
-              <span class="tag-name">Openshift</span>
-              <img class="lazy"  data-src="/images/02.png" alt="post.title" >
+  
+          <h1 class="post__title">Building a Container Image on OpenShift Using GitLab CI/CD</h1>
+  
+          <div class="post__meta">
+            <a href="/about/" class="post__author-image">
+              <img class="lazy" data-src="/images/fklein.png" alt="Frédéric KLEIN">
             </a>
+
+            <div class="post__meta-bottom">
+              <a class="post__author" href="/about/">Frédéric KLEIN</a>
+              <time class="post__date" datetime="2024-06-11T14:01:35+02:00">11 Jun 2024</time>
+            </div>
           </div>
-          
-          
-          
+  
         </div>
       </div>
     </div>
   </div>
-</section>
-<!-- end section-tags -->
+</div>
+
+<!-- begin post -->
+<div class="container animate">
+
+  <article class="post">
+
+    <div class="post__content">
+      <h2 id="building-and-deploying-a-container-image-on-openshift-using-gitlab-cicd">Building and Deploying a Container Image on OpenShift using GitLab CI/CD</h2>
+
+<p>In this blog post, we’ll walk through the process of building a container image using OpenShift and GitLab CI/CD. We will utilize the <code class="language-plaintext highlighter-rouge">.gitlab-ci.yaml</code> file, a Dockerfile, and some simple HTML and Python code to demonstrate the build process. This guide assumes you have some basic knowledge of GitLab CI/CD and OpenShift.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>Before we begin, ensure you have the following:</p>
+
+<ol>
+  <li>Access to an OpenShift cluster.</li>
+  <li>A GitLab repository.</li>
+  <li>Necessary permissions to create and manage projects in OpenShift.</li>
+</ol>
+
+<h3 id="step-1-setting-up-the-gitlab-cicd-pipeline">Step 1: Setting up the GitLab CI/CD Pipeline</h3>
+
+<p>First, we need to define our GitLab CI/CD pipeline in a <code class="language-plaintext highlighter-rouge">.gitlab-ci.yaml</code> file. This file specifies the stages and jobs that GitLab will execute.</p>
+
+<p>Here’s an example of the <code class="language-plaintext highlighter-rouge">.gitlab-ci.yaml</code> file:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">stages</span><span class="pi">:</span>          <span class="c1"># List of stages for jobs, and their order of execution</span>
+  <span class="pi">-</span> <span class="s">build</span>
+<span class="c1">#  - test</span>
+
+<span class="na">build-job</span><span class="pi">:</span>       <span class="c1"># This job runs in the build stage, which runs first.</span>
+  <span class="na">stage</span><span class="pi">:</span> <span class="s">build</span>
+
+  <span class="na">script</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">wget -qO- https://downloads-openshift-console.apps.cluster-h4js2.sandbox553.opentlc.com/amd64/linux/oc.tar  |tar xf -</span> 
+    <span class="pi">-</span> <span class="s">chmod +x ./oc</span> 
+    <span class="pi">-</span> <span class="s">echo "Login to OCP"</span>
+    <span class="pi">-</span> <span class="s">./oc login --insecure-skip-tls-verify=true --token="$OCP_TOKEN" --server="$OCP_SERVER"</span>
+    <span class="pi">-</span> <span class="s">echo "Selecting project"</span>
+    <span class="pi">-</span> <span class="s">./oc project "${OCP_PROJECT}"</span>
+    <span class="pi">-</span> <span class="s">./oc start-build my-docker-build --from-dir . -F</span>
+<span class="c1">#    - echo "Building image."</span>
+
+
+<span class="c1"># unit-test-job:   # This job runs in the test stage.</span>
+<span class="c1">#   stage: test    # It only starts when the job in the build stage completes successfully.</span>
+<span class="c1">#   script:</span>
+<span class="c1">#     - echo "Running unit tests... This will take about 60 seconds."</span>
+<span class="c1">#     - sleep 60</span>
+<span class="c1">#     - echo "Code coverage is 90%"</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Change : https://downloads-openshift-console.apps.cluster-h4js2.sandbox553.opentlc.com with your Openshift API url.
+</code></pre></div></div>
+
+<p>Add the Variables in the project on GITLAB :</p>
+<ul>
+  <li>OCP_PROJECT : name of the namespace in Openshift for the project</li>
+  <li>OCP_SERVER  : url of the Openshift API</li>
+  <li>OCP_TOKEN   : Token for the authentification on Openshift</li>
+</ul>
+
+<p><img src="/images/04-1.png" alt="Add the Variables in the project" title="Variables" /></p>
+
+<h3 id="step-2-creating-the-container-file-dockerfile">Step 2: Creating the Container File (Dockerfile)</h3>
+
+<p>Next, we need to create a <code class="language-plaintext highlighter-rouge">Dockerfile</code> which will define our container image. Here’s a simple example:</p>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> python:3</span>
+<span class="k">ADD</span><span class="s"> index.html index.html</span>
+<span class="k">ADD</span><span class="s"> server.py server.py</span>
+<span class="k">EXPOSE</span><span class="s"> 8888</span>
+<span class="k">ENTRYPOINT</span><span class="s"> ["python3", "server.py"]</span>
+</code></pre></div></div>
+
+<h3 id="step-3-adding-application-code">Step 3: Adding Application Code</h3>
+
+<p>We’ll create a simple HTML file and a Python server script to include in our container image.</p>
+
+<p><strong>index.html:</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">align=</span><span class="s">"center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;br&gt;</span>Test OK
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;br&gt;&lt;img</span> <span class="na">src=</span><span class="s">"https://blog.fklein.me/images/Logo-Red_Hat.png"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p><strong>server.py:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/python3
+</span><span class="kn">from</span> <span class="n">http.server</span> <span class="kn">import</span> <span class="n">BaseHTTPRequestHandler</span><span class="p">,</span> <span class="n">HTTPServer</span>
+<span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">json</span>
+<span class="kn">from</span> <span class="n">socketserver</span> <span class="kn">import</span> <span class="n">ThreadingMixIn</span>
+<span class="kn">import</span> <span class="n">threading</span>
+
+<span class="n">hostName</span> <span class="o">=</span> <span class="s">"0.0.0.0"</span>
+<span class="n">serverPort</span> <span class="o">=</span> <span class="mi">8888</span>
+
+<span class="k">class</span> <span class="nc">Handler</span><span class="p">(</span><span class="n">BaseHTTPRequestHandler</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+      <span class="c1"># curl http://&lt;ServerIP&gt;/index.html
+</span>      <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">path</span> <span class="o">==</span> <span class="s">"/"</span><span class="p">:</span>
+          <span class="c1"># Respond with the file contents.
+</span>          <span class="n">self</span><span class="p">.</span><span class="nf">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+          <span class="n">self</span><span class="p">.</span><span class="nf">send_header</span><span class="p">(</span><span class="s">"Content-type"</span><span class="p">,</span> <span class="s">"text/html"</span><span class="p">)</span>
+          <span class="n">self</span><span class="p">.</span><span class="nf">end_headers</span><span class="p">()</span>
+          <span class="n">content</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="s">'index.html'</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">).</span><span class="nf">read</span><span class="p">()</span>
+          <span class="n">self</span><span class="p">.</span><span class="n">wfile</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+      <span class="k">else</span><span class="p">:</span>
+          <span class="n">self</span><span class="p">.</span><span class="nf">send_response</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+
+      <span class="k">return</span>
+
+<span class="k">class</span> <span class="nc">ThreadedHTTPServer</span><span class="p">(</span><span class="n">ThreadingMixIn</span><span class="p">,</span> <span class="n">HTTPServer</span><span class="p">):</span>
+  <span class="s">"""Handle requests in a separate thread."""</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+  <span class="n">webServer</span> <span class="o">=</span> <span class="nc">ThreadedHTTPServer</span><span class="p">((</span><span class="n">hostName</span><span class="p">,</span> <span class="n">serverPort</span><span class="p">),</span> <span class="n">Handler</span><span class="p">)</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"Server started http://%s:%s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">hostName</span><span class="p">,</span> <span class="n">serverPort</span><span class="p">))</span>
+
+  <span class="k">try</span><span class="p">:</span>
+      <span class="n">webServer</span><span class="p">.</span><span class="nf">serve_forever</span><span class="p">()</span>
+  <span class="k">except</span> <span class="nb">KeyboardInterrupt</span><span class="p">:</span>
+      <span class="k">pass</span>
+
+  <span class="n">webServer</span><span class="p">.</span><span class="nf">server_close</span><span class="p">()</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"Server stopped."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="step-4-configuring-openshift">Step 4: Configuring OpenShift</h3>
+
+<p>To build our Docker image in OpenShift, we need to create a <code class="language-plaintext highlighter-rouge">BuildConfig</code>. This configuration can be created using the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc new-build <span class="nt">--binary</span> <span class="nt">--strategy</span><span class="o">=</span>docker <span class="nt">--name</span> my-docker-build
+</code></pre></div></div>
+
+<p><img src="/images/03-2.png" alt="BuildConfigs" title="BuildConfigs" /></p>
+
+<h3 id="step-5-running-the-build">Step 5: Running the Build</h3>
+
+<p>The final step is to trigger the build from GitLab. The <code class="language-plaintext highlighter-rouge">.gitlab-ci.yaml</code> file we created earlier includes the necessary commands to login to OpenShift, select the project, and start the build.</p>
+
+<p>You just need to commit the files to the GITLAB repo to trigger the build.</p>
+
+<p><img src="/images/03-1.png" alt="Run The Build" title="Build" /></p>
+
+<h3 id="step-6-deploy-the-container">Step 6: Deploy the container</h3>
+
+<p>On Openshift UI, on the Developer profile, click on +Add, and Container Images</p>
+
+<p><img src="/images/deploy01.png" alt="deploy" title="developer" /></p>
+
+<p>Select Image stream tag from internal registry and select the image you have builded, and click on create.</p>
+
+<p><img src="/images/deploy02.png" alt="deploy" title="developer" /></p>
+
+<p>Your app is deployed</p>
+
+<p><img src="/images/deploy03.png" alt="deploy" title="developer" /></p>
+
+<p><img src="/images/deployed.png" alt="deploy" title="developer" /></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>With these steps, you’ve set up a CI/CD pipeline in GitLab to build a Docker image using OpenShift. This integration allows you to leverage the powerful features of both platforms to streamline your development and deployment processes.</p>
+
+<p>For more detailed information on builds in OpenShift, you can refer to the <a href="file-SsFF1mdi2bfbTnDuI1mOjClJ">Builds for OpenShift Overview</a>.</p>
+
+<p>Happy building!</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><a href="https://docs.openshift.com">Red Hat OpenShift Documentation</a></li>
+  <li><a href="https://docs.gitlab.com/ee/ci/">GitLab CI/CD Documentation</a></li>
+</ul>
+
+<p>This guide should help you get started with building and deploying container images using GitLab CI/CD and OpenShift. If you have any questions or run into issues, feel free to reach out for support.</p>
+
+    </div>
+
+    <div class="post__share">
+      <ul class="share__list list-reset">
+        <li class="share__item">
+          <a class="share__link share__twitter"
+            href="https://twitter.com/intent/tweet?text=Building%20a%20Container%20Image%20on%20OpenShift%20Using%20GitLab%20CI/CD&url=http://localhost:4000/post/2024/06/11/gitlab-openshift.html"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/post/2024/06/11/gitlab-openshift.html"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/post/2024/06/11/gitlab-openshift.html&amp;media=http://localhost:4000/images/02.png&amp;description=Building%20a%20Container%20Image%20on%20OpenShift%20Using%20GitLab%20CI/CD"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
+          rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2024/06/11/gitlab-openshift.html&title=Building%20a%20Container%20Image%20on%20OpenShift%20Using%20GitLab%20CI/CD&summary=Learn%20how%20to%20streamline%20your%20CI/CD%20pipeline%20by%20integrating%20GitLab%20with%20OpenShift%20to%20build%20and%20deploy%20container%20images.%20This%20step-by-step%20guide%20covers%20the%20setup%20of%20the%20.gitlab-ci.yaml%20file,%20creating%20a%20Dockerfile,%20adding%20application%20code,%20configuring%20OpenShift,%20and%20running%20the%20build.%20Perfect%20for%20developers%20looking%20to%20leverage%20the%20power%20of%20GitLab%20and%20OpenShift%20for%20efficient%20container%20management%20and%20deployment.&source=ASA%20Blog"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
+        </li>
+      </ul>
+    </div>
+
+
+  </article>
+</div>
+<!-- end post -->
+
+
+
+
+
+
+
+<!-- begin related posts -->
+<div class="container">
+  <section class="related-posts  animate">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <div class="section__info">
+            <div class="section__head">
+              <h2 class="section__title">You may also like</h2>
+              <a class="section__link" href="/blog">
+                
+                
+                  
+                    <a href="/tags#Openshift" class="section__link related-tag">See all<span> Openshift</span></a>
+                  
+                
+              
+              </a>
+            </div>
+          </div>
+          <div class="row">
+
+          
+            
+            
+      
+            
+      
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- end related posts -->
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <!-- begin comments -->
+<div class="show-comments">
+  <button class="button disqus-button" id="show-comments-button" onclick="disqus();return false;">Show Comments</button>
+</div>
+
+<div id="disqus_thread" class="post__comments">
+  <div id="disqus_empty"></div>
+</div>
+
+<script>
+  var disqus_loaded = false;
+  var disqus_shortname = 'demo-menca';
+  var disqus_container = document.getElementById("disqus_thread");
+  function disqus() {
+    if (!disqus_loaded) {
+      disqus_loaded = true;
+      var e = document.createElement("script");
+      e.type = "text/javascript";
+      e.async = true;
+      e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+      (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0])
+        .appendChild(e);
+      // Hide the button after opening
+      document.getElementById("show-comments-button").style.display = "none";
+      // Show disqus comments
+      disqus_container.classList.add("is-open");
+    }
+  }
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<!-- end comments --> 
+      </div>
+    </div>
+  </div>
+
   </main>
   <!-- end content -->
 

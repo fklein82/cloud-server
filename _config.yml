@@ -1,7 +1,7 @@
 #-------------------------------
 # Site Settings
-title: Tanzu SE Blog
-logo: '/images/logo-tanzu.png'
+title: ASA Blog
+logo: '/images/Logo-Red_Hat.png'
 description: Frédéric KLEIN personal Blog
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://blog.fklein.me # the base hostname & protocol for your site, e.g. http://example.com
@@ -12,7 +12,7 @@ color_scheme: auto # You can choose three modes auto, light, and dark. By defaul
 # Author Settings
 author:
   author__name: Frédéric KLEIN
-  author__bio: Architectures, talks, and writes about Kubernetes, Tanzu, web, data, ethics, privacy, and dev. I share technical tutorials, free resources and inspiration.
+  author__bio: Architectures, talks, and writes about Kubernetes, web, data, ethics, privacy, and dev. I share technical tutorials, free resources and inspiration.
   author__avatar: '/images/fklein.png'
 
 social:
@@ -30,8 +30,8 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: Tanzu Solution Engineer Blog
-  hero__description: Architectures, talks, and writes about Kubernetes, Tanzu, web, data, ethics, privacy, and dev. I share technical tutorials, free resources and inspiration.
+  hero__title: Solutions Architect (SA) Blog
+  hero__description: Architectures, talks, and writes about Kubernetes, web, data, ethics, privacy, and dev. I share technical tutorials, free resources and inspiration.
   hero__image: '/images/01.png'
 
 
@@ -49,24 +49,14 @@ gallery:
   gallery__title: Gallery
   gallery__columns: 3
   gallery__images:
-    - alt: 'explore'
-      url: '/images/explore.jpg'
-    - alt: 'party'
-      url: '/images/party.jpg'
-    - alt: 'tap experience day'
-      url: '/images/tap.jpeg'
-    - alt: 'team global'
-      url: '/images/global.jpeg'
+
     - alt: 'CKAD'
       url: '/images/ckad.png'
-    - alt: 'mwc23'
-      url: '/images/mwc.png'
     - alt: 'Cloud Practitioner'
       url: '/images/CP.png'
     - alt: 'Solution Architect'
       url: '/images/SAA.png'
-    - alt: 'vsphere expert'
-      url: '/images/vsphere.png'
+
 
 #-------------------------------
 # Contact Settings
