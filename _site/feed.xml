@@ -3,10 +3,10 @@
     <channel>
         <title>ASA Blog</title>
         <description>Frédéric KLEIN personal Blog</description>
-        <link>http://localhost:4000/</link>
-        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 12 Jun 2024 11:35:24 +0200</pubDate>
-        <lastBuildDate>Wed, 12 Jun 2024 11:35:24 +0200</lastBuildDate>
+        <link>https://blog.fklein.me/</link>
+        <atom:link href="https://blog.fklein.me/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Wed, 12 Jun 2024 11:36:30 +0200</pubDate>
+        <lastBuildDate>Wed, 12 Jun 2024 11:36:30 +0200</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
@@ -206,8 +206,8 @@
 &lt;/div&gt;
 </description>
                 <pubDate>Tue, 11 Jun 2024 14:01:35 +0200</pubDate>
-                <link>http://localhost:4000/post/2024/06/11/gitlab-openshift.html</link>
-                <guid isPermaLink="true">http://localhost:4000/post/2024/06/11/gitlab-openshift.html</guid>
+                <link>https://blog.fklein.me/post/2024/06/11/gitlab-openshift.html</link>
+                <guid isPermaLink="true">https://blog.fklein.me/post/2024/06/11/gitlab-openshift.html</guid>
                 
                 <category>Openshift</category>
                 
