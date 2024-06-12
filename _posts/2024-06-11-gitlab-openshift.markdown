@@ -9,14 +9,15 @@ tags:   [Openshift]
 ---
 ## Building and Deploying a Container Image on OpenShift using GitLab CI/CD
 
-In this blog post, we'll walk through the process of building a container image using OpenShift and GitLab CI/CD. We will utilize the `.gitlab-ci.yaml` file, a Dockerfile, and some simple HTML and Python code to demonstrate the build process. This guide assumes you have some basic knowledge of GitLab CI/CD and OpenShift.
+In this blog post, we'll walk through the process of building a container image using OpenShift and GitLab CI/CD. We will utilize the `.gitlab-ci.yml` file, a Dockerfile, and some simple HTML and Python code to demonstrate the build process. This guide assumes you have some basic knowledge of GitLab CI/CD and OpenShift.
 
 ### Prerequisites
 
 Before we begin, ensure you have the following:
 
-1. Access to an OpenShift cluster.
-2. A GitLab repository.
+1. Access to an OpenShift cluster. You can try Openshift with our free Sandbox : 
+[developer-sandbox](https://developers.redhat.com/developer-sandbox)
+2. A GitLab repository. [GitLab Ultimate free trial](https://developers.redhat.com/developer-sandbox)
 3. Necessary permissions to create and manage projects in OpenShift.
 
 ### Step 1: Setting up the GitLab CI/CD Pipeline
@@ -28,7 +29,6 @@ Here's an example of the `.gitlab-ci.yaml` file:
 ```yaml
 stages:          # List of stages for jobs, and their order of execution
   - build
-#  - test
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
@@ -41,15 +41,7 @@ build-job:       # This job runs in the build stage, which runs first.
     - echo "Selecting project"
     - ./oc project "${OCP_PROJECT}"
     - ./oc start-build my-docker-build --from-dir . -F
-#    - echo "Building image."
 
-
-# unit-test-job:   # This job runs in the test stage.
-#   stage: test    # It only starts when the job in the build stage completes successfully.
-#   script:
-#     - echo "Running unit tests... This will take about 60 seconds."
-#     - sleep 60
-#     - echo "Code coverage is 90%"
 ```
 ```
 # Change : https://downloads-openshift-console.apps.cluster-h4js2.sandbox553.opentlc.com with your Openshift API url.
@@ -143,6 +135,10 @@ if __name__ == "__main__":
 
 ### Step 4: Configuring OpenShift
 
+As we want to build from a Dockerfile, we will use the dockerstrategy with binary source (which allow to send local files from gitlab runner to OpenShift)
+ :
+[More information here](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html-single/builds_using_buildconfig/index#builds-binary-source_creating-build-inputs)
+
 To build our Docker image in OpenShift, we need to create a `BuildConfig`. This configuration can be created using the following command:
 
 ```bash
@@ -190,3 +186,17 @@ Happy building!
 - [GitLab CI/CD Documentation](https://docs.gitlab.com/ee/ci/)
 
 This guide should help you get started with building and deploying container images using GitLab CI/CD and OpenShift. If you have any questions or run into issues, feel free to reach out for support.
+
+### Authors
+
+This blog post was **co-written** with my friend [**Sebastien Lallemand**](https://www.linkedin.com/in/sebastien-lallemand/). 
+
+##### Linkedin :
+- [Sebastien Lallemand](https://www.linkedin.com/in/sebastien-lallemand/)
+- [Frédéric Klein](https://www.linkedin.com/in/fklein82/)
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/seb.jpeg" height="158" width="158">
+     <img src="/images/fred.jpeg" height="158" width="158">
+  </div>
+</div>
