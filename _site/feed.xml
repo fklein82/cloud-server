@@ -5,8 +5,8 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 19 Dec 2024 17:48:27 +0100</pubDate>
-        <lastBuildDate>Thu, 19 Dec 2024 17:48:27 +0100</lastBuildDate>
+        <pubDate>Thu, 19 Dec 2024 17:51:26 +0100</pubDate>
+        <lastBuildDate>Thu, 19 Dec 2024 17:51:26 +0100</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
@@ -78,9 +78,9 @@
 
 &lt;p&gt;With dynamic inventory management:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Automatic Registration: Terraform can automatically register newly provisioned infrastructure resources into Ansible’s inventory.&lt;/li&gt;
-  &lt;li&gt;Adaptive Management: AAP can dynamically adapt to changes in the environment without requiring manual updates, ensuring consistent configuration and management of all resources.&lt;/li&gt;
-  &lt;li&gt;Simplified Complexity: Hybrid or multi-cloud environments benefit from seamless synchronization between Terraform’s provisioning and Ansible’s configuration tasks.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Automatic Registration:&lt;/strong&gt; Terraform can automatically register newly provisioned infrastructure resources into Ansible’s inventory.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Adaptive Management:&lt;/strong&gt; AAP can dynamically adapt to changes in the environment without requiring manual updates, ensuring consistent configuration and management of all resources.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Simplified Complexity:&lt;/strong&gt; Hybrid or multi-cloud environments benefit from seamless synchronization between Terraform’s provisioning and Ansible’s configuration tasks.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;This dynamic approach significantly reduces the risk of configuration drift and ensures that infrastructure changes are accurately reflected in automation workflows, enhancing both efficiency and reliability.&lt;/p&gt;
@@ -100,7 +100,7 @@
 &lt;p&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;/images/schemaap2.png&quot; alt=&quot;aap x tfe&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;aap-provider-example-&quot;&gt;AAP Provider example  : &lt;/h2&gt;
-&lt;p&gt;Prerequisites : we need the playbook id to be able to call it from the AAP Provider (it can be obtained from the AAP UI url). Of course it can also be automated another way to retrieve the id from the playbook name.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Prerequisites:&lt;/strong&gt; we need the playbook id to be able to call it from the AAP Provider (it can be obtained from the AAP UI url). Of course it can also be automated another way to retrieve the id from the playbook name.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job&quot;&gt;https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job&lt;/a&gt; &lt;/p&gt;
 

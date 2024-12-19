@@ -57,9 +57,9 @@ By selecting the appropriate method based on operational needs, organizations ca
 A key element in the integration between Ansible Automation Platform (AAP) and Terraform Enterprise (TFE) is inventory management. Ansible Automation Platform relies on inventories to define which systems and resources it manages. When integrated with Terraform Enterprise, inventories can be dynamically updated during the provisioning process. This ensures that newly provisioned resources are immediately included within Ansible's scope for configuration and compliance.
 
 With dynamic inventory management:
-- Automatic Registration: Terraform can automatically register newly provisioned infrastructure resources into Ansible's inventory.
-- Adaptive Management: AAP can dynamically adapt to changes in the environment without requiring manual updates, ensuring consistent configuration and management of all resources.
-- Simplified Complexity: Hybrid or multi-cloud environments benefit from seamless synchronization between Terraform's provisioning and Ansible's configuration tasks.
+- **Automatic Registration:** Terraform can automatically register newly provisioned infrastructure resources into Ansible's inventory.
+- **Adaptive Management:** AAP can dynamically adapt to changes in the environment without requiring manual updates, ensuring consistent configuration and management of all resources.
+- **Simplified Complexity:** Hybrid or multi-cloud environments benefit from seamless synchronization between Terraform's provisioning and Ansible's configuration tasks.
 
 This dynamic approach significantly reduces the risk of configuration drift and ensures that infrastructure changes are accurately reflected in automation workflows, enhancing both efficiency and reliability.
 
@@ -76,7 +76,7 @@ This approach ensures a consistent, traceable, and automated pipeline from infra
 [![aap x tfe](/images/schemaap2.png )]()
 
 ## AAP Provider example  : 
-Prerequisites : we need the playbook id to be able to call it from the AAP Provider (it can be obtained from the AAP UI url). Of course it can also be automated another way to retrieve the id from the playbook name.
+**Prerequisites:** we need the playbook id to be able to call it from the AAP Provider (it can be obtained from the AAP UI url). Of course it can also be automated another way to retrieve the id from the playbook name.
 
 <https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job> 
 
