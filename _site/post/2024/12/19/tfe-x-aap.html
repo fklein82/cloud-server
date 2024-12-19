@@ -6,23 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Building a Container Image on OpenShift Using GitLab CI/CD</title>
-  <meta name='description' content='Learn how to streamline your CI/CD pipeline by integrating GitLab with OpenShift to build and deploy container images. This step-by-step guide covers the set...'>
+  <title>Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform</title>
+  <meta name='description' content='Optimize your Infrastructure as Code with Ansible Automation Platform and Terraform Enterprise'>
 
-  <link rel="canonical" href="http://localhost:4000/post/2024/06/11/gitlab-openshift.html">
+  <link rel="canonical" href="http://localhost:4000/post/2024/12/19/tfe-x-aap.html">
   <link rel="alternate" type="application/rss+xml" title="ASA Blog" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Building a Container Image on OpenShift Using GitLab CI/CD – ASA Blog">
-  <meta name="twitter:description" content="Learn how to streamline your CI/CD pipeline by integrating GitLab with OpenShift to build and deploy container images. This step-by-step guide covers the setup of the .gitlab-ci.yaml file, creating a Dockerfile, adding application code, configuring OpenShift, and running the build. Perfect for developers looking to leverage the power of GitLab and OpenShift for efficient container management and deployment.">
+  <meta name="twitter:title" content="Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform – ASA Blog">
+  <meta name="twitter:description" content="Optimize your Infrastructure as Code with Ansible Automation Platform and Terraform Enterprise">
   <meta name="twitter:image" content="https://blog.fklein.me/images/twitter.jpg">
 
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Building a Container Image on OpenShift Using GitLab CI/CD – ASA Blog">
-  <meta property="og:description" content="Learn how to streamline your CI/CD pipeline by integrating GitLab with OpenShift to build and deploy container images. This step-by-step guide covers the setup of the .gitlab-ci.yaml file, creating a Dockerfile, adding application code, configuring OpenShift, and running the build. Perfect for developers looking to leverage the power of GitLab and OpenShift for efficient container management and deployment.">
-  <meta property="og:image" content="http://localhost:4000/images/02.png">
+  <meta property="og:title" content="Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform – ASA Blog">
+  <meta property="og:description" content="Optimize your Infrastructure as Code with Ansible Automation Platform and Terraform Enterprise">
+  <meta property="og:image" content="http://localhost:4000/images/aap.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -190,7 +190,7 @@
       
       <div class="col col-6 col-d-12">
         <div class="post-image">
-          <img class="lazy" data-src="/images/02.png" alt="Building a Container Image on OpenShift Using GitLab CI/CD">
+          <img class="lazy" data-src="/images/aap.png" alt="Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform">
         </div>
       </div>
       
@@ -204,12 +204,12 @@
           
             <div class="post__tags">
               
-                <a href="/tags#Openshift" class="post__tag">Openshift</a>
+                <a href="/tags#IAC" class="post__tag">IAC</a>
               
             </div>
           
   
-          <h1 class="post__title">Building a Container Image on OpenShift Using GitLab CI/CD</h1>
+          <h1 class="post__title">Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform</h1>
   
           <div class="post__meta">
             <a href="/about/" class="post__author-image">
@@ -218,7 +218,7 @@
 
             <div class="post__meta-bottom">
               <a class="post__author" href="/about/">Frédéric KLEIN</a>
-              <time class="post__date" datetime="2024-06-11T14:01:35+02:00">11 Jun 2024</time>
+              <time class="post__date" datetime="2024-12-19T13:01:35+01:00">19 Dec 2024</time>
             </div>
           </div>
   
@@ -234,197 +234,195 @@
   <article class="post">
 
     <div class="post__content">
-      <h2 id="building-and-deploying-a-container-image-on-openshift-using-gitlab-cicd">Building and Deploying a Container Image on OpenShift using GitLab CI/CD</h2>
+      <p>As IT environments shift from traditional on-premise data centers to multi-cloud ecosystems, organizations need scalable, secure, and efficient solutions for Infrastructure as Code (IaC). </p>
 
-<p>In this blog post, we’ll walk through the process of building a container image using OpenShift and GitLab CI/CD. We will utilize the <code class="language-plaintext highlighter-rouge">.gitlab-ci.yml</code> file, a Dockerfile, and some simple HTML and Python code to demonstrate the build process. This guide assumes you have some basic knowledge of GitLab CI/CD and OpenShift.</p>
+<p>By leveraging <strong>Red Hat’s Ansible Automation Platform</strong> and <strong>HashiCorp’s Terraform Enterprise</strong>, organizations can unlock new levels of automation and governance across hybrid and multi-cloud resources.</p>
 
-<h3 id="prerequisites">Prerequisites</h3>
+<div style="text-align:center"><img src="/images/aapxtfe.png" width="50%" height="50%" /></div>
+<p><br /></p>
 
-<p>Before we begin, ensure you have the following:</p>
+<h1 id="the-power-of-integration">The Power of Integration</h1>
+<p>The <strong>Ansible Automation Platform</strong> excels in application deployment and configuration management, while <strong>Terraform Enterprise</strong> is the go-to solution for infrastructure provisioning at scale. </p>
 
+<p><a href=""><img src="/images/tfe.png" alt="aap x tfe" /></a></p>
+
+<p><a href=""><img src="/images/aap2.png" alt="aap x tfe" /></a></p>
+
+<p>Together, they enable:</p>
+
+<ul>
+  <li><strong>Provisioning Infrastructure</strong>: Terraform Enterprise allows for the provisioning of scalable and secure IaaS or PaaS resources.</li>
+  <li><strong>Configuring and Enforcing Compliance</strong>: Ansible Automation Platform finalizes infrastructure configurations, applies policies, and enforces them to meet organizational standards.</li>
+</ul>
+
+<div style="text-align:center"><img src="/images/versus.png" width="80%" height="80%" /></div>
+<p><br /></p>
+
+<h1 id="some-use-cases-for-aap-and-tfe-integration-examples-">Some Use Cases for AAP and TFE Integration examples : </h1>
 <ol>
-  <li>Access to an OpenShift cluster. You can try Openshift with our free Sandbox : 
-<a href="https://developers.redhat.com/developer-sandbox">developer-sandbox</a></li>
-  <li>A GitLab repository. <a href="https://developers.redhat.com/developer-sandbox">GitLab Ultimate free trial</a></li>
-  <li>Necessary permissions to create and manage projects in OpenShift.</li>
+  <li><strong>Dynamic Data and Configuration</strong>:
+    <ul>
+      <li>Configuring operating systems or application environments.</li>
+      <li>Adjusting database configurations, logical files, or connection strings.</li>
+    </ul>
+  </li>
+  <li><strong>Compliance at Launch</strong>:
+    <ul>
+      <li>Enforcing organizational policies directly via Ansible playbooks.</li>
+    </ul>
+  </li>
+  <li><strong>Hybrid Environments</strong>:
+    <ul>
+      <li>Managing environments with components that require both API-based and SSH-based interactions.</li>
+    </ul>
+  </li>
 </ol>
 
-<h3 id="step-1-setting-up-the-gitlab-cicd-pipeline">Step 1: Setting up the GitLab CI/CD Pipeline</h3>
+<p>This integration addresses critical challenges such as drift management, state file corruption, and performance bottlenecks in CI/CD workflows.</p>
 
-<p>First, we need to define our GitLab CI/CD pipeline in a <code class="language-plaintext highlighter-rouge">.gitlab-ci.yaml</code> file. This file specifies the stages and jobs that GitLab will execute.</p>
-
-<p>Here’s an example of the <code class="language-plaintext highlighter-rouge">.gitlab-ci.yaml</code> file:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">stages</span><span class="pi">:</span>          <span class="c1"># List of stages for jobs, and their order of execution</span>
-  <span class="pi">-</span> <span class="s">build</span>
-
-<span class="na">build-job</span><span class="pi">:</span>       <span class="c1"># This job runs in the build stage, which runs first.</span>
-  <span class="na">stage</span><span class="pi">:</span> <span class="s">build</span>
-
-  <span class="na">script</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">wget -qO- https://downloads-openshift-console.apps.cluster-h4js2.sandbox553.opentlc.com/amd64/linux/oc.tar  |tar xf -</span> 
-    <span class="pi">-</span> <span class="s">chmod +x ./oc</span> 
-    <span class="pi">-</span> <span class="s">echo "Login to OCP"</span>
-    <span class="pi">-</span> <span class="s">./oc login --insecure-skip-tls-verify=true --token="$OCP_TOKEN" --server="$OCP_SERVER"</span>
-    <span class="pi">-</span> <span class="s">echo "Selecting project"</span>
-    <span class="pi">-</span> <span class="s">./oc project "${OCP_PROJECT}"</span>
-    <span class="pi">-</span> <span class="s">./oc start-build my-docker-build --from-dir . -F</span>
-
-</code></pre></div></div>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Change : https://downloads-openshift-console.apps.cluster-h4js2.sandbox553.opentlc.com with your Openshift API url.
-</code></pre></div></div>
-
-<p>Add the Variables in the project on GITLAB :</p>
-<ul>
-  <li>OCP_PROJECT : name of the namespace in Openshift for the project</li>
-  <li>OCP_SERVER  : url of the Openshift API</li>
-  <li>OCP_TOKEN   : Token for the authentification on Openshift</li>
-</ul>
-
-<p><img src="/images/04-1.png" alt="Add the Variables in the project" title="Variables" /></p>
-
-<h3 id="step-2-creating-the-container-file-dockerfile">Step 2: Creating the Container File (Dockerfile)</h3>
-
-<p>Next, we need to create a <code class="language-plaintext highlighter-rouge">Dockerfile</code> which will define our container image. Here’s a simple example:</p>
-
-<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> python:3</span>
-<span class="k">ADD</span><span class="s"> index.html index.html</span>
-<span class="k">ADD</span><span class="s"> server.py server.py</span>
-<span class="k">EXPOSE</span><span class="s"> 8888</span>
-<span class="k">ENTRYPOINT</span><span class="s"> ["python3", "server.py"]</span>
-</code></pre></div></div>
-
-<h3 id="step-3-adding-application-code">Step 3: Adding Application Code</h3>
-
-<p>We’ll create a simple HTML file and a Python server script to include in our container image.</p>
-
-<p><strong>index.html:</strong></p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">align=</span><span class="s">"center"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;br&gt;</span>
-<span class="nt">&lt;br&gt;</span>Test OK
-<span class="nt">&lt;br&gt;</span>
-<span class="nt">&lt;br&gt;</span>
-<span class="nt">&lt;br&gt;&lt;img</span> <span class="na">src=</span><span class="s">"https://blog.fklein.me/images/Logo-Red_Hat.png"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<p><strong>server.py:</strong></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/python3
-</span><span class="kn">from</span> <span class="n">http.server</span> <span class="kn">import</span> <span class="n">BaseHTTPRequestHandler</span><span class="p">,</span> <span class="n">HTTPServer</span>
-<span class="kn">import</span> <span class="n">time</span>
-<span class="kn">import</span> <span class="n">json</span>
-<span class="kn">from</span> <span class="n">socketserver</span> <span class="kn">import</span> <span class="n">ThreadingMixIn</span>
-<span class="kn">import</span> <span class="n">threading</span>
-
-<span class="n">hostName</span> <span class="o">=</span> <span class="s">"0.0.0.0"</span>
-<span class="n">serverPort</span> <span class="o">=</span> <span class="mi">8888</span>
-
-<span class="k">class</span> <span class="nc">Handler</span><span class="p">(</span><span class="n">BaseHTTPRequestHandler</span><span class="p">):</span>
-  <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-      <span class="c1"># curl http://&lt;ServerIP&gt;/index.html
-</span>      <span class="k">if</span> <span class="n">self</span><span class="p">.</span><span class="n">path</span> <span class="o">==</span> <span class="s">"/"</span><span class="p">:</span>
-          <span class="c1"># Respond with the file contents.
-</span>          <span class="n">self</span><span class="p">.</span><span class="nf">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-          <span class="n">self</span><span class="p">.</span><span class="nf">send_header</span><span class="p">(</span><span class="s">"Content-type"</span><span class="p">,</span> <span class="s">"text/html"</span><span class="p">)</span>
-          <span class="n">self</span><span class="p">.</span><span class="nf">end_headers</span><span class="p">()</span>
-          <span class="n">content</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="s">'index.html'</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">).</span><span class="nf">read</span><span class="p">()</span>
-          <span class="n">self</span><span class="p">.</span><span class="n">wfile</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-
-      <span class="k">else</span><span class="p">:</span>
-          <span class="n">self</span><span class="p">.</span><span class="nf">send_response</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
-
-      <span class="k">return</span>
-
-<span class="k">class</span> <span class="nc">ThreadedHTTPServer</span><span class="p">(</span><span class="n">ThreadingMixIn</span><span class="p">,</span> <span class="n">HTTPServer</span><span class="p">):</span>
-  <span class="s">"""Handle requests in a separate thread."""</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-  <span class="n">webServer</span> <span class="o">=</span> <span class="nc">ThreadedHTTPServer</span><span class="p">((</span><span class="n">hostName</span><span class="p">,</span> <span class="n">serverPort</span><span class="p">),</span> <span class="n">Handler</span><span class="p">)</span>
-  <span class="nf">print</span><span class="p">(</span><span class="s">"Server started http://%s:%s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">hostName</span><span class="p">,</span> <span class="n">serverPort</span><span class="p">))</span>
-
-  <span class="k">try</span><span class="p">:</span>
-      <span class="n">webServer</span><span class="p">.</span><span class="nf">serve_forever</span><span class="p">()</span>
-  <span class="k">except</span> <span class="nb">KeyboardInterrupt</span><span class="p">:</span>
-      <span class="k">pass</span>
-
-  <span class="n">webServer</span><span class="p">.</span><span class="nf">server_close</span><span class="p">()</span>
-  <span class="nf">print</span><span class="p">(</span><span class="s">"Server stopped."</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h3 id="step-4-configuring-openshift">Step 4: Configuring OpenShift</h3>
-
-<p>As we want to build from a Dockerfile, we will use the dockerstrategy with binary source (which allow to send local files from gitlab runner to OpenShift)
- :
-<a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html-single/builds_using_buildconfig/index#builds-binary-source_creating-build-inputs">More information here</a></p>
-
-<p>To build our Docker image in OpenShift, we need to create a <code class="language-plaintext highlighter-rouge">BuildConfig</code>. This configuration can be created using the following command:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc new-build <span class="nt">--binary</span> <span class="nt">--strategy</span><span class="o">=</span>docker <span class="nt">--name</span> my-docker-build
-</code></pre></div></div>
-
-<p><img src="/images/03-2.png" alt="BuildConfigs" title="BuildConfigs" /></p>
-
-<h3 id="step-5-running-the-build">Step 5: Running the Build</h3>
-
-<p>The final step is to trigger the build from GitLab. The <code class="language-plaintext highlighter-rouge">.gitlab-ci.yaml</code> file we created earlier includes the necessary commands to login to OpenShift, select the project, and start the build.</p>
-
-<p>You just need to commit the files to the GITLAB repo to trigger the build.</p>
-
-<p><img src="/images/03-1.png" alt="Run The Build" title="Build" /></p>
-
-<h3 id="step-6-deploy-the-container">Step 6: Deploy the container</h3>
-
-<p>On Openshift UI, on the Developer profile, click on +Add, and Container Images</p>
-
-<p><img src="/images/deploy01.png" alt="deploy" title="developer" /></p>
-
-<p>Select Image stream tag from internal registry and select the image you have builded, and click on create.</p>
-
-<p><img src="/images/deploy02.png" alt="deploy" title="developer" /></p>
-
-<p>Your app is deployed</p>
-
-<p><img src="/images/deploy03.png" alt="deploy" title="developer" /></p>
-
-<p><img src="/images/deployed.png" alt="deploy" title="developer" /></p>
-
-<h3 id="conclusion">Conclusion</h3>
-
-<p>With these steps, you’ve set up a CI/CD pipeline in GitLab to build a Docker image using OpenShift. This integration allows you to leverage the powerful features of both platforms to streamline your development and deployment processes.</p>
-
-<p>For more detailed information on builds in OpenShift, you can refer to the <a href="file-SsFF1mdi2bfbTnDuI1mOjClJ">Builds for OpenShift Overview</a>.</p>
-
-<p>Happy building!</p>
-
-<h3 id="references">References</h3>
+<h1 id="integration-methods-aap-provider-or-run-tasks">Integration Methods: AAP Provider or Run Tasks</h1>
+<p>The integration between Ansible Automation Platform (AAP) and Terraform Enterprise (TFE) can be achieved using two main methods: the AAP Provider for Terraform or Terraform Run Tasks. Each method offers distinct advantages depending on the use case.</p>
 
 <ul>
-  <li><a href="https://docs.openshift.com">Red Hat OpenShift Documentation</a></li>
-  <li><a href="https://docs.gitlab.com/ee/ci/">GitLab CI/CD Documentation</a></li>
+  <li><strong>AAP Provider for Terraform:</strong> This approach integrates Ansible into the Terraform workflow by leveraging playbooks. It enables the orchestration of infrastructure, dynamic inventory management, and the execution of Ansible jobs as part of a Terraform run. This tightly coupled approach is well-suited for scenarios where provisioning and configuration management need to be closely aligned.</li>
 </ul>
 
-<p>This guide should help you get started with building and deploying container images using GitLab CI/CD and OpenShift. If you have any questions or run into issues, feel free to reach out for support.</p>
+<div style="text-align:center"><img src="/images/schemapp.png" width="70%" height="70%" /></div>
+<p><br /></p>
+
+<ul>
+  <li><strong>Run Tasks:</strong> Terraform Enterprise’s run tasks allow Ansible Automation Platform workflows to be triggered at specific stages of a Terraform run. This loosely coupled method ensures modularity, enabling Terraform and Ansible to operate independently while maintaining a synchronized workflow. Keep in mind that inventory synchronisation needs to be developed there.</li>
+</ul>
+
+<p>By selecting the appropriate method based on operational needs, organizations can maximize the benefits of both platforms, achieving efficient infrastructure automation while ensuring scalability and flexibility.</p>
+
+<h1 id="inventory-management">Inventory Management</h1>
+<p>A key element in the integration between Ansible Automation Platform (AAP) and Terraform Enterprise (TFE) is inventory management. Ansible Automation Platform relies on inventories to define which systems and resources it manages. When integrated with Terraform Enterprise, inventories can be dynamically updated during the provisioning process. This ensures that newly provisioned resources are immediately included within Ansible’s scope for configuration and compliance.</p>
+
+<p>With dynamic inventory management:</p>
+<ul>
+  <li>Automatic Registration: Terraform can automatically register newly provisioned infrastructure resources into Ansible’s inventory.</li>
+  <li>Adaptive Management: AAP can dynamically adapt to changes in the environment without requiring manual updates, ensuring consistent configuration and management of all resources.</li>
+  <li>Simplified Complexity: Hybrid or multi-cloud environments benefit from seamless synchronization between Terraform’s provisioning and Ansible’s configuration tasks.</li>
+</ul>
+
+<p>This dynamic approach significantly reduces the risk of configuration drift and ensures that infrastructure changes are accurately reflected in automation workflows, enhancing both efficiency and reliability.</p>
+
+<h1 id="architectural-overview-">Architectural Overview :</h1>
+<p>The integration follows a <strong>GitLab → Terraform Enterprise → Ansible Automation Platform</strong> workflow:</p>
+
+<ol>
+  <li><strong>Code Submission</strong>: Developers push code to GitLab.</li>
+  <li><strong>Provisioning</strong>: Terraform Enterprise provisions infrastructure resources.</li>
+  <li><strong>Configuration</strong>: Ansible Automation Platform applies the necessary configurations and enforces compliance policies.</li>
+</ol>
+
+<p>This approach ensures a consistent, traceable, and automated pipeline from infrastructure creation to configuration.</p>
+
+<h1 id="steps-details-">Steps details : </h1>
+<p><a href=""><img src="/images/schemaap2.png" alt="aap x tfe" /></a></p>
+
+<h2 id="aap-provider-example-">AAP Provider example  : </h2>
+<p>Prerequisites : we need the playbook id to be able to call it from the AAP Provider (it can be obtained from the AAP UI url). Of course it can also be automated another way to retrieve the id from the playbook name.</p>
+
+<p><a href="https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job">https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job</a> </p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>provider "aap" {
+ host                 = var.aap_host_url
+ username             = var.aap_username
+ password             = var.aap_password
+}
+
+
+variable "aap_host_url" {
+ type = string
+}
+
+
+variable "aap_username" {
+ type = string
+}
+
+
+variable "aap_password" {
+ type = string
+}
+variable "job_template_id" {
+ type        = number
+ description = "The job template id"
+}
+
+
+resource "aap_inventory" "my_inventory" {
+  name = "TFE_Apache-servers"
+}
+
+
+resource "aap_host" "create_host" {
+ inventory_id = aap_inventory.my_inventory.id
+ name         = data.terraform_remote_state.aws-ec2.outputs.ec2_first_addr
+}
+
+
+resource "aap_job" "run_job_template" {
+ job_template_id = var.job_template_id
+ inventory_id    = aap_inventory.my_inventory.id
+ extra_vars = &lt;&lt;EOT
+{
+ "inventory": "${aap_inventory.my_inventory.name}"
+}
+EOT
+}
+</code></pre></div></div>
+
+<h1 id="terraform-aap-provider-lifecycle-and-inventory-impact-">Terraform AAP Provider lifecycle and inventory impact : </h1>
+
+<h2 id="create-phase">Create Phase</h2>
+<p>When Terraform provisions new infrastructure (e.g., VMs, containers, networks), the Terraform Provider for AAP updates the AAP inventory. This means that as soon as new resources are provisioned, the AAP inventory is automatically updated to include these new resources. This dynamic inventory management ensures that Ansible can immediately start managing and configuring the newly provisioned resources.</p>
+
+<h2 id="destroy-phase">Destroy Phase</h2>
+<p>When Terraform destroys resources, the Terraform Provider for AAP updates the AAP inventory to remove the corresponding entries for the destroyed resources. This ensures that Ansible no longer attempts to manage or interact with resources that no longer exist, maintaining the accuracy and relevance of the inventory.</p>
+
+<h2 id="dynamic-inventory-management">Dynamic Inventory Management</h2>
+<p>By integrating Terraform with the Ansible Automation Platform, you can create a dynamic inventory management system. This system automatically updates the inventory based on the current state of your infrastructure, as managed by Terraform. This is particularly useful in environments where infrastructure changes frequently, as it reduces the need for manual updates to the inventory.</p>
+
+<h2 id="automation-workflow">Automation Workflow</h2>
+<p>Combining Terraform and Ansible allows for a seamless automation workflow. Terraform handles the provisioning and de-provisioning of infrastructure, while Ansible takes care of configuration management and application deployment. This integration ensures that your infrastructure and applications are always in sync, reducing the risk of configuration drift and improving overall efficiency.</p>
+
+<h3 id="example-workflow-">Example Workflow : </h3>
+<ol>
+  <li>Provision Infrastructure: Terraform provisions new resources and updates the AAP inventory.</li>
+  <li>Update Inventory: Ansible reads the updated AAP inventory and is ready to manage the new resources.</li>
+  <li>Run Playbooks: Ansible runs playbooks to configure and deploy applications on the newly provisioned resources.</li>
+  <li>Destroy Infrastructure: Terraform destroys resources and updates the AAP inventory.</li>
+  <li>Remove Inventory Entries: Ansible removes the corresponding entries from its inventory.</li>
+</ol>
+
+<p>This lifecycle ensures that Ansible always has an accurate view of the current state of your infrastructure, enabling efficient and reliable automation.</p>
+
+<h1 id="take-aways-">Take Aways : </h1>
+<p>Combining Terraform Enterprise and Ansible Automation Platform offers organizations a powerful, cohesive solution for managing infrastructure in complex, multi-cloud environments. This integration provides scalability, security, and efficiency, enabling teams to accelerate delivery while minimizing risk.</p>
+
+<h1 id="sources-">Sources :</h1>
+<p>AAP Terraform provider : <a href="https://github.com/ansible/terraform-provider-aap">https://github.com/ansible/terraform-provider-aap</a> 
+(warning : the Terraform AAP Provider for AAP 2.5 is not yet released)</p>
 
 <h3 id="authors">Authors</h3>
-
-<p>This blog post was <strong>co-written</strong> with my friend <a href="https://www.linkedin.com/in/sebastien-lallemand/"><strong>Sebastien Lallemand</strong></a>.</p>
+<p>This blog post was <strong>co-written</strong> with my friends from Hashicorp <a href="https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/"><strong>Rémi Salandre</strong></a>, <a href="https://www.linkedin.com/in/cetinardal/"><strong>Çetin ARDAL</strong></a>, and from Red Hat <a href="https://www.linkedin.com/in/david-jakubowicz-2116051/"><strong>David Jakubowicz</strong></a></p>
 
 <h5 id="linkedin-">Linkedin :</h5>
 <ul>
-  <li><a href="https://www.linkedin.com/in/sebastien-lallemand/">Sebastien Lallemand</a></li>
+  <li><a href="https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/">Rémi Salandre</a></li>
+  <li><a href="https://www.linkedin.com/in/cetinardal/">Çetin ARDAL</a></li>
+  <li><a href="https://www.linkedin.com/in/david-jakubowicz-2116051/">David Jakubowicz</a></li>
   <li><a href="https://www.linkedin.com/in/fklein82/">Frédéric Klein</a></li>
 </ul>
 <div class="gallery-box">
   <div class="gallery">
-    <img src="/images/seb.jpeg" height="158" width="158" />
-     <img src="/images/fred.jpeg" height="158" width="158" />
+  <img src="/images/remi.jpeg" height="158" width="158" />
+  <img src="/images/cetin.jpeg" height="158" width="158" />
+  <img src="/images/david.jpeg" height="158" width="158" />
+  <img src="/images/fred.jpeg" height="158" width="158" />
   </div>
 </div>
 
@@ -434,22 +432,22 @@
       <ul class="share__list list-reset">
         <li class="share__item">
           <a class="share__link share__twitter"
-            href="https://twitter.com/intent/tweet?text=Building%20a%20Container%20Image%20on%20OpenShift%20Using%20GitLab%20CI/CD&url=http://localhost:4000/post/2024/06/11/gitlab-openshift.html"
+            href="https://twitter.com/intent/tweet?text=Hashicorp%20Terraform%20Entreprise%20with%20Red%20Hat%20Ansible%20Automation%20Platform&url=http://localhost:4000/post/2024/12/19/tfe-x-aap.html"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/post/2024/06/11/gitlab-openshift.html"
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/post/2024/12/19/tfe-x-aap.html"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/post/2024/06/11/gitlab-openshift.html&amp;media=http://localhost:4000/images/02.png&amp;description=Building%20a%20Container%20Image%20on%20OpenShift%20Using%20GitLab%20CI/CD"
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/post/2024/12/19/tfe-x-aap.html&amp;media=http://localhost:4000/images/aap.png&amp;description=Hashicorp%20Terraform%20Entreprise%20with%20Red%20Hat%20Ansible%20Automation%20Platform"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
           rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2024/06/11/gitlab-openshift.html&title=Building%20a%20Container%20Image%20on%20OpenShift%20Using%20GitLab%20CI/CD&summary=Learn%20how%20to%20streamline%20your%20CI/CD%20pipeline%20by%20integrating%20GitLab%20with%20OpenShift%20to%20build%20and%20deploy%20container%20images.%20This%20step-by-step%20guide%20covers%20the%20setup%20of%20the%20.gitlab-ci.yaml%20file,%20creating%20a%20Dockerfile,%20adding%20application%20code,%20configuring%20OpenShift,%20and%20running%20the%20build.%20Perfect%20for%20developers%20looking%20to%20leverage%20the%20power%20of%20GitLab%20and%20OpenShift%20for%20efficient%20container%20management%20and%20deployment.&source=ASA%20Blog"
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2024/12/19/tfe-x-aap.html&title=Hashicorp%20Terraform%20Entreprise%20with%20Red%20Hat%20Ansible%20Automation%20Platform&summary=Optimize%20your%20Infrastructure%20as%20Code%20with%20Ansible%20Automation%20Platform%20and%20Terraform%20Enterprise&source=ASA%20Blog"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
         </li>
       </ul>
@@ -479,7 +477,7 @@
                 
                 
                   
-                    <a href="/tags#Openshift" class="section__link related-tag">See all<span> Openshift</span></a>
+                    <a href="/tags#IAC" class="section__link related-tag">See all<span> IAC</span></a>
                   
                 
               

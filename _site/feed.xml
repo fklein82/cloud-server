@@ -3,11 +3,214 @@
     <channel>
         <title>ASA Blog</title>
         <description>Frédéric KLEIN personal Blog</description>
-        <link>https://blog.fklein.me/</link>
-        <atom:link href="https://blog.fklein.me/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 12 Jun 2024 11:36:30 +0200</pubDate>
-        <lastBuildDate>Wed, 12 Jun 2024 11:36:30 +0200</lastBuildDate>
+        <link>http://localhost:4000/</link>
+        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Thu, 19 Dec 2024 17:05:42 +0100</pubDate>
+        <lastBuildDate>Thu, 19 Dec 2024 17:05:42 +0100</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
+        
+            <item>
+                <title>Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform</title>
+                <description>&lt;p&gt;As IT environments shift from traditional on-premise data centers to multi-cloud ecosystems, organizations need scalable, secure, and efficient solutions for Infrastructure as Code (IaC). &lt;/p&gt;
+
+&lt;p&gt;By leveraging &lt;strong&gt;Red Hat’s Ansible Automation Platform&lt;/strong&gt; and &lt;strong&gt;HashiCorp’s Terraform Enterprise&lt;/strong&gt;, organizations can unlock new levels of automation and governance across hybrid and multi-cloud resources.&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center&quot;&gt;&lt;img src=&quot;/images/aapxtfe.png&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;the-power-of-integration&quot;&gt;The Power of Integration&lt;/h1&gt;
+&lt;p&gt;The &lt;strong&gt;Ansible Automation Platform&lt;/strong&gt; excels in application deployment and configuration management, while &lt;strong&gt;Terraform Enterprise&lt;/strong&gt; is the go-to solution for infrastructure provisioning at scale. &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;/images/tfe.png&quot; alt=&quot;aap x tfe&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;/images/aap2.png&quot; alt=&quot;aap x tfe&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Together, they enable:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Provisioning Infrastructure&lt;/strong&gt;: Terraform Enterprise allows for the provisioning of scalable and secure IaaS or PaaS resources.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Configuring and Enforcing Compliance&lt;/strong&gt;: Ansible Automation Platform finalizes infrastructure configurations, applies policies, and enforces them to meet organizational standards.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div style=&quot;text-align:center&quot;&gt;&lt;img src=&quot;/images/versus.png&quot; width=&quot;80%&quot; height=&quot;80%&quot; /&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;some-use-cases-for-aap-and-tfe-integration-examples-&quot;&gt;Some Use Cases for AAP and TFE Integration examples : &lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Dynamic Data and Configuration&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Configuring operating systems or application environments.&lt;/li&gt;
+      &lt;li&gt;Adjusting database configurations, logical files, or connection strings.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Compliance at Launch&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Enforcing organizational policies directly via Ansible playbooks.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hybrid Environments&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Managing environments with components that require both API-based and SSH-based interactions.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This integration addresses critical challenges such as drift management, state file corruption, and performance bottlenecks in CI/CD workflows.&lt;/p&gt;
+
+&lt;h1 id=&quot;integration-methods-aap-provider-or-run-tasks&quot;&gt;Integration Methods: AAP Provider or Run Tasks&lt;/h1&gt;
+&lt;p&gt;The integration between Ansible Automation Platform (AAP) and Terraform Enterprise (TFE) can be achieved using two main methods: the AAP Provider for Terraform or Terraform Run Tasks. Each method offers distinct advantages depending on the use case.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;AAP Provider for Terraform:&lt;/strong&gt; This approach integrates Ansible into the Terraform workflow by leveraging playbooks. It enables the orchestration of infrastructure, dynamic inventory management, and the execution of Ansible jobs as part of a Terraform run. This tightly coupled approach is well-suited for scenarios where provisioning and configuration management need to be closely aligned.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div style=&quot;text-align:center&quot;&gt;&lt;img src=&quot;/images/schemapp.png&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Run Tasks:&lt;/strong&gt; Terraform Enterprise’s run tasks allow Ansible Automation Platform workflows to be triggered at specific stages of a Terraform run. This loosely coupled method ensures modularity, enabling Terraform and Ansible to operate independently while maintaining a synchronized workflow. Keep in mind that inventory synchronisation needs to be developed there.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By selecting the appropriate method based on operational needs, organizations can maximize the benefits of both platforms, achieving efficient infrastructure automation while ensuring scalability and flexibility.&lt;/p&gt;
+
+&lt;h1 id=&quot;inventory-management&quot;&gt;Inventory Management&lt;/h1&gt;
+&lt;p&gt;A key element in the integration between Ansible Automation Platform (AAP) and Terraform Enterprise (TFE) is inventory management. Ansible Automation Platform relies on inventories to define which systems and resources it manages. When integrated with Terraform Enterprise, inventories can be dynamically updated during the provisioning process. This ensures that newly provisioned resources are immediately included within Ansible’s scope for configuration and compliance.&lt;/p&gt;
+
+&lt;p&gt;With dynamic inventory management:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Automatic Registration: Terraform can automatically register newly provisioned infrastructure resources into Ansible’s inventory.&lt;/li&gt;
+  &lt;li&gt;Adaptive Management: AAP can dynamically adapt to changes in the environment without requiring manual updates, ensuring consistent configuration and management of all resources.&lt;/li&gt;
+  &lt;li&gt;Simplified Complexity: Hybrid or multi-cloud environments benefit from seamless synchronization between Terraform’s provisioning and Ansible’s configuration tasks.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This dynamic approach significantly reduces the risk of configuration drift and ensures that infrastructure changes are accurately reflected in automation workflows, enhancing both efficiency and reliability.&lt;/p&gt;
+
+&lt;h1 id=&quot;architectural-overview-&quot;&gt;Architectural Overview :&lt;/h1&gt;
+&lt;p&gt;The integration follows a &lt;strong&gt;GitLab → Terraform Enterprise → Ansible Automation Platform&lt;/strong&gt; workflow:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Code Submission&lt;/strong&gt;: Developers push code to GitLab.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Provisioning&lt;/strong&gt;: Terraform Enterprise provisions infrastructure resources.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Configuration&lt;/strong&gt;: Ansible Automation Platform applies the necessary configurations and enforces compliance policies.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This approach ensures a consistent, traceable, and automated pipeline from infrastructure creation to configuration.&lt;/p&gt;
+
+&lt;h1 id=&quot;steps-details-&quot;&gt;Steps details : &lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;/images/schemaap2.png&quot; alt=&quot;aap x tfe&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;aap-provider-example-&quot;&gt;AAP Provider example  : &lt;/h2&gt;
+&lt;p&gt;Prerequisites : we need the playbook id to be able to call it from the AAP Provider (it can be obtained from the AAP UI url). Of course it can also be automated another way to retrieve the id from the playbook name.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job&quot;&gt;https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job&lt;/a&gt; &lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provider &quot;aap&quot; {
+ host                 = var.aap_host_url
+ username             = var.aap_username
+ password             = var.aap_password
+}
+
+
+variable &quot;aap_host_url&quot; {
+ type = string
+}
+
+
+variable &quot;aap_username&quot; {
+ type = string
+}
+
+
+variable &quot;aap_password&quot; {
+ type = string
+}
+variable &quot;job_template_id&quot; {
+ type        = number
+ description = &quot;The job template id&quot;
+}
+
+
+resource &quot;aap_inventory&quot; &quot;my_inventory&quot; {
+  name = &quot;TFE_Apache-servers&quot;
+}
+
+
+resource &quot;aap_host&quot; &quot;create_host&quot; {
+ inventory_id = aap_inventory.my_inventory.id
+ name         = data.terraform_remote_state.aws-ec2.outputs.ec2_first_addr
+}
+
+
+resource &quot;aap_job&quot; &quot;run_job_template&quot; {
+ job_template_id = var.job_template_id
+ inventory_id    = aap_inventory.my_inventory.id
+ extra_vars = &amp;lt;&amp;lt;EOT
+{
+ &quot;inventory&quot;: &quot;${aap_inventory.my_inventory.name}&quot;
+}
+EOT
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;terraform-aap-provider-lifecycle-and-inventory-impact-&quot;&gt;Terraform AAP Provider lifecycle and inventory impact : &lt;/h1&gt;
+
+&lt;h2 id=&quot;create-phase&quot;&gt;Create Phase&lt;/h2&gt;
+&lt;p&gt;When Terraform provisions new infrastructure (e.g., VMs, containers, networks), the Terraform Provider for AAP updates the AAP inventory. This means that as soon as new resources are provisioned, the AAP inventory is automatically updated to include these new resources. This dynamic inventory management ensures that Ansible can immediately start managing and configuring the newly provisioned resources.&lt;/p&gt;
+
+&lt;h2 id=&quot;destroy-phase&quot;&gt;Destroy Phase&lt;/h2&gt;
+&lt;p&gt;When Terraform destroys resources, the Terraform Provider for AAP updates the AAP inventory to remove the corresponding entries for the destroyed resources. This ensures that Ansible no longer attempts to manage or interact with resources that no longer exist, maintaining the accuracy and relevance of the inventory.&lt;/p&gt;
+
+&lt;h2 id=&quot;dynamic-inventory-management&quot;&gt;Dynamic Inventory Management&lt;/h2&gt;
+&lt;p&gt;By integrating Terraform with the Ansible Automation Platform, you can create a dynamic inventory management system. This system automatically updates the inventory based on the current state of your infrastructure, as managed by Terraform. This is particularly useful in environments where infrastructure changes frequently, as it reduces the need for manual updates to the inventory.&lt;/p&gt;
+
+&lt;h2 id=&quot;automation-workflow&quot;&gt;Automation Workflow&lt;/h2&gt;
+&lt;p&gt;Combining Terraform and Ansible allows for a seamless automation workflow. Terraform handles the provisioning and de-provisioning of infrastructure, while Ansible takes care of configuration management and application deployment. This integration ensures that your infrastructure and applications are always in sync, reducing the risk of configuration drift and improving overall efficiency.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-workflow-&quot;&gt;Example Workflow : &lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Provision Infrastructure: Terraform provisions new resources and updates the AAP inventory.&lt;/li&gt;
+  &lt;li&gt;Update Inventory: Ansible reads the updated AAP inventory and is ready to manage the new resources.&lt;/li&gt;
+  &lt;li&gt;Run Playbooks: Ansible runs playbooks to configure and deploy applications on the newly provisioned resources.&lt;/li&gt;
+  &lt;li&gt;Destroy Infrastructure: Terraform destroys resources and updates the AAP inventory.&lt;/li&gt;
+  &lt;li&gt;Remove Inventory Entries: Ansible removes the corresponding entries from its inventory.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This lifecycle ensures that Ansible always has an accurate view of the current state of your infrastructure, enabling efficient and reliable automation.&lt;/p&gt;
+
+&lt;h1 id=&quot;take-aways-&quot;&gt;Take Aways : &lt;/h1&gt;
+&lt;p&gt;Combining Terraform Enterprise and Ansible Automation Platform offers organizations a powerful, cohesive solution for managing infrastructure in complex, multi-cloud environments. This integration provides scalability, security, and efficiency, enabling teams to accelerate delivery while minimizing risk.&lt;/p&gt;
+
+&lt;h1 id=&quot;sources-&quot;&gt;Sources :&lt;/h1&gt;
+&lt;p&gt;AAP Terraform provider : &lt;a href=&quot;https://github.com/ansible/terraform-provider-aap&quot;&gt;https://github.com/ansible/terraform-provider-aap&lt;/a&gt; 
+(warning : the Terraform AAP Provider for AAP 2.5 is not yet released)&lt;/p&gt;
+
+&lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
+&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends from Hashicorp &lt;a href=&quot;https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/&quot;&gt;&lt;strong&gt;Rémi Salandre&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/cetinardal/&quot;&gt;&lt;strong&gt;Çetin ARDAL&lt;/strong&gt;&lt;/a&gt;, and from Red Hat &lt;a href=&quot;https://www.linkedin.com/in/david-jakubowicz-2116051/&quot;&gt;&lt;strong&gt;David Jakubowicz&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;linkedin-&quot;&gt;Linkedin :&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/&quot;&gt;Rémi Salandre&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/cetinardal/&quot;&gt;Çetin ARDAL&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/david-jakubowicz-2116051/&quot;&gt;David Jakubowicz&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.linkedin.com/in/fklein82/&quot;&gt;Frédéric Klein&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+  &lt;img src=&quot;/images/remi.jpeg&quot; height=&quot;158&quot; width=&quot;158&quot; /&gt;
+  &lt;img src=&quot;/images/cetin.jpeg&quot; height=&quot;158&quot; width=&quot;158&quot; /&gt;
+  &lt;img src=&quot;/images/david.jpeg&quot; height=&quot;158&quot; width=&quot;158&quot; /&gt;
+  &lt;img src=&quot;/images/fred.jpeg&quot; height=&quot;158&quot; width=&quot;158&quot; /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+                <pubDate>Thu, 19 Dec 2024 13:01:35 +0100</pubDate>
+                <link>http://localhost:4000/post/2024/12/19/tfe-x-aap.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2024/12/19/tfe-x-aap.html</guid>
+                
+                <category>IAC</category>
+                
+                
+            </item>
         
             <item>
                 <title>Building a Container Image on OpenShift Using GitLab CI/CD</title>
@@ -206,8 +409,8 @@
 &lt;/div&gt;
 </description>
                 <pubDate>Tue, 11 Jun 2024 14:01:35 +0200</pubDate>
-                <link>https://blog.fklein.me/post/2024/06/11/gitlab-openshift.html</link>
-                <guid isPermaLink="true">https://blog.fklein.me/post/2024/06/11/gitlab-openshift.html</guid>
+                <link>http://localhost:4000/post/2024/06/11/gitlab-openshift.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2024/06/11/gitlab-openshift.html</guid>
                 
                 <category>Openshift</category>
                 
