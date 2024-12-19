@@ -327,48 +327,53 @@
 
 <p><a href="https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job">https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job</a> </p>
 
-<p>``` 
-provider “aap” {
- host                 = var.aap_host_url
- username             = var.aap_username
- password             = var.aap_password
-}</p>
+<div class="language-hcl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">provider</span> <span class="s2">"aap"</span> <span class="p">{</span>
+ <span class="nx">host</span>                 <span class="p">=</span> <span class="nx">var</span><span class="err">.</span><span class="nx">aap_host_url</span>
+ <span class="nx">username</span>             <span class="p">=</span> <span class="nx">var</span><span class="err">.</span><span class="nx">aap_username</span>
+ <span class="nx">password</span>             <span class="p">=</span> <span class="nx">var</span><span class="err">.</span><span class="nx">aap_password</span>
+<span class="p">}</span>
 
-<p>variable “aap_host_url” {
- type = string
-}</p>
 
-<p>variable “aap_username” {
- type = string
-}</p>
+<span class="nx">variable</span> <span class="s2">"aap_host_url"</span> <span class="p">{</span>
+ <span class="nx">type</span> <span class="p">=</span> <span class="nx">string</span>
+<span class="p">}</span>
 
-<p>variable “aap_password” {
- type = string
-}
-variable “job_template_id” {
- type        = number
- description = “The job template id”
-}</p>
 
-<p>resource “aap_inventory” “my_inventory” {
-  name = “TFE_Apache-servers”
-}</p>
+<span class="nx">variable</span> <span class="s2">"aap_username"</span> <span class="p">{</span>
+ <span class="nx">type</span> <span class="p">=</span> <span class="nx">string</span>
+<span class="p">}</span>
 
-<p>resource “aap_host” “create_host” {
- inventory_id = aap_inventory.my_inventory.id
- name         = data.terraform_remote_state.aws-ec2.outputs.ec2_first_addr
-}</p>
 
-<p>resource “aap_job” “run_job_template” {
- job_template_id = var.job_template_id
- inventory_id    = aap_inventory.my_inventory.id
- extra_vars = «EOT
+<span class="nx">variable</span> <span class="s2">"aap_password"</span> <span class="p">{</span>
+ <span class="nx">type</span> <span class="p">=</span> <span class="nx">string</span>
+<span class="p">}</span>
+<span class="nx">variable</span> <span class="s2">"job_template_id"</span> <span class="p">{</span>
+ <span class="nx">type</span>        <span class="p">=</span> <span class="nx">number</span>
+ <span class="nx">description</span> <span class="p">=</span> <span class="s2">"The job template id"</span>
+<span class="p">}</span>
+
+
+<span class="nx">resource</span> <span class="s2">"aap_inventory"</span> <span class="s2">"my_inventory"</span> <span class="p">{</span>
+  <span class="nx">name</span> <span class="p">=</span> <span class="s2">"TFE_Apache-servers"</span>
+<span class="p">}</span>
+
+
+<span class="nx">resource</span> <span class="s2">"aap_host"</span> <span class="s2">"create_host"</span> <span class="p">{</span>
+ <span class="nx">inventory_id</span> <span class="p">=</span> <span class="nx">aap_inventory</span><span class="err">.</span><span class="nx">my_inventory</span><span class="err">.</span><span class="nx">id</span>
+ <span class="nx">name</span>         <span class="p">=</span> <span class="nx">data</span><span class="err">.</span><span class="nx">terraform_remote_state</span><span class="err">.</span><span class="nx">aws</span><span class="err">-</span><span class="nx">ec2</span><span class="err">.</span><span class="nx">outputs</span><span class="err">.</span><span class="nx">ec2_first_addr</span>
+<span class="p">}</span>
+
+
+<span class="nx">resource</span> <span class="s2">"aap_job"</span> <span class="s2">"run_job_template"</span> <span class="p">{</span>
+ <span class="nx">job_template_id</span> <span class="p">=</span> <span class="nx">var</span><span class="err">.</span><span class="nx">job_template_id</span>
+ <span class="nx">inventory_id</span>    <span class="p">=</span> <span class="nx">aap_inventory</span><span class="err">.</span><span class="nx">my_inventory</span><span class="err">.</span><span class="nx">id</span>
+ <span class="nx">extra_vars</span> <span class="p">=</span> <span class="o">&lt;&lt;</span><span class="no">EOT</span><span class="sh">
 {
- “inventory”: “${aap_inventory.my_inventory.name}”
+ "inventory": "${aap_inventory.my_inventory.name}"
 }
-EOT
-}
-``` git</p>
+</span><span class="no">EOT
+</span><span class="p">}</span>
+</code></pre></div></div>
 
 <h1 id="terraform-aap-provider-lifecycle-and-inventory-impact-">Terraform AAP Provider lifecycle and inventory impact : </h1>
 

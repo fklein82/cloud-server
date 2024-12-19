@@ -80,7 +80,7 @@ Prerequisites : we need the playbook id to be able to call it from the AAP Provi
 
 <https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job> 
 
-``` 
+```hcl
 provider "aap" {
  host                 = var.aap_host_url
  username             = var.aap_username
@@ -127,7 +127,7 @@ resource "aap_job" "run_job_template" {
 }
 EOT
 }
-``` git
+```
 
 # Terraform AAP Provider lifecycle and inventory impact : 
 
