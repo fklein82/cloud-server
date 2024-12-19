@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform</title>
-  <meta name='description' content='Optimize your Infrastructure as Code with Ansible Automation Platform and Terraform Enterprise'>
+  <meta name='description' content='Optimize your Infrastructure as Code with Terraform Enterprise and Ansible Automation Platform'>
 
   <link rel="canonical" href="http://localhost:4000/post/2024/12/19/tfe-x-aap.html">
   <link rel="alternate" type="application/rss+xml" title="ASA Blog" href="/feed.xml">
@@ -15,13 +15,13 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform – ASA Blog">
-  <meta name="twitter:description" content="Optimize your Infrastructure as Code with Ansible Automation Platform and Terraform Enterprise">
+  <meta name="twitter:description" content="Optimize your Infrastructure as Code with Terraform Enterprise and Ansible Automation Platform">
   <meta name="twitter:image" content="https://blog.fklein.me/images/twitter.jpg">
 
 
   <!-- Facebook OpenGraph -->
   <meta property="og:title" content="Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform – ASA Blog">
-  <meta property="og:description" content="Optimize your Infrastructure as Code with Ansible Automation Platform and Terraform Enterprise">
+  <meta property="og:description" content="Optimize your Infrastructure as Code with Terraform Enterprise and Ansible Automation Platform">
   <meta property="og:image" content="http://localhost:4000/images/aap.png">
 
   <!-- Fonts -->
@@ -391,11 +391,11 @@
 
 <h3 id="example-workflow-">Example Workflow : </h3>
 <ol>
-  <li>Provision Infrastructure: Terraform provisions new resources and updates the AAP inventory.</li>
-  <li>Update Inventory: Ansible reads the updated AAP inventory and is ready to manage the new resources.</li>
-  <li>Run Playbooks: Ansible runs playbooks to configure and deploy applications on the newly provisioned resources.</li>
-  <li>Destroy Infrastructure: Terraform destroys resources and updates the AAP inventory.</li>
-  <li>Remove Inventory Entries: Ansible removes the corresponding entries from its inventory.</li>
+  <li><strong>Provision Infrastructure:</strong> Terraform provisions new resources and updates the AAP inventory.</li>
+  <li><strong>Update Inventory:</strong> Ansible reads the updated AAP inventory and is ready to manage the new resources.</li>
+  <li><strong>Run Playbooks:</strong> Ansible runs playbooks to configure and deploy applications on the newly provisioned resources.</li>
+  <li><strong>Destroy Infrastructure:</strong> Terraform destroys resources and updates the AAP inventory.</li>
+  <li><strong>Remove Inventory Entries:</strong> Ansible removes the corresponding entries from its inventory.</li>
 </ol>
 
 <p>This lifecycle ensures that Ansible always has an accurate view of the current state of your infrastructure, enabling efficient and reliable automation.</p>
@@ -404,13 +404,13 @@
 <p>Combining Terraform Enterprise and Ansible Automation Platform offers organizations a powerful, cohesive solution for managing infrastructure in complex, multi-cloud environments. This integration provides scalability, security, and efficiency, enabling teams to accelerate delivery while minimizing risk.</p>
 
 <h1 id="sources-">Sources :</h1>
-<p>AAP Terraform provider : <a href="https://github.com/ansible/terraform-provider-aap">https://github.com/ansible/terraform-provider-aap</a> 
+<p><strong>AAP Terraform provider:</strong> <a href="https://github.com/ansible/terraform-provider-aap">https://github.com/ansible/terraform-provider-aap</a> 
 (warning : the Terraform AAP Provider for AAP 2.5 is not yet released)</p>
 
-<p>Github Demo : <a href="https://github.com/Sokren/aap-tfc">https://github.com/Sokren/aap-tfc</a></p>
+<p><strong>Github Demo:</strong> <a href="https://github.com/Sokren/aap-tfc">https://github.com/Sokren/aap-tfc</a></p>
 
 <h3 id="authors">Authors</h3>
-<p>This blog post was <strong>co-written</strong> with my friends from Hashicorp <a href="https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/"><strong>Rémi Salandre</strong></a>, <a href="https://www.linkedin.com/in/cetinardal/"><strong>Çetin ARDAL</strong></a>, and from Red Hat <a href="https://www.linkedin.com/in/david-jakubowicz-2116051/"><strong>David Jakubowicz</strong></a></p>
+<p>This blog post was <strong>co-written</strong> with my friends from HashiCorp <a href="https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/"><strong>Rémi Salandre</strong></a>, <a href="https://www.linkedin.com/in/cetinardal/"><strong>Çetin ARDAL</strong></a>, and from Red Hat <a href="https://www.linkedin.com/in/david-jakubowicz-2116051/"><strong>David Jakubowicz</strong></a></p>
 
 <h5 id="linkedin-">Linkedin :</h5>
 <ul>
@@ -449,7 +449,7 @@
           rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
         </li>
         <li class="share__item">
-          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2024/12/19/tfe-x-aap.html&title=Hashicorp%20Terraform%20Entreprise%20with%20Red%20Hat%20Ansible%20Automation%20Platform&summary=Optimize%20your%20Infrastructure%20as%20Code%20with%20Ansible%20Automation%20Platform%20and%20Terraform%20Enterprise&source=ASA%20Blog"
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2024/12/19/tfe-x-aap.html&title=Hashicorp%20Terraform%20Entreprise%20with%20Red%20Hat%20Ansible%20Automation%20Platform&summary=Optimize%20your%20Infrastructure%20as%20Code%20with%20Terraform%20Enterprise%20and%20Ansible%20Automation%20Platform&source=ASA%20Blog"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
         </li>
       </ul>

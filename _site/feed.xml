@@ -5,8 +5,8 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 19 Dec 2024 17:34:27 +0100</pubDate>
-        <lastBuildDate>Thu, 19 Dec 2024 17:34:27 +0100</lastBuildDate>
+        <pubDate>Thu, 19 Dec 2024 17:48:27 +0100</pubDate>
+        <lastBuildDate>Thu, 19 Dec 2024 17:48:27 +0100</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
@@ -168,11 +168,11 @@
 
 &lt;h3 id=&quot;example-workflow-&quot;&gt;Example Workflow : &lt;/h3&gt;
 &lt;ol&gt;
-  &lt;li&gt;Provision Infrastructure: Terraform provisions new resources and updates the AAP inventory.&lt;/li&gt;
-  &lt;li&gt;Update Inventory: Ansible reads the updated AAP inventory and is ready to manage the new resources.&lt;/li&gt;
-  &lt;li&gt;Run Playbooks: Ansible runs playbooks to configure and deploy applications on the newly provisioned resources.&lt;/li&gt;
-  &lt;li&gt;Destroy Infrastructure: Terraform destroys resources and updates the AAP inventory.&lt;/li&gt;
-  &lt;li&gt;Remove Inventory Entries: Ansible removes the corresponding entries from its inventory.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Provision Infrastructure:&lt;/strong&gt; Terraform provisions new resources and updates the AAP inventory.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Update Inventory:&lt;/strong&gt; Ansible reads the updated AAP inventory and is ready to manage the new resources.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Run Playbooks:&lt;/strong&gt; Ansible runs playbooks to configure and deploy applications on the newly provisioned resources.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Destroy Infrastructure:&lt;/strong&gt; Terraform destroys resources and updates the AAP inventory.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Remove Inventory Entries:&lt;/strong&gt; Ansible removes the corresponding entries from its inventory.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;This lifecycle ensures that Ansible always has an accurate view of the current state of your infrastructure, enabling efficient and reliable automation.&lt;/p&gt;
@@ -181,13 +181,13 @@
 &lt;p&gt;Combining Terraform Enterprise and Ansible Automation Platform offers organizations a powerful, cohesive solution for managing infrastructure in complex, multi-cloud environments. This integration provides scalability, security, and efficiency, enabling teams to accelerate delivery while minimizing risk.&lt;/p&gt;
 
 &lt;h1 id=&quot;sources-&quot;&gt;Sources :&lt;/h1&gt;
-&lt;p&gt;AAP Terraform provider : &lt;a href=&quot;https://github.com/ansible/terraform-provider-aap&quot;&gt;https://github.com/ansible/terraform-provider-aap&lt;/a&gt; 
+&lt;p&gt;&lt;strong&gt;AAP Terraform provider:&lt;/strong&gt; &lt;a href=&quot;https://github.com/ansible/terraform-provider-aap&quot;&gt;https://github.com/ansible/terraform-provider-aap&lt;/a&gt; 
 (warning : the Terraform AAP Provider for AAP 2.5 is not yet released)&lt;/p&gt;
 
-&lt;p&gt;Github Demo : &lt;a href=&quot;https://github.com/Sokren/aap-tfc&quot;&gt;https://github.com/Sokren/aap-tfc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Github Demo:&lt;/strong&gt; &lt;a href=&quot;https://github.com/Sokren/aap-tfc&quot;&gt;https://github.com/Sokren/aap-tfc&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
-&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends from Hashicorp &lt;a href=&quot;https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/&quot;&gt;&lt;strong&gt;Rémi Salandre&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/cetinardal/&quot;&gt;&lt;strong&gt;Çetin ARDAL&lt;/strong&gt;&lt;/a&gt;, and from Red Hat &lt;a href=&quot;https://www.linkedin.com/in/david-jakubowicz-2116051/&quot;&gt;&lt;strong&gt;David Jakubowicz&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends from HashiCorp &lt;a href=&quot;https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/&quot;&gt;&lt;strong&gt;Rémi Salandre&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/cetinardal/&quot;&gt;&lt;strong&gt;Çetin ARDAL&lt;/strong&gt;&lt;/a&gt;, and from Red Hat &lt;a href=&quot;https://www.linkedin.com/in/david-jakubowicz-2116051/&quot;&gt;&lt;strong&gt;David Jakubowicz&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;linkedin-&quot;&gt;Linkedin :&lt;/h5&gt;
 &lt;ul&gt;

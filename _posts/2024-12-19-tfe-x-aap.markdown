@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform
-description: Optimize your Infrastructure as Code with Ansible Automation Platform and Terraform Enterprise
+description: Optimize your Infrastructure as Code with Terraform Enterprise and Ansible Automation Platform
 date:   2024-12-19 15:01:35 +0300
 image:  '/images/aap.png'
 video_embed: 
@@ -144,11 +144,11 @@ By integrating Terraform with the Ansible Automation Platform, you can create a 
 Combining Terraform and Ansible allows for a seamless automation workflow. Terraform handles the provisioning and de-provisioning of infrastructure, while Ansible takes care of configuration management and application deployment. This integration ensures that your infrastructure and applications are always in sync, reducing the risk of configuration drift and improving overall efficiency.
 
 ### Example Workflow : 
-1. Provision Infrastructure: Terraform provisions new resources and updates the AAP inventory.
-2. Update Inventory: Ansible reads the updated AAP inventory and is ready to manage the new resources.
-3. Run Playbooks: Ansible runs playbooks to configure and deploy applications on the newly provisioned resources.
-4. Destroy Infrastructure: Terraform destroys resources and updates the AAP inventory.
-5. Remove Inventory Entries: Ansible removes the corresponding entries from its inventory.
+1. **Provision Infrastructure:** Terraform provisions new resources and updates the AAP inventory.
+2. **Update Inventory:** Ansible reads the updated AAP inventory and is ready to manage the new resources.
+3. **Run Playbooks:** Ansible runs playbooks to configure and deploy applications on the newly provisioned resources.
+4. **Destroy Infrastructure:** Terraform destroys resources and updates the AAP inventory.
+5. **Remove Inventory Entries:** Ansible removes the corresponding entries from its inventory.
 
 This lifecycle ensures that Ansible always has an accurate view of the current state of your infrastructure, enabling efficient and reliable automation.
 
@@ -156,14 +156,14 @@ This lifecycle ensures that Ansible always has an accurate view of the current s
 Combining Terraform Enterprise and Ansible Automation Platform offers organizations a powerful, cohesive solution for managing infrastructure in complex, multi-cloud environments. This integration provides scalability, security, and efficiency, enabling teams to accelerate delivery while minimizing risk.
 
 # Sources :
-AAP Terraform provider : <https://github.com/ansible/terraform-provider-aap> 
+**AAP Terraform provider:** <https://github.com/ansible/terraform-provider-aap> 
 (warning : the Terraform AAP Provider for AAP 2.5 is not yet released)
 
-Github Demo : <https://github.com/Sokren/aap-tfc>
+**Github Demo:** <https://github.com/Sokren/aap-tfc>
 
 
 ### Authors
-This blog post was **co-written** with my friends from Hashicorp [**Rémi Salandre**](https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/), [**Çetin ARDAL**](https://www.linkedin.com/in/cetinardal/), and from Red Hat [**David Jakubowicz**](https://www.linkedin.com/in/david-jakubowicz-2116051/)
+This blog post was **co-written** with my friends from HashiCorp [**Rémi Salandre**](https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/), [**Çetin ARDAL**](https://www.linkedin.com/in/cetinardal/), and from Red Hat [**David Jakubowicz**](https://www.linkedin.com/in/david-jakubowicz-2116051/)
 
 ##### Linkedin :
 - [Rémi Salandre](https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/)
