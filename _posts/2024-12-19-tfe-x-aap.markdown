@@ -163,7 +163,7 @@ Combining Terraform Enterprise and Ansible Automation Platform offers organizati
 
 
 ### Authors
-This blog post was **co-written** with my friends from HashiCorp [**Rémi Salandre**](https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/), [**Çetin ARDAL**](https://www.linkedin.com/in/cetinardal/), and from Red Hat [**David Jakubowicz**](https://www.linkedin.com/in/david-jakubowicz-2116051/)
+This blog post was **co-written** with my friends from HashiCorp [**Rémi Salandre**](https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/), [**Çetin Ardal**](https://www.linkedin.com/in/cetinardal/), and from Red Hat [**David Jakubowicz**](https://www.linkedin.com/in/david-jakubowicz-2116051/)
 
 ##### Linkedin :
 - [Rémi Salandre - HashiCorp](https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/)

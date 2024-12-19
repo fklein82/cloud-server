@@ -5,8 +5,8 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 19 Dec 2024 17:53:28 +0100</pubDate>
-        <lastBuildDate>Thu, 19 Dec 2024 17:53:28 +0100</lastBuildDate>
+        <pubDate>Thu, 19 Dec 2024 17:56:02 +0100</pubDate>
+        <lastBuildDate>Thu, 19 Dec 2024 17:56:02 +0100</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
@@ -187,7 +187,7 @@
 &lt;p&gt;&lt;strong&gt;Github Demo:&lt;/strong&gt; &lt;a href=&quot;https://github.com/Sokren/aap-tfc&quot;&gt;https://github.com/Sokren/aap-tfc&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
-&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends from HashiCorp &lt;a href=&quot;https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/&quot;&gt;&lt;strong&gt;Rémi Salandre&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/cetinardal/&quot;&gt;&lt;strong&gt;Çetin ARDAL&lt;/strong&gt;&lt;/a&gt;, and from Red Hat &lt;a href=&quot;https://www.linkedin.com/in/david-jakubowicz-2116051/&quot;&gt;&lt;strong&gt;David Jakubowicz&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends from HashiCorp &lt;a href=&quot;https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/&quot;&gt;&lt;strong&gt;Rémi Salandre&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/cetinardal/&quot;&gt;&lt;strong&gt;Çetin Ardal&lt;/strong&gt;&lt;/a&gt;, and from Red Hat &lt;a href=&quot;https://www.linkedin.com/in/david-jakubowicz-2116051/&quot;&gt;&lt;strong&gt;David Jakubowicz&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h5 id=&quot;linkedin-&quot;&gt;Linkedin :&lt;/h5&gt;
 &lt;ul&gt;
