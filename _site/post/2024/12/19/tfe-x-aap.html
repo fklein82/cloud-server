@@ -327,53 +327,48 @@
 
 <p><a href="https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job">https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job</a> </p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>provider "aap" {
+<p>``` 
+provider “aap” {
  host                 = var.aap_host_url
  username             = var.aap_username
  password             = var.aap_password
-}
+}</p>
 
+<p>variable “aap_host_url” {
+ type = string
+}</p>
 
-variable "aap_host_url" {
+<p>variable “aap_username” {
+ type = string
+}</p>
+
+<p>variable “aap_password” {
  type = string
 }
-
-
-variable "aap_username" {
- type = string
-}
-
-
-variable "aap_password" {
- type = string
-}
-variable "job_template_id" {
+variable “job_template_id” {
  type        = number
- description = "The job template id"
-}
+ description = “The job template id”
+}</p>
 
+<p>resource “aap_inventory” “my_inventory” {
+  name = “TFE_Apache-servers”
+}</p>
 
-resource "aap_inventory" "my_inventory" {
-  name = "TFE_Apache-servers"
-}
-
-
-resource "aap_host" "create_host" {
+<p>resource “aap_host” “create_host” {
  inventory_id = aap_inventory.my_inventory.id
  name         = data.terraform_remote_state.aws-ec2.outputs.ec2_first_addr
-}
+}</p>
 
-
-resource "aap_job" "run_job_template" {
+<p>resource “aap_job” “run_job_template” {
  job_template_id = var.job_template_id
  inventory_id    = aap_inventory.my_inventory.id
- extra_vars = &lt;&lt;EOT
+ extra_vars = «EOT
 {
- "inventory": "${aap_inventory.my_inventory.name}"
+ “inventory”: “${aap_inventory.my_inventory.name}”
 }
 EOT
 }
-</code></pre></div></div>
+``` git</p>
 
 <h1 id="terraform-aap-provider-lifecycle-and-inventory-impact-">Terraform AAP Provider lifecycle and inventory impact : </h1>
 
@@ -406,6 +401,8 @@ EOT
 <h1 id="sources-">Sources :</h1>
 <p>AAP Terraform provider : <a href="https://github.com/ansible/terraform-provider-aap">https://github.com/ansible/terraform-provider-aap</a> 
 (warning : the Terraform AAP Provider for AAP 2.5 is not yet released)</p>
+
+<p>Github Demo : <a href="https://github.com/Sokren/aap-tfc">https://github.com/Sokren/aap-tfc</a></p>
 
 <h3 id="authors">Authors</h3>
 <p>This blog post was <strong>co-written</strong> with my friends from Hashicorp <a href="https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/"><strong>Rémi Salandre</strong></a>, <a href="https://www.linkedin.com/in/cetinardal/"><strong>Çetin ARDAL</strong></a>, and from Red Hat <a href="https://www.linkedin.com/in/david-jakubowicz-2116051/"><strong>David Jakubowicz</strong></a></p>

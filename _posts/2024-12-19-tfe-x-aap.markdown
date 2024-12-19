@@ -127,7 +127,7 @@ resource "aap_job" "run_job_template" {
 }
 EOT
 }
-``` 
+``` git
 
 # Terraform AAP Provider lifecycle and inventory impact : 
 
@@ -158,6 +158,9 @@ Combining Terraform Enterprise and Ansible Automation Platform offers organizati
 # Sources :
 AAP Terraform provider : <https://github.com/ansible/terraform-provider-aap> 
 (warning : the Terraform AAP Provider for AAP 2.5 is not yet released)
+
+Github Demo : <https://github.com/Sokren/aap-tfc>
+
 
 ### Authors
 This blog post was **co-written** with my friends from Hashicorp [**Rémi Salandre**](https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/), [**Çetin ARDAL**](https://www.linkedin.com/in/cetinardal/), and from Red Hat [**David Jakubowicz**](https://www.linkedin.com/in/david-jakubowicz-2116051/)

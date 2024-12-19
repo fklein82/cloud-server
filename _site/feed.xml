@@ -5,8 +5,8 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 19 Dec 2024 17:05:42 +0100</pubDate>
-        <lastBuildDate>Thu, 19 Dec 2024 17:05:42 +0100</lastBuildDate>
+        <pubDate>Thu, 19 Dec 2024 17:26:14 +0100</pubDate>
+        <lastBuildDate>Thu, 19 Dec 2024 17:26:14 +0100</lastBuildDate>
         <generator>Jekyll v4.3.2</generator>
         
             <item>
@@ -104,53 +104,48 @@
 
 &lt;p&gt;&lt;a href=&quot;https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job&quot;&gt;https://registry.terraform.io/providers/ansible/aap/latest/docs/resources/job&lt;/a&gt; &lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;provider &quot;aap&quot; {
+&lt;p&gt;``` 
+provider “aap” {
  host                 = var.aap_host_url
  username             = var.aap_username
  password             = var.aap_password
-}
+}&lt;/p&gt;
 
+&lt;p&gt;variable “aap_host_url” {
+ type = string
+}&lt;/p&gt;
 
-variable &quot;aap_host_url&quot; {
+&lt;p&gt;variable “aap_username” {
+ type = string
+}&lt;/p&gt;
+
+&lt;p&gt;variable “aap_password” {
  type = string
 }
-
-
-variable &quot;aap_username&quot; {
- type = string
-}
-
-
-variable &quot;aap_password&quot; {
- type = string
-}
-variable &quot;job_template_id&quot; {
+variable “job_template_id” {
  type        = number
- description = &quot;The job template id&quot;
-}
+ description = “The job template id”
+}&lt;/p&gt;
 
+&lt;p&gt;resource “aap_inventory” “my_inventory” {
+  name = “TFE_Apache-servers”
+}&lt;/p&gt;
 
-resource &quot;aap_inventory&quot; &quot;my_inventory&quot; {
-  name = &quot;TFE_Apache-servers&quot;
-}
-
-
-resource &quot;aap_host&quot; &quot;create_host&quot; {
+&lt;p&gt;resource “aap_host” “create_host” {
  inventory_id = aap_inventory.my_inventory.id
  name         = data.terraform_remote_state.aws-ec2.outputs.ec2_first_addr
-}
+}&lt;/p&gt;
 
-
-resource &quot;aap_job&quot; &quot;run_job_template&quot; {
+&lt;p&gt;resource “aap_job” “run_job_template” {
  job_template_id = var.job_template_id
  inventory_id    = aap_inventory.my_inventory.id
- extra_vars = &amp;lt;&amp;lt;EOT
+ extra_vars = «EOT
 {
- &quot;inventory&quot;: &quot;${aap_inventory.my_inventory.name}&quot;
+ “inventory”: “${aap_inventory.my_inventory.name}”
 }
 EOT
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+``` git&lt;/p&gt;
 
 &lt;h1 id=&quot;terraform-aap-provider-lifecycle-and-inventory-impact-&quot;&gt;Terraform AAP Provider lifecycle and inventory impact : &lt;/h1&gt;
 
@@ -183,6 +178,8 @@ EOT
 &lt;h1 id=&quot;sources-&quot;&gt;Sources :&lt;/h1&gt;
 &lt;p&gt;AAP Terraform provider : &lt;a href=&quot;https://github.com/ansible/terraform-provider-aap&quot;&gt;https://github.com/ansible/terraform-provider-aap&lt;/a&gt; 
 (warning : the Terraform AAP Provider for AAP 2.5 is not yet released)&lt;/p&gt;
+
+&lt;p&gt;Github Demo : &lt;a href=&quot;https://github.com/Sokren/aap-tfc&quot;&gt;https://github.com/Sokren/aap-tfc&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;authors&quot;&gt;Authors&lt;/h3&gt;
 &lt;p&gt;This blog post was &lt;strong&gt;co-written&lt;/strong&gt; with my friends from Hashicorp &lt;a href=&quot;https://www.linkedin.com/in/r%C3%A9mi-salandre-a53bb13a/&quot;&gt;&lt;strong&gt;Rémi Salandre&lt;/strong&gt;&lt;/a&gt;, &lt;a href=&quot;https://www.linkedin.com/in/cetinardal/&quot;&gt;&lt;strong&gt;Çetin ARDAL&lt;/strong&gt;&lt;/a&gt;, and from Red Hat &lt;a href=&quot;https://www.linkedin.com/in/david-jakubowicz-2116051/&quot;&gt;&lt;strong&gt;David Jakubowicz&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
