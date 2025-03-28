@@ -1,9 +1,9 @@
 
 # Frederic Klein personal blog
 
-Hello, and welcome to my blog! My name is Frédéric KLEIN, and I’m a solution engineer at VMware Tanzu. I have a passion for helping organizations design and implement cloud-native architectures using Kubernetes and Tanzu.
+Hello, and welcome to my blog! My name is Frédéric KLEIN, and I’m a solution engineer at Red Hat. I have a passion for helping organizations design and implement cloud-native architectures using Kubernetes and Red Hat.
 
-In addition to my work as a solution engineer, I also love to write and share my knowledge with others. On this blog, you’ll find a variety of articles about architectures, talks, and best practices related to Kubernetes, Tanzu, web development, data management, ethics, privacy, and development.
+In addition to my work as a solution engineer, I also love to write and share my knowledge with others. On this blog, you’ll find a variety of articles about architectures, talks, and best practices related to Kubernetes, Red Hat products, web development, data management, ethics, privacy, and development.
 
 Whether you’re a seasoned pro or just getting started in the world of cloud computing, my blog has something for everyone. From technical tutorials to free resources and inspiration, I’m committed to providing value to the tech community and helping others succeed.
 
