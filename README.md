@@ -64,7 +64,7 @@ For deployment instructions, check the [Jekyll deployment guide](https://jekyllr
 
 Got questions or want to connect?
 
-📧 [Send me an email](mailto:contact@fklein.me)  
+📧 [Send me an email](mailto:frederic.klein@gmail.com)  
 🌐 [Visit my website](https://www.fklein.me)
 
 ---
