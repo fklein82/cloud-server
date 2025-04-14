@@ -8,7 +8,7 @@ video_embed:
 tags:   [AI]
 ---
 
-## From KubeCon to Openshift: Why I Built This Demo
+## From KubeCon to Openshift...
 
 After attending the **KubeCon Europe 2025**, one major takeaway was clear:  AI isn’t just a trend, it’s redefining the future of infrastructure and developer tools
 
