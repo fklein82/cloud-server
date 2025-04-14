@@ -54,7 +54,7 @@ For deployment instructions, check the [Jekyll deployment guide](https://jekyllr
 
 ## 📝 Latest Post
 
-> **[KubeCon 2025 – What You Need to Know](https://www.fklein.me/kubecon-2025-recap/)**  
+> **[KubeCon 2025 – What You Need to Know](https://blog.fklein.me/post/2025/04/14/ocp-claude.html)**  
 > A recap of key themes and Red Hat contributions around AI, security, observability, and DevX.  
 > _April 2025_
 
