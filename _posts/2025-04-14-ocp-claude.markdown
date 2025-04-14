@@ -12,8 +12,7 @@ tags:   [AI]
 
 ## From KubeCon to Openshift: Why I Built This Demo
 
-After attending the **KubeCon Europe 2025**, one major takeaway was clear:  
-AI is no longer a side topic — it’s central to the future of infrastructure and developer experience.
+After attending the **KubeCon Europe 2025**, one major takeaway was clear:  AI isn’t just a trend, it’s redefining the future of infrastructure and developer tools.
 
 Many sessions focused on how to **hide infrastructure complexity** through approaches like **Platform Engineering** and **AI-powered developer tools**. I came home inspired to test it out myself.
 

@@ -5,8 +5,8 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 14 Apr 2025 20:14:30 +0200</pubDate>
-        <lastBuildDate>Mon, 14 Apr 2025 20:14:30 +0200</lastBuildDate>
+        <pubDate>Mon, 14 Apr 2025 20:28:58 +0200</pubDate>
+        <lastBuildDate>Mon, 14 Apr 2025 20:28:58 +0200</lastBuildDate>
         <generator>Jekyll v4.4.1</generator>
         
             <item>
@@ -15,8 +15,7 @@
 
 &lt;h2 id=&quot;from-kubecon-to-openshift-why-i-built-this-demo&quot;&gt;From KubeCon to Openshift: Why I Built This Demo&lt;/h2&gt;
 
-&lt;p&gt;After attending the &lt;strong&gt;KubeCon Europe 2025&lt;/strong&gt;, one major takeaway was clear:&lt;br /&gt;
-AI is no longer a side topic — it’s central to the future of infrastructure and developer experience.&lt;/p&gt;
+&lt;p&gt;After attending the &lt;strong&gt;KubeCon Europe 2025&lt;/strong&gt;, one major takeaway was clear:  AI isn’t just a trend, it’s redefining the future of infrastructure and developer tools.&lt;/p&gt;
 
 &lt;p&gt;Many sessions focused on how to &lt;strong&gt;hide infrastructure complexity&lt;/strong&gt; through approaches like &lt;strong&gt;Platform Engineering&lt;/strong&gt; and &lt;strong&gt;AI-powered developer tools&lt;/strong&gt;. I came home inspired to test it out myself.&lt;/p&gt;
 
