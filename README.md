@@ -1,95 +1,72 @@
+# Frédéric Klein – Personal Blog
 
-# Frederic Klein personal blog
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-success?style=flat&logo=github)](https://www.fklein.me)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Hello, and welcome to my blog! My name is Frédéric KLEIN, and I’m a solution engineer at Red Hat. I have a passion for helping organizations design and implement cloud-native architectures using Kubernetes and Red Hat.
+👋 Hello, and welcome to my blog!  
+I'm **Frédéric Klein**, a **Solution Engineer at Red Hat**, where I help teams **design and run modern architectures** using **Kubernetes** and **Red Hat technologies** — with a strong focus on **developer experience**, **scalability**, and **real-world use cases**.
 
-In addition to my work as a solution engineer, I also love to write and share my knowledge with others. On this blog, you’ll find a variety of articles about architectures, talks, and best practices related to Kubernetes, Red Hat products, web development, data management, ethics, privacy, and development.
+I use this space to share what I learn, what I test, and what I build — whether it's around **cloud platforms**, **automation**, **AI**, **privacy**, or just good engineering practices. You’ll find here a mix of **technical content**, **ideas**, **feedback from the field**, and a few personal thoughts.
 
-Whether you’re a seasoned pro or just getting started in the world of cloud computing, my blog has something for everyone. From technical tutorials to free resources and inspiration, I’m committed to providing value to the tech community and helping others succeed.
+If you're into **cloud-native development**, **DevSecOps**, or just curious about how to make tech work better for teams, you're in the right place.
 
-So, if you’re looking to stay up-to-date on the latest trends and technologies in cloud computing and software development, be sure to follow my blog and stay tuned for new articles and updates. Thanks for reading, and I look forward to connecting with you soon!
+---
 
-[Fred's Blog](https://blog.fklein.me)
+## ✨ Blog Features
 
-[![CI / CD](https://github.com/fklein82/cloud-server/actions/workflows/cicd-to-aws-s3.yml/badge.svg)](https://github.com/fklein82/cloud-server/actions/workflows/cicd-to-aws-s3.yml)
+- 🖥 GitHub Pages support (hosted for free)
+- 🌗 Light/Dark mode toggle
+- ⚡ Super fast, responsive, mobile-first design
+- 📱 Clean and modern UI
+- 💻 Vanilla JavaScript only (no jQuery)
+- 🧠 Syntax highlighting (Jekyll-compatible)
+- 🖼 Lazy-loaded images, zoomable media & image gallery
+- 🔖 Tags page and tag filtering
+- 📨 Contact form (Formspree), MailChimp integration
+- 💬 Disqus comments
+- 📈 Google Analytics
+- 🔗 Social sharing buttons
+- 🧩 Ionicons & Google Fonts
+- 🔄 Free updates & support
 
-* * *
+---
 
-### Theme features
+## 🚀 Getting Started
 
-- Works with GitHub Pages (host it for free)
-- Dark and light mode user can select themself
-- No jQuery, only vanilla JS
-- 100% responsive Design
-- Clean and Modern Code
-- Optimized for mobile devices
-- Super fast performance ⚡⚡⚡
-- Social sharing buttons
-- Scroll to top button
-- Syntax highlighting (supports the Jekyll syntax highlighter)
-- Compatible with modern browsers
-- Medium style image zoom
-- Image Lazy loading
-- Image gallery
-- Tags Page
-- Custom logo support
-- Supports video posts
-- Supports contact form (Formspree)
-- Supports MailChimp newsletter
-- Supports Disqus comments
-- Supports Google Analytics
-- Ionicons icons
-- Free Google Fonts
-- Free Updates & Support
+### 1. Install Ruby & Jekyll
 
-* * *
+If it’s your first time using Jekyll, please refer to the [official documentation](https://jekyllrb.com/docs/) to install Ruby and configure your local environment.
 
-### Installation
+### 2. Install Dependencies & Run Locally
 
-#### Installing Ruby & Jekyll
+```bash
+bundle install
+bundle exec jekyll serve
+```
 
-If this is your first time using Jekyll, please follow the [Jekyll docs](https://jekyllrb.com/docs/installation/) and make sure your local environment (including Ruby) is setup correctly.
+Then open `http://localhost:4000` in your browser.
 
-* * *
+### 3. Deploy on GitHub Pages
 
-### Deployment
+For deployment instructions, check the [Jekyll deployment guide](https://jekyllrb.com/docs/deployment-methods/).
 
-To run the theme locally, navigate to the theme directory and run `bundle install` to install the dependencies, then run `jekyll serve` or `bundle exec jekyll serve` to start the Jekyll server.
+---
 
-I would recommend checking the [Deployment Methods](https://jekyllrb.com/docs/deployment-methods/) page on Jekyll website.
+## 📝 Latest Post
 
-* * *
+> **[KubeCon 2025 – What You Need to Know](https://www.fklein.me/kubecon-2025-recap/)**  
+> A recap of key themes and Red Hat contributions around AI, security, observability, and DevX.  
+> _April 2025_
 
-### Docker Image Build & Push on Registries
+---
 
-- Public registry: <a href="https://hub.docker.com/r/yfke8313/blog/tags">DockerHUB</a>
-- Private registry: <a href="https://registry.fklein.me/harbor/projects/26/repositories/fklein-blog/artifacts-tab">Harbor</a>
+## 📬 Contact
 
-### How to deploy the website on Kubernetes? Some Examples...
+Got questions or want to connect?
 
-1. Create the deployment:
-~~~
-kubectl create deployment fredblog --image=registry.fklein.me/sarycom/src-website:2023-05-03-10-24-45 --port=80
-~~~
+📧 [Send me an email](mailto:contact@fklein.me)  
+🌐 [Visit my website](https://www.fklein.me)
 
-2. Expose the website with a Loadbalancer L4:
-~~~
-kubectl expose deployment fredblog --port 80 --type LoadBalancer --target-port=80 -n demotbs
-~~~
+---
 
-3. Check the ip:
-~~~
-k get svc -n fredblog
-~~~
-
-4. Delete the ressource
-~~~
-k delete deployment fredblog
-k delete service fredblog
-~~~
-
-* * *
-
-### Support
-
-<p>If you have any questions, please feel free to contact me by mail <a href="mailto:frederic.klein@gmail.com">Contact</a><p>
+Thanks for reading, and feel free to ⭐ the repo if you like it!
