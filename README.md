@@ -54,8 +54,8 @@ For deployment instructions, check the [Jekyll deployment guide](https://jekyllr
 
 ## 📝 Latest Post
 
-> **[KubeCon 2025 – What You Need to Know](https://blog.fklein.me/post/2025/04/14/ocp-claude.html)**  
-> A recap of key themes and Red Hat contributions around AI, security, observability, and DevX.  
+> **[Supercharging OpenShift with MCP - Natural Language Meets Cloud-native Ops](https://blog.fklein.me/post/2025/04/14/ocp-claude.html)**  
+> Use natural language to control OpenShift with Claude Desktop and the open-source MCP server.  
 > _April 2025_
 
 ---
