@@ -11,6 +11,8 @@ So, if you’re looking to stay up-to-date on the latest trends and technologies
 
 [Fred's Blog](https://blog.fklein.me)
 
+[![CI / CD](https://github.com/fklein82/cloud-server/actions/workflows/cicd-to-aws-s3.yml/badge.svg)](https://github.com/fklein82/cloud-server/actions/workflows/cicd-to-aws-s3.yml)
+
 * * *
 
 ### Theme features
