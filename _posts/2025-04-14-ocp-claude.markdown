@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP)
+title:  Supercharging OpenShift with MCP - Natural Language Meets Cloud-native Ops
 description: Use natural language to control OpenShift with Claude Desktop and the open-source MCP server.
 date:   2025-04-14 09:00:00 +0200
 image:  '/images/MCP-OCP2.png'
@@ -8,11 +8,9 @@ video_embed:
 tags:   [AI]
 ---
 
-# Supercharging OpenShift with Claude Desktop and MCP: Natural Language Meets Cloud-native Ops
-
 ## From KubeCon to Openshift: Why I Built This Demo
 
-After attending the **KubeCon Europe 2025**, one major takeaway was clear:  AI isn’t just a trend, it’s redefining the future of infrastructure and developer tools.
+After attending the **KubeCon Europe 2025**, one major takeaway was clear:  AI isn’t just a trend, it’s redefining the future of infrastructure and developer tools
 
 Many sessions focused on how to **hide infrastructure complexity** through approaches like **Platform Engineering** and **AI-powered developer tools**. I came home inspired to test it out myself.
 
