@@ -5,9 +5,201 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 28 Mar 2025 10:26:28 +0100</pubDate>
-        <lastBuildDate>Fri, 28 Mar 2025 10:26:28 +0100</lastBuildDate>
+        <pubDate>Mon, 14 Apr 2025 20:14:30 +0200</pubDate>
+        <lastBuildDate>Mon, 14 Apr 2025 20:14:30 +0200</lastBuildDate>
         <generator>Jekyll v4.4.1</generator>
+        
+            <item>
+                <title>Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP)</title>
+                <description>&lt;h1 id=&quot;supercharging-openshift-with-claude-desktop-and-mcp-natural-language-meets-cloud-native-ops&quot;&gt;Supercharging OpenShift with Claude Desktop and MCP: Natural Language Meets Cloud-native Ops&lt;/h1&gt;
+
+&lt;h2 id=&quot;from-kubecon-to-openshift-why-i-built-this-demo&quot;&gt;From KubeCon to Openshift: Why I Built This Demo&lt;/h2&gt;
+
+&lt;p&gt;After attending the &lt;strong&gt;KubeCon Europe 2025&lt;/strong&gt;, one major takeaway was clear:&lt;br /&gt;
+AI is no longer a side topic — it’s central to the future of infrastructure and developer experience.&lt;/p&gt;
+
+&lt;p&gt;Many sessions focused on how to &lt;strong&gt;hide infrastructure complexity&lt;/strong&gt; through approaches like &lt;strong&gt;Platform Engineering&lt;/strong&gt; and &lt;strong&gt;AI-powered developer tools&lt;/strong&gt;. I came home inspired to test it out myself.&lt;/p&gt;
+
+&lt;p&gt;So I built a simple demo: using &lt;strong&gt;Claude Desktop&lt;/strong&gt;, &lt;strong&gt;OpenShift&lt;/strong&gt;, and the &lt;strong&gt;Model Context Protocol (MCP)&lt;/strong&gt; to show how natural language can drive real actions in a live Kubernetes cluster.&lt;/p&gt;
+
+&lt;p&gt;And yes — it works. Let me show you how.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/list-pods.png&quot; alt=&quot;claude&quot; title=&quot;claude&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-mcp--model-context-protocol&quot;&gt;What is MCP – Model Context Protocol?&lt;/h2&gt;
+
+&lt;p&gt;Connecting AI models to real-world systems like APIs, databases, or Kubernetes is usually complex and requires custom code.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Model Context Protocol (MCP)&lt;/strong&gt;, created by Anthropic, is an &lt;strong&gt;open standard&lt;/strong&gt; that makes this much easier.&lt;/p&gt;
+
+&lt;p&gt;It allows AI models (like Claude) to understand the context and &lt;strong&gt;safely perform actions&lt;/strong&gt; by talking to small programs called &lt;strong&gt;MCP servers&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mcp-server.png&quot; alt=&quot;mcp&quot; title=&quot;mcp&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;a-kubernetes-mcp-server-built-by-marc-nuri&quot;&gt;A Kubernetes MCP Server, Built by &lt;a href=&quot;https://www.linkedin.com/in/marcnuri/&quot;&gt;Marc Nuri&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;My colleague &lt;a href=&quot;https://www.linkedin.com/in/marcnuri/&quot;&gt;Marc&lt;/a&gt; at Red Hat has developed a open-source MCP server implementation:&lt;br /&gt;
+🔗 &lt;a href=&quot;https://github.com/manusa/kubernetes-mcp-server&quot;&gt;kubernetes-mcp-server&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This MCP server can:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Connect to any Kubernetes or OpenShift cluster&lt;/li&gt;
+  &lt;li&gt;Read and manage pods, namespaces, events, deployments, and more&lt;/li&gt;
+  &lt;li&gt;Show pod logs, execute commands, and even run containers&lt;/li&gt;
+  &lt;li&gt;Work seamlessly with Claude Desktop or VS Code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It runs locally with no dependency on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;helm&lt;/code&gt;, or other CLI tools — lightweight, flexible, and ready to use.&lt;/p&gt;
+
+&lt;h2 id=&quot;live-demo-claude-diagnoses-and-fixes-a-broken-pod-on-openshift&quot;&gt;Live Demo: Claude Diagnoses and Fixes a Broken Pod on OpenShift&lt;/h2&gt;
+
+&lt;p&gt;Let’s walk through a simple and visual demo you can try today.&lt;/p&gt;
+
+&lt;p&gt;We’ll deploy a pod that fails to start (due to a bad image), then use Claude to identify the issue and fix it — using natural language only.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-you-need&quot;&gt;What You Need&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A &lt;strong&gt;Mac&lt;/strong&gt; with &lt;a href=&quot;https://brew.sh&quot;&gt;Homebrew&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.anthropic.com/index/claude-desktop&quot;&gt;Claude Desktop&lt;/a&gt; installed&lt;/li&gt;
+  &lt;li&gt;A running &lt;strong&gt;OpenShift&lt;/strong&gt; cluster (for example on AWS like me)&lt;/li&gt;
+  &lt;li&gt;OpenShift CLI (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;oc&lt;/code&gt;):&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;openshift-cli
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Make sure you can log in to your OpenShift cluster:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;oc login &amp;lt;cluster-url&amp;gt; &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;sha256-...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;-step-1-connect-claude-to-the-mcp-server&quot;&gt;🔧 Step 1: Connect Claude to the MCP server&lt;/h3&gt;
+
+&lt;p&gt;Open this file:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;open ~/Library/Application&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Support/Claude&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Desktop/claude_desktop_config.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And add:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;mcpServers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;kubernetes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;command&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;npx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;args&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;kubernetes-mcp-server@latest&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then restart Claude Desktop and verify that the MCP Server is running.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/run_ok.png&quot; alt=&quot;mcp&quot; title=&quot;mcp&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;step-2-create-a-broken-pod&quot;&gt;Step 2: Create a Broken Pod&lt;/h3&gt;
+
+&lt;p&gt;Let’s create a pod in a new namespace, using a non-existent image.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;oc create namespace demo
+
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; | oc apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mon-app
+  namespace: demo
+  labels:
+    app: mon-app
+spec:
+  containers:
+    - name: web
+      image: nginx:doesnotexist
+      ports:
+        - containerPort: 80
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The pod will fail with an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ImagePullBackOff&lt;/code&gt; error.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/pod_errors.png&quot; alt=&quot;mcp&quot; title=&quot;mcp&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/ocp-errors.png&quot; alt=&quot;mcp&quot; title=&quot;mcp&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;step-3-let-claude-fix-it&quot;&gt;Step 3: Let Claude Fix It&lt;/h3&gt;
+
+&lt;p&gt;In Claude Desktop, simply type:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Diagnose and fix the pod `mon-app` in the `demo` namespace.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Claude will:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Inspect the pod and retrieve logs and events&lt;/li&gt;
+  &lt;li&gt;Detect the image error&lt;/li&gt;
+  &lt;li&gt;Suggest replacing the image with a working version (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nginx:latest&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Apply the change if you confirm&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All this, using natural language and the MCP server — no CLI needed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/diagnose_and_solve.png&quot; alt=&quot;mcp&quot; title=&quot;mcp&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;step-4-clean-up&quot;&gt;Step 4: Clean Up&lt;/h3&gt;
+
+&lt;p&gt;Once you’re done:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;oc delete namespace demo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;security-considerations&quot;&gt;Security Considerations&lt;/h2&gt;
+
+&lt;p&gt;While this is a great demo, keep in mind:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The MCP server uses your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.kube/config&lt;/code&gt;, meaning &lt;strong&gt;full access&lt;/strong&gt; to your cluster&lt;/li&gt;
+  &lt;li&gt;You should always use &lt;strong&gt;dedicated service accounts&lt;/strong&gt; with limited permissions (RBAC)&lt;/li&gt;
+  &lt;li&gt;Don’t test this on production environments&lt;/li&gt;
+  &lt;li&gt;Monitor all actions and keep audit logs enabled&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The good news: the MCP protocol itself supports &lt;strong&gt;permission control and sandboxing&lt;/strong&gt; — but you still need to apply best practices.&lt;/p&gt;
+
+&lt;h2 id=&quot;bonus-openshift-lightspeed-️&quot;&gt;Bonus: OpenShift Lightspeed ⚡️&lt;/h2&gt;
+
+&lt;p&gt;Red Hat also offers a &lt;strong&gt;built-in AI assistant&lt;/strong&gt; for OpenShift:&lt;br /&gt;
+👉 &lt;a href=&quot;https://www.redhat.com/en/products/interactive-walkthrough/red-hat-openshift-lightspeed&quot;&gt;OpenShift Lightspeed&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Lightspeed enables:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;YAML generation and validation with AI&lt;/li&gt;
+  &lt;li&gt;Built-in troubleshooting suggestions&lt;/li&gt;
+  &lt;li&gt;Secure, production-ready GenAI workflows — right in the OpenShift web console&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If MCP + Claude is the open playground for experimentation, &lt;strong&gt;Lightspeed is the enterprise solution&lt;/strong&gt;, fully integrated and supported.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-whats-next&quot;&gt;🧭 What’s Next?&lt;/h2&gt;
+
+&lt;p&gt;In my &lt;strong&gt;next blog post&lt;/strong&gt;, I’ll dive into &lt;strong&gt;OpenShift Lightspeed&lt;/strong&gt; — how it works, and how it helps DevOps teams.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/lightspeed.png&quot; alt=&quot;mcp&quot; title=&quot;mcp&quot; /&gt;&lt;/p&gt;
+</description>
+                <pubDate>Mon, 14 Apr 2025 09:00:00 +0200</pubDate>
+                <link>http://localhost:4000/post/2025/04/14/ocp-claude.html</link>
+                <guid isPermaLink="true">http://localhost:4000/post/2025/04/14/ocp-claude.html</guid>
+                
+                <category>AI</category>
+                
+                
+            </item>
         
             <item>
                 <title>Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform</title>

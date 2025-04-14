@@ -6,23 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Tags</title>
-  <meta name='description' content='Frédéric KLEIN personal Blog'>
+  <title>Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP)</title>
+  <meta name='description' content='Use natural language to control OpenShift with Claude Desktop and the open-source MCP server.'>
 
-  <link rel="canonical" href="http://localhost:4000/tags/">
+  <link rel="canonical" href="http://localhost:4000/post/2025/04/14/ocp-claude.html">
   <link rel="alternate" type="application/rss+xml" title="ASA Blog" href="/feed.xml">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tags – ASA Blog">
-  <meta name="twitter:description" content="">
+  <meta name="twitter:title" content="Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP) – ASA Blog">
+  <meta name="twitter:description" content="Use natural language to control OpenShift with Claude Desktop and the open-source MCP server.">
   <meta name="twitter:image" content="https://blog.fklein.me/images/twitter.jpg">
 
 
   <!-- Facebook OpenGraph -->
-  <meta property="og:title" content="Tags – ASA Blog">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
+  <meta property="og:title" content="Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP) – ASA Blog">
+  <meta property="og:description" content="Use natural language to control OpenShift with Claude Desktop and the open-source MCP server.">
+  <meta property="og:image" content="http://localhost:4000/images/MCP-OCP2.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -181,254 +181,373 @@
 
   <!-- begin content -->
   <main class="content" aria-label="Content">
-    
+    <div class="post-head">
+  <div class="container">
+    <div class="row">
+      
+      
 
-
-<!-- begin tags -->
-<section class="tags">
-
-  <div class="tag__head">
-
-    <div class="container">
-      <div class="row">
-        <div class="col col-12">
-
-          <h1 class="tag__title">Tags</h1>
-        
-          <ul class="tag__list list-reset">
-            
-              
-                
-                <li class="tag__item"><a href="#AI" class="tag__link">AI</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#IAC" class="tag__link">IAC</a></li>
-              
-            
-              
-                
-                <li class="tag__item"><a href="#Openshift" class="tag__link">Openshift</a></li>
-              
-            
-              
-            
-          </ul>
-
+      
+      <div class="col col-6 col-d-12">
+        <div class="post-image">
+          <img class="lazy" data-src="/images/MCP-OCP2.png" alt="Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP)">
         </div>
       </div>
-    </div>
+      
 
-  </div>
-
-
+      
+      
+      
+      <div class="col col-6 col-d-12">
+        <div class="post__info ">
   
+          
+            <div class="post__tags">
+              
+                <a href="/tags#AI" class="post__tag">AI</a>
+              
+            </div>
+          
   
+          <h1 class="post__title">Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP)</h1>
+  
+          <div class="post__meta">
+            <a href="/about/" class="post__author-image">
+              <img class="lazy" data-src="/images/fklein.png" alt="Frédéric KLEIN">
+            </a>
 
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="AI">AI</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
+            <div class="post__meta-bottom">
+              <a class="post__author" href="/about/">Frédéric KLEIN</a>
+              <time class="post__date" datetime="2025-04-14T09:00:00+02:00">14 Apr 2025</time>
             </div>
           </div>
+  
         </div>
       </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2025-04-14T09:00:00+02:00">14 Apr 2025</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2025/04/14/ocp-claude.html">
-        <img class="lazy" data-src="/images/MCP-OCP2.png" alt="Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP)">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2025/04/14/ocp-claude.html">Driving OpenShift with Claude Desktop and the Model Context Protocol (MCP)</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Use natural language to control OpenShift with Claude Desktop and the open-source MCP server.</p>
-      
-
     </div>
   </div>
 </div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
+
+<!-- begin post -->
+<div class="container animate">
+
+  <article class="post">
+
+    <div class="post__content">
+      <h1 id="supercharging-openshift-with-claude-desktop-and-mcp-natural-language-meets-cloud-native-ops">Supercharging OpenShift with Claude Desktop and MCP: Natural Language Meets Cloud-native Ops</h1>
+
+<h2 id="from-kubecon-to-openshift-why-i-built-this-demo">From KubeCon to Openshift: Why I Built This Demo</h2>
+
+<p>After attending the <strong>KubeCon Europe 2025</strong>, one major takeaway was clear:<br />
+AI is no longer a side topic — it’s central to the future of infrastructure and developer experience.</p>
+
+<p>Many sessions focused on how to <strong>hide infrastructure complexity</strong> through approaches like <strong>Platform Engineering</strong> and <strong>AI-powered developer tools</strong>. I came home inspired to test it out myself.</p>
+
+<p>So I built a simple demo: using <strong>Claude Desktop</strong>, <strong>OpenShift</strong>, and the <strong>Model Context Protocol (MCP)</strong> to show how natural language can drive real actions in a live Kubernetes cluster.</p>
+
+<p>And yes — it works. Let me show you how.</p>
+
+<p><img src="/images/list-pods.png" alt="claude" title="claude" /></p>
+
+<h2 id="what-is-mcp--model-context-protocol">What is MCP – Model Context Protocol?</h2>
+
+<p>Connecting AI models to real-world systems like APIs, databases, or Kubernetes is usually complex and requires custom code.</p>
+
+<p>The <strong>Model Context Protocol (MCP)</strong>, created by Anthropic, is an <strong>open standard</strong> that makes this much easier.</p>
+
+<p>It allows AI models (like Claude) to understand the context and <strong>safely perform actions</strong> by talking to small programs called <strong>MCP servers</strong>.</p>
+
+<p><img src="/images/mcp-server.png" alt="mcp" title="mcp" /></p>
+
+<h2 id="a-kubernetes-mcp-server-built-by-marc-nuri">A Kubernetes MCP Server, Built by <a href="https://www.linkedin.com/in/marcnuri/">Marc Nuri</a></h2>
+
+<p>My colleague <a href="https://www.linkedin.com/in/marcnuri/">Marc</a> at Red Hat has developed a open-source MCP server implementation:<br />
+🔗 <a href="https://github.com/manusa/kubernetes-mcp-server">kubernetes-mcp-server</a></p>
+
+<p>This MCP server can:</p>
+<ul>
+  <li>Connect to any Kubernetes or OpenShift cluster</li>
+  <li>Read and manage pods, namespaces, events, deployments, and more</li>
+  <li>Show pod logs, execute commands, and even run containers</li>
+  <li>Work seamlessly with Claude Desktop or VS Code</li>
+</ul>
+
+<p>It runs locally with no dependency on <code class="language-plaintext highlighter-rouge">kubectl</code>, <code class="language-plaintext highlighter-rouge">helm</code>, or other CLI tools — lightweight, flexible, and ready to use.</p>
+
+<h2 id="live-demo-claude-diagnoses-and-fixes-a-broken-pod-on-openshift">Live Demo: Claude Diagnoses and Fixes a Broken Pod on OpenShift</h2>
+
+<p>Let’s walk through a simple and visual demo you can try today.</p>
+
+<p>We’ll deploy a pod that fails to start (due to a bad image), then use Claude to identify the issue and fix it — using natural language only.</p>
+
+<h3 id="what-you-need">What You Need</h3>
+
+<ul>
+  <li>A <strong>Mac</strong> with <a href="https://brew.sh">Homebrew</a></li>
+  <li><a href="https://www.anthropic.com/index/claude-desktop">Claude Desktop</a> installed</li>
+  <li>A running <strong>OpenShift</strong> cluster (for example on AWS like me)</li>
+  <li>OpenShift CLI (<code class="language-plaintext highlighter-rouge">oc</code>):</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>openshift-cli
+</code></pre></div></div>
+
+<p>Make sure you can log in to your OpenShift cluster:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc login &lt;cluster-url&gt; <span class="nt">--token</span><span class="o">=</span>sha256-...
+</code></pre></div></div>
+
+<h3 id="-step-1-connect-claude-to-the-mcp-server">🔧 Step 1: Connect Claude to the MCP server</h3>
+
+<p>Open this file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>open ~/Library/Application<span class="se">\ </span>Support/Claude<span class="se">\ </span>Desktop/claude_desktop_config.json
+</code></pre></div></div>
+
+<p>And add:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"mcpServers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"kubernetes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npx"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"-y"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"kubernetes-mcp-server@latest"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Then restart Claude Desktop and verify that the MCP Server is running.</p>
+
+<p><img src="/images/run_ok.png" alt="mcp" title="mcp" /></p>
+
+<h3 id="step-2-create-a-broken-pod">Step 2: Create a Broken Pod</h3>
+
+<p>Let’s create a pod in a new namespace, using a non-existent image.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc create namespace demo
+
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> | oc apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mon-app
+  namespace: demo
+  labels:
+    app: mon-app
+spec:
+  containers:
+    - name: web
+      image: nginx:doesnotexist
+      ports:
+        - containerPort: 80
+</span><span class="no">EOF
+</span></code></pre></div></div>
+
+<p>The pod will fail with an <code class="language-plaintext highlighter-rouge">ImagePullBackOff</code> error.</p>
+
+<p><img src="/images/pod_errors.png" alt="mcp" title="mcp" /></p>
+
+<p><img src="/images/ocp-errors.png" alt="mcp" title="mcp" /></p>
+
+<h3 id="step-3-let-claude-fix-it">Step 3: Let Claude Fix It</h3>
+
+<p>In Claude Desktop, simply type:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Diagnose and fix the pod `mon-app` in the `demo` namespace.
+</code></pre></div></div>
+
+<p>Claude will:</p>
+
+<ul>
+  <li>Inspect the pod and retrieve logs and events</li>
+  <li>Detect the image error</li>
+  <li>Suggest replacing the image with a working version (<code class="language-plaintext highlighter-rouge">nginx:latest</code>)</li>
+  <li>Apply the change if you confirm</li>
+</ul>
+
+<p>All this, using natural language and the MCP server — no CLI needed.</p>
+
+<p><img src="/images/diagnose_and_solve.png" alt="mcp" title="mcp" /></p>
+
+<h3 id="step-4-clean-up">Step 4: Clean Up</h3>
+
+<p>Once you’re done:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc delete namespace demo
+</code></pre></div></div>
+
+<h2 id="security-considerations">Security Considerations</h2>
+
+<p>While this is a great demo, keep in mind:</p>
+
+<ul>
+  <li>The MCP server uses your <code class="language-plaintext highlighter-rouge">~/.kube/config</code>, meaning <strong>full access</strong> to your cluster</li>
+  <li>You should always use <strong>dedicated service accounts</strong> with limited permissions (RBAC)</li>
+  <li>Don’t test this on production environments</li>
+  <li>Monitor all actions and keep audit logs enabled</li>
+</ul>
+
+<p>The good news: the MCP protocol itself supports <strong>permission control and sandboxing</strong> — but you still need to apply best practices.</p>
+
+<h2 id="bonus-openshift-lightspeed-️">Bonus: OpenShift Lightspeed ⚡️</h2>
+
+<p>Red Hat also offers a <strong>built-in AI assistant</strong> for OpenShift:<br />
+👉 <a href="https://www.redhat.com/en/products/interactive-walkthrough/red-hat-openshift-lightspeed">OpenShift Lightspeed</a></p>
+
+<p>Lightspeed enables:</p>
+
+<ul>
+  <li>YAML generation and validation with AI</li>
+  <li>Built-in troubleshooting suggestions</li>
+  <li>Secure, production-ready GenAI workflows — right in the OpenShift web console</li>
+</ul>
+
+<p>If MCP + Claude is the open playground for experimentation, <strong>Lightspeed is the enterprise solution</strong>, fully integrated and supported.</p>
+
+<hr />
+
+<h2 id="-whats-next">🧭 What’s Next?</h2>
+
+<p>In my <strong>next blog post</strong>, I’ll dive into <strong>OpenShift Lightspeed</strong> — how it works, and how it helps DevOps teams.</p>
+
+<p><img src="/images/lightspeed.png" alt="mcp" title="mcp" /></p>
 
     </div>
 
-    
-  
-  
+    <div class="post__share">
+      <ul class="share__list list-reset">
+        <li class="share__item">
+          <a class="share__link share__twitter"
+            href="https://twitter.com/intent/tweet?text=Driving%20OpenShift%20with%20Claude%20Desktop%20and%20the%20Model%20Context%20Protocol%20(MCP)&url=http://localhost:4000/post/2025/04/14/ocp-claude.html"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" rel="nofollow"><i class="ion ion-logo-twitter"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/post/2025/04/14/ocp-claude.html"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" rel="nofollow"><i class="ion ion-logo-facebook"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__pinterest" href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/post/2025/04/14/ocp-claude.html&amp;media=http://localhost:4000/images/MCP-OCP2.png&amp;description=Driving%20OpenShift%20with%20Claude%20Desktop%20and%20the%20Model%20Context%20Protocol%20(MCP)"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;" title="Share on Pinterest"
+          rel="nofollow"><i class="ion ion-logo-pinterest"></i></a>
+        </li>
+        <li class="share__item">
+          <a class="share__link share__linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/post/2025/04/14/ocp-claude.html&title=Driving%20OpenShift%20with%20Claude%20Desktop%20and%20the%20Model%20Context%20Protocol%20(MCP)&summary=Use%20natural%20language%20to%20control%20OpenShift%20with%20Claude%20Desktop%20and%20the%20open-source%20MCP%20server.&source=ASA%20Blog"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn" rel="nofollow"><i class="ion ion-logo-linkedin"></i></a>
+        </li>
+      </ul>
+    </div>
 
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="IAC">IAC</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
+
+  </article>
+</div>
+<!-- end post -->
+
+
+
+
+
+
+
+<!-- begin related posts -->
+<div class="container">
+  <section class="related-posts  animate">
+    <div class="row">
+      <div class="col col-12">
+        <div class="container__inner">
+          <div class="section__info">
+            <div class="section__head">
+              <h2 class="section__title">You may also like</h2>
+              <a class="section__link" href="/blog">
+                
+                
+                  
+                    <a href="/tags#AI" class="section__link related-tag">See all<span> AI</span></a>
+                  
+                
+              
+              </a>
             </div>
+          </div>
+          <div class="row">
+
+          
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
+            
+            
+      
+            
+      
+            
+            
           </div>
         </div>
       </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2024-12-19T13:01:35+01:00">19 Dec 2024</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2024/12/19/tfe-x-aap.html">
-        <img class="lazy" data-src="/images/aap.png" alt="Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform">
-      </a>
-      
-
     </div>
+  </section>
+</div>
+<!-- end related posts -->
 
-    <div class="article__content">
 
-      <h2 class="article__title">
-        <a href="/post/2024/12/19/tfe-x-aap.html">Hashicorp Terraform Entreprise with Red Hat Ansible Automation Platform</a>
-      </h2>
+  <div class="container">
+    <div class="row">
+      <div class="col col-12">
+        <!-- begin comments -->
+<div class="show-comments">
+  <button class="button disqus-button" id="show-comments-button" onclick="disqus();return false;">Show Comments</button>
+</div>
 
-      
-      <p class="article__excerpt">Optimize your Infrastructure as Code with Terraform Enterprise and Ansible Automation Platform</p>
-      
+<div id="disqus_thread" class="post__comments">
+  <div id="disqus_empty"></div>
+</div>
 
+<script>
+  var disqus_loaded = false;
+  var disqus_shortname = 'demo-menca';
+  var disqus_container = document.getElementById("disqus_thread");
+  function disqus() {
+    if (!disqus_loaded) {
+      disqus_loaded = true;
+      var e = document.createElement("script");
+      e.type = "text/javascript";
+      e.async = true;
+      e.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+      (document.getElementsByTagName("head")[0] ||
+        document.getElementsByTagName("body")[0])
+        .appendChild(e);
+      // Hide the button after opening
+      document.getElementById("show-comments-button").style.display = "none";
+      // Show disqus comments
+      disqus_container.classList.add("is-open");
+    }
+  }
+</script>
+
+<noscript>Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<!-- end comments --> 
+      </div>
     </div>
   </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
-
-    
-  
-  
-
-    <div class="tags__inner">
-    
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="tag__info">
-              <div class="tag__info-box">
-                <div class="tag__counter">
-                  <span>1</span>
-                  <small>Posts</small>
-                </div>
-                <h2 class="tag__name" id="Openshift">Openshift</h2>
-              </div>
-              <a class="top__link" href="#top">Return to top</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col col-12">
-            <div class="row">
-            
-              
-                <div class="article col col-4 col-d-6 col-t-12">
-  <div class="article__inner">
-
-    <div class="article__head">
-      <time class="article__date" datetime="2024-06-11T14:01:35+02:00">11 Jun 2024</time>
-
-      
-
-      
-      <a class="article__image" href="/post/2024/06/11/gitlab-openshift.html">
-        <img class="lazy" data-src="/images/02.png" alt="Building a Container Image on OpenShift Using GitLab CI/CD">
-      </a>
-      
-
-    </div>
-
-    <div class="article__content">
-
-      <h2 class="article__title">
-        <a href="/post/2024/06/11/gitlab-openshift.html">Building a Container Image on OpenShift Using GitLab CI/CD</a>
-      </h2>
-
-      
-      <p class="article__excerpt">Learn how to streamline your CI/CD pipeline by integrating GitLab with OpenShift to build and deploy container images. This step-by-step guide covers the setup of the .gitlab-ci.yaml file, creating a Dockerfile, adding application code, configuring OpenShift, and running the build. Perfect for developers looking to leverage the power of GitLab and OpenShift for efficient container management and deployment.</p>
-      
-
-    </div>
-  </div>
-</div>
-              
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    
-  
-  
-
-</section>
-<!-- end tags -->
   </main>
   <!-- end content -->
 
