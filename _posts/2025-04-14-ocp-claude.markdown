@@ -159,6 +159,8 @@ For example (and this actually happened during my testing) the AI confidently su
 
 _Spoiler: that’s rarely what you want in production._
 
+![mcp](/images/diagnose_and_solve_notok.png "mcp")
+
 So, always make sure to:
 - Validate image tags explicitly (avoid :latest)
 - Use admission policies or image scanners when possible

@@ -294,7 +294,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc login &lt;cluster-url&gt; <span class="nt">--token</span><span class="o">=</span>sha256-...
 </code></pre></div></div>
 
-<h3 id="-step-1-connect-claude-to-the-mcp-server">🔧 Step 1: Connect Claude to the MCP server</h3>
+<h3 id="step-1-connect-claude-to-the-mcp-server">Step 1: Connect Claude to the MCP server</h3>
 
 <p>Open this file:</p>
 
@@ -378,21 +378,28 @@ spec:
 
 <h2 id="security-considerations">Security Considerations</h2>
 
-<p>While this is a great demo, keep in mind:</p>
+<p>As with any automation that interacts directly with a live Kubernetes cluster, it’s important to apply proper safeguards. While using natural language to drive actions is powerful, it can also introduce risk if commands aren’t well-scoped or validated.</p>
 
+<p>For example (and this actually happened during my testing) the AI confidently suggested pulling an image… and two lines earlier, it quietly picked the latest tag.</p>
+
+<p><em>Spoiler: that’s rarely what you want in production.</em></p>
+
+<p><img src="/images/diagnose_and_solve_notok.png" alt="mcp" title="mcp" /></p>
+
+<p>So, always make sure to:</p>
 <ul>
-  <li>The MCP server uses your <code class="language-plaintext highlighter-rouge">~/.kube/config</code>, meaning <strong>full access</strong> to your cluster</li>
-  <li>You should always use <strong>dedicated service accounts</strong> with limited permissions (RBAC)</li>
-  <li>Don’t test this on production environments</li>
-  <li>Monitor all actions and keep audit logs enabled</li>
+  <li>Validate image tags explicitly (avoid :latest)</li>
+  <li>Use admission policies or image scanners when possible</li>
+  <li>Limit the scope of actions the assistant is allowed to perform</li>
+  <li>Log and monitor AI-triggered activity separately</li>
 </ul>
 
-<p>The good news: the MCP protocol itself supports <strong>permission control and sandboxing</strong> — but you still need to apply best practices.</p>
+<p>Natural language makes things easier — let’s make sure it doesn’t also make them riskier.</p>
 
 <h2 id="bonus-openshift-lightspeed-️">Bonus: OpenShift Lightspeed ⚡️</h2>
 
 <p>Red Hat also offers a <strong>built-in AI assistant</strong> for OpenShift:<br />
-👉 <a href="https://www.redhat.com/en/products/interactive-walkthrough/red-hat-openshift-lightspeed">OpenShift Lightspeed</a></p>
+🔗 <a href="https://www.redhat.com/en/products/interactive-walkthrough/red-hat-openshift-lightspeed">OpenShift Lightspeed</a></p>
 
 <p>Lightspeed enables:</p>
 

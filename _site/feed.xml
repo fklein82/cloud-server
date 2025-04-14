@@ -5,8 +5,8 @@
         <description>Frédéric KLEIN personal Blog</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 14 Apr 2025 20:37:43 +0200</pubDate>
-        <lastBuildDate>Mon, 14 Apr 2025 20:37:43 +0200</lastBuildDate>
+        <pubDate>Mon, 14 Apr 2025 22:36:51 +0200</pubDate>
+        <lastBuildDate>Mon, 14 Apr 2025 22:36:51 +0200</lastBuildDate>
         <generator>Jekyll v4.4.1</generator>
         
             <item>
@@ -71,7 +71,7 @@
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;oc login &amp;lt;cluster-url&amp;gt; &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;sha256-...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;-step-1-connect-claude-to-the-mcp-server&quot;&gt;🔧 Step 1: Connect Claude to the MCP server&lt;/h3&gt;
+&lt;h3 id=&quot;step-1-connect-claude-to-the-mcp-server&quot;&gt;Step 1: Connect Claude to the MCP server&lt;/h3&gt;
 
 &lt;p&gt;Open this file:&lt;/p&gt;
 
@@ -155,21 +155,28 @@ spec:
 
 &lt;h2 id=&quot;security-considerations&quot;&gt;Security Considerations&lt;/h2&gt;
 
-&lt;p&gt;While this is a great demo, keep in mind:&lt;/p&gt;
+&lt;p&gt;As with any automation that interacts directly with a live Kubernetes cluster, it’s important to apply proper safeguards. While using natural language to drive actions is powerful, it can also introduce risk if commands aren’t well-scoped or validated.&lt;/p&gt;
 
+&lt;p&gt;For example (and this actually happened during my testing) the AI confidently suggested pulling an image… and two lines earlier, it quietly picked the latest tag.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Spoiler: that’s rarely what you want in production.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/diagnose_and_solve_notok.png&quot; alt=&quot;mcp&quot; title=&quot;mcp&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, always make sure to:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;The MCP server uses your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.kube/config&lt;/code&gt;, meaning &lt;strong&gt;full access&lt;/strong&gt; to your cluster&lt;/li&gt;
-  &lt;li&gt;You should always use &lt;strong&gt;dedicated service accounts&lt;/strong&gt; with limited permissions (RBAC)&lt;/li&gt;
-  &lt;li&gt;Don’t test this on production environments&lt;/li&gt;
-  &lt;li&gt;Monitor all actions and keep audit logs enabled&lt;/li&gt;
+  &lt;li&gt;Validate image tags explicitly (avoid :latest)&lt;/li&gt;
+  &lt;li&gt;Use admission policies or image scanners when possible&lt;/li&gt;
+  &lt;li&gt;Limit the scope of actions the assistant is allowed to perform&lt;/li&gt;
+  &lt;li&gt;Log and monitor AI-triggered activity separately&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The good news: the MCP protocol itself supports &lt;strong&gt;permission control and sandboxing&lt;/strong&gt; — but you still need to apply best practices.&lt;/p&gt;
+&lt;p&gt;Natural language makes things easier — let’s make sure it doesn’t also make them riskier.&lt;/p&gt;
 
 &lt;h2 id=&quot;bonus-openshift-lightspeed-️&quot;&gt;Bonus: OpenShift Lightspeed ⚡️&lt;/h2&gt;
 
 &lt;p&gt;Red Hat also offers a &lt;strong&gt;built-in AI assistant&lt;/strong&gt; for OpenShift:&lt;br /&gt;
-👉 &lt;a href=&quot;https://www.redhat.com/en/products/interactive-walkthrough/red-hat-openshift-lightspeed&quot;&gt;OpenShift Lightspeed&lt;/a&gt;&lt;/p&gt;
+🔗 &lt;a href=&quot;https://www.redhat.com/en/products/interactive-walkthrough/red-hat-openshift-lightspeed&quot;&gt;OpenShift Lightspeed&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Lightspeed enables:&lt;/p&gt;
 
