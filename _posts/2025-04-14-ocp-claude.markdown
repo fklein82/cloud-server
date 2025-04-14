@@ -66,7 +66,7 @@ Make sure you can log in to your OpenShift cluster:
 oc login <cluster-url> --token=sha256-...
 ```
 
-### 🔧 Step 1: Connect Claude to the MCP server
+### Step 1: Connect Claude to the MCP server
 
 Open this file:
 
@@ -153,19 +153,24 @@ oc delete namespace demo
 
 ## Security Considerations
 
-While this is a great demo, keep in mind:
+As with any automation that interacts directly with a live Kubernetes cluster, it’s important to apply proper safeguards. While using natural language to drive actions is powerful, it can also introduce risk if commands aren’t well-scoped or validated.
 
-- The MCP server uses your `~/.kube/config`, meaning **full access** to your cluster  
-- You should always use **dedicated service accounts** with limited permissions (RBAC)  
-- Don’t test this on production environments  
-- Monitor all actions and keep audit logs enabled  
+For example (and this actually happened during my testing) the AI confidently suggested pulling an image… and two lines earlier, it quietly picked the latest tag. 
 
-The good news: the MCP protocol itself supports **permission control and sandboxing** — but you still need to apply best practices.
+_Spoiler: that’s rarely what you want in production._
+
+So, always make sure to:
+- Validate image tags explicitly (avoid :latest)
+- Use admission policies or image scanners when possible
+- Limit the scope of actions the assistant is allowed to perform
+- Log and monitor AI-triggered activity separately
+
+Natural language makes things easier — let’s make sure it doesn’t also make them riskier.
 
 ##  Bonus: OpenShift Lightspeed ⚡️
 
 Red Hat also offers a **built-in AI assistant** for OpenShift:  
-👉 [OpenShift Lightspeed](https://www.redhat.com/en/products/interactive-walkthrough/red-hat-openshift-lightspeed)
+🔗 [OpenShift Lightspeed](https://www.redhat.com/en/products/interactive-walkthrough/red-hat-openshift-lightspeed)
 
 Lightspeed enables:
 
